@@ -35,7 +35,7 @@
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(273, 21);
+            this.Login.Location = new System.Drawing.Point(276, 12);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(75, 23);
             this.Login.TabIndex = 8;
@@ -55,7 +55,7 @@
             // 
             // reserva
             // 
-            this.reserva.Location = new System.Drawing.Point(101, 67);
+            this.reserva.Location = new System.Drawing.Point(101, 33);
             this.reserva.Name = "reserva";
             this.reserva.Size = new System.Drawing.Size(75, 45);
             this.reserva.TabIndex = 6;

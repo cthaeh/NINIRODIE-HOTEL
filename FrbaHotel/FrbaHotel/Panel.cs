@@ -19,9 +19,30 @@ namespace FrbaHotel
             InitializeComponent();
             if (tipo == "admin")
             {
-                abm_recep.Visible = true;
+                abm_emp.Visible = true;
                 abm_hot.Visible = true;
                 abm_guest.Visible = false;
+                abm_rol.Visible = true;
+                abm_hab.Visible = true;
+                cambiar_clave.Visible = true;
+            }
+            else if (tipo == "recep")
+            {
+                abm_emp.Visible = false;
+                abm_hot.Visible = false;
+                abm_guest.Visible = true;
+                abm_rol.Visible = false;
+                abm_hab.Visible = false;
+                cambiar_clave.Visible = true;
+            }
+            else
+            {
+                abm_emp.Visible = false;
+                abm_hot.Visible = false;
+                abm_guest.Visible = false;
+                abm_rol.Visible = false;
+                abm_hab.Visible = false;
+                cambiar_clave.Visible = true;
             }
         }
 
