@@ -12,8 +12,8 @@ namespace FrbaHotel
 {
     public partial class Inicio : Form
     {
-        Decimal cod_conectado = 0;
         login login = new login();
+        
 
         public Inicio()
         {

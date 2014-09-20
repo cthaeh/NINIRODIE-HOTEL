@@ -31,12 +31,11 @@
             this.Login = new System.Windows.Forms.Button();
             this.Salir = new System.Windows.Forms.Button();
             this.reserva = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.SuspendLayout();
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(607, 37);
+            this.Login.Location = new System.Drawing.Point(273, 21);
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(75, 23);
             this.Login.TabIndex = 8;
@@ -46,7 +45,7 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(295, 178);
+            this.Salir.Location = new System.Drawing.Point(101, 138);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(75, 23);
             this.Salir.TabIndex = 7;
@@ -56,35 +55,25 @@
             // 
             // reserva
             // 
-            this.reserva.Location = new System.Drawing.Point(295, 72);
+            this.reserva.Location = new System.Drawing.Point(101, 67);
             this.reserva.Name = "reserva";
             this.reserva.Size = new System.Drawing.Size(75, 45);
             this.reserva.TabIndex = 6;
             this.reserva.Text = "Realizar Reserva";
             this.reserva.UseVisualStyleBackColor = true;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(694, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(694, 266);
+            this.ClientSize = new System.Drawing.Size(373, 203);
             this.Controls.Add(this.Login);
             this.Controls.Add(this.Salir);
             this.Controls.Add(this.reserva);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "Inicio";
             this.Text = "Inicio";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -93,7 +82,6 @@
         private System.Windows.Forms.Button Login;
         private System.Windows.Forms.Button Salir;
         private System.Windows.Forms.Button reserva;
-        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
 

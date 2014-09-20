@@ -11,9 +11,10 @@ namespace FrbaHotel.Login
 {
     public partial class login : Form
     {
-        public String id = null, pass = null, usuario = null;
+        public string id = null, pass = null, usuario = null;
         public bool logeo = false, cerrar = false;
         public int intentos_fallidos = 0;
+        public string tipo;
 
         public login()
         {
@@ -37,7 +38,16 @@ namespace FrbaHotel.Login
 
         private void aceptar_Click(object sender, EventArgs e)
         {
-            
+            if (this.ID_Usuario.Text == "diego" && this.Pass_usuario.Text == "w23e")
+            {
+                tipo = "admin";
+
+                new Panel(tipo).ShowDialog(this);
+            }
+            else
+            {
+                MessageBox.Show("Error", "Alerta", MessageBoxButtons.OK);
+            }
             //EsCorrecto(id) --> Se debe consultar a la base por el ID y traer un
             //objeto usuario con todos los datos que le corresponden al dueño de esa ID
             /*
