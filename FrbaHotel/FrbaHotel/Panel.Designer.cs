@@ -85,6 +85,7 @@
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
             this.altaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem.Text = "Alta";
+            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // bajaToolStripMenuItem
             // 
@@ -141,14 +142,15 @@
             this.abm_guest.Image = ((System.Drawing.Image)(resources.GetObject("abm_guest.Image")));
             this.abm_guest.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.abm_guest.Name = "abm_guest";
-            this.abm_guest.Size = new System.Drawing.Size(75, 22);
-            this.abm_guest.Text = "ABM Gest";
+            this.abm_guest.Size = new System.Drawing.Size(82, 22);
+            this.abm_guest.Text = "ABM Guest";
             // 
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem2.Text = "Alta";
+            this.altaToolStripMenuItem2.Click += new System.EventHandler(this.altaToolStripMenuItem2_Click);
             // 
             // bajaToolStripMenuItem1
             // 

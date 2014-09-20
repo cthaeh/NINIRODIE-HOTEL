@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.Login;
+using FrbaHotel.ABM_de_Usuario;
+using FrbaHotel.ABM_de_Cliente;
 
 namespace FrbaHotel
 {
@@ -56,6 +58,16 @@ namespace FrbaHotel
         {
             //ha CambiarClave se le debe enviar minimamente el codigo de usuario.
             new CambiarClave().ShowDialog(this);
+        }
+
+        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AltaEmp().ShowDialog(this);
+        }
+
+        private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new AltaCli().ShowDialog(this);
         }
     }
 }
