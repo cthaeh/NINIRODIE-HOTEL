@@ -210,6 +210,7 @@
             this.cambiar_clave.Name = "cambiar_clave";
             this.cambiar_clave.Size = new System.Drawing.Size(88, 22);
             this.cambiar_clave.Text = "Cambiar Clave";
+            this.cambiar_clave.Click += new System.EventHandler(this.cambiar_clave_Click);
             // 
             // Panel
             // 

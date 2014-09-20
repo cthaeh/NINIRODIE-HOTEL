@@ -38,6 +38,8 @@ namespace FrbaHotel.Login
 
         private void aceptar_Click(object sender, EventArgs e)
         {
+            //estos if deben ir luego de la busqueda y control del usuario en la base
+            //y a Panel se le debe enviar todo el Usuario no solo el tipo.
             if (this.ID_Usuario.Text == "diego" && this.Pass_usuario.Text == "w23e")
             {
                 tipo = "admin";
@@ -50,7 +52,7 @@ namespace FrbaHotel.Login
             }
             else if (this.ID_Usuario.Text == "jose" && this.Pass_usuario.Text == "w23e")
             {
-                tipo = "west";
+                tipo = "guest";
                 new Panel(tipo).ShowDialog(this);
             }else
             {

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.Login;
 
 namespace FrbaHotel
 {
@@ -49,6 +50,12 @@ namespace FrbaHotel
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cambiar_clave_Click(object sender, EventArgs e)
+        {
+            //ha CambiarClave se le debe enviar minimamente el codigo de usuario.
+            new CambiarClave().ShowDialog(this);
         }
     }
 }
