@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_de_Empleado
 {
-    public partial class BusquedaModEmp : Form
+    public partial class ModificarEmp : Form
     {
-        public BusquedaModEmp()
+        public ModificarEmp()
         {
             InitializeComponent();
         }
@@ -53,11 +53,6 @@ namespace FrbaHotel.ABM_de_Empleado
             }
         }
 
-        private void textBoxnomb_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            soloEscribeLetras(e);
-        }
-
         private void textBoxap_KeyPress(object sender, KeyPressEventArgs e)
         {
             soloEscribeLetras(e);
@@ -68,17 +63,24 @@ namespace FrbaHotel.ABM_de_Empleado
             soloEscribeNumeros(e);
         }
 
+        private void textBoxtel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxnomb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBoxap.Text == "" && textBoxdni.Text == "" && textBoxmail.Text == ""
-    && textBoxnomb.Text == "")
-            {
-                MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
-            }
-            else
-            {
-                new MenuEmp().ShowDialog(this);
-            }
+            //se debe golpear la base con los datos en los campos
+        }
+
+        private void ModificarEmp_Load(object sender, EventArgs e)
+        {
+            //se debe cargar los campos con los datos que se traen de la base
         }
     }
 }

@@ -30,7 +30,6 @@ namespace FrbaHotel
                 abm_guest.Visible = false;
                 abm_rol.Visible = true;
                 abm_hab.Visible = true;
-                cambiar_clave.Visible = true;
             }
             else if (tipo == "recep")
             {
@@ -39,7 +38,6 @@ namespace FrbaHotel
                 abm_guest.Visible = true;
                 abm_rol.Visible = false;
                 abm_hab.Visible = false;
-                cambiar_clave.Visible = true;
             }
             else
             {
@@ -48,19 +46,12 @@ namespace FrbaHotel
                 abm_guest.Visible = false;
                 abm_rol.Visible = false;
                 abm_hab.Visible = false;
-                cambiar_clave.Visible = true;
             }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void cambiar_clave_Click(object sender, EventArgs e)
-        {
-            //ha CambiarClave se le debe enviar minimamente el codigo de usuario.
-            new CambiarClave().ShowDialog(this);
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaHotel.ABM_de_Empleado
+namespace FrbaHotel.ABM_de_Cliente
 {
-    public partial class BusquedaModEmp : Form
+    public partial class ModificarCli : Form
     {
-        public BusquedaModEmp()
+        public ModificarCli()
         {
             InitializeComponent();
         }
@@ -63,22 +63,44 @@ namespace FrbaHotel.ABM_de_Empleado
             soloEscribeLetras(e);
         }
 
-        private void textBoxdni_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxtipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void textBoxnro_KeyPress(object sender, KeyPressEventArgs e)
         {
             soloEscribeNumeros(e);
         }
 
+        private void textBoxtel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxdir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void textBoxnac_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBoxap.Text == "" && textBoxdni.Text == "" && textBoxmail.Text == ""
-    && textBoxnomb.Text == "")
-            {
-                MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
-            }
-            else
-            {
-                new MenuEmp().ShowDialog(this);
-            }
+            //se debe golpear la base con los datos en los campos
+        }
+
+        private void ModificarCli_Load(object sender, EventArgs e)
+        {
+            //se debe cargar los campos con los datos que ya estan en la tabla
         }
     }
 }

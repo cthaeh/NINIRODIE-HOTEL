@@ -50,7 +50,6 @@
             this.altqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cambiar_clave = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,8 +60,7 @@
             this.abm_hot,
             this.abm_guest,
             this.abm_rol,
-            this.abm_hab,
-            this.cambiar_clave});
+            this.abm_hab});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(713, 25);
@@ -135,7 +133,7 @@
             // modificarToolStripMenuItem1
             // 
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
@@ -156,21 +154,21 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.altaToolStripMenuItem2.Text = "Alta";
             this.altaToolStripMenuItem2.Click += new System.EventHandler(this.altaToolStripMenuItem2_Click);
             // 
             // bajaToolStripMenuItem1
             // 
             this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.bajaToolStripMenuItem1.Text = "Baja";
             this.bajaToolStripMenuItem1.Click += new System.EventHandler(this.bajaToolStripMenuItem1_Click);
             // 
             // modificarToolStripMenuItem2
             // 
             this.modificarToolStripMenuItem2.Name = "modificarToolStripMenuItem2";
-            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem2.Text = "Modificar";
             this.modificarToolStripMenuItem2.Click += new System.EventHandler(this.modificarToolStripMenuItem2_Click);
             // 
@@ -235,19 +233,9 @@
             // modificarToolStripMenuItem4
             // 
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
-            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem4.Text = "Modificar";
             this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarToolStripMenuItem4_Click);
-            // 
-            // cambiar_clave
-            // 
-            this.cambiar_clave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.cambiar_clave.Image = ((System.Drawing.Image)(resources.GetObject("cambiar_clave.Image")));
-            this.cambiar_clave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cambiar_clave.Name = "cambiar_clave";
-            this.cambiar_clave.Size = new System.Drawing.Size(88, 22);
-            this.cambiar_clave.Text = "Cambiar Clave";
-            this.cambiar_clave.Click += new System.EventHandler(this.cambiar_clave_Click);
             // 
             // Panel
             // 
@@ -285,7 +273,6 @@
         private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripSplitButton abm_hab;
-        private System.Windows.Forms.ToolStripButton cambiar_clave;
         private System.Windows.Forms.ToolStripMenuItem altqToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem4;

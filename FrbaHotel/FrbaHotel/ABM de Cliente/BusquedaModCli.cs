@@ -82,7 +82,7 @@ namespace FrbaHotel.ABM_de_Cliente
             }
             else
             {
-                //se debe llamar a modificar
+                new MenuCli().ShowDialog(this);
             }
         }
     }
