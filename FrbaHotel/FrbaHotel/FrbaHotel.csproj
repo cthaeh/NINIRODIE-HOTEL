@@ -276,6 +276,12 @@
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
     <Compile Include="NINIRODIE\Clases\Usuario.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Panel.cs">
       <SubType>Form</SubType>
     </Compile>
