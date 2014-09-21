@@ -1,6 +1,6 @@
-﻿namespace FrbaHotel.ABM_de_Cliente
+﻿namespace FrbaHotel.ABM_de_Habitacion
 {
-    partial class BusquedaBajaCli
+    partial class BusquedaModHab
     {
         /// <summary>
         /// Required designer variable.
@@ -31,37 +31,38 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hotel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Personas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxmail = new System.Windows.Forms.TextBox();
-            this.textBoxdni = new System.Windows.Forms.TextBox();
-            this.textBoxap = new System.Windows.Forms.TextBox();
-            this.textBoxnomb = new System.Windows.Forms.TextBox();
+            this.textBoxper = new System.Windows.Forms.TextBox();
+            this.textBoxhot = new System.Windows.Forms.TextBox();
+            this.textBoxpis = new System.Windows.Forms.TextBox();
+            this.textBoxnro = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(225, 283);
+            this.button2.Location = new System.Drawing.Point(227, 283);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 23;
+            this.button2.TabIndex = 35;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(87, 283);
+            this.button1.Location = new System.Drawing.Point(89, 283);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
+            this.button1.TabIndex = 34;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -70,111 +71,117 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.Apellido,
-            this.Documento});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 127);
+            this.Hotel,
+            this.Piso,
+            this.Numero,
+            this.Personas});
+            this.dataGridView1.Location = new System.Drawing.Point(25, 127);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(338, 150);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.TabIndex = 33;
             // 
-            // Nombre
+            // Hotel
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
+            this.Hotel.HeaderText = "Hotel";
+            this.Hotel.Name = "Hotel";
             // 
-            // Apellido
+            // Piso
             // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
+            this.Piso.HeaderText = "Piso";
+            this.Piso.Name = "Piso";
             // 
-            // Documento
+            // Numero
             // 
-            this.Documento.HeaderText = "Documento";
-            this.Documento.Name = "Documento";
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            // 
+            // Personas
+            // 
+            this.Personas.HeaderText = "Personas";
+            this.Personas.Name = "Personas";
             // 
             // buscar
             // 
-            this.buscar.Location = new System.Drawing.Point(136, 83);
+            this.buscar.Location = new System.Drawing.Point(138, 83);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(75, 23);
-            this.buscar.TabIndex = 20;
+            this.buscar.TabIndex = 32;
             this.buscar.Text = "Buscar";
             this.buscar.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 41);
+            this.label4.Location = new System.Drawing.Point(196, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Mail";
+            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Personas";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(194, 18);
+            this.label3.Location = new System.Drawing.Point(196, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Nro DNI";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Hotel";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 41);
+            this.label2.Location = new System.Drawing.Point(22, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Apellido";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Piso";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Location = new System.Drawing.Point(22, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Nombre";
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Numero";
             // 
-            // textBoxmail
+            // textBoxper
             // 
-            this.textBoxmail.Location = new System.Drawing.Point(261, 38);
-            this.textBoxmail.Name = "textBoxmail";
-            this.textBoxmail.Size = new System.Drawing.Size(100, 20);
-            this.textBoxmail.TabIndex = 15;
+            this.textBoxper.Location = new System.Drawing.Point(263, 38);
+            this.textBoxper.Name = "textBoxper";
+            this.textBoxper.Size = new System.Drawing.Size(100, 20);
+            this.textBoxper.TabIndex = 27;
+            this.textBoxper.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxper_KeyPress);
             // 
-            // textBoxdni
+            // textBoxhot
             // 
-            this.textBoxdni.Location = new System.Drawing.Point(261, 12);
-            this.textBoxdni.Name = "textBoxdni";
-            this.textBoxdni.Size = new System.Drawing.Size(100, 20);
-            this.textBoxdni.TabIndex = 14;
-            this.textBoxdni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxdni_KeyPress);
+            this.textBoxhot.Location = new System.Drawing.Point(263, 12);
+            this.textBoxhot.Name = "textBoxhot";
+            this.textBoxhot.Size = new System.Drawing.Size(100, 20);
+            this.textBoxhot.TabIndex = 26;
             // 
-            // textBoxap
+            // textBoxpis
             // 
-            this.textBoxap.Location = new System.Drawing.Point(87, 38);
-            this.textBoxap.Name = "textBoxap";
-            this.textBoxap.Size = new System.Drawing.Size(100, 20);
-            this.textBoxap.TabIndex = 13;
-            this.textBoxap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxap_KeyPress);
+            this.textBoxpis.Location = new System.Drawing.Point(89, 38);
+            this.textBoxpis.Name = "textBoxpis";
+            this.textBoxpis.Size = new System.Drawing.Size(100, 20);
+            this.textBoxpis.TabIndex = 25;
+            this.textBoxpis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxpis_KeyPress);
             // 
-            // textBoxnomb
+            // textBoxnro
             // 
-            this.textBoxnomb.Location = new System.Drawing.Point(87, 12);
-            this.textBoxnomb.Name = "textBoxnomb";
-            this.textBoxnomb.Size = new System.Drawing.Size(100, 20);
-            this.textBoxnomb.TabIndex = 12;
-            this.textBoxnomb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnomb_KeyPress);
+            this.textBoxnro.Location = new System.Drawing.Point(89, 12);
+            this.textBoxnro.Name = "textBoxnro";
+            this.textBoxnro.Size = new System.Drawing.Size(100, 20);
+            this.textBoxnro.TabIndex = 24;
+            this.textBoxnro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnro_KeyPress);
             // 
-            // BusquedaBajaCli
+            // BusquedaModHab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(386, 324);
+            this.ClientSize = new System.Drawing.Size(398, 324);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -183,12 +190,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxmail);
-            this.Controls.Add(this.textBoxdni);
-            this.Controls.Add(this.textBoxap);
-            this.Controls.Add(this.textBoxnomb);
-            this.Name = "BusquedaBajaCli";
-            this.Text = "Busqueda Clientes";
+            this.Controls.Add(this.textBoxper);
+            this.Controls.Add(this.textBoxhot);
+            this.Controls.Add(this.textBoxpis);
+            this.Controls.Add(this.textBoxnro);
+            this.Name = "BusquedaModHab";
+            this.Text = "Busqueda Habitacion";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,17 +207,18 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hotel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Piso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Personas;
         private System.Windows.Forms.Button buscar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxmail;
-        private System.Windows.Forms.TextBox textBoxdni;
-        private System.Windows.Forms.TextBox textBoxap;
-        private System.Windows.Forms.TextBox textBoxnomb;
+        private System.Windows.Forms.TextBox textBoxper;
+        private System.Windows.Forms.TextBox textBoxhot;
+        private System.Windows.Forms.TextBox textBoxpis;
+        private System.Windows.Forms.TextBox textBoxnro;
     }
 }

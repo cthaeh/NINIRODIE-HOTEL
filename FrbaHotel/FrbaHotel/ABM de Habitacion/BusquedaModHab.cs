@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
-    public partial class BusquedaBajaHab : Form
+    public partial class BusquedaModHab : Form
     {
         bool banderanro = false, banderapiso = false, banderaper = false;
         bool seguir = true;
 
-        public BusquedaBajaHab()
+        public BusquedaModHab()
         {
             InitializeComponent();
         }
@@ -92,12 +92,11 @@ namespace FrbaHotel.ABM_de_Habitacion
             }
 
             if (textBoxhot.Text == "" && textBoxnro.Text == "" && textBoxper.Text == ""
-    && textBoxpis.Text == "")
+                && textBoxpis.Text == "")
             {
                 MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
                 seguir = false;
             }
-
             if (banderanro != true)
             {
                 if (decimal.Parse(textBoxnro.Text) < 1)
@@ -130,9 +129,9 @@ namespace FrbaHotel.ABM_de_Habitacion
 
             if (seguir == true)
             {
-                new BajaHab().ShowDialog(this);
+                //se llama a modificar
             }
         }
+
     }
 }
-

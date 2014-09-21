@@ -102,5 +102,25 @@ namespace FrbaHotel
         {
             new BusquedaBajaHab().ShowDialog(this);
         }
+
+        private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BusquedaModCli().ShowDialog(this);
+        }
+
+        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new BusquedaModEmp().ShowDialog(this);
+        }
+
+        private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            new BusquedaModHab().ShowDialog(this);
+        }
+
+        private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new BusquedaModHot().ShowDialog(this);
+        }
     }
 }

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
-    public partial class BusquedaBajaCli : Form
+    public partial class BusquedaModCli : Form
     {
-        public BusquedaBajaCli()
+        public BusquedaModCli()
         {
             InitializeComponent();
         }
@@ -70,14 +70,19 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
+            new BajaCli().ShowDialog(this);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
             if (textBoxap.Text == "" && textBoxdni.Text == "" && textBoxmail.Text == ""
-                && textBoxnomb.Text == "")
+    && textBoxnomb.Text == "")
             {
                 MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
             }
             else
             {
-                new BajaCli().ShowDialog(this);
+                //se debe llamar a modificar
             }
         }
     }

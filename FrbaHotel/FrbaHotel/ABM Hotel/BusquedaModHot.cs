@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_Hotel
 {
-    public partial class BusquedaBajaHot : Form
+    public partial class BusquedaModHot : Form
     {
         decimal banderacat = 0;
         bool seguir = false;
 
-        public BusquedaBajaHot()
+        public BusquedaModHot()
         {
             InitializeComponent();
         }
@@ -66,9 +66,8 @@ namespace FrbaHotel.ABM_Hotel
                 banderacat = 1000;
                 seguir = true;
             }
-
             if (textBoxcat.Text == "" && textBoxciu.Text == "" && textBoxnomb.Text == ""
-    && textBoxpa.Text == "")
+                && textBoxpa.Text == "")
             {
                 MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
                 seguir = false;
@@ -106,6 +105,29 @@ namespace FrbaHotel.ABM_Hotel
         private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
         {
             soloEscribeLetras(e);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            banderacat = 0;
+            if (textBoxcat.Text == "")
+            {
+                banderacat = 1000;
+                seguir = true;
+            }
+            if (banderacat != 1000)
+            {
+                if (decimal.Parse(textBoxcat.Text) < 1 || decimal.Parse(textBoxcat.Text) > 5)
+                {
+                    MessageBox.Show("La categoria debe ser entre 1 y 5", "ALERTA", MessageBoxButtons.OK);
+                    seguir = false;
+                }
+            }
+            if (seguir == true)
+            {
+                //se debe llamar a modificar
+            }
+        
         }
     }
 }

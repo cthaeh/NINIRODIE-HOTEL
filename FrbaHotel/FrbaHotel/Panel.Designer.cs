@@ -102,6 +102,7 @@
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
+            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
             // abm_hot
             // 
@@ -127,15 +128,16 @@
             // bToolStripMenuItem
             // 
             this.bToolStripMenuItem.Name = "bToolStripMenuItem";
-            this.bToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.bToolStripMenuItem.Text = "Baja";
             this.bToolStripMenuItem.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem1
             // 
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem1.Text = "Modificar";
+            this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
             // abm_guest
             // 
@@ -154,7 +156,7 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem2.Text = "Alta";
             this.altaToolStripMenuItem2.Click += new System.EventHandler(this.altaToolStripMenuItem2_Click);
             // 
@@ -168,8 +170,9 @@
             // modificarToolStripMenuItem2
             // 
             this.modificarToolStripMenuItem2.Name = "modificarToolStripMenuItem2";
-            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem2.Text = "Modificar";
+            this.modificarToolStripMenuItem2.Click += new System.EventHandler(this.modificarToolStripMenuItem2_Click);
             // 
             // abm_rol
             // 
@@ -218,14 +221,14 @@
             // altqToolStripMenuItem
             // 
             this.altqToolStripMenuItem.Name = "altqToolStripMenuItem";
-            this.altqToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.altqToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.altqToolStripMenuItem.Text = "Alta";
             this.altqToolStripMenuItem.Click += new System.EventHandler(this.altqToolStripMenuItem_Click);
             // 
             // bajToolStripMenuItem
             // 
             this.bajToolStripMenuItem.Name = "bajToolStripMenuItem";
-            this.bajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bajToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.bajToolStripMenuItem.Text = "Baja";
             this.bajToolStripMenuItem.Click += new System.EventHandler(this.bajToolStripMenuItem_Click);
             // 
@@ -234,6 +237,7 @@
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
             this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem4.Text = "Modificar";
+            this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarToolStripMenuItem4_Click);
             // 
             // cambiar_clave
             // 

@@ -23,7 +23,15 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new BajaEmp().ShowDialog(this);
+            if (textBoxap.Text == "" && textBoxdni.Text == "" && textBoxmail.Text == ""
+                && textBoxnomb.Text == "")
+            {
+                MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
+            }
+            else
+            {
+                new BajaEmp().ShowDialog(this);
+            }
         }
 
         public static void soloEscribeLetras(KeyPressEventArgs e)
