@@ -127,8 +127,9 @@
             // bToolStripMenuItem
             // 
             this.bToolStripMenuItem.Name = "bToolStripMenuItem";
-            this.bToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bToolStripMenuItem.Text = "Baja";
+            this.bToolStripMenuItem.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem1
             // 

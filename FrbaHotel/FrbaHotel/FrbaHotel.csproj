@@ -108,6 +108,18 @@
     <Compile Include="ABM Hotel\AltaHot.Designer.cs">
       <DependentUpon>AltaHot.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Hotel\BajaHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Hotel\BajaHot.Designer.cs">
+      <DependentUpon>BajaHot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Hotel\BusquedaBajaHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Hotel\BusquedaBajaHot.Designer.cs">
+      <DependentUpon>BusquedaBajaHot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Reserva\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Hotel\AltaHot.resx">
       <DependentUpon>AltaHot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Hotel\BajaHot.resx">
+      <DependentUpon>BajaHot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Hotel\BusquedaBajaHot.resx">
+      <DependentUpon>BusquedaBajaHot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
