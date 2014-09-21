@@ -28,5 +28,10 @@ namespace FrbaHotel.ABM_de_Cliente
             new ModificarCli().ShowDialog(this);
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new DesbloquearCli().ShowDialog(this);
+        }
     }
 }

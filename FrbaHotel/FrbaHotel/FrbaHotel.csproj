@@ -72,6 +72,12 @@
     <Compile Include="ABM de Cliente\BusquedaModCli.Designer.cs">
       <DependentUpon>BusquedaModCli.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Cliente\DesbloquearCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\DesbloquearCli.Designer.cs">
+      <DependentUpon>DesbloquearCli.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Cliente\MenuCli.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     </Compile>
     <Compile Include="ABM de Empleado\BusquedaModEmp.Designer.cs">
       <DependentUpon>BusquedaModEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Empleado\DesbloquearEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Empleado\DesbloquearEmp.Designer.cs">
+      <DependentUpon>DesbloquearEmp.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Empleado\MenuEmp.cs">
       <SubType>Form</SubType>
@@ -278,6 +290,9 @@
     <EmbeddedResource Include="ABM de Cliente\BusquedaModCli.resx">
       <DependentUpon>BusquedaModCli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\DesbloquearCli.resx">
+      <DependentUpon>DesbloquearCli.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Cliente\MenuCli.resx">
       <DependentUpon>MenuCli.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\BusquedaModEmp.resx">
       <DependentUpon>BusquedaModEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Empleado\DesbloquearEmp.resx">
+      <DependentUpon>DesbloquearEmp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\MenuEmp.resx">
       <DependentUpon>MenuEmp.cs</DependentUpon>

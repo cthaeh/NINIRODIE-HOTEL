@@ -28,5 +28,10 @@ namespace FrbaHotel.ABM_de_Empleado
             new ModificarEmp().ShowDialog(this);
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new DesbloquearEmp().ShowDialog(this);
+        }
     }
 }
