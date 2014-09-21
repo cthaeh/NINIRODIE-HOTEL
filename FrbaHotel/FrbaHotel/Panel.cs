@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using FrbaHotel.Login;
 using FrbaHotel.ABM_de_Usuario;
 using FrbaHotel.ABM_de_Cliente;
+using FrbaHotel.ABM_Hotel;
 
 namespace FrbaHotel
 {
@@ -68,6 +69,11 @@ namespace FrbaHotel
         private void altaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             new AltaCli().ShowDialog(this);
+        }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new AltaHot().ShowDialog(this);
         }
     }
 }

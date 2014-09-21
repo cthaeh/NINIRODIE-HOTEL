@@ -78,6 +78,12 @@
     <Compile Include="ABM de Empleado\AltaEmp.Designer.cs">
       <DependentUpon>AltaEmp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Hotel\AltaHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Hotel\AltaHot.Designer.cs">
+      <DependentUpon>AltaHot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Reserva\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\AltaEmp.resx">
       <DependentUpon>AltaEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Hotel\AltaHot.resx">
+      <DependentUpon>AltaHot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
