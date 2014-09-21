@@ -43,17 +43,17 @@ namespace FrbaHotel.Login
             if (this.ID_Usuario.Text == "diego" && this.Pass_usuario.Text == "w23e")
             {
                 tipo = "admin";
-                new Panel(tipo).ShowDialog(this);
+                new SeleccionHot(tipo).ShowDialog(this);
             }
             else if (this.ID_Usuario.Text == "pepe" && this.Pass_usuario.Text == "w23e")
             {
                 tipo = "recep";
-                new Panel(tipo).ShowDialog(this);
+                new SeleccionHot(tipo).ShowDialog(this);
             }
             else if (this.ID_Usuario.Text == "jose" && this.Pass_usuario.Text == "w23e")
             {
                 tipo = "guest";
-                new Panel(tipo).ShowDialog(this);
+                new SeleccionHot(tipo).ShowDialog(this);
             }else
             {
                 MessageBox.Show("Error", "Alerta", MessageBoxButtons.OK);
