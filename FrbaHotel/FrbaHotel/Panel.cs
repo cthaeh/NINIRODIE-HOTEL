@@ -87,5 +87,10 @@ namespace FrbaHotel
         {
             new BusquedaBajaEmp().ShowDialog(this);
         }
+
+        private void bajaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new BusquedaBajaCli().ShowDialog(this);
+        }
     }
 }

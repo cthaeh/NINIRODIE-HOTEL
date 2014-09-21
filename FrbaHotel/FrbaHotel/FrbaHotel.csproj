@@ -54,6 +54,18 @@
     <Compile Include="ABM de Cliente\AltaCli.Designer.cs">
       <DependentUpon>AltaCli.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Cliente\BajaCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\BajaCli.Designer.cs">
+      <DependentUpon>BajaCli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Cliente\BusquedaBajaCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\BusquedaBajaCli.Designer.cs">
+      <DependentUpon>BusquedaBajaCli.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Empleado\BajaEmp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +154,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ABM de Cliente\AltaCli.resx">
       <DependentUpon>AltaCli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\BajaCli.resx">
+      <DependentUpon>BajaCli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\BusquedaBajaCli.resx">
+      <DependentUpon>BusquedaBajaCli.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\AltaEmp.resx">
       <DependentUpon>AltaEmp.cs</DependentUpon>
