@@ -11,6 +11,8 @@ namespace FrbaHotel.ABM_de_Habitacion
 {
     public partial class AltaHab : Form
     {
+        bool interna = false;
+        bool externa = false;
 
         public AltaHab()
         {
@@ -71,14 +73,32 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void checkBoxext_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxint.Enabled = false;
-            checkBoxext.Enabled = true;
+            if (externa == false)
+            {
+                externa = true;
+                checkBoxint.Enabled = false;
+                checkBoxext.Enabled = true;
+            }
+            else
+            {
+                externa = false;
+                checkBoxint.Enabled = true;
+            }
         }
 
         private void checkBoxint_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxext.Enabled = false;
-            checkBoxint.Enabled = true;
+            if (interna == false)
+            {
+                interna = true;
+                checkBoxext.Enabled = false;
+                checkBoxint.Enabled = true;
+            }
+            else
+            {
+                interna = false;
+                checkBoxext.Enabled = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

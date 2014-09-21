@@ -11,6 +11,7 @@ using FrbaHotel.ABM_de_Usuario;
 using FrbaHotel.ABM_de_Cliente;
 using FrbaHotel.ABM_Hotel;
 using FrbaHotel.ABM_de_Habitacion;
+using FrbaHotel.ABM_de_Empleado;
 
 namespace FrbaHotel
 {
@@ -80,6 +81,11 @@ namespace FrbaHotel
         private void altqToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AltaHab().ShowDialog(this);
+        }
+
+        private void bajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new BusquedaBajaEmp().ShowDialog(this);
         }
     }
 }
