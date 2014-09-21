@@ -10,6 +10,7 @@ using FrbaHotel.Login;
 using FrbaHotel.ABM_de_Usuario;
 using FrbaHotel.ABM_de_Cliente;
 using FrbaHotel.ABM_Hotel;
+using FrbaHotel.ABM_de_Habitacion;
 
 namespace FrbaHotel
 {
@@ -74,6 +75,11 @@ namespace FrbaHotel
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new AltaHot().ShowDialog(this);
+        }
+
+        private void altqToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AltaHab().ShowDialog(this);
         }
     }
 }

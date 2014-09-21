@@ -54,11 +54,11 @@
     <Compile Include="ABM de Cliente\AltaCli.Designer.cs">
       <DependentUpon>AltaCli.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Habitacion\Form1.cs">
+    <Compile Include="ABM de Habitacion\AltaHab.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Habitacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM de Habitacion\AltaHab.Designer.cs">
+      <DependentUpon>AltaHab.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Regimen\Form1.cs">
       <SubType>Form</SubType>
@@ -133,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\AltaEmp.resx">
       <DependentUpon>AltaEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\AltaHab.resx">
+      <DependentUpon>AltaHab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Hotel\AltaHot.resx">
       <DependentUpon>AltaHot.cs</DependentUpon>
