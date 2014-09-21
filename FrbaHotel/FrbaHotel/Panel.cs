@@ -12,6 +12,7 @@ using FrbaHotel.ABM_de_Cliente;
 using FrbaHotel.ABM_Hotel;
 using FrbaHotel.ABM_de_Habitacion;
 using FrbaHotel.ABM_de_Empleado;
+using FrbaHotel.ABM_de_Rol;
 
 namespace FrbaHotel
 {
@@ -112,6 +113,26 @@ namespace FrbaHotel
         private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new BusquedaModHot().ShowDialog(this);
+        }
+
+        private void abm_rol_ButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bajaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            new BusquedaBajaRol().ShowDialog(this);
+        }
+
+        private void modificarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new BusquedaModRol().ShowDialog(this);
+        }
+
+        private void altaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            new AltaRol().ShowDialog(this);
         }
     }
 }

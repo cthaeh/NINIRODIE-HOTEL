@@ -129,7 +129,7 @@ namespace FrbaHotel.ABM_de_Habitacion
 
             if (seguir == true)
             {
-                //se llama a modificar
+                new ModificarHab().ShowDialog(this);
             }
         }
 

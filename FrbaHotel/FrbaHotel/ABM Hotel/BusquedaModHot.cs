@@ -125,7 +125,7 @@ namespace FrbaHotel.ABM_Hotel
             }
             if (seguir == true)
             {
-                //se debe llamar a modificar
+                new ModificarHot().ShowDialog(this);
             }
         
         }
