@@ -227,6 +227,7 @@
             this.bajToolStripMenuItem.Name = "bajToolStripMenuItem";
             this.bajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajToolStripMenuItem.Text = "Baja";
+            this.bajToolStripMenuItem.Click += new System.EventHandler(this.bajToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem4
             // 
