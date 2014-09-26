@@ -16,6 +16,7 @@ namespace FrbaHotel.NINIRODIE.Clases
         public String ciudad { get; set; }
         public String pais { get; set; }
         public DateTime creacion { get; set; }
+		public bool habilitado { get; set; }
 
         public Hotel()
         {
@@ -23,9 +24,10 @@ namespace FrbaHotel.NINIRODIE.Clases
         }
 
         public Hotel(Decimal id, String nom, String email, Decimal tel,
-            String dir, Decimal cat, String ciu, String paiz, DateTime nacimiento)
+            String dir, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab)
         {
             identificador = id;
+			habilitado = hab;
             direccion = dir;
             nombre = nom;
             mail = email;
