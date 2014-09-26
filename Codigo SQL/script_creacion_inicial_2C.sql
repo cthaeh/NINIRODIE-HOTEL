@@ -137,7 +137,7 @@ CREATE TABLE [LA_REVANCHA].[HABITACION](
 			 [HAB_COD_TIPOHAB][NUMERIC](18,0),
 			 [HAB_DESCRIPCION][VARCHAR](255),
 			 [HAB_HABILITADA][BIT],
-PRIMARY KEY CLUSTERED(HAB_CODIGO), --el codigo deberia ser pk y el numero un campo comun ya que se puede repetir el mismo numero en varios hoteles
+PRIMARY KEY CLUSTERED(HAB_NUMERO), --el codigo deberia ser pk y el numero un campo comun ya que se puede repetir el mismo numero en varios hoteles
 FOREIGN KEY (HAB_COD_HOTEL) REFERENCES LA_REVANCHA.HOTEL(HOT_HOTEL),
 FOREIGN KEY (HAB_COD_TIPOHAB) REFERENCES LA_REVANCHA.TIPO_HABITACION(TIPHAB_CODIGO)
 )
