@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -162,6 +163,30 @@
     <Compile Include="ABM de Regimen\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Rol 2\ABMRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol 2\ABMRol.Designer.cs">
+      <DependentUpon>ABMRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol 2\Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol 2\Alta.Designer.cs">
+      <DependentUpon>Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol 2\BajaModificacionRolWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol 2\BajaModificacionRolWindow.Designer.cs">
+      <DependentUpon>BajaModificacionRolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol 2\RolWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol 2\RolWindow.Designer.cs">
+      <DependentUpon>RolWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Rol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,13 +296,19 @@
       <DependentUpon>SeleccionHot.cs</DependentUpon>
     </Compile>
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
+    <Compile Include="NINIRODIE\Clases\Funcionalidad.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
+    <Compile Include="NINIRODIE\Clases\ModoApertura.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
     <Compile Include="NINIRODIE\Clases\Usuario.cs" />
+    <Compile Include="NINIRODIE\DBUtils\DataRowCollectionExtensions.cs" />
+    <Compile Include="NINIRODIE\DBUtils\DBTypeConverter.cs" />
+    <Compile Include="NINIRODIE\DBUtils\SQLUtils.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioFuncionalidad.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
@@ -347,6 +378,18 @@
     <EmbeddedResource Include="ABM de Habitacion\ModificarHab.resx">
       <DependentUpon>ModificarHab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol 2\ABMRol.resx">
+      <DependentUpon>ABMRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol 2\Alta.resx">
+      <DependentUpon>Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol 2\BajaModificacionRolWindow.resx">
+      <DependentUpon>BajaModificacionRolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol 2\RolWindow.resx">
+      <DependentUpon>RolWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -401,6 +444,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

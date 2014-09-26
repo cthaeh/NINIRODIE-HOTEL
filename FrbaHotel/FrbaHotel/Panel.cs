@@ -13,6 +13,7 @@ using FrbaHotel.ABM_Hotel;
 using FrbaHotel.ABM_de_Habitacion;
 using FrbaHotel.ABM_de_Empleado;
 using FrbaHotel.ABM_de_Rol;
+using FrbaHotel.ABM_Rol;
 
 namespace FrbaHotel
 {
@@ -29,7 +30,7 @@ namespace FrbaHotel
                 abm_emp.Visible = true;
                 abm_hot.Visible = true;
                 abm_guest.Visible = false;
-                abm_rol.Visible = true;
+                ABMRol.Visible = true;
                 abm_hab.Visible = true;
             }
             else if (tipo == "recep")
@@ -37,7 +38,7 @@ namespace FrbaHotel
                 abm_emp.Visible = false;
                 abm_hot.Visible = false;
                 abm_guest.Visible = true;
-                abm_rol.Visible = false;
+                ABMRol.Visible = false;
                 abm_hab.Visible = false;
             }
             else
@@ -45,7 +46,7 @@ namespace FrbaHotel
                 abm_emp.Visible = false;
                 abm_hot.Visible = false;
                 abm_guest.Visible = false;
-                abm_rol.Visible = false;
+                ABMRol.Visible = false;
                 abm_hab.Visible = false;
             }
         }
@@ -134,5 +135,12 @@ namespace FrbaHotel
         {
             new AltaRol().ShowDialog(this);
         }
+
+        private void ABMRol_Click(object sender, EventArgs e)
+        {
+            new ABMRol().ShowDialog(this);
+        }
+
+
     }
 }

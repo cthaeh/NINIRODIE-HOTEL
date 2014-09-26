@@ -15,7 +15,11 @@ namespace FrbaHotel.NINIRODIE.Clases
         public Decimal numero_documento { get; set; }
         public String mail { get; set; }
         public Decimal telefono { get; set; }
-        public String direccion { get; set; }
+        public String calle { get; set; }
+        public Decimal nro_calle { get; set; }
+        public Decimal piso { get; set; }
+        public String departamento { get; set; }
+        public String localidad { get; set; }
         public DateTime nacimiento { get; set; }
 
         public Personal()
@@ -25,7 +29,7 @@ namespace FrbaHotel.NINIRODIE.Clases
 
         public Personal(Decimal id, Decimal cod_usu, String nomb, String ap,
             String tipo_doc, Decimal nro_doc, String email, Decimal tel,
-            String dir, DateTime fecha_nac)
+            String cal, DateTime fecha_nac, Decimal pis, String depar, Decimal nro_cal)
         {
             identificador = id;
             codigo_usuario = cod_usu;
@@ -33,9 +37,13 @@ namespace FrbaHotel.NINIRODIE.Clases
             apellido = ap;
             tipo_documento = tipo_doc;
             numero_documento = nro_doc;
+            nro_calle = nro_cal;
             mail = email;
+            piso = pis;
+            departamento = depar;
+
             telefono = tel;
-            direccion = dir;
+            calle = cal;
             nacimiento = fecha_nac;
         }
     }
