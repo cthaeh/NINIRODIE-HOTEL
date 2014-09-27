@@ -80,7 +80,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxdir_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloEscribeLetras(e);
+            soloEscribeNumeros(e);
         }
 
         private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,6 +101,16 @@ namespace FrbaHotel.ABM_de_Cliente
         private void ModificarCli_Load(object sender, EventArgs e)
         {
             //se debe cargar los campos con los datos que ya estan en la tabla
+        }
+
+        private void textBoxpis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxdep_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
         }
     }
 }
