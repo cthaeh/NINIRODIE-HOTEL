@@ -268,3 +268,13 @@ INSERT INTO LA_REVANCHA.TIPO_HABITACION(TIPHAB_CODIGO,TIPHAB_DESCRIPCION,TIPHAB_
 SELECT DISTINCT(Habitacion_Tipo_Codigo), Habitacion_Tipo_Descripcion, Habitacion_Tipo_Porcentual
 FROM gd_esquema.Maestra
 WHERE Habitacion_Tipo_Codigo IS NOT NULL
+
+
+
+--DATOS DE LOS HOTELES.
+INSERT INTO LA_REVANCHA.HOTEL(HOT_CALLE, HOT_NRO_CALLE, HOT_CIUDAD,
+ HOT_ESTRELLAS,HOT_RECARGA_ESTRELLAS)
+select distinct Hotel_Calle,Hotel_Nro_Calle,Hotel_Ciudad,Hotel_CantEstrella,Hotel_Recarga_Estrella
+from gd_esquema.Maestra
+
+
