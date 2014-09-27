@@ -10,7 +10,7 @@ namespace FrbaHotel.NINIRODIE.DBUtils
 {
     public class SQLUtils
     {
-        private static SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GD1C2014"].ConnectionString);
+        private static SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString);
 
         public static DataRowCollection EjecutarConsultaSimple(String selectQuery, String table)
         {
@@ -35,6 +35,7 @@ namespace FrbaHotel.NINIRODIE.DBUtils
             SqlCommand command = new SqlCommand(insertQuery, connection);
 
             connection.Open();
+            
             command.ExecuteNonQuery();
             connection.Close();
         }
