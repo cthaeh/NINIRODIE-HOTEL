@@ -84,7 +84,7 @@ namespace FrbaHotel.ABM_Hotel
         {
             if (textBoxcat.Text == "" || textBoxciud.Text == "" || textBoxdir.Text == ""
                 || textBoxmail.Text == "" || textBoxnomb.Text == "" || textBoxpa.Text == ""
-                || textBoxtel.Text == "")
+                || textBoxtel.Text == "" || textBoxnrocal.Text == "")
             {
                 MessageBox.Show("No deje campos vacios", "ALERTA", MessageBoxButtons.OK);
             }else if (decimal.Parse(textBoxcat.Text) < 1 || decimal.Parse(textBoxcat.Text) > 5)
@@ -93,6 +93,11 @@ namespace FrbaHotel.ABM_Hotel
             }
 
             
+        }
+
+        private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
         }
     }
 }

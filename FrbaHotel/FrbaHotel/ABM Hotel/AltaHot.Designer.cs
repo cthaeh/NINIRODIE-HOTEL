@@ -53,6 +53,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxnrocal = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxnomb
@@ -117,9 +119,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Direccion";
+            this.label4.Text = "Calle";
             // 
             // textBoxciud
             // 
@@ -238,7 +240,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(86, 185);
+            this.label12.Location = new System.Drawing.Point(168, 175);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 21;
@@ -246,9 +248,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(186, 185);
+            this.dateTimePicker1.Location = new System.Drawing.Point(256, 169);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(157, 20);
             this.dateTimePicker1.TabIndex = 22;
             // 
             // button1
@@ -271,12 +273,31 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 175);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Nro Calle";
+            // 
+            // textBoxnrocal
+            // 
+            this.textBoxnrocal.Location = new System.Drawing.Point(68, 172);
+            this.textBoxnrocal.Name = "textBoxnrocal";
+            this.textBoxnrocal.Size = new System.Drawing.Size(100, 20);
+            this.textBoxnrocal.TabIndex = 26;
+            this.textBoxnrocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnrocal_KeyPress);
+            // 
             // AltaHot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(425, 262);
+            this.Controls.Add(this.textBoxnrocal);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker1);
@@ -336,5 +357,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxnrocal;
     }
 }

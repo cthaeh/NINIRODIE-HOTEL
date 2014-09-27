@@ -90,5 +90,10 @@ namespace FrbaHotel.ABM_Hotel
         {
             //Se debe golpear la base con los datos en los campos
         }
+
+        private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
     }
 }

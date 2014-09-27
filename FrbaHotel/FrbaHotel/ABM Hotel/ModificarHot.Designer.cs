@@ -51,11 +51,13 @@
             this.textBoxmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxnomb = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxnrocal = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(228, 185);
+            this.button2.Location = new System.Drawing.Point(225, 213);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 49;
@@ -65,7 +67,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(117, 185);
+            this.button1.Location = new System.Drawing.Point(117, 213);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 48;
@@ -192,9 +194,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(17, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Direccion";
+            this.label4.Text = "Calle";
             // 
             // label3
             // 
@@ -253,12 +255,31 @@
             this.textBoxnomb.TabIndex = 25;
             this.textBoxnomb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnomb_KeyPress);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(17, 173);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 13);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "Nro Calle";
+            // 
+            // textBoxnrocal
+            // 
+            this.textBoxnrocal.Location = new System.Drawing.Point(72, 170);
+            this.textBoxnrocal.Name = "textBoxnrocal";
+            this.textBoxnrocal.Size = new System.Drawing.Size(100, 20);
+            this.textBoxnrocal.TabIndex = 51;
+            this.textBoxnrocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnrocal_KeyPress);
+            // 
             // ModificarHot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(408, 222);
+            this.ClientSize = new System.Drawing.Size(408, 248);
+            this.Controls.Add(this.textBoxnrocal);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBoxdes);
@@ -315,5 +336,7 @@
         private System.Windows.Forms.TextBox textBoxmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxnomb;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxnrocal;
     }
 }
