@@ -83,11 +83,26 @@ namespace FrbaHotel.ABM_de_Usuario
             if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
                 || textBoxnomb.Text == "" || textBoxmail.Text == "" || textBoxhot.Text == ""
                 || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == ""
-                || textBoxap.Text == "")
+                || textBoxap.Text == "" || textBoxnrocal.Text == "" || textBoxpis.Text == "" || textBoxdep.Text == "")
             {
                 MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
                 salir = false;
             }// si llega hasta aqui poner salir = true; e insertar en la base.
+        }
+
+        private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxpis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxdep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
         }
 
     }

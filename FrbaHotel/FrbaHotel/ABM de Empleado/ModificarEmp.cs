@@ -82,5 +82,20 @@ namespace FrbaHotel.ABM_de_Empleado
         {
             //se debe cargar los campos con los datos que se traen de la base
         }
+
+        private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxpis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxdep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
     }
 }
