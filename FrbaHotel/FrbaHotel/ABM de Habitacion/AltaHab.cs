@@ -112,11 +112,6 @@ namespace FrbaHotel.ABM_de_Habitacion
                 MessageBox.Show("El numero de habitacion debe ser mayor a 0", "ALERTA",
                     MessageBoxButtons.OK);
             }
-            else if (decimal.Parse(textBoxper.Text) < 1)
-            {
-                MessageBox.Show("La cantidad de personas debe ser mayor a 0", "ALERTA",
-                    MessageBoxButtons.OK);
-            }
             else if (decimal.Parse(textBoxpis.Text) < 1)
             {
                 MessageBox.Show("El piso debe ser mayor a 0", "ALERTA",
