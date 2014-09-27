@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
@@ -32,6 +34,13 @@ namespace FrbaHotel.ABM_de_Cliente
             {
                 MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
             }//insertar en la base
+            
+            Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
+                textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
+                Decimal.Parse(textBoxpis.Text), Decimal.Parse(textBoxdep.Text), (dateTimePicker1.Value),
+                textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
+
+            RepositorioCliente.Instance.InsertarCliente(cli);
         }
 
         public static void soloEscribeLetras(KeyPressEventArgs e)

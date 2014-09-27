@@ -31,7 +31,6 @@
             this.textBoxnro = new System.Windows.Forms.TextBox();
             this.textBoxhot = new System.Windows.Forms.TextBox();
             this.textBoxpis = new System.Windows.Forms.TextBox();
-            this.textBoxper = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.checkBoxext = new System.Windows.Forms.CheckBox();
             this.checkBoxint = new System.Windows.Forms.CheckBox();
@@ -45,6 +44,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBoxtipos = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBoxnro
@@ -69,14 +69,6 @@
             this.textBoxpis.Size = new System.Drawing.Size(100, 20);
             this.textBoxpis.TabIndex = 2;
             this.textBoxpis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxpis_KeyPress);
-            // 
-            // textBoxper
-            // 
-            this.textBoxper.Location = new System.Drawing.Point(106, 91);
-            this.textBoxper.Name = "textBoxper";
-            this.textBoxper.Size = new System.Drawing.Size(100, 20);
-            this.textBoxper.TabIndex = 3;
-            this.textBoxper.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxper_KeyPress);
             // 
             // richTextBox1
             // 
@@ -147,9 +139,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(4, 94);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 13);
+            this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Cantidad Personas";
+            this.label5.Text = "Tipo Habitacion";
             // 
             // label6
             // 
@@ -198,12 +190,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // comboBoxtipos
+            // 
+            this.comboBoxtipos.FormattingEnabled = true;
+            this.comboBoxtipos.Location = new System.Drawing.Point(106, 91);
+            this.comboBoxtipos.Name = "comboBoxtipos";
+            this.comboBoxtipos.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxtipos.TabIndex = 17;
+            // 
             // AltaHab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(316, 262);
+            this.Controls.Add(this.comboBoxtipos);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
@@ -217,12 +218,12 @@
             this.Controls.Add(this.checkBoxint);
             this.Controls.Add(this.checkBoxext);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBoxper);
             this.Controls.Add(this.textBoxpis);
             this.Controls.Add(this.textBoxhot);
             this.Controls.Add(this.textBoxnro);
             this.Name = "AltaHab";
             this.Text = "Alta Habitacion";
+            this.Load += new System.EventHandler(this.AltaHab_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +234,6 @@
         private System.Windows.Forms.TextBox textBoxnro;
         private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.TextBox textBoxpis;
-        private System.Windows.Forms.TextBox textBoxper;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox checkBoxext;
         private System.Windows.Forms.CheckBox checkBoxint;
@@ -247,5 +247,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBoxtipos;
     }
 }

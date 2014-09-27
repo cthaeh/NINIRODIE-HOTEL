@@ -103,8 +103,8 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBoxhot.Text == "" || textBoxnro.Text == "" || textBoxper.Text == ""
-                || textBoxpis.Text == "" || richTextBox1.Text == "")
+            if (textBoxhot.Text == "" || textBoxnro.Text == "" ||
+                textBoxpis.Text == "" || richTextBox1.Text == "")
             {
                 MessageBox.Show("No deje campos vacios", "ALERTA", MessageBoxButtons.OK);
             }else if (decimal.Parse(textBoxnro.Text) < 1)
@@ -127,6 +127,11 @@ namespace FrbaHotel.ABM_de_Habitacion
                 MessageBox.Show("Seleccione una ubicacion", "ALERTA",
                     MessageBoxButtons.OK);
             }
+        }
+
+        private void AltaHab_Load(object sender, EventArgs e)
+        {
+            //Cargas el combo box "tipos" con los tipos de habitacion
         }
     }
 }

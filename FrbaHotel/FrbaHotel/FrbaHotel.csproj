@@ -276,6 +276,9 @@
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
     <Compile Include="NINIRODIE\Clases\Usuario.cs" />
+    <Compile Include="NINIRODIE\DBUtils\DataRowCollectionExtensions.cs" />
+    <Compile Include="NINIRODIE\DBUtils\DBTypeConverter.cs" />
+    <Compile Include="NINIRODIE\DBUtils\SQLUtils.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
