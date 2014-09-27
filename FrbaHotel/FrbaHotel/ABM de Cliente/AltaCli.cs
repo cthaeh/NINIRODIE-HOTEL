@@ -28,7 +28,7 @@ namespace FrbaHotel.ABM_de_Cliente
             if (textBoxcalle.Text == "" || textBoxdir.Text == "" || textBoxloc.Text == ""
                 || textBoxmail.Text == "" || textBoxnac.Text == "" || textBoxnomb.Text == ""
                 || textBoxnro.Text == "" || textBoxpa.Text == "" || textBoxtel.Text == ""
-                || textBoxtipo.Text == "" || textBoxap.Text == "")
+                || textBoxtipo.Text == "" || textBoxap.Text == "" || textBoxdep.Text == "" || textBoxpis.Text == "")
             {
                 MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
             }//insertar en la base
@@ -93,7 +93,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxdir_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloEscribeLetras(e);
+            soloEscribeNumeros(e);
         }
 
         private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
@@ -104,6 +104,16 @@ namespace FrbaHotel.ABM_de_Cliente
         private void textBoxnac_KeyPress(object sender, KeyPressEventArgs e)
         {
             soloEscribeLetras(e);
+        }
+
+        private void textBoxpis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxdep_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
         }
     }
 }
