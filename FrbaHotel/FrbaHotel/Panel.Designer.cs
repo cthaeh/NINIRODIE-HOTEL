@@ -42,14 +42,11 @@
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.abm_rol = new System.Windows.Forms.ToolStripSplitButton();
-            this.altaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.abm_hab = new System.Windows.Forms.ToolStripSplitButton();
             this.altqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ABMRol = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,8 +56,8 @@
             this.abm_emp,
             this.abm_hot,
             this.abm_guest,
-            this.abm_rol,
-            this.abm_hab});
+            this.abm_hab,
+            this.ABMRol});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(713, 25);
@@ -119,21 +116,21 @@
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.altaToolStripMenuItem1.Text = "Alta";
             this.altaToolStripMenuItem1.Click += new System.EventHandler(this.altaToolStripMenuItem1_Click);
             // 
             // bToolStripMenuItem
             // 
             this.bToolStripMenuItem.Name = "bToolStripMenuItem";
-            this.bToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.bToolStripMenuItem.Text = "Baja";
             this.bToolStripMenuItem.Click += new System.EventHandler(this.bToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem1
             // 
             this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem1.Text = "Modificar";
             this.modificarToolStripMenuItem1.Click += new System.EventHandler(this.modificarToolStripMenuItem1_Click);
             // 
@@ -172,41 +169,6 @@
             this.modificarToolStripMenuItem2.Text = "Modificar";
             this.modificarToolStripMenuItem2.Click += new System.EventHandler(this.modificarToolStripMenuItem2_Click);
             // 
-            // abm_rol
-            // 
-            this.abm_rol.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.abm_rol.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaToolStripMenuItem3,
-            this.bajaToolStripMenuItem2,
-            this.modificarToolStripMenuItem3});
-            this.abm_rol.Image = ((System.Drawing.Image)(resources.GetObject("abm_rol.Image")));
-            this.abm_rol.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.abm_rol.Name = "abm_rol";
-            this.abm_rol.Size = new System.Drawing.Size(69, 22);
-            this.abm_rol.Text = "ABM Rol";
-            this.abm_rol.ButtonClick += new System.EventHandler(this.abm_rol_ButtonClick);
-            // 
-            // altaToolStripMenuItem3
-            // 
-            this.altaToolStripMenuItem3.Name = "altaToolStripMenuItem3";
-            this.altaToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.altaToolStripMenuItem3.Text = "Alta";
-            this.altaToolStripMenuItem3.Click += new System.EventHandler(this.altaToolStripMenuItem3_Click);
-            // 
-            // bajaToolStripMenuItem2
-            // 
-            this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
-            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.bajaToolStripMenuItem2.Text = "Baja";
-            this.bajaToolStripMenuItem2.Click += new System.EventHandler(this.bajaToolStripMenuItem2_Click);
-            // 
-            // modificarToolStripMenuItem3
-            // 
-            this.modificarToolStripMenuItem3.Name = "modificarToolStripMenuItem3";
-            this.modificarToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
-            this.modificarToolStripMenuItem3.Text = "Modificar";
-            this.modificarToolStripMenuItem3.Click += new System.EventHandler(this.modificarToolStripMenuItem3_Click);
-            // 
             // abm_hab
             // 
             this.abm_hab.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -223,23 +185,33 @@
             // altqToolStripMenuItem
             // 
             this.altqToolStripMenuItem.Name = "altqToolStripMenuItem";
-            this.altqToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.altqToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altqToolStripMenuItem.Text = "Alta";
             this.altqToolStripMenuItem.Click += new System.EventHandler(this.altqToolStripMenuItem_Click);
             // 
             // bajToolStripMenuItem
             // 
             this.bajToolStripMenuItem.Name = "bajToolStripMenuItem";
-            this.bajToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.bajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajToolStripMenuItem.Text = "Baja";
             this.bajToolStripMenuItem.Click += new System.EventHandler(this.bajToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem4
             // 
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
-            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem4.Text = "Modificar";
             this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarToolStripMenuItem4_Click);
+            // 
+            // ABMRol
+            // 
+            this.ABMRol.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ABMRol.Image = ((System.Drawing.Image)(resources.GetObject("ABMRol.Image")));
+            this.ABMRol.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ABMRol.Name = "ABMRol";
+            this.ABMRol.Size = new System.Drawing.Size(57, 22);
+            this.ABMRol.Text = "ABM Rol";
+            this.ABMRol.Click += new System.EventHandler(this.ABMRol_Click);
             // 
             // Panel
             // 
@@ -272,13 +244,10 @@
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSplitButton abm_rol;
-        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem3;
         private System.Windows.Forms.ToolStripSplitButton abm_hab;
         private System.Windows.Forms.ToolStripMenuItem altqToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripButton ABMRol;
     }
 }

@@ -11,7 +11,8 @@ namespace FrbaHotel.NINIRODIE.Clases
         public String nombre { get; set; }
         public String mail { get; set; }
         public Decimal telefono { get; set; }
-        public String direccion { get; set; }
+        public Decimal nro_calle { get; set; }
+        public String calle { get; set; }
         public Decimal categoria { get; set; }
         public String ciudad { get; set; }
         public String pais { get; set; }
@@ -24,11 +25,12 @@ namespace FrbaHotel.NINIRODIE.Clases
         }
 
         public Hotel(Decimal id, String nom, String email, Decimal tel,
-            String dir, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab)
+            String cal,Decimal nro_cal, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab)
         {
             identificador = id;
 			habilitado = hab;
-            direccion = dir;
+            calle = cal;
+            nro_calle = nro_cal;
             nombre = nom;
             mail = email;
             telefono = tel;
