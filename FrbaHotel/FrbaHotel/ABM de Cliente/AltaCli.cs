@@ -41,8 +41,9 @@ namespace FrbaHotel.ABM_de_Cliente
                 textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
 
             RepositorioCliente.Instance.InsertarCliente(cli);
-
-            MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text, "Mensaje", MessageBoxButtons.OK);
+            char a = cli.apellido[0];
+            char n = cli.nombre[0];
+            MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
 
             this.Close();
         }

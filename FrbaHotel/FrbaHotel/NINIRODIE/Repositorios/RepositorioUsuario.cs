@@ -43,6 +43,28 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
         }
 
+        public Decimal BuscarCodUsuario(String nombreusu)
+        {
+            var query = String.Format(@"SELECT USU_CODIGO FROM LA_REVANCHA.USUARIO " +
+                "WHERE USU_USERNAME = '{0}'", nombreusu);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "NIINRODIE.USUARIO");
+
+            var usuarios = dataRow.ToList<Usuario>(this.DataRowToUsuario);
+           
+            return usuarios.First().codigo;
+        }
+
+        public void GenerarUsuario(String clave, String nombre, String tipo)
+        {
+            var query = String.Format(@"INSERT INTO LA_REVANCHA.USUARIO " +
+                "(USU_USERNAME, USU_PASSWORD, USU_TIPO, USU_HABILITADO, USU_BLOQUEADO) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", nombre, clave, tipo, 1, 0);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+
+        }
+
         public void BloquearUsuario(Decimal cod)
         {
          var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_BLOQUEADO = " +
@@ -50,6 +72,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
             
+        }
+
+        public void CambiarClave(Decimal codigo, String clave)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_PASSWORD = " +
+                "'{0}' WHERE USU_CODIGO = '{1}'", clave, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
         public Usuario DataRowToUsuario(DataRow row)

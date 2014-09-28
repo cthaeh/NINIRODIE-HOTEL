@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.Login;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class MenuCli : Form
     {
+        Usuario usuario;
         public MenuCli()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new CambiarClave().ShowDialog(this);
+            new CambiarClave(usuario).ShowDialog(this);
             this.Close();
         }
 

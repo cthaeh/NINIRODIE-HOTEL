@@ -203,6 +203,7 @@
             this.textBoxcla.Name = "textBoxcla";
             this.textBoxcla.Size = new System.Drawing.Size(121, 20);
             this.textBoxcla.TabIndex = 15;
+            this.textBoxcla.UseSystemPasswordChar = true;
             // 
             // textBoxrepcla
             // 
@@ -210,6 +211,7 @@
             this.textBoxrepcla.Name = "textBoxrepcla";
             this.textBoxrepcla.Size = new System.Drawing.Size(121, 20);
             this.textBoxrepcla.TabIndex = 16;
+            this.textBoxrepcla.UseSystemPasswordChar = true;
             // 
             // textBoxnomb
             // 
@@ -275,8 +277,8 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Admin",
-            "Recep"});
+            "ADMIN",
+            "RECEP"});
             this.comboBox1.Location = new System.Drawing.Point(133, 78);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);

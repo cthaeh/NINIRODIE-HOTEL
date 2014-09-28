@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Usuario
 {
@@ -82,12 +84,28 @@ namespace FrbaHotel.ABM_de_Usuario
             }
             if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
                 || textBoxnomb.Text == "" || textBoxmail.Text == "" || textBoxhot.Text == ""
-                || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == ""
+                || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == "" || comboBox1.Text == ""
                 || textBoxap.Text == "" || textBoxnrocal.Text == "" || textBoxpis.Text == "" || textBoxdep.Text == "")
             {
                 MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
                 salir = false;
-            }// si llega hasta aqui poner salir = true; e insertar en la base.
+            }
+            else
+            {
+               Personal persona = new Personal(textBoxnomb.Text, textBoxap.Text,
+            "dni", Decimal.Parse(textBoxdni.Text), textBoxmail.Text, Decimal.Parse(textBoxtel.Text),
+            textBoxdir.Text, (dateTimePicker1.Value));
+
+               RepositorioUsuario.Instance.GenerarUsuario(textBoxcla.Text, textBoxnombusu.Text, comboBox1.Text);
+
+               Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(textBoxnombusu.Text);
+
+               RepositorioEmpleado.Instance.GenerarEmpleado(persona, usu.codigo);
+
+               MessageBox.Show("Se ha dado de alta correctamente", "ALERTA", MessageBoxButtons.OK);
+
+               this.Close();
+            }
         }
 
         private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)

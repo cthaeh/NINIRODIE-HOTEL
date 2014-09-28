@@ -6,13 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.Login
 {
     public partial class CambiarClave : Form
     {
-        public CambiarClave()
+        Usuario usuario;
+        public CambiarClave(Usuario usu)
         {
+            usuario = usu;
             InitializeComponent();
         }
 
@@ -26,7 +30,12 @@ namespace FrbaHotel.Login
             if (textBox1.Text != textBox2.Text)
             {
                 MessageBox.Show("Claves Distintas", "Alerta", MessageBoxButtons.OK);
-            }//si son iguales se debe hacer un update a la tabla usuario
+            }
+            RepositorioUsuario.Instance.CambiarClave(usuario.codigo, textBox1.Text);
+
+            MessageBox.Show("Clave cambiada con exito", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
         }
     }
 }

@@ -22,13 +22,20 @@ namespace FrbaHotel.NINIRODIE.Clases
         {
             identificador = -1;
         }
-
         public Personal(Decimal id, Decimal cod_usu, String nomb, String ap,
             String tipo_doc, Decimal nro_doc, String email, Decimal tel,
-            String dir, DateTime fecha_nac)
+            String dir, DateTime fecha_nac) :
+            this(nomb, ap, tipo_doc, nro_doc, email, tel,
+            dir, fecha_nac)
         {
             identificador = id;
             codigo_usuario = cod_usu;
+        }
+
+        public Personal(String nomb, String ap,
+    String tipo_doc, Decimal nro_doc, String email, Decimal tel,
+    String dir, DateTime fecha_nac)
+        {
             nombre = nomb;
             apellido = ap;
             tipo_documento = tipo_doc;
