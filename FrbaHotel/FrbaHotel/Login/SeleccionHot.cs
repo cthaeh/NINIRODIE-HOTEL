@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.Login
 {
@@ -13,7 +14,7 @@ namespace FrbaHotel.Login
     {
         public string tipo;
 
-        public SeleccionHot(String tipousuario)
+        public SeleccionHot(String tipousuario, Usuario usu)
         {
             tipo = tipousuario;
             InitializeComponent();

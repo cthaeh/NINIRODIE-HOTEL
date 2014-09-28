@@ -6,15 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.Login
 {
     public partial class login : Form
     {
         public string id = null, pass = null, usuario = null;
-        public bool logeo = false, cerrar = false;
+        public bool logeo = false, cerrar = false, pasar = false;
         public int intentos_fallidos = 0;
         public string tipo;
+        public decimal intentos = 0;
 
         public login()
         {
@@ -38,83 +41,64 @@ namespace FrbaHotel.Login
 
         private void aceptar_Click(object sender, EventArgs e)
         {
-            //estos if deben ir luego de la busqueda y control del usuario en la base
-            //y a Panel se le debe enviar todo el Usuario no solo el tipo.
-            if (this.ID_Usuario.Text == "diego" && this.Pass_usuario.Text == "w23e")
+            Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(ID_Usuario.Text);
+            if (usu.codigo == -1)
             {
-                tipo = "admin";
-                new SeleccionHot(tipo).ShowDialog(this);
+                MessageBox.Show("Usuario o Contraseña incorrectos", "Alerta", MessageBoxButtons.OK);
+                pasar = true;
             }
-            else if (this.ID_Usuario.Text == "pepe" && this.Pass_usuario.Text == "w23e")
+            if (pasar == false)
             {
-                tipo = "recep";
-                new SeleccionHot(tipo).ShowDialog(this);
-            }
-            else if (this.ID_Usuario.Text == "jose" && this.Pass_usuario.Text == "w23e")
-            {
-                tipo = "guest";
-                new SeleccionHot(tipo).ShowDialog(this);
-            }else
-            {
-                MessageBox.Show("Error", "Alerta", MessageBoxButtons.OK);
-            }
-            //EsCorrecto(id) --> Se debe consultar a la base por el ID y traer un
-            //objeto usuario con todos los datos que le corresponden al dueño de esa ID
-            /*
-            if ( user.id == id){
-                if (user.pass == pass){
-                    if (user.habilitado == true)
+                if (usu.pass == this.Pass_usuario.Text)
+                {
+                    if (usu.habilitado == true)
                     {
-                        if (user.bloque == false)
+                        if (usu.bloque == false)
                         {
-                            if (user.prim == false)
+                            if (usu.tipo == "CLIENTE")
                             {
-                                intentos_fallidos = 0;
-                                logeo = true;
+                                tipo = "guest";
+                                new SeleccionHot(tipo, usu).ShowDialog(this);
+                                this.Close();
+                            }
+                            else if (usu.tipo == "ADMIN")
+                            {
+                                tipo = "admin";
+                                new SeleccionHot(tipo, usu).ShowDialog(this);
                                 this.Close();
                             }
                             else
                             {
-                                //Se debe exigir el cambio de la contraseña
+                                tipo = "recep";
+                                new SeleccionHot(tipo, usu).ShowDialog(this);
+                                this.Close();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("El usuario ha sido bloqueado.",
-                        "Atención", MessageBoxButtons.OK);
+                            MessageBox.Show("Este usuario esta deshabilitado o bloqueado", "Alerta", MessageBoxButtons.OK);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El usuario esta deshabilitado.",
-                        "Atención", MessageBoxButtons.OK);
+                        MessageBox.Show("Este usuario esta deshabilitado o bloqueado", "Alerta", MessageBoxButtons.OK);
                     }
                 }
                 else
                 {
-                    intentos_fallidos = intentos_fallidos + 1;
-              
-                    if (intentos_fallidos == 3)
+                    intentos = intentos + 1;
+                    if (intentos == 3)
                     {
-                        //Se debe bloquear el usuario
-             
-                   MessageBox.Show("El usuario ha sido bloqueado.",
-                        "Atención", MessageBoxButtons.OK);
+                        RepositorioUsuario.Instance.BloquearUsuario(usu.codigo);
+                        MessageBox.Show("El usuario ha sido bloqueado", "Alerta", MessageBoxButtons.OK);
+                        this.Close();
                     }
-                    else
-                    {
-                        MessageBox.Show("Id o Password Incorrectos.",
-                    "Atención", MessageBoxButtons.OK);
-                    }
+                    MessageBox.Show("Usuario o Contraseña incorrectos", "Alerta", MessageBoxButtons.OK);
+                
                 }
             }
-            else
-            {
-                MessageBox.Show("Id o Password Incorrectos.",
-                    "Atención", MessageBoxButtons.OK);
-            }
-                  
-        */
+            
         }
     }
 }
+

@@ -41,6 +41,10 @@ namespace FrbaHotel.ABM_de_Cliente
                 textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
 
             RepositorioCliente.Instance.InsertarCliente(cli);
+
+            MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text, "Mensaje", MessageBoxButtons.OK);
+
+            this.Close();
         }
 
         public static void soloEscribeLetras(KeyPressEventArgs e)
