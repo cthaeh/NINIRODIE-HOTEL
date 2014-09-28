@@ -99,6 +99,11 @@ namespace FrbaHotel.Login
             }
             
         }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

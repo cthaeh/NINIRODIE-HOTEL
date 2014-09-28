@@ -134,5 +134,19 @@ namespace FrbaHotel
         {
             new AltaRol().ShowDialog(this);
         }
+
+        private void Panel_Load(object sender, EventArgs e)
+        {
+            abm_emp.Visible = false;
+            abm_hot.Visible = false;
+            abm_guest.Visible = false;
+            abm_rol.Visible = false;
+            abm_hab.Visible = false;
+            abm_reserva.Visible = false;
+            estadia.Visible = false;
+            consumible.Visible = false;
+            estadistica.Visible = false;
+            facturar.Visible = false;
+        }
     }
 }

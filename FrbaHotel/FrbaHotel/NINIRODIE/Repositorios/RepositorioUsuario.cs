@@ -24,6 +24,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+ 
+
         public Usuario BuscarUsuario(String id)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO " +

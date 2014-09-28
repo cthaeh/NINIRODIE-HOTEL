@@ -31,14 +31,13 @@ namespace FrbaHotel.NINIRODIE.Clases
 
         public Cliente(Decimal id, Decimal cod_usu, String nomb, String ap,
             String tipo_doc, Decimal nro_doc, String email, Decimal tel,
-            String cal, Decimal nro_cal, Decimal pis, Decimal dep, DateTime fecha_nac, String loc, String origen, String nacion) : 
-            this(nomb, ap,
-            tipo_doc, nro_doc, email, tel,
-            cal, nro_cal, pis, dep, fecha_nac, loc, origen, nacion)
+            String cal, Decimal nro_cal, Decimal pis, Decimal dep, DateTime fecha_nac,
+            String loc, String origen, String nacion) : this(nomb, ap,
+            tipo_doc, nro_doc, email, tel, cal, nro_cal, pis, dep, fecha_nac, loc, origen, nacion)
         {
-            identificador = id;
-            codigo_usuario = cod_usu;
-         }
+            this.identificador = id;
+            this.codigo_usuario = cod_usu;
+        }
 
         public Cliente(String nomb, String ap,
     String tipo_doc, Decimal nro_doc, String email, Decimal tel,
