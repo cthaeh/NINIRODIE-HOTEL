@@ -24,14 +24,39 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
- 
+
+        public void BajarUsuario(Decimal habilitar, Decimal codigo_usuario)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_HABILITADO = " +
+    "'{0}' WHERE USU_CODIGO = '{1}'", habilitar, codigo_usuario);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public Usuario BuscarUsuarioXCod(Decimal codigo)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO " +
+    "WHERE USU_CODIGO = '{0}'", codigo);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.USUARIO");
+
+            var usuarios = dataRow.ToList<Usuario>(this.DataRowToUsuario);
+
+
+            if (usuarios.Count == 0)
+            {
+                return new Usuario();
+            }
+
+            return usuarios.First();
+        }
 
         public Usuario BuscarUsuario(String id)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO " +
                 "WHERE USU_USERNAME = '{0}'", id);
 
-            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "NIINRODIE.USUARIO");
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.USUARIO");
 
             var usuarios = dataRow.ToList<Usuario>(this.DataRowToUsuario);
 

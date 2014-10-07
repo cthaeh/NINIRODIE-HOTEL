@@ -13,6 +13,7 @@ namespace FrbaHotel.ABM_de_Empleado
 {
     public partial class BusquedaBajaEmp : Form
     {
+        Personal empleado_seleccionado;
         bool se_busco = false;
         Decimal nro = 0;
         List<Personal> empleados_buscados;
@@ -29,8 +30,21 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (se_busco == true)
+            {
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    empleado_seleccionado = (Personal)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    new BajaEmp(empleado_seleccionado).ShowDialog(this);
 
-                new BajaEmp().ShowDialog(this);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un empleado", "Alerta", MessageBoxButtons.OK);
+                }
+            }
+                
         
         }
 
@@ -114,7 +128,6 @@ namespace FrbaHotel.ABM_de_Empleado
                 this.dataGridView1.Columns["telefono"].Visible = false;
                 this.dataGridView1.Columns["direccion"].Visible = false;
                 this.dataGridView1.Columns["nacimiento"].Visible = false;
-                
             }
 
             se_busco = true;

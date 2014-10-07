@@ -108,6 +108,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BajaEmp";
             this.Text = "Baja Empleado";
+            this.Load += new System.EventHandler(this.BajaEmp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

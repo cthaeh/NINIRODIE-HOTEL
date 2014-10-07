@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Personal
+    public class Personal
     {
         public Decimal identificador { get; set; }
         public Decimal codigo_usuario { get; set; }
