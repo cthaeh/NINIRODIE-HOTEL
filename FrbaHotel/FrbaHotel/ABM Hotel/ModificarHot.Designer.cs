@@ -53,6 +53,8 @@
             this.textBoxnomb = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxnrocal = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.checkBoxallmod = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button2
@@ -109,7 +111,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 13);
             this.label11.TabIndex = 42;
-            this.label11.Text = "Solo desayuno";
+            this.label11.Text = "Media Pensión";
             // 
             // label10
             // 
@@ -272,12 +274,32 @@
             this.textBoxnrocal.TabIndex = 51;
             this.textBoxnrocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnrocal_KeyPress);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(208, 162);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 13);
+            this.label13.TabIndex = 52;
+            this.label13.Text = "All Inclusive Mod";
+            // 
+            // checkBoxallmod
+            // 
+            this.checkBoxallmod.AutoSize = true;
+            this.checkBoxallmod.Location = new System.Drawing.Point(311, 158);
+            this.checkBoxallmod.Name = "checkBoxallmod";
+            this.checkBoxallmod.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxallmod.TabIndex = 53;
+            this.checkBoxallmod.UseVisualStyleBackColor = true;
+            // 
             // ModificarHot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(408, 248);
+            this.Controls.Add(this.checkBoxallmod);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.textBoxnrocal);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button2);
@@ -338,5 +360,7 @@
         private System.Windows.Forms.TextBox textBoxnomb;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxnrocal;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox checkBoxallmod;
     }
 }

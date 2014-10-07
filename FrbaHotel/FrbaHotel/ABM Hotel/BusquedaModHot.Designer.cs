@@ -108,6 +108,7 @@
             this.buscar.TabIndex = 33;
             this.buscar.Text = "Buscar";
             this.buscar.UseVisualStyleBackColor = true;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
             // 
             // lab
             // 

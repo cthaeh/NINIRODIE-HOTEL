@@ -24,6 +24,34 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+   /*     public List<Decimal> BuscarCodRegimen(Decimal cod_hotel)
+        {
+            var query = String.Format(@"SELECT HOTREG_COD_REGIMEN FROM LA_REVANCHA.HOTEL_REGIMEN " +
+                "WHERE HOTREG_COD_HOTEL = '{0}'", cod_hotel);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL_REGIMEN");
+
+        }*/
+
+        public void LimpiarHotelRegimen(Decimal cod_hotel)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_REGIMEN SET HOTREG_HABILITADO = '{0}' " + 
+                "WHERE HOTREG_COD_HOTEL = '{1}'", 0, cod_hotel);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void ModificarHotel(Decimal telefono, Decimal categoria, String ciudad,
+            String calle, String nombre, Decimal nro_calle, String pais, Decimal recargo, Decimal cod_hotel)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL SET HOT_TELEFONO = '{0}', " +
+                "HOT_ESTRELLAS = '{1}', HOT_CIUDAD = '{2}', HOT_CALLE = '{3}', " +
+                "HOT_NOMBRE = '{4}', HOT_NRO_CALLE = '{5}', HOT_PAIS = '{6}', HOT_RECARGA_ESTRELLAS = '{7}' WHERE HOT_CODIGO = '{8}'",
+                telefono, categoria, ciudad, calle, nombre, nro_calle, pais, recargo, cod_hotel);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public List<Hotel> BuscarHoteles()
         {
             var query = String.Format(@"SELECET * FROM LA_REVANCHA.HOTEL");
@@ -70,18 +98,27 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return hoteles;
         }
 
-        public void InsertarHotelxRegimen(Decimal hotel, Decimal regimen)
+        public void ModificarHotelxRegimen(Decimal hotel, Decimal hab, Decimal regimen)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_REGIMEN SET HOTREG_HABILITADO = '{0}' " +
+                "WHERE HOTREG_COD_HOTEL = '{1}' and HOTREG_COD_REGIMEN = '{2}'",
+                hab, hotel, regimen);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void InsertarHotelxRegimen(Decimal hotel,Decimal hab, Decimal regimen)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.HOTEL_REGIMEN " +
                 "(HOTREG_COD_HOTEL, HOTREG_COD_REGIMEN, HOTREG_HABILITADO)" +
-                "VALUES ('{0}','{1}','{2}')", hotel, regimen, 1);
+                "VALUES ('{0}','{1}','{2}')", hotel, regimen, hab);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
         public void InsertarHotel(Decimal categoria, String ciudad, String direccion,
             String nombre, String mail, String calle, String pais, Decimal telefono, 
-            Decimal nro_calle, DateTime fecha)
+            Decimal nro_calle, DateTime fecha, Decimal recargo)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.HOTEL " +
     "(HOT_NOMBRE, HOT_MAIL, HOT_TELEFONO, HOT_CALLE, " +
@@ -89,7 +126,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
      "HOT_PAIS,HOT_FECHA_CREACION, HOT_HABILITADO)" +
     "VALUES ('{0}', '{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}', " +
      "'{9}','{10}')", nombre, mail, telefono, calle, nro_calle,
-     categoria, 100, ciudad, pais,DBTypeConverter.ToSQLDateTime(fecha),1);
+     categoria, recargo, ciudad, pais,DBTypeConverter.ToSQLDateTime(fecha),1);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }

@@ -55,6 +55,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxnrocal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkBoxallmod = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBoxnomb
@@ -204,11 +206,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(204, 143);
+            this.label11.Location = new System.Drawing.Point(204, 138);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 13);
             this.label11.TabIndex = 17;
-            this.label11.Text = "Solo desayuno";
+            this.label11.Text = "Media Pensión";
             // 
             // checkBoxall
             // 
@@ -240,7 +242,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(168, 175);
+            this.label12.Location = new System.Drawing.Point(168, 191);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 21;
@@ -248,7 +250,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(256, 169);
+            this.dateTimePicker1.Location = new System.Drawing.Point(256, 185);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(157, 20);
             this.dateTimePicker1.TabIndex = 22;
@@ -290,12 +292,32 @@
             this.textBoxnrocal.TabIndex = 26;
             this.textBoxnrocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnrocal_KeyPress);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(204, 161);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(87, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "All Inclusive Mod";
+            // 
+            // checkBoxallmod
+            // 
+            this.checkBoxallmod.AutoSize = true;
+            this.checkBoxallmod.Location = new System.Drawing.Point(307, 161);
+            this.checkBoxallmod.Name = "checkBoxallmod";
+            this.checkBoxallmod.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxallmod.TabIndex = 28;
+            this.checkBoxallmod.UseVisualStyleBackColor = true;
+            // 
             // AltaHot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(425, 262);
+            this.Controls.Add(this.checkBoxallmod);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.textBoxnrocal);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button2);
@@ -359,5 +381,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxnrocal;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox checkBoxallmod;
     }
 }
