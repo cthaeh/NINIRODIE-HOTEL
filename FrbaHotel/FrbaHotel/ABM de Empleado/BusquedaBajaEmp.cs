@@ -15,7 +15,7 @@ namespace FrbaHotel.ABM_de_Empleado
     {
         bool se_busco = false;
         Decimal nro = 0;
-        Personal empleado_buscado;
+        List<Personal> empleados_buscados;
 
         public BusquedaBajaEmp()
         {
@@ -95,15 +95,26 @@ namespace FrbaHotel.ABM_de_Empleado
                     nro = Decimal.Parse(textBoxdni.Text);
                 }
 
-                empleado_buscado = RepositorioEmpleado.Instance.BuscarEmpleadoD(textBoxap.Text, textBoxmail.Text, textBoxnomb.Text, nro);
+                empleados_buscados = RepositorioEmpleado.Instance.BuscarEmpleadoD(textBoxap.Text, textBoxmail.Text, textBoxnomb.Text, nro);
 
 
-                if (empleado_buscado.identificador == -1)
+                if (empleados_buscados.Count == 0)
                 {
                     MessageBox.Show("Usuario no existe", "ALERTA", MessageBoxButtons.OK);
                 }
 
-                //se debe completar la grilla
+                this.dataGridView1.DataSource = new List<Personal>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = empleados_buscados;
+                this.dataGridView1.Refresh();
+
+                this.dataGridView1.Columns["identificador"].Visible = false;
+                this.dataGridView1.Columns["codigo_usuario"].Visible = false;
+                this.dataGridView1.Columns["tipo_documento"].Visible = false;
+                this.dataGridView1.Columns["telefono"].Visible = false;
+                this.dataGridView1.Columns["direccion"].Visible = false;
+                this.dataGridView1.Columns["nacimiento"].Visible = false;
+                
             }
 
             se_busco = true;

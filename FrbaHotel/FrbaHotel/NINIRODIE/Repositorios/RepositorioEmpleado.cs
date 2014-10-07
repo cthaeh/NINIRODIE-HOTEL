@@ -36,7 +36,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
-        public Personal BuscarEmpleadoD(String apellido, String mail, String nombre, Decimal documento)
+        public List<Personal> BuscarEmpleadoD(String apellido, String mail, String nombre, Decimal documento)
         {
             var query = String.Format(@"Select * FROM LA_REVANCHA.PERSONAL WHERE 1 = 1 ");
 
@@ -59,15 +59,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.PERSONAL");
 
-            if (dataRow.Count == 0)
-            {
-                return new Personal();
-            }
-            else
-            {
-                var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
-                return empleados.First();
-            }
+            var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
+            return empleados;
+            
         }
 
         public Personal DataRowToPersonal(DataRow row)
