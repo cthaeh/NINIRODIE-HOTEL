@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Empleado
 {
@@ -78,12 +79,37 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //se debe golpear la base con los datos en los campos
+            String tipo;
+            if (comboBox1.Text == "Admin")
+            {
+                tipo = "ADMIN";
+            }
+            else
+            {
+                tipo = "RECEP";
+            }
+            RepositorioUsuario.Instance.ModificarEmp(empleado_seleccionado.codigo_usuario, tipo);
+
+            RepositorioEmpleado.Instance.Modificar(textBoxap.Text, textBoxdir.Text,
+                Decimal.Parse(textBoxdni.Text), textBoxmail.Text, textBoxnomb.Text, Decimal.Parse(textBoxtel.Text), empleado_seleccionado.codigo_usuario);
+
+            MessageBox.Show("Modificacion Exitosa", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
         }
 
         private void ModificarEmp_Load(object sender, EventArgs e)
         {
-            //se debe cargar los campos con los datos que se traen de la base
+            var user = RepositorioEmpleado.Instance.BuscarEmpleadoXCod(empleado_seleccionado.identificador);
+            var user_usu = RepositorioUsuario.Instance.BuscarUsuarioXCod(user.codigo_usuario);
+            textBoxap.Text = user.apellido;
+            textBoxnomb.Text = user.nombre;
+            textBoxmail.Text = user.mail;
+            textBoxtel.Text = user.telefono.ToString();
+            textBoxdni.Text = user.numero_documento.ToString();
+            textBoxdir.Text = user.direccion;
+            comboBox1.Text = user_usu.tipo;
+            
         }
 
         private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)

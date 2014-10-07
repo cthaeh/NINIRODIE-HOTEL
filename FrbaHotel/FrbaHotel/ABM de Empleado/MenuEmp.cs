@@ -14,8 +14,9 @@ namespace FrbaHotel.ABM_de_Empleado
     public partial class MenuEmp : Form
     {
         Usuario usuario;
-        public MenuEmp()
+        public MenuEmp(Usuario usu)
         {
+            usuario = usu;
             InitializeComponent();
         }
 

@@ -24,6 +24,29 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void Modificar(String apellido, String direccion, Decimal dni,
+            String mail, String nombre, Decimal telefono, Decimal codigo)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.PERSONAL SET PER_APELLIDO = " +
+"'{0}', PER_NOMBRE = '{1}', PER_DIRECCION = '{2}', PER_NUMERO_IDENTIFICACION = '{3}', PER_MAIL = '{4}', PER_TELEFONO = '{5}' WHERE PER_COD_USUARIO = '{6}'"
+, apellido, nombre, direccion, dni, mail, telefono, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public Personal BuscarEmpleadoXCod(Decimal ident)
+        {
+            var query = String.Format(@"Select * FROM LA_REVANCHA.PERSONAL WHERE " +
+                "PER_CODIGO = '{0}' ", ident);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.PERSONAL");
+
+            var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
+
+            return empleados.First();
+
+        }
+
         public void GenerarEmpleado(Personal emp, Decimal cod_usu)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.PERSONAL " +

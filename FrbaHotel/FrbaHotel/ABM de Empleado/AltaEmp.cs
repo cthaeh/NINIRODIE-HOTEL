@@ -85,7 +85,7 @@ namespace FrbaHotel.ABM_de_Usuario
             if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
                 || textBoxnomb.Text == "" || textBoxmail.Text == "" || textBoxhot.Text == ""
                 || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == "" || comboBox1.Text == ""
-                || textBoxap.Text == "" || textBoxnrocal.Text == "" || textBoxpis.Text == "" || textBoxdep.Text == "")
+                || textBoxap.Text == "")
             {
                 MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
                 salir = false;

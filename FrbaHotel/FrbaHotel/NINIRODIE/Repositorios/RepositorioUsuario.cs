@@ -24,6 +24,13 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void ModificarEmp(Decimal codigo, String tipo)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_TIPO = " +
+    "'{0}' WHERE USU_CODIGO = '{1}'", tipo, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
 
         public void BajarUsuario(Decimal habilitar, Decimal codigo_usuario)
         {

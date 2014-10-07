@@ -54,12 +54,6 @@
             this.textBoxhot = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxnrocal = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxpis = new System.Windows.Forms.TextBox();
-            this.textBoxdep = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nombusu
@@ -139,9 +133,9 @@
             this.dir.AutoSize = true;
             this.dir.Location = new System.Drawing.Point(10, 108);
             this.dir.Name = "dir";
-            this.dir.Size = new System.Drawing.Size(30, 13);
+            this.dir.Size = new System.Drawing.Size(52, 13);
             this.dir.TabIndex = 8;
-            this.dir.Text = "Calle";
+            this.dir.Text = "Direccion";
             // 
             // tel
             // 
@@ -155,7 +149,7 @@
             // hot
             // 
             this.hot.AutoSize = true;
-            this.hot.Location = new System.Drawing.Point(285, 138);
+            this.hot.Location = new System.Drawing.Point(322, 138);
             this.hot.Name = "hot";
             this.hot.Size = new System.Drawing.Size(32, 13);
             this.hot.TabIndex = 10;
@@ -164,7 +158,7 @@
             // nac
             // 
             this.nac.AutoSize = true;
-            this.nac.Location = new System.Drawing.Point(273, 164);
+            this.nac.Location = new System.Drawing.Point(10, 138);
             this.nac.Name = "nac";
             this.nac.Size = new System.Drawing.Size(93, 13);
             this.nac.TabIndex = 11;
@@ -172,7 +166,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(158, 203);
+            this.button1.Location = new System.Drawing.Point(157, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -182,7 +176,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(316, 203);
+            this.button2.Location = new System.Drawing.Point(312, 175);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 13;
@@ -268,7 +262,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(373, 164);
+            this.dateTimePicker1.Location = new System.Drawing.Point(109, 135);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 25;
@@ -284,69 +278,12 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 26;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 134);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Nro Calle";
-            // 
-            // textBoxnrocal
-            // 
-            this.textBoxnrocal.Location = new System.Drawing.Point(133, 131);
-            this.textBoxnrocal.Name = "textBoxnrocal";
-            this.textBoxnrocal.Size = new System.Drawing.Size(121, 20);
-            this.textBoxnrocal.TabIndex = 28;
-            this.textBoxnrocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnrocal_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 164);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Piso";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(116, 164);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Departamento";
-            // 
-            // textBoxpis
-            // 
-            this.textBoxpis.Location = new System.Drawing.Point(46, 161);
-            this.textBoxpis.Name = "textBoxpis";
-            this.textBoxpis.Size = new System.Drawing.Size(64, 20);
-            this.textBoxpis.TabIndex = 31;
-            this.textBoxpis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxpis_KeyPress);
-            // 
-            // textBoxdep
-            // 
-            this.textBoxdep.Location = new System.Drawing.Point(196, 161);
-            this.textBoxdep.Name = "textBoxdep";
-            this.textBoxdep.Size = new System.Drawing.Size(71, 20);
-            this.textBoxdep.TabIndex = 32;
-            this.textBoxdep.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxdep_KeyPress);
-            // 
             // AltaEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(578, 241);
-            this.Controls.Add(this.textBoxdep);
-            this.Controls.Add(this.textBoxpis);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxnrocal);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(578, 220);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxhot);
@@ -408,11 +345,5 @@
         private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxnrocal;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxpis;
-        private System.Windows.Forms.TextBox textBoxdep;
     }
 }

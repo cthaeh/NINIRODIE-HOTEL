@@ -13,10 +13,11 @@ namespace FrbaHotel.Login
     public partial class SeleccionHot : Form
     {
         public string tipo;
-
+        public Usuario usuario;
         public SeleccionHot(String tipousuario, Usuario usu)
         {
             tipo = tipousuario;
+            usuario = usu;
             InitializeComponent();
         }
 
@@ -29,7 +30,7 @@ namespace FrbaHotel.Login
         {
             //Se debe tomar el hotel selecionado y guardarlo como hotel asignado al 
             //usuario que se logeo.
-            new Panel(tipo).ShowDialog(this);
+            new Panel(tipo, usuario).ShowDialog(this);
             this.Close();
         }
     }

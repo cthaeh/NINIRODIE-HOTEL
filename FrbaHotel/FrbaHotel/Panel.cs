@@ -13,15 +13,17 @@ using FrbaHotel.ABM_Hotel;
 using FrbaHotel.ABM_de_Habitacion;
 using FrbaHotel.ABM_de_Empleado;
 using FrbaHotel.ABM_de_Rol;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel
 {
     public partial class Panel : Form
     {
         String tipo_usuario;
-
-        public Panel(String tipo)
+        Usuario usuario;
+        public Panel(String tipo, Usuario usu)
         {
+            usuario = usu;
             tipo_usuario = tipo;
             InitializeComponent();
             if (tipo == "admin")
@@ -117,7 +119,7 @@ namespace FrbaHotel
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new BusquedaModEmp().ShowDialog(this);
+            new MenuEmp(usuario).ShowDialog(this);
         }
 
         private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)
