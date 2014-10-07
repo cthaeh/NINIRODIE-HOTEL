@@ -91,6 +91,12 @@
     <Compile Include="ABM de Cliente\ModificarCli.Designer.cs">
       <DependentUpon>ModificarCli.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Empleado\AddHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Empleado\AddHotel.Designer.cs">
+      <DependentUpon>AddHotel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Empleado\BajaEmp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Cliente\ModificarCli.resx">
       <DependentUpon>ModificarCli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Empleado\AddHotel.resx">
+      <DependentUpon>AddHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\AltaEmp.resx">
       <DependentUpon>AltaEmp.cs</DependentUpon>

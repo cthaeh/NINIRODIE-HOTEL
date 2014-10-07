@@ -24,6 +24,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public List<Hotel> BuscarHoteles()
+        {
+            var query = String.Format(@"SELECET * FROM LA_REVANCHA.HOTEL");
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+            return hoteles;
+        }
+
         public void BajarHotel(Decimal codigo, Decimal habilitado)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL SET HOT_HABILITADO = " +
