@@ -6,13 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_de_Empleado
 {
     public partial class ModificarEmp : Form
     {
-        public ModificarEmp()
+        Personal empleado_seleccionado;
+        public ModificarEmp(Personal empleado)
         {
+            empleado_seleccionado = empleado;
             InitializeComponent();
         }
 

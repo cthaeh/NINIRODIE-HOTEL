@@ -27,7 +27,7 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new ModificarEmp().ShowDialog(this);
+            new BusquedaModEmp().ShowDialog(this);
             this.Close();
         }
 

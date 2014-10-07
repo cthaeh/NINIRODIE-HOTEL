@@ -6,11 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_de_Empleado
 {
     public partial class BusquedaModEmp : Form
     {
+        Personal empleado_seleccionado;
+        bool se_busco = false;
+        Decimal nro = 0;
+        List<Personal> empleados_buscados;
+
         public BusquedaModEmp()
         {
             InitializeComponent();
@@ -70,6 +77,24 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (se_busco == true)
+            {
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    empleado_seleccionado = (Personal)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    new ModificarEmp(empleado_seleccionado).ShowDialog(this);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un empleado", "Alerta", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
             if (textBoxap.Text == "" && textBoxdni.Text == "" && textBoxmail.Text == ""
     && textBoxnomb.Text == "")
             {
@@ -77,8 +102,33 @@ namespace FrbaHotel.ABM_de_Empleado
             }
             else
             {
-                new MenuEmp().ShowDialog(this);
+                if (textBoxdni.Text != "")
+                {
+                    nro = Decimal.Parse(textBoxdni.Text);
+                }
+
+                empleados_buscados = RepositorioEmpleado.Instance.BuscarEmpleadoD(textBoxap.Text, textBoxmail.Text, textBoxnomb.Text, nro);
+
+
+                if (empleados_buscados.Count == 0)
+                {
+                    MessageBox.Show("Usuario no existe", "ALERTA", MessageBoxButtons.OK);
+                }
+
+                this.dataGridView1.DataSource = new List<Personal>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = empleados_buscados;
+                this.dataGridView1.Refresh();
+
+                this.dataGridView1.Columns["identificador"].Visible = false;
+                this.dataGridView1.Columns["codigo_usuario"].Visible = false;
+                this.dataGridView1.Columns["tipo_documento"].Visible = false;
+                this.dataGridView1.Columns["telefono"].Visible = false;
+                this.dataGridView1.Columns["direccion"].Visible = false;
+                this.dataGridView1.Columns["nacimiento"].Visible = false;
             }
+
+            se_busco = true;
         }
     }
 }
