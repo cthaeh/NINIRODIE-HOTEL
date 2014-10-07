@@ -52,6 +52,21 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             
         }
 
+        public void ModificarCliente(Cliente cliente, Decimal codigo)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.CLIENTE SET " +
+                "CLI_TIPO_IDENTIFICACION = '{0}', CLI_NUMERO_IDENTIFICACION = '{1}', CLI_NOMBRE = '{2}', CLI_APELLIDO = '{3}', " +
+                "CLI_TELEFONO = '{4}', CLI_MAIL = '{5}', CLI_FECHA_NACIMIENTO = '{6}', CLI_CALLE = '{7}', " +
+                 "CLI_PISO = '{8}',CLI_DEPARTAMENTO = '{9}', CLI_LOCALIDAD = '{10}', CLI_NACIONALIDAD = '{11}', " +
+                 "CLI_PAIS_ORIGEN = '{12}', CLI_NRO_CALLE = '{13}' WHERE CLI_CODIGO = '{14}'", cliente.tipo_documento,
+                 cliente.numero_documento, cliente.nombre, cliente.apellido, cliente.telefono,
+                 cliente.mail, DBTypeConverter.ToSQLDateTime(cliente.nacimiento), cliente.calle,
+                 cliente.piso, cliente.departamento, cliente.localidad, cliente.nacionalidad,
+                 cliente.pais, cliente.nro_calle, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public void InsertarCliente(Cliente cliente)
         {
 

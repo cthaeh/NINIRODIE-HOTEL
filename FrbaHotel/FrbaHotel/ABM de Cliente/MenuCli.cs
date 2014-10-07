@@ -14,8 +14,9 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class MenuCli : Form
     {
         Cliente cliente_seleccionado;
-        public MenuCli()
+        public MenuCli(Cliente cli)
         {
+            cliente_seleccionado = cli;
             InitializeComponent();
         }
 
@@ -27,13 +28,14 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new ModificarCli().ShowDialog(this);
+            new ModificarCli(cliente_seleccionado).ShowDialog(this);
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new DesbloquearCli().ShowDialog(this);
+            new DesbloquearCli(cliente_seleccionado).ShowDialog(this);
+            this.Close();
         }
     }
 }

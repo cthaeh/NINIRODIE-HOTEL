@@ -6,13 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class ModificarCli : Form
     {
-        public ModificarCli()
+        Cliente cliente_seleccionado;
+
+        public ModificarCli(Cliente cli)
         {
+            cliente_seleccionado = cli;
             InitializeComponent();
         }
 
@@ -95,12 +100,41 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //se debe golpear la base con los datos en los campos
+            if (textBoxcalle.Text == "" || textBoxdir.Text == "" || textBoxloc.Text == ""
+    || textBoxmail.Text == "" || textBoxnac.Text == "" || textBoxnomb.Text == ""
+    || textBoxnro.Text == "" || textBoxpa.Text == "" || textBoxtel.Text == ""
+    || textBoxtipo.Text == "" || textBoxap.Text == "" || textBoxdep.Text == "" || textBoxpis.Text == "")
+            {
+                MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
+            }
+
+            Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
+                textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
+                Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
+                textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
+
+            RepositorioCliente.Instance.ModificarCliente(cli, cliente_seleccionado.identificador);
+
+            MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
         }
 
         private void ModificarCli_Load(object sender, EventArgs e)
         {
-            //se debe cargar los campos con los datos que ya estan en la tabla
+            textBoxap.Text = cliente_seleccionado.apellido;
+            textBoxcalle.Text = cliente_seleccionado.calle;
+            textBoxdep.Text = cliente_seleccionado.departamento;
+            textBoxdir.Text = cliente_seleccionado.nro_calle.ToString();
+            textBoxloc.Text = cliente_seleccionado.localidad;
+            textBoxmail.Text = cliente_seleccionado.mail;
+            textBoxnac.Text = cliente_seleccionado.nacionalidad;
+            textBoxnomb.Text = cliente_seleccionado.nombre;
+            textBoxnro.Text = cliente_seleccionado.numero_documento.ToString();
+            textBoxpa.Text = cliente_seleccionado.pais;
+            textBoxpis.Text = cliente_seleccionado.piso.ToString();
+            textBoxtel.Text = cliente_seleccionado.telefono.ToString();
+            textBoxtipo.Text = cliente_seleccionado.tipo_documento;
         }
 
         private void textBoxpis_KeyPress(object sender, KeyPressEventArgs e)

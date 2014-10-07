@@ -33,7 +33,7 @@ namespace FrbaHotel.ABM_de_Cliente
                 || textBoxtipo.Text == "" || textBoxap.Text == "" || textBoxdep.Text == "" || textBoxpis.Text == "")
             {
                 MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
-            }//insertar en la base
+            }
             
             Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
                 textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
