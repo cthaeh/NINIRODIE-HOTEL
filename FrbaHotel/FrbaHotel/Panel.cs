@@ -119,7 +119,7 @@ namespace FrbaHotel
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MenuEmp(usuario).ShowDialog(this);
+            new BusquedaModEmp().ShowDialog(this);
         }
 
         private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)

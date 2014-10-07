@@ -82,7 +82,7 @@ namespace FrbaHotel.ABM_de_Empleado
                 if (this.dataGridView1.SelectedRows.Count > 0)
                 {
                     empleado_seleccionado = (Personal)this.dataGridView1.SelectedRows[0].DataBoundItem;
-                    new ModificarEmp(empleado_seleccionado).ShowDialog(this);
+                    new MenuEmp(empleado_seleccionado).ShowDialog(this);
 
                     this.Close();
                 }

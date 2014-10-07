@@ -13,10 +13,10 @@ namespace FrbaHotel.Login
 {
     public partial class CambiarClave : Form
     {
-        Usuario usuario;
-        public CambiarClave(Usuario usu)
+        Decimal codigo_usuario;
+        public CambiarClave(Decimal usu)
         {
-            usuario = usu;
+            codigo_usuario = usu;
             InitializeComponent();
         }
 
@@ -31,7 +31,7 @@ namespace FrbaHotel.Login
             {
                 MessageBox.Show("Claves Distintas", "Alerta", MessageBoxButtons.OK);
             }
-            RepositorioUsuario.Instance.CambiarClave(usuario.codigo, textBox1.Text);
+            RepositorioUsuario.Instance.CambiarClave(codigo_usuario, textBox1.Text);
 
             MessageBox.Show("Clave cambiada con exito", "Alerta", MessageBoxButtons.OK);
 

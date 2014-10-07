@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Empleado
 {
@@ -13,9 +15,11 @@ namespace FrbaHotel.ABM_de_Empleado
     {
         bool hab = false;
         bool des = false;
+        Personal empleado_seleccionado;
 
-        public DesbloquearEmp()
+        public DesbloquearEmp(Personal per)
         {
+            empleado_seleccionado = per;
             InitializeComponent();
         }
 
@@ -56,12 +60,38 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Golpear en la base bloqueando o desbloqueado el usuario
+            int habilitar = 0;
+
+            if (checkBoxdes.Checked)
+            {
+                habilitar = 1;
+            }
+            if (checkBoxhab.Checked)
+            {
+                habilitar = 0;
+            }
+
+            RepositorioUsuario.Instance.BloquearUsuario(habilitar, empleado_seleccionado.codigo_usuario);
+
+            MessageBox.Show("El cambio se ha realizado con exito", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
         }
 
         private void DesbloquearEmp_Load(object sender, EventArgs e)
         {
-            //Setear los checkbox dependiendo de los datos de la base
+            var user = RepositorioUsuario.Instance.BuscarUsuarioXCod(empleado_seleccionado.codigo_usuario);
+
+            if (user.bloque == false)
+            {
+                checkBoxhab.Enabled = false;
+                checkBoxdes.Enabled = true;
+            }
+            else
+            {
+                checkBoxdes.Enabled = false;
+                checkBoxhab.Enabled = true;
+            }
         }
     }
 }
