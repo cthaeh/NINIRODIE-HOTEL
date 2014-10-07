@@ -24,7 +24,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
-        public Cliente BuscarClienteD(String apellido, String nombre, String mail, Decimal documento)
+        public List<Cliente> BuscarClienteD(String apellido, String nombre, String mail, Decimal documento)
         {
             var query = String.Format(@"Select * FROM LA_REVANCHA.CLIENTE WHERE 1 = 1 ");
 
@@ -47,15 +47,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.CLIENTE");
 
-           if (dataRow.Count == 0)
-            {
-                return new Cliente();
-            }
-            else
-            {
                 var clientes = dataRow.ToList<Cliente>(this.DataRowToCliente);
-                return clientes.First();
-            }
+                return clientes;
+            
         }
 
         public void InsertarCliente(Cliente cliente)
@@ -100,7 +94,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var call = row["CLI_CALLE"].ToString();
             var altu = Decimal.Parse(row["CLI_NRO_CALLE"].ToString());
             var pis = Decimal.Parse(row["CLI_PISO"].ToString());
-            var puert = Decimal.Parse(row["CLI_DEPARTAMENTO"].ToString());
+            var puert = row["CLI_DEPARTAMENTO"].ToString();
             var pais = row["CLI_PAIS_ORIGEN"].ToString();
             var nacion = row["CLI_NACIONALIDAD"].ToString();
 

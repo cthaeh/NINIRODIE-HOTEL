@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
@@ -13,9 +15,11 @@ namespace FrbaHotel.ABM_de_Cliente
     {
         bool hab = false;
         bool des = false;
+        Cliente cliente_seleccionado;
 
-        public BajaCli()
+        public BajaCli(Cliente cli)
         {
+            cliente_seleccionado = cli;
             InitializeComponent();
         }
 
@@ -52,6 +56,42 @@ namespace FrbaHotel.ABM_de_Cliente
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int habilitar = 0;
+
+            if (checkBoxdes.Checked)
+            {
+                habilitar = 0;
+            }
+            if (checkBoxhab.Checked)
+            {
+                habilitar = 1;
+            }
+
+            RepositorioUsuario.Instance.BajarUsuario(habilitar, cliente_seleccionado.codigo_usuario);
+
+            MessageBox.Show("El cambio se ha realizado con exito", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
+        }
+
+        private void BajaCli_Load(object sender, EventArgs e)
+        {
+            var user = RepositorioUsuario.Instance.BuscarUsuarioXCod(cliente_seleccionado.codigo_usuario);
+
+            if (user.habilitado == true)
+            {
+                checkBoxhab.Enabled = false;
+                checkBoxdes.Enabled = true;
+            }
+            else
+            {
+                checkBoxdes.Enabled = false;
+                checkBoxhab.Enabled = true;
+            }
         }
     }
 }

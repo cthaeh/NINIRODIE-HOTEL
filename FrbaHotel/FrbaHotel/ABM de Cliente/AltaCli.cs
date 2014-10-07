@@ -37,7 +37,7 @@ namespace FrbaHotel.ABM_de_Cliente
             
             Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
                 textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
-                Decimal.Parse(textBoxpis.Text), Decimal.Parse(textBoxdep.Text), (dateTimePicker1.Value),
+                Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
                 textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
 
             RepositorioCliente.Instance.InsertarCliente(cli);
@@ -127,7 +127,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void textBoxdep_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloEscribeNumeros(e);
+            soloEscribeLetras(e);
         }
     }
 }

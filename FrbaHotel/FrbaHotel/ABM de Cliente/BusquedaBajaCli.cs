@@ -14,7 +14,8 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class BusquedaBajaCli : Form
     {
         Decimal nro = 0;
-        Cliente cliente_buscado;
+        List<Cliente> clientes_buscados;
+        Cliente cliente_seleccionado;
         bool se_busco = false;
 
         public BusquedaBajaCli()
@@ -82,8 +83,17 @@ namespace FrbaHotel.ABM_de_Cliente
             }
             else
             {
-                //se debe preguntar por si hay algun elemento seleccionado en la grilla
-                new BajaCli().ShowDialog(this);
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    cliente_seleccionado = (Cliente)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    new BajaCli(cliente_seleccionado).ShowDialog(this);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un empleado", "Alerta", MessageBoxButtons.OK);
+                }
             }
             
         }
@@ -104,14 +114,31 @@ namespace FrbaHotel.ABM_de_Cliente
                     nro = Decimal.Parse(textBoxdni.Text);
                 }
 
-                cliente_buscado = RepositorioCliente.Instance.BuscarClienteD(textBoxap.Text, textBoxnomb.Text, textBoxmail.Text, nro);
+                clientes_buscados = RepositorioCliente.Instance.BuscarClienteD(textBoxap.Text, textBoxnomb.Text, textBoxmail.Text, nro);
 
-                if (cliente_buscado.identificador == -1)
-                {
-                    MessageBox.Show("Usuario no existe", "ALERTA", MessageBoxButtons.OK);
-                }
 
-                //se debe completar la grilla con los datos en cliente_buscado
+                this.dataGridView1.DataSource = new List<Cliente>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = clientes_buscados;
+                this.dataGridView1.Refresh();
+
+                this.dataGridView1.Columns["identificador"].Visible = false;
+                this.dataGridView1.Columns["codigo_usuario"].Visible = false;
+                this.dataGridView1.Columns["tipo_documento"].Visible = false;
+                this.dataGridView1.Columns["telefono"].Visible = false;
+                this.dataGridView1.Columns["nacimiento"].Visible = false;
+                this.dataGridView1.Columns["calle"].Visible = false;
+                this.dataGridView1.Columns["nro_calle"].Visible = false;
+                this.dataGridView1.Columns["piso"].Visible = false;
+                this.dataGridView1.Columns["departamento"].Visible = false;
+                this.dataGridView1.Columns["nacionalidad"].Visible = false;
+                this.dataGridView1.Columns["pais"].Visible = false;
+                this.dataGridView1.Columns["localidad"].Visible = false;
+
+                this.dataGridView1.Columns["nombre"].ReadOnly = true;
+                this.dataGridView1.Columns["apellido"].ReadOnly = true;
+                this.dataGridView1.Columns["numero_documento"].ReadOnly = true;
+                this.dataGridView1.Columns["mail"].ReadOnly = true;
             }
         }
     }

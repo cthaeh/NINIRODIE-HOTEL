@@ -70,7 +70,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new BajaCli().ShowDialog(this);
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)

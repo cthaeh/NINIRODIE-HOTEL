@@ -54,6 +54,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBoxdes
             // 
@@ -107,6 +108,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BajaCli";
             this.Text = "Baja Cliente";
+            this.Load += new System.EventHandler(this.BajaCli_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

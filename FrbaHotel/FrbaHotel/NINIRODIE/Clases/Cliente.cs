@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Cliente
+    public class Cliente
     {
         public Decimal identificador { get; set; }
         public Decimal codigo_usuario { get; set; }
@@ -18,7 +18,7 @@ namespace FrbaHotel.NINIRODIE.Clases
         public String calle { get; set; }
         public Decimal nro_calle { get; set; }
         public Decimal piso { get; set; }
-        public Decimal departamento { get; set; }
+        public String departamento { get; set; }
         public String localidad { get; set; }
         public String pais { get; set; }
         public String nacionalidad { get; set; }
@@ -31,7 +31,7 @@ namespace FrbaHotel.NINIRODIE.Clases
 
         public Cliente(Decimal id, Decimal cod_usu, String nomb, String ap,
             String tipo_doc, Decimal nro_doc, String email, Decimal tel,
-            String cal, Decimal nro_cal, Decimal pis, Decimal dep, DateTime fecha_nac,
+            String cal, Decimal nro_cal, Decimal pis, String dep, DateTime fecha_nac,
             String loc, String origen, String nacion) : this(nomb, ap,
             tipo_doc, nro_doc, email, tel, cal, nro_cal, pis, dep, fecha_nac, loc, origen, nacion)
         {
@@ -41,7 +41,7 @@ namespace FrbaHotel.NINIRODIE.Clases
 
         public Cliente(String nomb, String ap,
     String tipo_doc, Decimal nro_doc, String email, Decimal tel,
-    String cal, Decimal nro_cal, Decimal pis, Decimal dep, DateTime fecha_nac, String loc, String origen, String nacion)
+    String cal, Decimal nro_cal, Decimal pis, String dep, DateTime fecha_nac, String loc, String origen, String nacion)
         {
             nombre = nomb;
             apellido = ap;
