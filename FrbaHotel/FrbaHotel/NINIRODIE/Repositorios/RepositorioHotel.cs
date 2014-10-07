@@ -24,6 +24,34 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public List<Hotel> BuscarHotelD(Decimal categoria, String ciudad, String nombre,
+            String pais)
+        {
+            var query = String.Format(@"Select * FROM LA_REVANCHA.HOTEL WHERE 1 = 1 ");
+
+            if (categoria != 1000)
+            {
+                query = query + "AND HOT_ESTRELLAS = " + categoria;
+            }
+            if (nombre != "")
+            {
+                query = query + "AND HOT_NOMBRE = '" + nombre + "' ";
+            }
+            if (ciudad != "")
+            {
+                query = query + "AND HOT_CIUDAD = ' " + ciudad + "' ";
+            }
+            if (pais != "")
+            {
+                query = query + "AND HOT_PAIS = '" + pais + "' ";
+            }
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+            return hoteles;
+        }
+
         public void InsertarHotelxRegimen(Decimal hotel, Decimal regimen)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.HOTEL_REGIMEN " +
