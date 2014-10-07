@@ -15,7 +15,9 @@ namespace FrbaHotel.ABM_Hotel
     {
         decimal banderacat = 0;
         bool seguir = false;
+        bool se_busco = false;
         List<Hotel> hoteles_buscados;
+        Hotel hotel_seleccionado;
 
         public BusquedaBajaHot()
         {
@@ -61,8 +63,16 @@ namespace FrbaHotel.ABM_Hotel
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (se_busco == true)
+            {
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    hotel_seleccionado = (Hotel)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    new BajaHot(hotel_seleccionado).ShowDialog(this);
 
-           new BajaHot().ShowDialog(this);
+                    this.Close();
+                }
+            }
             
         }
 
@@ -90,7 +100,7 @@ namespace FrbaHotel.ABM_Hotel
         {
             banderacat = 0;
             seguir = true;
-
+            se_busco = true;
             if (textBoxcat.Text == "")
             {
                 banderacat = 1000;

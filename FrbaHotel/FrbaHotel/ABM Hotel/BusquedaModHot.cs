@@ -83,7 +83,6 @@ namespace FrbaHotel.ABM_Hotel
             }
             if (seguir == true)
             {
-                new BajaHot().ShowDialog(this);
             }
         }
 

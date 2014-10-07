@@ -53,7 +53,7 @@ namespace FrbaHotel
                 estadistica.Visible = false;
                 facturar.Visible = true;
             }
-            else if (tipo == "super")
+            else if (tipo == "pulenta")
             {
                 abm_emp.Visible = true;
                 abm_hot.Visible = true;

@@ -24,6 +24,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void BajarHotel(Decimal codigo, Decimal habilitado)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL SET HOT_HABILITADO = " +
+"'{0}' WHERE HOT_CODIGO = '{1}'", habilitado, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public List<Hotel> BuscarHotelD(Decimal categoria, String ciudad, String nombre,
             String pais)
         {

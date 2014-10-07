@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_Hotel
 {
@@ -13,9 +15,11 @@ namespace FrbaHotel.ABM_Hotel
     {
         bool hab = false;
         bool des = false;
+        Hotel hotel_seleccionado;
 
-        public BajaHot()
+        public BajaHot(Hotel hot)
         {
+            hotel_seleccionado = hot;
             InitializeComponent();
         }
 
@@ -52,6 +56,42 @@ namespace FrbaHotel.ABM_Hotel
                 checkBoxhab.Enabled = true;
             }
 
+        }
+
+        private void BajaHot_Load(object sender, EventArgs e)
+        {
+            var hotel = RepositorioHotel.Instance.BuscarHotel(hotel_seleccionado.nombre);
+
+            if (hotel.habilitado == false)
+            {
+                checkBoxhab.Enabled = true;
+                checkBoxdes.Enabled = false;
+            }
+            else
+            {
+                checkBoxdes.Enabled = true;
+                checkBoxhab.Enabled = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int habilitar = 0;
+
+            if (checkBoxdes.Checked)
+            {
+                habilitar = 0;
+            }
+            if (checkBoxhab.Checked)
+            {
+                habilitar = 1;
+            }
+
+            RepositorioHotel.Instance.BajarHotel(hotel_seleccionado.identificador, habilitar);
+
+            MessageBox.Show("Se ha dado de baja exitosamente", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
         }
     }
 }

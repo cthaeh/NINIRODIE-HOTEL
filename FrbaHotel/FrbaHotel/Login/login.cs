@@ -46,8 +46,9 @@ namespace FrbaHotel.Login
             {
                 if (Pass_usuario.Text == "w23e")
                 {
+                    MessageBox.Show("Ud. se esta logueando con un usuario de altos privilegios, por favor sea cuidadoso con su uso", "Alerta", MessageBoxButtons.OK);
                     cerrar = true;
-                    new Panel("super", usu_aux).ShowDialog(this); ;
+                    new SeleccionHot("pulenta", usu_aux).ShowDialog(this); ;
                 }
             }
             if (cerrar == false)
