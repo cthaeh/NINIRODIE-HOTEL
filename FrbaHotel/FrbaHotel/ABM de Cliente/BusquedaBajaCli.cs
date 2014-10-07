@@ -13,7 +13,7 @@ namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class BusquedaBajaCli : Form
     {
-        int nro = 0;
+        Decimal nro = 0;
         Cliente cliente_buscado;
         bool se_busco = false;
 
@@ -101,7 +101,7 @@ namespace FrbaHotel.ABM_de_Cliente
             {
                 if (textBoxdni.Text != "")
                 {
-                    nro = int.Parse(textBoxdni.Text);
+                    nro = Decimal.Parse(textBoxdni.Text);
                 }
 
                 cliente_buscado = RepositorioCliente.Instance.BuscarClienteD(textBoxap.Text, textBoxnomb.Text, textBoxmail.Text, nro);

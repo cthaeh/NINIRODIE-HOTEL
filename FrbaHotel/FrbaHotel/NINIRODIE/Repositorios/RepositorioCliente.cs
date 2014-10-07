@@ -24,7 +24,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
-        public Cliente BuscarClienteD(String apellido, String nombre, String mail, int documento)
+        public Cliente BuscarClienteD(String apellido, String nombre, String mail, Decimal documento)
         {
             var query = String.Format(@"Select * FROM LA_REVANCHA.CLIENTE WHERE 1 = 1 ");
 

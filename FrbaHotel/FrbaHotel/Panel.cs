@@ -31,6 +31,11 @@ namespace FrbaHotel
                 abm_guest.Visible = false;
                 abm_rol.Visible = true;
                 abm_hab.Visible = true;
+                abm_reserva.Visible = false;
+                estadia.Visible = false;
+                consumible.Visible = false;
+                estadistica.Visible = true;
+                facturar.Visible = false;
             }
             else if (tipo == "recep")
             {
@@ -39,6 +44,11 @@ namespace FrbaHotel
                 abm_guest.Visible = true;
                 abm_rol.Visible = false;
                 abm_hab.Visible = false;
+                abm_reserva.Visible = true;
+                estadia.Visible = true;
+                consumible.Visible = true;
+                estadistica.Visible = false;
+                facturar.Visible = true;
             }
             else
             {
@@ -47,6 +57,11 @@ namespace FrbaHotel
                 abm_guest.Visible = false;
                 abm_rol.Visible = false;
                 abm_hab.Visible = false;
+                abm_reserva.Visible = true;
+                estadia.Visible = false;
+                consumible.Visible = false;
+                estadistica.Visible = false;
+                facturar.Visible = false;
             }
         }
 
@@ -137,16 +152,6 @@ namespace FrbaHotel
 
         private void Panel_Load(object sender, EventArgs e)
         {
-            abm_emp.Visible = false;
-            abm_hot.Visible = false;
-            abm_guest.Visible = false;
-            abm_rol.Visible = false;
-            abm_hab.Visible = false;
-            abm_reserva.Visible = false;
-            estadia.Visible = false;
-            consumible.Visible = false;
-            estadistica.Visible = false;
-            facturar.Visible = false;
         }
     }
 }
