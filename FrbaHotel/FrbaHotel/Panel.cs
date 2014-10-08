@@ -15,6 +15,7 @@ using FrbaHotel.ABM_de_Empleado;
 using FrbaHotel.ABM_de_Rol;
 using FrbaHotel.NINIRODIE.Clases;
 using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.Estadistica;
 
 namespace FrbaHotel
 {
@@ -198,6 +199,11 @@ namespace FrbaHotel
 
         private void Panel_Load(object sender, EventArgs e)
         {
+        }
+
+        private void estadistica_Click(object sender, EventArgs e)
+        {
+            new EstFecha().ShowDialog(this);
         }
     }
 }

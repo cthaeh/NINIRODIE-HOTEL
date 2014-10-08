@@ -247,6 +247,48 @@
     <Compile Include="Cancelar Reserva\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Estadistica\Est1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\Est1.Designer.cs">
+      <DependentUpon>Est1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\Est2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\Est2.Designer.cs">
+      <DependentUpon>Est2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\Est3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\Est3.Designer.cs">
+      <DependentUpon>Est3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\Est4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\Est4.Designer.cs">
+      <DependentUpon>Est4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\Est5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\Est5.Designer.cs">
+      <DependentUpon>Est5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\EstFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\EstFecha.Designer.cs">
+      <DependentUpon>EstFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica\EstMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica\EstMenu.Designer.cs">
+      <DependentUpon>EstMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +445,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Hotel\ModificarHot.resx">
       <DependentUpon>ModificarHot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\Est1.resx">
+      <DependentUpon>Est1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\Est2.resx">
+      <DependentUpon>Est2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\Est3.resx">
+      <DependentUpon>Est3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\Est4.resx">
+      <DependentUpon>Est4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\Est5.resx">
+      <DependentUpon>Est5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\EstFecha.resx">
+      <DependentUpon>EstFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica\EstMenu.resx">
+      <DependentUpon>EstMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

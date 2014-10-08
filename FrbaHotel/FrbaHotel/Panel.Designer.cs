@@ -54,7 +54,7 @@
             this.estadia = new System.Windows.Forms.ToolStripButton();
             this.consumible = new System.Windows.Forms.ToolStripButton();
             this.facturar = new System.Windows.Forms.ToolStripButton();
-            this.estadistica = new System.Windows.Forms.ToolStripSplitButton();
+            this.estadistica = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,21 +94,21 @@
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altaToolStripMenuItem.Text = "Alta";
             this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // bajaToolStripMenuItem
             // 
             this.bajaToolStripMenuItem.Name = "bajaToolStripMenuItem";
-            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajaToolStripMenuItem.Text = "Baja";
             this.bajaToolStripMenuItem.Click += new System.EventHandler(this.bajaToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
@@ -293,8 +293,9 @@
             this.estadistica.Image = ((System.Drawing.Image)(resources.GetObject("estadistica.Image")));
             this.estadistica.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.estadistica.Name = "estadistica";
-            this.estadistica.Size = new System.Drawing.Size(83, 22);
+            this.estadistica.Size = new System.Drawing.Size(71, 22);
             this.estadistica.Text = "Estadisticas";
+            this.estadistica.Click += new System.EventHandler(this.estadistica_Click);
             // 
             // Panel
             // 
@@ -340,6 +341,6 @@
         private System.Windows.Forms.ToolStripButton estadia;
         private System.Windows.Forms.ToolStripButton consumible;
         private System.Windows.Forms.ToolStripButton facturar;
-        private System.Windows.Forms.ToolStripSplitButton estadistica;
+        private System.Windows.Forms.ToolStripButton estadistica;
     }
 }
