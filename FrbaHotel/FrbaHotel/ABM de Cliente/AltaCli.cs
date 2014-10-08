@@ -34,18 +34,28 @@ namespace FrbaHotel.ABM_de_Cliente
             {
                 MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
             }
-            
-            Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
-                textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
-                Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
-                textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
+            else
+            {
+                Decimal bandera = RepositorioCliente.Instance.ExisteCli(Decimal.Parse(textBoxnro.Text));
+                if (bandera == 2)
+                {
+                    Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
+                        textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
+                        Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
+                        textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
 
-            RepositorioCliente.Instance.InsertarCliente(cli);
-            char a = cli.apellido[0];
-            char n = cli.nombre[0];
-            MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
+                    RepositorioCliente.Instance.InsertarCliente(cli);
+                    char a = cli.apellido[0];
+                    char n = cli.nombre[0];
+                    MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
 
-            this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un cliente con ese documento", "Alerta", MessageBoxButtons.OK);
+                }
+            }
         }
 
         public static void soloEscribeLetras(KeyPressEventArgs e)

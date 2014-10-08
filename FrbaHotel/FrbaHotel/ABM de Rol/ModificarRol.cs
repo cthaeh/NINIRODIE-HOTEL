@@ -39,8 +39,8 @@ namespace FrbaHotel.ABM_de_Rol
             }
             else
             {
-                Decimal bandera = RepositorioRol.Instance.ExisteRol(textBoxnomb.Text);
-                if (bandera == 2)
+                Rol bandera = RepositorioRol.Instance.ExisteRolMod(textBoxnomb.Text);
+                if (bandera.identificador == rol_seleccionado.identificador)
                 {
                     RepositorioRol.Instance.DeshabilitarTodos(rol_seleccionado.identificador);
 

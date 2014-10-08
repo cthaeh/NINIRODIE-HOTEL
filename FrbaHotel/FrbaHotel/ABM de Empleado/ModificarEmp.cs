@@ -87,8 +87,8 @@ namespace FrbaHotel.ABM_de_Empleado
             }
             else
             {
-                Decimal bandera = RepositorioEmpleado.Instance.ExisteEmp(Decimal.Parse(textBoxdni.Text));
-                if (bandera == 2)
+                Personal bandera = RepositorioEmpleado.Instance.ExisteEmpMod(Decimal.Parse(textBoxdni.Text));
+                if (bandera.codigo_usuario == empleado_seleccionado.codigo_usuario)
                 {
                     RepositorioUsuario.Instance.ModificarEmp(empleado_seleccionado.codigo_usuario, comboBox1.Text);
 

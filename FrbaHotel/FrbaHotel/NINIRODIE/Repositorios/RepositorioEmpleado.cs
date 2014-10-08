@@ -24,6 +24,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public Personal ExisteEmpMod(Decimal dni)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.PERSONAL WHERE PER_NUMERO_IDENTIFICACION = '{0}'", dni);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.PERSONAL");
+
+            var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
+
+            return empleados.First();
+        }
+
         public Decimal ExisteEmp(Decimal dni)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.PERSONAL WHERE PER_NUMERO_IDENTIFICACION = '{0}'", dni);

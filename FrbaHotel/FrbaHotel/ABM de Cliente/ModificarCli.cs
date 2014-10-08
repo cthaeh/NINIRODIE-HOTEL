@@ -107,17 +107,27 @@ namespace FrbaHotel.ABM_de_Cliente
             {
                 MessageBox.Show("No dejar campos vacios", "Alerta", MessageBoxButtons.OK);
             }
+            else
+            {
+                Cliente bandera = RepositorioCliente.Instance.ExisteCliMod(Decimal.Parse(textBoxnro.Text));
+                if (bandera.identificador == cliente_seleccionado.identificador)
+                {
+                    Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
+                        textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
+                        Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
+                        textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
 
-            Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
-                textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
-                Decimal.Parse(textBoxpis.Text), textBoxdep.Text, (dateTimePicker1.Value),
-                textBoxloc.Text, textBoxpa.Text, textBoxnac.Text);
+                    RepositorioCliente.Instance.ModificarCliente(cli, cliente_seleccionado.identificador);
 
-            RepositorioCliente.Instance.ModificarCliente(cli, cliente_seleccionado.identificador);
+                    MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
 
-            MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
-
-            this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un cliente con ese documento", "Alerta", MessageBoxButtons.OK);
+                }
+            }
         }
 
         private void ModificarCli_Load(object sender, EventArgs e)

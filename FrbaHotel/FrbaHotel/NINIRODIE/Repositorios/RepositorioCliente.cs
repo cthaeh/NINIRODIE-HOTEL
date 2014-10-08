@@ -24,6 +24,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+
+
         public List<Cliente> BuscarClienteD(String apellido, String nombre, String mail, Decimal documento)
         {
             var query = String.Format(@"Select * FROM LA_REVANCHA.CLIENTE WHERE 1 = 1 ");
@@ -50,6 +52,32 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 var clientes = dataRow.ToList<Cliente>(this.DataRowToCliente);
                 return clientes;
             
+        }
+
+        public Cliente ExisteCliMod(Decimal dni)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.CLIENTE WHERE CLI_NUMERO_IDENTIFICACION = '{0}'", dni);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.CLIENTE");
+
+            var clientes = dataRow.ToList<Cliente>(this.DataRowToCliente);
+            return clientes.First();
+        }
+
+        public Decimal ExisteCli(Decimal dni)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.CLIENTE WHERE CLI_NUMERO_IDENTIFICACION = '{0}'", dni);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.CLIENTE");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
 
         public void ModificarCliente(Cliente cliente, Decimal codigo)
