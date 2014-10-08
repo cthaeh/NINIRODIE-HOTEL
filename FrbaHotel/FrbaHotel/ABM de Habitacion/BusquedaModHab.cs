@@ -84,7 +84,7 @@ namespace FrbaHotel.ABM_de_Habitacion
                 if (this.dataGridView1.SelectedRows.Count > 0)
                 {
                     habitacion_seleccionada = (Habitacion)this.dataGridView1.SelectedRows[0].DataBoundItem;
-                    new ModificarHab(habitacion_seleccionada).ShowDialog(this);
+                    new ModificarHab(habitacion_seleccionada, hotel_seleccionado).ShowDialog(this);
 
                     this.Close();
                 }

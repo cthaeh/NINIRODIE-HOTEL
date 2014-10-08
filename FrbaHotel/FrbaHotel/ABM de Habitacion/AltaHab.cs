@@ -155,12 +155,20 @@ namespace FrbaHotel.ABM_de_Habitacion
                 }
                 else { ubi = "interna"; }
 
-                RepositorioHabitacion.Instance.InsertarHabitacion(hotel_seleccionado.identificador,
-                    Decimal.Parse(textBoxnro.Text), Decimal.Parse(textBoxpis.Text), textBoxdesc.Text, ubi, cod_tipo);
+                Decimal bandera = RepositorioHabitacion.Instance.ExisteHab(hotel_seleccionado.identificador, Decimal.Parse(textBoxnro.Text));
+                if (bandera == 2)
+                {
+                    RepositorioHabitacion.Instance.InsertarHabitacion(hotel_seleccionado.identificador,
+                        Decimal.Parse(textBoxnro.Text), Decimal.Parse(textBoxpis.Text), textBoxdesc.Text, ubi, cod_tipo);
 
-                MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
 
-                this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe ese numumero de habitacion", "Alerta", MessageBoxButtons.OK);
+                }
             }
         }
 

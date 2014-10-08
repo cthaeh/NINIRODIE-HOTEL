@@ -108,57 +108,7 @@ namespace FrbaHotel
                     n = n + 1;
                 }
             }
-       /*     if (tipo == "ADMIN")
-            {
-                abm_emp.Visible = true;
-                abm_hot.Visible = true;
-                abm_guest.Visible = false;
-                abm_rol.Visible = true;
-                abm_hab.Visible = true;
-                abm_reserva.Visible = false;
-                estadia.Visible = false;
-                consumible.Visible = false;
-                estadistica.Visible = true;
-                facturar.Visible = false;
-            }
-            else if (tipo == "RECEP")
-            {
-                abm_emp.Visible = false;
-                abm_hot.Visible = false;
-                abm_guest.Visible = true;
-                abm_rol.Visible = false;
-                abm_hab.Visible = false;
-                abm_reserva.Visible = true;
-                estadia.Visible = true;
-                consumible.Visible = true;
-                estadistica.Visible = false;
-                facturar.Visible = true;
-            }
-            else if (tipo == "pulenta")
-            {
-                abm_emp.Visible = true;
-                abm_hot.Visible = true;
-                abm_guest.Visible = true;
-                abm_rol.Visible = true;
-                abm_hab.Visible = true;
-                abm_reserva.Visible = true;
-                estadia.Visible = true;
-                consumible.Visible = true;
-                estadistica.Visible = true;
-                facturar.Visible = true;
-            }else
-            {
-                abm_emp.Visible = false;
-                abm_hot.Visible = false;
-                abm_guest.Visible = false;
-                abm_rol.Visible = false;
-                abm_hab.Visible = false;
-                abm_reserva.Visible = true;
-                estadia.Visible = false;
-                consumible.Visible = false;
-                estadistica.Visible = false;
-                facturar.Visible = false;
-            }*/
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

@@ -16,9 +16,11 @@ namespace FrbaHotel.ABM_de_Habitacion
         bool interna = false;
         bool externa = false;
         Habitacion habitacion_seleccionada;
+        Hotel hotel_seleccionado;
 
-        public ModificarHab(Habitacion hab)
+        public ModificarHab(Habitacion hab, Hotel hot)
         {
+            hotel_seleccionado = hot;
             habitacion_seleccionada = hab;
             InitializeComponent();
         }
@@ -145,11 +147,20 @@ namespace FrbaHotel.ABM_de_Habitacion
                 {
                     ubi = "interna";
                 }
-                RepositorioHabitacion.Instance.ModificarHabitacion(textBoxpis.Text, textBoxnro.Text, textBoxdesc.Text, ubi, habitacion_seleccionada.identificador);
 
-                MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
+                Habitacion bandera = RepositorioHabitacion.Instance.ExisteHabMod(hotel_seleccionado.identificador, Decimal.Parse(textBoxnro.Text));
+                if (bandera.identificador == habitacion_seleccionada.identificador)
+                {
+                    RepositorioHabitacion.Instance.ModificarHabitacion(textBoxpis.Text, textBoxnro.Text, textBoxdesc.Text, ubi, habitacion_seleccionada.identificador);
 
-                this.Close();
+                    MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe habitacion con ese numero", "Alerta", MessageBoxButtons.OK);
+                }
             }
         }
     }

@@ -51,6 +51,39 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return habitacion.First();
         }
 
+        public Habitacion ExisteHabMod(Decimal cod_hot, Decimal nro)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HABITACION WHERE HAB_COD_HOTEL = '{0}' AND HAB_NUMERO = '{1}'", cod_hot, nro);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HABITACION");
+
+            if (dataRow.Count > 0)
+            {
+                var habitacion = dataRow.ToList<Habitacion>(this.DataRowToHab);
+                return habitacion.First();
+            }
+            else
+            {
+                return new Habitacion();
+            }
+        }
+
+        public Decimal ExisteHab(Decimal cod_hot, Decimal nro)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HABITACION WHERE HAB_COD_HOTEL = '{0}' AND HAB_NUMERO = '{1}'", cod_hot, nro);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HABITACION");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
         public List<Habitacion> BuscarHabitacion(String numero, String piso, Decimal tipo, Decimal hot)
         {
             var query = String.Format(@"Select * FROM LA_REVANCHA.HABITACION WHERE 1 = 1 ");
