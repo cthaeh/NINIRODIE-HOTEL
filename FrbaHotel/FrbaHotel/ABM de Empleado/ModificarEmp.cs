@@ -100,6 +100,16 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void ModificarEmp_Load(object sender, EventArgs e)
         {
+            List<Rol> roles = RepositorioRol.Instance.BuscarRoles();
+
+            int n = 0;
+
+            while (n < roles.Count)
+            {
+                comboBox1.Items.Add(roles.ElementAt(n).descripcion);
+                n = n + 1;
+            }
+
             var user = RepositorioEmpleado.Instance.BuscarEmpleadoXCod(empleado_seleccionado.identificador);
             var user_usu = RepositorioUsuario.Instance.BuscarUsuarioXCod(user.codigo_usuario);
             textBoxap.Text = user.apellido;

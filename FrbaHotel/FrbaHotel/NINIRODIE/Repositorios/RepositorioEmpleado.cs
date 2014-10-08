@@ -101,7 +101,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 telef = Decimal.Parse(row["PER_TELEFONO"].ToString());
 
             var meil = row["PER_MAIL"].ToString();
-            var f_nac = DateTime.Parse(row["PER_FECHA_NACIMIENTO"].ToString());
+            var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
 
             var dir = row["PER_DIRECCION"].ToString();
 

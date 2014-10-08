@@ -88,6 +88,22 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public Decimal ExisteRol(String nombre)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ROL WHERE ROL_DESCRIPCION = '{0}'", nombre);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.ROL");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
         public Rol BuscarRol(String nombre)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.ROL WHERE ROL_DESCRIPCION = '{0}'", nombre);
