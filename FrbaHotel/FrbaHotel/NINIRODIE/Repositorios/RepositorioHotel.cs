@@ -58,6 +58,22 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public Decimal ExisteHotel(String nombre)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL WHERE HOT_NOMBRE = '{0}'", nombre);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
         public void ModificarHotel(Decimal telefono, Decimal categoria, String ciudad,
             String calle, String nombre, Decimal nro_calle, String pais, Decimal recargo, Decimal cod_hotel)
         {

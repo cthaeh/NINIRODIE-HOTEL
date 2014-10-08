@@ -113,48 +113,56 @@ namespace FrbaHotel.ABM_Hotel
             }
             else
             {
-                Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
-                RepositorioHotel.Instance.LimpiarHotelRegimen(hotel_seleccionado.identificador);
-                RepositorioHotel.Instance.ModificarHotel(Decimal.Parse(textBoxtel.Text),
-                    Decimal.Parse(textBoxcat.Text), textBoxciud.Text, textBoxdir.Text,
-                    textBoxnomb.Text, Decimal.Parse(textBoxnrocal.Text), textBoxpa.Text, recargo, hotel_seleccionado.identificador);
+                Decimal bandera = RepositorioHotel.Instance.ExisteHotel(textBoxnomb.Text);
+                if (bandera == 2)
+                {
+                    Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
+                    RepositorioHotel.Instance.LimpiarHotelRegimen(hotel_seleccionado.identificador);
+                    RepositorioHotel.Instance.ModificarHotel(Decimal.Parse(textBoxtel.Text),
+                        Decimal.Parse(textBoxcat.Text), textBoxciud.Text, textBoxdir.Text,
+                        textBoxnomb.Text, Decimal.Parse(textBoxnrocal.Text), textBoxpa.Text, recargo, hotel_seleccionado.identificador);
 
-                if (checkBoxall.Checked == true)
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 120);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 120);
-                }
-                if (checkBoxdes.Checked == true)
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 110);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 110);
-                }
-                if (checkBoxpc.Checked == true)
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 100);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 100);
-                }
-                if (checkBoxallmod.Checked == true)
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 130);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 130);
-                }
+                    if (checkBoxall.Checked == true)
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 120);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 120);
+                    }
+                    if (checkBoxdes.Checked == true)
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 110);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 110);
+                    }
+                    if (checkBoxpc.Checked == true)
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 100);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 100);
+                    }
+                    if (checkBoxallmod.Checked == true)
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 1, 130);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.ModificarHotelxRegimen(hotel_seleccionado.identificador, 0, 130);
+                    }
 
-                MessageBox.Show("Se ha modificado correctamente", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("Se ha modificado correctamente", "Alerta", MessageBoxButtons.OK);
 
-                this.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El nombre ya existe", "Alerta", MessageBoxButtons.OK);
+                }
             }
         }
 

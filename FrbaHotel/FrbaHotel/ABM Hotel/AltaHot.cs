@@ -99,49 +99,57 @@ namespace FrbaHotel.ABM_Hotel
             }
             else
             {
-                Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
-                RepositorioHotel.Instance.InsertarHotel(Decimal.Parse(textBoxcat.Text), textBoxciud.Text,
-                    textBoxdir.Text, textBoxnomb.Text, textBoxmail.Text, textBoxnrocal.Text,
-                    textBoxpa.Text, Decimal.Parse(textBoxtel.Text), Decimal.Parse(textBoxnrocal.Text), dateTimePicker1.Value, recargo);
-
-                Hotel hotel = RepositorioHotel.Instance.BuscarHotel(textBoxnomb.Text);
-
-                if (checkBoxall.Checked == true)
+                Decimal bandera = RepositorioHotel.Instance.ExisteHotel(textBoxnomb.Text);
+                if (bandera == 2)
                 {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador,1, 120);
+                    Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
+                    RepositorioHotel.Instance.InsertarHotel(Decimal.Parse(textBoxcat.Text), textBoxciud.Text,
+                        textBoxdir.Text, textBoxnomb.Text, textBoxmail.Text, textBoxnrocal.Text,
+                        textBoxpa.Text, Decimal.Parse(textBoxtel.Text), Decimal.Parse(textBoxnrocal.Text), dateTimePicker1.Value, recargo);
+
+                    Hotel hotel = RepositorioHotel.Instance.BuscarHotel(textBoxnomb.Text);
+
+                    if (checkBoxall.Checked == true)
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 120);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 120);
+                    }
+                    if (checkBoxdes.Checked == true)
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 110);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 110);
+                    }
+                    if (checkBoxpc.Checked == true)
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 100);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 100);
+                    }
+                    if (checkBoxallmod.Checked == true)
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 130);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 130);
+                    }
+
+                    MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
+
+                    this.Close();
                 }
                 else
                 {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 120);
+                    MessageBox.Show("El nombre ya existe", "Alerta", MessageBoxButtons.OK);
                 }
-                if (checkBoxdes.Checked == true)
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 110);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 110);
-                }
-                if (checkBoxpc.Checked == true)
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 100);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 100);
-                }
-                if (checkBoxallmod.Checked == true)
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 1, 130);
-                }
-                else
-                {
-                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 0, 130);
-                }
-
-                MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
-
-                this.Close();
             }
         }
 
