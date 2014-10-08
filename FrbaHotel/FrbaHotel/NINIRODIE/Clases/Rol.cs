@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Rol
+    public class Rol
     {
         public Decimal identificador { get; set; }
         public String descripcion { get; set; }

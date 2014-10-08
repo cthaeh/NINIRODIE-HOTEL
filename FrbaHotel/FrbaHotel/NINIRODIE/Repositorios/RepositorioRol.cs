@@ -24,6 +24,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void BajarRol(Decimal cod_rol, int hab)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.ROL SET " +
+                "ROL_HABILITADO = '{0}' WHERE ROL_CODIGO = '{1}'", hab, cod_rol);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public void ActivarRol(Decimal cod_rol, Decimal cod_fun)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.FUNCION_ROL SET " +
@@ -31,6 +39,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 1, cod_rol, cod_fun);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public List<Rol> BuscarRoles()
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ROL");
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.ROL");
+
+            var roles = dataRow.ToList<Rol>(this.DataRowToRol);
+            return roles;
         }
 
         public void InsertarRol(String nombre)
