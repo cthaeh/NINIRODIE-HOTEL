@@ -86,9 +86,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
-        public List<Hotemp> BuscarHotelesEmp()
+        public List<Hotemp> BuscarHotelesEmp(Decimal cod_usu)
         {
-            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL_USUARIO WHERE HOTCERR_HABILITADO = '{0}'", 1);
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL_USUARIO WHERE HOTCERR_HABILITADO = '{0}' AND HOTUSU_COD_USUARIO = '{1}'", 1, cod_usu);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL_USUARIO");
 

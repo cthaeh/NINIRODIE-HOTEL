@@ -24,7 +24,7 @@ namespace FrbaHotel.ABM_de_Empleado
         private void AddHotel_Load(object sender, EventArgs e)
         {
             List<Hotel> hoteles = RepositorioHotel.Instance.BuscarHoteles();
-            List<Hotemp> hoteles_emp = RepositorioHotel.Instance.BuscarHotelesEmp();
+            List<Hotemp> hoteles_emp = RepositorioHotel.Instance.BuscarHotelesEmp(personal_seleccionado.codigo_usuario);
 
             List<Hotel> hoteles_grilla = new List<Hotel>();
 

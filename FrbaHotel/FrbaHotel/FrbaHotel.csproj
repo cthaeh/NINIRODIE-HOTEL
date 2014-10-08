@@ -288,6 +288,8 @@
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
+    <Compile Include="NINIRODIE\Clases\Reserva.cs" />
+    <Compile Include="NINIRODIE\Clases\Resusu.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
     <Compile Include="NINIRODIE\Clases\Usuario.cs" />
     <Compile Include="NINIRODIE\DBUtils\DataRowCollectionExtensions.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Panel.cs">

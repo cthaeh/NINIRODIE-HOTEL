@@ -21,8 +21,10 @@ namespace FrbaHotel
     {
         String tipo_usuario;
         Usuario usuario;
-        public Panel(String tipo, Usuario usu)
+        Hotel hotel_seleccionado;
+        public Panel(String tipo, Usuario usu, Hotel hot)
         {
+            hotel_seleccionado = hot;
             usuario = usu;
             tipo_usuario = tipo;
             InitializeComponent();
