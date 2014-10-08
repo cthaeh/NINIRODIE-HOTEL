@@ -67,7 +67,7 @@ namespace FrbaHotel.Estadistica
                     dia_fin = 31;
                 }
 
-                new EstMenu(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+                new EstMenu(dia_inicio, dia_fin, mes_inicio, mes_fin, textBoxaño.Text).ShowDialog(this);
                 this.Close();
             }
 

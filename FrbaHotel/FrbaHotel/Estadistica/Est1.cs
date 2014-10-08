@@ -14,9 +14,11 @@ namespace FrbaHotel.Estadistica
     public partial class Est1 : Form
     {
         int dia_inicio, dia_fin, mes_inicio, mes_fin;
+        String año;
 
-        public Est1(int d_i, int d_f, int m_i, int m_f)
+        public Est1(int d_i, int d_f, int m_i, int m_f, String añ)
         {
+            año = añ;
             dia_inicio = d_i;
             dia_fin = d_f;
             mes_fin = m_f;
@@ -32,7 +34,9 @@ namespace FrbaHotel.Estadistica
         private void Est1_Load(object sender, EventArgs e)
         {
             List<Hotel> hoteles_grilla = new List<Hotel>();
-            hoteles_grilla = RepositorioHotel.Instance.Estadistica1();
+            String f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
+            String f_fin = año + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
+            hoteles_grilla = RepositorioHotel.Instance.Estadistica1(f_ini,f_fin);
 
             this.dataGridView1.DataSource = new List<Hotel>();
             this.dataGridView1.Refresh();
