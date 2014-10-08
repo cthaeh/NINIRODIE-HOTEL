@@ -34,16 +34,23 @@ namespace FrbaHotel.ABM_Hotel
             }
             else
             {
-                int dias = (dateTimePickerf.Value - dateTimePickeri.Value).Days;
-                if (dias < 0)
+                if (dateTimePickeri.Value <= DateTime.Today)
                 {
-                    MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("La fecha de inicio de cierre debe ser posterior al dia de ayer", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    RepositorioHotel.Instance.CerrarHotel(hotel_seleccionado.identificador, dias, dateTimePickeri.Value, dateTimePickerf.Value, textBox1.Text);
-                    MessageBox.Show("Programacion para cierre realizada con exito", "Alerta", MessageBoxButtons.OK);
-                    this.Close();
+                    int dias = (dateTimePickerf.Value - dateTimePickeri.Value).Days;
+                    if (dias < 0)
+                    {
+                        MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio", "Alerta", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        RepositorioHotel.Instance.CerrarHotel(hotel_seleccionado.identificador, dias, dateTimePickeri.Value, dateTimePickerf.Value, textBox1.Text);
+                        MessageBox.Show("Programacion para cierre realizada con exito", "Alerta", MessageBoxButtons.OK);
+                        this.Close();
+                    }
                 }
             }
         }
