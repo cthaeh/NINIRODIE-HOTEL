@@ -30,9 +30,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.PERSONAL");
 
-            var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
+            if (dataRow.Count > 0)
+            {
+                var empleados = dataRow.ToList<Personal>(this.DataRowToPersonal);
 
-            return empleados.First();
+                return empleados.First();
+            }
+            else
+            {
+                return new Personal();
+            }
+
         }
 
         public Decimal ExisteEmp(Decimal dni)

@@ -60,8 +60,15 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.CLIENTE");
 
-            var clientes = dataRow.ToList<Cliente>(this.DataRowToCliente);
-            return clientes.First();
+            if (dataRow.Count > 0)
+            {
+                var clientes = dataRow.ToList<Cliente>(this.DataRowToCliente);
+                return clientes.First();
+            }
+            else
+            {
+                return new Cliente();
+            }
         }
 
         public Decimal ExisteCli(Decimal dni)

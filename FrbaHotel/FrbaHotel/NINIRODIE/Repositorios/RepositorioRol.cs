@@ -94,8 +94,15 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.ROL");
 
-            var roles = dataRow.ToList<Rol>(this.DataRowToRol);
-            return roles.First();
+            if (dataRow.Count > 0)
+            {
+                var roles = dataRow.ToList<Rol>(this.DataRowToRol);
+                return roles.First();
+            }
+            else
+            {
+                return new Rol();
+            }
         }
 
         public Decimal ExisteRol(String nombre)

@@ -58,6 +58,23 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public Hotel ExisteHotelMod(String nombre)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL WHERE HOT_NOMBRE = '{0}'", nombre);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            if (dataRow.Count > 0)
+            {
+                var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+                return hoteles.First();
+            }
+            else
+            {
+                return new Hotel();
+            }
+        }
+
         public Decimal ExisteHotel(String nombre)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL WHERE HOT_NOMBRE = '{0}'", nombre);
@@ -75,12 +92,12 @@ namespace FrbaHotel.NINIRODIE.Repositorios
         }
 
         public void ModificarHotel(Decimal telefono, Decimal categoria, String ciudad,
-            String calle, String nombre, Decimal nro_calle, String pais, Decimal recargo, Decimal cod_hotel)
+            String calle, String nombre, Decimal nro_calle, String pais, Decimal recargo, Decimal cod_hotel, String mail)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL SET HOT_TELEFONO = '{0}', " +
                 "HOT_ESTRELLAS = '{1}', HOT_CIUDAD = '{2}', HOT_CALLE = '{3}', " +
-                "HOT_NOMBRE = '{4}', HOT_NRO_CALLE = '{5}', HOT_PAIS = '{6}', HOT_RECARGA_ESTRELLAS = '{7}' WHERE HOT_CODIGO = '{8}'",
-                telefono, categoria, ciudad, calle, nombre, nro_calle, pais, recargo, cod_hotel);
+                "HOT_NOMBRE = '{4}', HOT_NRO_CALLE = '{5}', HOT_MAIL = '{9}', HOT_PAIS = '{6}', HOT_RECARGA_ESTRELLAS = '{7}' WHERE HOT_CODIGO = '{8}'",
+                telefono, categoria, ciudad, calle, nombre, nro_calle, pais, recargo, cod_hotel, mail);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }

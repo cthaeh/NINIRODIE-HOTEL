@@ -95,8 +95,6 @@ namespace FrbaHotel.ABM_Hotel
             textBoxpa.Text = hotel_seleccionado.pais;
             textBoxtel.Text = hotel_seleccionado.telefono.ToString();
 
-        //    List<Decimal> codigos = RepositorioHotel.Instance.BuscarCodRegimen(hotel_seleccionado.identificador);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -113,14 +111,14 @@ namespace FrbaHotel.ABM_Hotel
             }
             else
             {
-                Decimal bandera = RepositorioHotel.Instance.ExisteHotel(textBoxnomb.Text);
-                if (bandera == 2)
+                Hotel bandera = RepositorioHotel.Instance.ExisteHotelMod(textBoxnomb.Text);
+                if (bandera.identificador == hotel_seleccionado.identificador)
                 {
                     Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
                     RepositorioHotel.Instance.LimpiarHotelRegimen(hotel_seleccionado.identificador);
                     RepositorioHotel.Instance.ModificarHotel(Decimal.Parse(textBoxtel.Text),
                         Decimal.Parse(textBoxcat.Text), textBoxciud.Text, textBoxdir.Text,
-                        textBoxnomb.Text, Decimal.Parse(textBoxnrocal.Text), textBoxpa.Text, recargo, hotel_seleccionado.identificador);
+                        textBoxnomb.Text, Decimal.Parse(textBoxnrocal.Text), textBoxpa.Text, recargo, hotel_seleccionado.identificador, textBoxmail.Text);
 
                     if (checkBoxall.Checked == true)
                     {
