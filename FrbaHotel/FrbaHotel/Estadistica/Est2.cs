@@ -26,5 +26,10 @@ namespace FrbaHotel.Estadistica
         {
             this.Close();
         }
+
+        private void Est2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
