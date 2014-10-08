@@ -83,7 +83,7 @@ namespace FrbaHotel.ABM_de_Usuario
                 MessageBox.Show("Claves Diferentes", "Alerta", MessageBoxButtons.OK);
             }
             if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
-                || textBoxnomb.Text == "" || textBoxmail.Text == "" || textBoxhot.Text == ""
+                || textBoxnomb.Text == "" || textBoxmail.Text == "" 
                 || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == "" || comboBox1.Text == ""
                 || textBoxap.Text == "")
             {

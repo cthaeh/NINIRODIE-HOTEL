@@ -24,19 +24,27 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
-   /*     public List<Decimal> BuscarCodRegimen(Decimal cod_hotel)
-        {
-            var query = String.Format(@"SELECT HOTREG_COD_REGIMEN FROM LA_REVANCHA.HOTEL_REGIMEN " +
-                "WHERE HOTREG_COD_HOTEL = '{0}'", cod_hotel);
-
-            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL_REGIMEN");
-
-        }*/
-
         public void LimpiarHotelRegimen(Decimal cod_hotel)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_REGIMEN SET HOTREG_HABILITADO = '{0}' " + 
                 "WHERE HOTREG_COD_HOTEL = '{1}'", 0, cod_hotel);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void Vincular(Decimal cod_usu, Decimal cod_hotel)
+        {
+            var query = String.Format(@"INSERT INTO LA_REVANCHA.HOTEL_USUARIO " +
+    "(HOTCERR_COD_HOTEL, HOTCERR_HABILITADO, HOTUSU_COD_USUARIO)" +
+    "VALUES ('{0}','{1}','{2}')", cod_hotel, 1, cod_usu);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void ActualizarVinculo(Decimal cod_usu, Decimal cod_hotel)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_USUARIO SET HOTCERR_HABILITADO = '{0}' WHERE HOTCERR_COD_HOTEL = '{1}' AND HOTUSU_COD_USUARIO = '{2}'",
+                1, cod_hotel, cod_usu);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
@@ -52,14 +60,49 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public Decimal TieneHotel(Decimal cod_usu, Decimal cod_hot)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL_USUARIO WHERE HOTCERR_COD_HOTEL = '{0}' AND HOTUSU_COD_USUARIO = '{1}'",
+                cod_hot, cod_usu);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL_USUARIO");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public List<Hotemp> BuscarHotelesEmp()
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL_USUARIO WHERE HOTCERR_HABILITADO = '{0}'", 1);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL_USUARIO");
+
+            var hoteles = dataRow.ToList<Hotemp>(this.DataRowToHotemp);
+            return hoteles;
+        }
+
         public List<Hotel> BuscarHoteles()
         {
-            var query = String.Format(@"SELECET * FROM LA_REVANCHA.HOTEL");
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HOTEL WHERE HOT_HABILITADO = '{0}'", 1);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
 
             var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
             return hoteles;
+        }
+
+        public void BajarHotelEmp(Decimal codigo, Decimal habilitado)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_USUARIO SET HOTCERR_HABILITADO = " +
+                "'{0}' WHERE HOTCERR_COD_HOTEL = '{1}'", habilitado, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
         public void BajarHotel(Decimal codigo, Decimal habilitado)
@@ -160,6 +203,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
         }
 
+        public Hotemp DataRowToHotemp(DataRow row)
+        {
+            var codigo_hot = Decimal.Parse(row["HOTCERR_COD_HOTEL"].ToString());
+            var codigo_usu = Decimal.Parse(row["HOTUSU_COD_USUARIO"].ToString());
+            var habilitado = bool.Parse(row["HOTCERR_HABILITADO"].ToString());
+
+            var hote = new Hotemp(codigo_hot, codigo_usu, habilitado);
+            return hote;
+        }
+
         public Hotel DataRowToHotel(DataRow row)
         {
             var codigo = Decimal.Parse(row["HOT_CODIGO"].ToString());
@@ -172,7 +225,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 telef = Decimal.Parse(row["HOT_TELEFONO"].ToString());
 
             var meil = row["HOT_MAIL"].ToString();
-            var f_nac = DateTime.Parse(row["HOT_FECHA_CREACION"].ToString());
+            var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
 
             String ciudad = "";
             if (!row["HOT_CIUDAD"].Equals(DBNull.Value))

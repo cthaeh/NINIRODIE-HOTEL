@@ -38,7 +38,6 @@
             this.meil = new System.Windows.Forms.Label();
             this.dir = new System.Windows.Forms.Label();
             this.tel = new System.Windows.Forms.Label();
-            this.hot = new System.Windows.Forms.Label();
             this.nac = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.textBoxmail = new System.Windows.Forms.TextBox();
             this.textBoxdir = new System.Windows.Forms.TextBox();
             this.textBoxtel = new System.Windows.Forms.TextBox();
-            this.textBoxhot = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -145,15 +143,6 @@
             this.tel.Size = new System.Drawing.Size(49, 13);
             this.tel.TabIndex = 9;
             this.tel.Text = "Telefono";
-            // 
-            // hot
-            // 
-            this.hot.AutoSize = true;
-            this.hot.Location = new System.Drawing.Point(322, 138);
-            this.hot.Name = "hot";
-            this.hot.Size = new System.Drawing.Size(32, 13);
-            this.hot.TabIndex = 10;
-            this.hot.Text = "Hotel";
             // 
             // nac
             // 
@@ -253,13 +242,6 @@
             this.textBoxtel.TabIndex = 23;
             this.textBoxtel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxtel_KeyPress);
             // 
-            // textBoxhot
-            // 
-            this.textBoxhot.Location = new System.Drawing.Point(373, 138);
-            this.textBoxhot.Name = "textBoxhot";
-            this.textBoxhot.Size = new System.Drawing.Size(200, 20);
-            this.textBoxhot.TabIndex = 24;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(109, 135);
@@ -286,7 +268,6 @@
             this.ClientSize = new System.Drawing.Size(578, 220);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBoxhot);
             this.Controls.Add(this.textBoxtel);
             this.Controls.Add(this.textBoxdir);
             this.Controls.Add(this.textBoxmail);
@@ -299,7 +280,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nac);
-            this.Controls.Add(this.hot);
             this.Controls.Add(this.tel);
             this.Controls.Add(this.dir);
             this.Controls.Add(this.meil);
@@ -329,7 +309,6 @@
         private System.Windows.Forms.Label meil;
         private System.Windows.Forms.Label dir;
         private System.Windows.Forms.Label tel;
-        private System.Windows.Forms.Label hot;
         private System.Windows.Forms.Label nac;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -342,7 +321,6 @@
         private System.Windows.Forms.TextBox textBoxmail;
         private System.Windows.Forms.TextBox textBoxdir;
         private System.Windows.Forms.TextBox textBoxtel;
-        private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboBox1;
     }

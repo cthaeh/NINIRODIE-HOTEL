@@ -81,6 +81,7 @@ namespace FrbaHotel.ABM_Hotel
             if (checkBoxdes.Checked)
             {
                 habilitar = 0;
+                RepositorioHotel.Instance.BajarHotelEmp(hotel_seleccionado.identificador, habilitar);
             }
             if (checkBoxhab.Checked)
             {
@@ -89,6 +90,7 @@ namespace FrbaHotel.ABM_Hotel
 
             RepositorioHotel.Instance.BajarHotel(hotel_seleccionado.identificador, habilitar);
 
+            
             MessageBox.Show("Se ha dado de baja exitosamente", "Alerta", MessageBoxButtons.OK);
 
             this.Close();

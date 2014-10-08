@@ -280,6 +280,7 @@
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
+    <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
     <Compile Include="NINIRODIE\Clases\Usuario.cs" />
