@@ -32,11 +32,28 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public void ModificarRol(String nombre, Decimal cod_rol)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.ROL SET " +
+                "ROL_DESCRIPCION = '{0}' WHERE ROL_CODIGO = '{1}'", nombre, cod_rol);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public void ActivarRol(Decimal cod_rol, Decimal cod_fun)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.FUNCION_ROL SET " +
                 "FUNROL_HABILITADO = '{0}' WHERE FUNROL_ROL = '{1}' AND FUNROL_FUNCION = '{2}'",
                 1, cod_rol, cod_fun);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void DeshabilitarTodos(Decimal cod_rol)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.FUNCION_ROL SET " +
+                "FUNROL_HABILITADO = '{0}' WHERE FUNROL_ROL = '{1}'",
+                0, cod_rol);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
