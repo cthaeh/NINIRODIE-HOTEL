@@ -133,6 +133,12 @@
     <Compile Include="ABM de Empleado\ModificarEmp.Designer.cs">
       <DependentUpon>ModificarEmp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Empleado\QuitarHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Empleado\QuitarHotel.Designer.cs">
+      <DependentUpon>QuitarHotel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Habitacion\AltaHab.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Empleado\ModificarEmp.resx">
       <DependentUpon>ModificarEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Empleado\QuitarHotel.resx">
+      <DependentUpon>QuitarHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Habitacion\AltaHab.resx">
       <DependentUpon>AltaHab.cs</DependentUpon>

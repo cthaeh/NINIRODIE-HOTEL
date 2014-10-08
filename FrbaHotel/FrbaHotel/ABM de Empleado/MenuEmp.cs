@@ -41,6 +41,13 @@ namespace FrbaHotel.ABM_de_Empleado
         private void button4_Click(object sender, EventArgs e)
         {
             new AddHotel(empleado_seleccionado).ShowDialog(this);
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            new QuitarHotel(empleado_seleccionado).ShowDialog(this);
+            this.Close();
         }
     }
 }

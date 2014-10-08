@@ -24,6 +24,15 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void QuitarHotel(Decimal cod_usu, Decimal cod_hot)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_USUARIO SET HOTCERR_HABILITADO = '{0}' " +
+                "WHERE HOTCERR_COD_HOTEL = '{1}' AND HOTUSU_COD_USUARIO = '{2}'", 0, cod_hot, cod_usu);
+            
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+
+        }
+
         public void LimpiarHotelRegimen(Decimal cod_hotel)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_REGIMEN SET HOTREG_HABILITADO = '{0}' " + 
