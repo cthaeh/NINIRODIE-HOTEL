@@ -24,6 +24,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void ModificarHabitacion(String piso, String nro, String desc, String ubi, Decimal cod_hab)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HABITACION SET HAB_PISO = '{0}', " +
+                "HAB_NUMERO = '{1}', HAB_DESCRIPCION = '{2}', HAB_UBICACION = '{3}' WHERE HAB_CODIGO = '{4}' ",
+                Decimal.Parse(piso), Decimal.Parse(nro), desc, ubi , cod_hab);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+
+        }
+
         public void BajarHab(Decimal codigo, int habilitado)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HABITACION SET HAB_HABILITADA = '{0}' WHERE HAB_CODIGO = '{1}'", habilitado, codigo);

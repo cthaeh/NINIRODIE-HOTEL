@@ -88,6 +88,11 @@ namespace FrbaHotel.ABM_de_Habitacion
 
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Seleccione una elemente de la grilla", "Alerta", MessageBoxButtons.OK);
+                    
+                }
             }
         }
 

@@ -31,7 +31,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,15 +38,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBoxint = new System.Windows.Forms.CheckBox();
             this.checkBoxext = new System.Windows.Forms.CheckBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBoxpis = new System.Windows.Forms.TextBox();
-            this.textBoxhot = new System.Windows.Forms.TextBox();
             this.textBoxnro = new System.Windows.Forms.TextBox();
+            this.textBoxdesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(178, 200);
+            this.button2.Location = new System.Drawing.Point(187, 137);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 33;
@@ -57,7 +55,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(60, 200);
+            this.button1.Location = new System.Drawing.Point(73, 137);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 32;
@@ -74,19 +72,10 @@
             this.label8.TabIndex = 31;
             this.label8.Text = "Numero";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 45);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "Hotel";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 68);
+            this.label6.Location = new System.Drawing.Point(12, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 29;
@@ -95,7 +84,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 132);
+            this.label4.Location = new System.Drawing.Point(12, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 27;
@@ -148,28 +137,13 @@
             this.checkBoxext.UseVisualStyleBackColor = true;
             this.checkBoxext.CheckedChanged += new System.EventHandler(this.checkBoxext_CheckedChanged);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(114, 91);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(198, 96);
-            this.richTextBox1.TabIndex = 21;
-            this.richTextBox1.Text = "";
-            // 
             // textBoxpis
             // 
-            this.textBoxpis.Location = new System.Drawing.Point(114, 65);
+            this.textBoxpis.Location = new System.Drawing.Point(114, 50);
             this.textBoxpis.Name = "textBoxpis";
             this.textBoxpis.Size = new System.Drawing.Size(100, 20);
             this.textBoxpis.TabIndex = 19;
             this.textBoxpis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxpis_KeyPress);
-            // 
-            // textBoxhot
-            // 
-            this.textBoxhot.Location = new System.Drawing.Point(114, 38);
-            this.textBoxhot.Name = "textBoxhot";
-            this.textBoxhot.Size = new System.Drawing.Size(100, 20);
-            this.textBoxhot.TabIndex = 18;
             // 
             // textBoxnro
             // 
@@ -179,16 +153,23 @@
             this.textBoxnro.TabIndex = 17;
             this.textBoxnro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnro_KeyPress);
             // 
+            // textBoxdesc
+            // 
+            this.textBoxdesc.Location = new System.Drawing.Point(114, 90);
+            this.textBoxdesc.Name = "textBoxdesc";
+            this.textBoxdesc.Size = new System.Drawing.Size(100, 20);
+            this.textBoxdesc.TabIndex = 34;
+            // 
             // ModificarHab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(352, 243);
+            this.ClientSize = new System.Drawing.Size(352, 186);
+            this.Controls.Add(this.textBoxdesc);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -196,9 +177,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxint);
             this.Controls.Add(this.checkBoxext);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBoxpis);
-            this.Controls.Add(this.textBoxhot);
             this.Controls.Add(this.textBoxnro);
             this.Name = "ModificarHab";
             this.Text = "Modificar Habitacion";
@@ -213,7 +192,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -221,9 +199,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxint;
         private System.Windows.Forms.CheckBox checkBoxext;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox textBoxpis;
-        private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.TextBox textBoxnro;
+        private System.Windows.Forms.TextBox textBoxdesc;
     }
 }

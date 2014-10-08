@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
@@ -106,13 +107,50 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void ModificarHab_Load(object sender, EventArgs e)
         {
-            //Se debe setear los checkbox segun la informacion que se trae de la base
-            //Se deben completar los campos con los datos que se traen de la base
+            textBoxdesc.Text = habitacion_seleccionada.descripcion;
+            textBoxnro.Text = habitacion_seleccionada.numero.ToString();
+            textBoxpis.Text = habitacion_seleccionada.piso.ToString();
+
+            if (habitacion_seleccionada.ubicacion == "externa")
+            {
+                checkBoxext.Enabled = false;
+                checkBoxint.Enabled = true;
+            }
+            else
+            {
+                checkBoxint.Enabled = false;
+                checkBoxext.Enabled = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Se debe golpear la base con los datos en los campos
+            String ubi = "";
+
+            if (textBoxnro.Text == "" || textBoxpis.Text == "" || textBoxdesc.Text == "")
+            {
+                MessageBox.Show("No deje campos vacios", "ALERTA", MessageBoxButtons.OK);
+            }
+            else if (checkBoxext.Checked == false && checkBoxint.Checked == false)
+            {
+                MessageBox.Show("Seleccione una ubicacion", "ALERTA",
+                    MessageBoxButtons.OK);
+            }
+            else
+            {
+                if(checkBoxext.Checked == true)
+                {
+                    ubi = "externa";
+                }else
+                {
+                    ubi = "interna";
+                }
+                RepositorioHabitacion.Instance.ModificarHabitacion(textBoxpis.Text, textBoxnro.Text, textBoxdesc.Text, ubi, habitacion_seleccionada.identificador);
+
+                MessageBox.Show("Se ha modificado Correctamente", "Alerta", MessageBoxButtons.OK);
+
+                this.Close();
+            }
         }
     }
 }
