@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
@@ -13,9 +15,11 @@ namespace FrbaHotel.ABM_de_Habitacion
     {
         bool interna = false;
         bool externa = false;
+        Hotel hotel_seleccionado;
 
-        public AltaHab()
+        public AltaHab(Hotel hot)
         {
+            hotel_seleccionado = hot;
             InitializeComponent();
         }
 
@@ -103,8 +107,10 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBoxhot.Text == "" || textBoxnro.Text == "" ||
-                textBoxpis.Text == "" || richTextBox1.Text == "")
+            Decimal cod_tipo = 0;
+
+            if (textBoxnro.Text == "" || comboBoxtipos.Text == "" ||
+                textBoxpis.Text == "" || textBoxdesc.Text == "")
             {
                 MessageBox.Show("No deje campos vacios", "ALERTA", MessageBoxButtons.OK);
             }else if (decimal.Parse(textBoxnro.Text) < 1)
@@ -121,6 +127,40 @@ namespace FrbaHotel.ABM_de_Habitacion
             {
                 MessageBox.Show("Seleccione una ubicacion", "ALERTA",
                     MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (comboBoxtipos.Text == "Simple")
+                {
+                    cod_tipo = 1001;
+                }
+                else if (comboBoxtipos.Text == "Doble")
+                {
+                    cod_tipo = 1002;
+                }
+                else if (comboBoxtipos.Text == "Triple")
+                {
+                    cod_tipo = 1003;
+                }
+                else if (comboBoxtipos.Text == "Cuadruple")
+                {
+                    cod_tipo = 1004;
+                }
+                else { cod_tipo = 1005; }
+
+                String ubi;
+                if (checkBoxext.Checked == true)
+                {
+                    ubi = "externa";
+                }
+                else { ubi = "interna"; }
+
+                RepositorioHabitacion.Instance.InsertarHabitacion(hotel_seleccionado.identificador,
+                    Decimal.Parse(textBoxnro.Text), Decimal.Parse(textBoxpis.Text), textBoxdesc.Text, ubi, cod_tipo);
+
+                MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
+
+                this.Close();
             }
         }
 

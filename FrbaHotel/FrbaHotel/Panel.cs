@@ -104,7 +104,8 @@ namespace FrbaHotel
 
         private void altqToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AltaHab().ShowDialog(this);
+            new AltaHab(hotel_seleccionado).ShowDialog(this);
+            this.Close();
         }
 
         private void bajaToolStripMenuItem_Click(object sender, EventArgs e)

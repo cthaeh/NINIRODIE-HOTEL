@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.textBoxnro = new System.Windows.Forms.TextBox();
-            this.textBoxhot = new System.Windows.Forms.TextBox();
             this.textBoxpis = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.checkBoxext = new System.Windows.Forms.CheckBox();
             this.checkBoxint = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,27 +38,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBoxtipos = new System.Windows.Forms.ComboBox();
+            this.textBoxdesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxnro
             // 
-            this.textBoxnro.Location = new System.Drawing.Point(106, 12);
+            this.textBoxnro.Location = new System.Drawing.Point(106, 32);
             this.textBoxnro.Name = "textBoxnro";
             this.textBoxnro.Size = new System.Drawing.Size(100, 20);
             this.textBoxnro.TabIndex = 0;
             this.textBoxnro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnro_KeyPress);
-            // 
-            // textBoxhot
-            // 
-            this.textBoxhot.Location = new System.Drawing.Point(106, 38);
-            this.textBoxhot.Name = "textBoxhot";
-            this.textBoxhot.Size = new System.Drawing.Size(100, 20);
-            this.textBoxhot.TabIndex = 1;
             // 
             // textBoxpis
             // 
@@ -69,14 +60,6 @@
             this.textBoxpis.Size = new System.Drawing.Size(100, 20);
             this.textBoxpis.TabIndex = 2;
             this.textBoxpis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxpis_KeyPress);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(106, 118);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(198, 96);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
             // 
             // checkBoxext
             // 
@@ -128,7 +111,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 159);
+            this.label4.Location = new System.Drawing.Point(4, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 10;
@@ -152,19 +135,10 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Piso";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 45);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Hotel";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 19);
+            this.label8.Location = new System.Drawing.Point(4, 39);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 14;
@@ -172,7 +146,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(52, 227);
+            this.button1.Location = new System.Drawing.Point(66, 167);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 15;
@@ -182,7 +156,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(170, 227);
+            this.button2.Location = new System.Drawing.Point(179, 167);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 16;
@@ -193,22 +167,35 @@
             // comboBoxtipos
             // 
             this.comboBoxtipos.FormattingEnabled = true;
+            this.comboBoxtipos.Items.AddRange(new object[] {
+            "Simple",
+            "Doble",
+            "Triple",
+            "Cuadruple",
+            "King"});
             this.comboBoxtipos.Location = new System.Drawing.Point(106, 91);
             this.comboBoxtipos.Name = "comboBoxtipos";
             this.comboBoxtipos.Size = new System.Drawing.Size(121, 21);
             this.comboBoxtipos.TabIndex = 17;
+            // 
+            // textBoxdesc
+            // 
+            this.textBoxdesc.Location = new System.Drawing.Point(106, 127);
+            this.textBoxdesc.Name = "textBoxdesc";
+            this.textBoxdesc.Size = new System.Drawing.Size(121, 20);
+            this.textBoxdesc.TabIndex = 18;
             // 
             // AltaHab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(316, 262);
+            this.ClientSize = new System.Drawing.Size(316, 216);
+            this.Controls.Add(this.textBoxdesc);
             this.Controls.Add(this.comboBoxtipos);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -217,9 +204,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxint);
             this.Controls.Add(this.checkBoxext);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBoxpis);
-            this.Controls.Add(this.textBoxhot);
             this.Controls.Add(this.textBoxnro);
             this.Name = "AltaHab";
             this.Text = "Alta Habitacion";
@@ -232,9 +217,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxnro;
-        private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.TextBox textBoxpis;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox checkBoxext;
         private System.Windows.Forms.CheckBox checkBoxint;
         private System.Windows.Forms.Label label1;
@@ -243,10 +226,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBoxtipos;
+        private System.Windows.Forms.TextBox textBoxdesc;
     }
 }
