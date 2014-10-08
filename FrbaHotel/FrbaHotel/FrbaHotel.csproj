@@ -284,6 +284,7 @@
       <DependentUpon>SeleccionHot.cs</DependentUpon>
     </Compile>
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
+    <Compile Include="NINIRODIE\Clases\FunRol.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />

@@ -110,7 +110,7 @@ namespace FrbaHotel.Login
             List<Rol> roles = RepositorioRol.Instance.BuscarRoles();
 
             int n = 0;
-            bool habilitado = true;
+            bool bloqueado = false;
 
             while (n < roles.Count)
             {
@@ -118,13 +118,14 @@ namespace FrbaHotel.Login
                 {
                     if (roles.ElementAt(n).habilitado == false)
                     {
-                        habilitado = false;
+                        bloqueado = true;
                     }
+
                 }
                 n = n + 1;
             }
 
-            return habilitado;
+            return bloqueado;
         }
 
         private void login_Load(object sender, EventArgs e)

@@ -24,6 +24,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public List<FunRol> BuscarFunRol(Decimal cod_rol)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FUNCION_ROL WHERE " +
+                "FUNROL_ROL = '{0}' AND FUNROL_HABILITADO = '{1}'", cod_rol, 1);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FUNCION_ROL");
+
+            var roles = dataRow.ToList<FunRol>(this.DataRowToFunRol);
+            return roles;
+        }
+
         public void BajarRol(Decimal cod_rol, int hab)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.ROL SET " +
@@ -86,6 +97,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var roles = dataRow.ToList<Rol>(this.DataRowToRol);
             return roles.First();
 
+        }
+
+        public FunRol DataRowToFunRol(DataRow row)
+        {
+            var cod_rol = Decimal.Parse(row["FUNROL_ROL"].ToString());
+            var cod_fun = Decimal.Parse(row["FUNROL_FUNCION"].ToString());
+            var habilitado = bool.Parse(row["FUNROL_HABILITADO"].ToString());
+
+            var funrol = new FunRol(cod_rol, cod_fun, habilitado);
+            return funrol;
         }
 
         public Rol DataRowToRol(DataRow row)

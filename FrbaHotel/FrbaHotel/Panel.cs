@@ -14,6 +14,7 @@ using FrbaHotel.ABM_de_Habitacion;
 using FrbaHotel.ABM_de_Empleado;
 using FrbaHotel.ABM_de_Rol;
 using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel
 {
@@ -22,6 +23,7 @@ namespace FrbaHotel
         String tipo_usuario;
         Usuario usuario;
         Hotel hotel_seleccionado;
+        
         public Panel(String tipo, Usuario usu, Hotel hot)
         {
             hotel_seleccionado = hot;
@@ -29,7 +31,84 @@ namespace FrbaHotel
             tipo_usuario = tipo;
             InitializeComponent();
 
-            if (tipo == "ADMIN")
+            if (tipo == "pulenta")
+            {
+                abm_emp.Visible = true;
+                abm_hot.Visible = true;
+                abm_guest.Visible = true;
+                abm_rol.Visible = true;
+                abm_hab.Visible = true;
+                abm_reserva.Visible = true;
+                estadia.Visible = true;
+                consumible.Visible = true;
+                estadistica.Visible = true;
+                facturar.Visible = true;
+            }
+            else
+            {
+                Rol rol = RepositorioRol.Instance.BuscarRol(tipo);
+                List<FunRol> funrol = RepositorioRol.Instance.BuscarFunRol(rol.identificador);
+
+                abm_emp.Visible = false;
+                abm_hot.Visible = false;
+                abm_guest.Visible = false;
+                abm_rol.Visible = false;
+                abm_hab.Visible = false;
+                abm_reserva.Visible = false;
+                estadia.Visible = false;
+                consumible.Visible = false;
+                estadistica.Visible = false;
+                facturar.Visible = false;
+
+                int n = 0;
+
+                while (n < funrol.Count)
+                {
+                    if (funrol.ElementAt(n).cod_fun == 101)
+                    {
+                        abm_rol.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 102)
+                    {
+                        abm_emp.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 103)
+                    {
+                        abm_guest.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 104)
+                    {
+                        abm_hot.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 105)
+                    {
+                        abm_hab.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 106)
+                    {
+                        abm_reserva.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 107)
+                    {
+                        estadia.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 108)
+                    {
+                        consumible.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 109)
+                    {
+                        facturar.Visible = true;
+                    }
+                    if (funrol.ElementAt(n).cod_fun == 110)
+                    {
+                        estadistica.Visible = true;
+                    }
+
+                    n = n + 1;
+                }
+            }
+       /*     if (tipo == "ADMIN")
             {
                 abm_emp.Visible = true;
                 abm_hot.Visible = true;
@@ -79,7 +158,7 @@ namespace FrbaHotel
                 consumible.Visible = false;
                 estadistica.Visible = false;
                 facturar.Visible = false;
-            }
+            }*/
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

@@ -37,6 +37,10 @@ namespace FrbaHotel.Login
                 new Panel(tipo, usuario, hotel_seleccionado).ShowDialog(this);
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Seleccione un objeto", "Alerta", MessageBoxButtons.OK);
+            }
         }
 
         private void SeleccionHot_Load(object sender, EventArgs e)
