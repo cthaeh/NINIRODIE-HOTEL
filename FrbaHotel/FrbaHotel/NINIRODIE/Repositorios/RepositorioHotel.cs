@@ -44,6 +44,15 @@ FROM LA_REVANCHA.HOTEL AS HOTEL JOIN LA_REVANCHA.HABITACION ON HOTEL.HOT_CODIGO 
 
         }
 
+        public void CerrarHotel(Decimal cod_hot, int dias, DateTime inicio, DateTime fin, String motivo)
+        {
+            var query = String.Format(@"INSERT INTO LA_REVANCHA.HOTEL_CERRADO " +
+                "(HOTCERR_COD_HOTEL, HOTCERR_CANT_DIAS_CERRADO, HOTCERR_FECHA_DESDE, HOTCERR_FECHA_HASTA, HOTCERR_MOTIVO)" +
+                "VALUES('{0}','{1}','{2}','{3}','{4}')", cod_hot, dias, DBTypeConverter.ToSQLDateTime(inicio), DBTypeConverter.ToSQLDateTime(fin), motivo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public void LimpiarHotelRegimen(Decimal cod_hotel)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_REGIMEN SET HOTREG_HABILITADO = '{0}' " + 

@@ -169,6 +169,7 @@
             this.Controls.Add(this.textBoxnomb);
             this.Name = "BusquedaBajaHot";
             this.Text = "Busqueda Hotel";
+            this.Load += new System.EventHandler(this.BusquedaBajaHot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
