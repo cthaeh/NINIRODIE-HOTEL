@@ -67,23 +67,14 @@ namespace FrbaHotel.Login
                         {
                             if (usu.bloque == false)
                             {
-                                if (usu.tipo == "CLIENTE")
+                                if (EstaTipoBloqueado(usu.tipo) == false)
                                 {
-                                    tipo = "guest";
-                                    new SeleccionHot(tipo, usu).ShowDialog(this);
-                                    this.Close();
-                                }
-                                else if (usu.tipo == "ADMIN")
-                                {
-                                    tipo = "admin";
-                                    new SeleccionHot(tipo, usu).ShowDialog(this);
+                                    new SeleccionHot(usu.tipo, usu).ShowDialog(this);
                                     this.Close();
                                 }
                                 else
                                 {
-                                    tipo = "recep";
-                                    new SeleccionHot(tipo, usu).ShowDialog(this);
-                                    this.Close();
+                                    MessageBox.Show("Tipo de usuario des-habilitado", "Alerta", MessageBoxButtons.OK);
                                 }
                             }
                             else
@@ -112,6 +103,28 @@ namespace FrbaHotel.Login
             }
 
             
+        }
+
+        private bool EstaTipoBloqueado(String tipo)
+        {
+            List<Rol> roles = RepositorioRol.Instance.BuscarRoles();
+
+            int n = 0;
+            bool habilitado = true;
+
+            while (n < roles.Count)
+            {
+                if (roles.ElementAt(n).descripcion == tipo)
+                {
+                    if (roles.ElementAt(n).habilitado == false)
+                    {
+                        habilitado = false;
+                    }
+                }
+                n = n + 1;
+            }
+
+            return habilitado;
         }
 
         private void login_Load(object sender, EventArgs e)

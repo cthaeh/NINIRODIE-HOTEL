@@ -29,7 +29,7 @@ namespace FrbaHotel
             tipo_usuario = tipo;
             InitializeComponent();
 
-            if (tipo == "admin")
+            if (tipo == "ADMIN")
             {
                 abm_emp.Visible = true;
                 abm_hot.Visible = true;
@@ -42,7 +42,7 @@ namespace FrbaHotel
                 estadistica.Visible = true;
                 facturar.Visible = false;
             }
-            else if (tipo == "recep")
+            else if (tipo == "RECEP")
             {
                 abm_emp.Visible = false;
                 abm_hot.Visible = false;

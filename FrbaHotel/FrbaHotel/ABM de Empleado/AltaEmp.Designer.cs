@@ -252,9 +252,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ADMIN",
-            "RECEP"});
             this.comboBox1.Location = new System.Drawing.Point(133, 78);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -292,6 +289,7 @@
             this.Controls.Add(this.nombusu);
             this.Name = "AltaEmp";
             this.Text = "Alta Empleados";
+            this.Load += new System.EventHandler(this.AltaEmp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

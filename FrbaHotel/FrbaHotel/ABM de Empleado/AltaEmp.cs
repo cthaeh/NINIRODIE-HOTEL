@@ -123,5 +123,18 @@ namespace FrbaHotel.ABM_de_Usuario
             soloEscribeNumeros(e);
         }
 
+        private void AltaEmp_Load(object sender, EventArgs e)
+        {
+            List<Rol> roles = RepositorioRol.Instance.BuscarRoles();
+
+            int n = 0;
+
+            while (n < roles.Count)
+            {
+                comboBox1.Items.Add(roles.ElementAt(n).descripcion);
+                n = n + 1;
+            }
+        }
+
     }
 }

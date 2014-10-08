@@ -46,7 +46,7 @@ namespace FrbaHotel.Login
             {
                 hoteles_grilla = RepositorioHotel.Instance.BuscarHoteles();
             }
-            else if (tipo == "guest")
+            else if (tipo == "CLIENTE")
             {
                 hoteles_grilla = BuscarHotelDeCli(usuario.codigo);
             }
