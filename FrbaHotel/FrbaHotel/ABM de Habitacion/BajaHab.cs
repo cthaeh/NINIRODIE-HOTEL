@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
@@ -13,9 +15,11 @@ namespace FrbaHotel.ABM_de_Habitacion
     {
         bool hab = false;
         bool des = false;
+        Habitacion habitacion_seleccionada;
 
-        public BajaHab()
+        public BajaHab(Habitacion hab)
         {
+            habitacion_seleccionada = hab;
             InitializeComponent();
         }
 
@@ -52,6 +56,43 @@ namespace FrbaHotel.ABM_de_Habitacion
                 checkBoxhab.Enabled = true;
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int habilitar = 0;
+
+            if (checkBoxdes.Checked)
+            {
+                habilitar = 0;
+            }
+            if (checkBoxhab.Checked)
+            {
+                habilitar = 1;
+            }
+
+            RepositorioHabitacion.Instance.BajarHab(habitacion_seleccionada.identificador, habilitar);
+
+
+            MessageBox.Show("Se ha dado de baja exitosamente", "Alerta", MessageBoxButtons.OK);
+
+            this.Close();
+        }
+
+        private void BajaHab_Load(object sender, EventArgs e)
+        {
+            var habitacion = RepositorioHabitacion.Instance.BuscarHab(habitacion_seleccionada.identificador);
+
+            if (habitacion.habilitada == false)
+            {
+                checkBoxhab.Enabled = true;
+                checkBoxdes.Enabled = false;
+            }
+            else
+            {
+                checkBoxdes.Enabled = true;
+                checkBoxhab.Enabled = false;
+            }
         }
     }
 }

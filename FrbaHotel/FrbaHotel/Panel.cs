@@ -125,7 +125,7 @@ namespace FrbaHotel
 
         private void bajToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new BusquedaBajaHab().ShowDialog(this);
+            new BusquedaBajaHab(hotel_seleccionado).ShowDialog(this);
         }
 
         private void modificarToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace FrbaHotel
 
         private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            new BusquedaModHab().ShowDialog(this);
+            new BusquedaModHab(hotel_seleccionado).ShowDialog(this);
         }
 
         private void modificarToolStripMenuItem1_Click(object sender, EventArgs e)

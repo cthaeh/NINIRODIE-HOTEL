@@ -6,16 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
     public partial class BusquedaBajaHab : Form
     {
         bool banderanro = false, banderapiso = false, banderaper = false;
-        bool seguir = true;
+        bool seguir = true, se_busco = false;
+        Decimal tipo = 0;
+        Hotel hotel_seleccionado;
+        Habitacion habitacion_seleccionada;
 
-        public BusquedaBajaHab()
+        public BusquedaBajaHab(Hotel hot)
         {
+            hotel_seleccionado = hot;
             InitializeComponent();
         }
 
@@ -68,13 +74,29 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void textBoxper_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloEscribeNumeros(e);
+            soloEscribeLetras(e);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            if (se_busco == true)
+            {
+                if (this.dataGridView1.SelectedRows.Count > 0)
+                {
+                    habitacion_seleccionada = (Habitacion)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    new BajaHab(habitacion_seleccionada).ShowDialog(this);
+
+                    this.Close();
+                }
+            }
+        }
+
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
+            se_busco = true;
             banderapiso = false;
-            banderaper = false;
             banderanro = false;
             seguir = true;
 
@@ -82,17 +104,13 @@ namespace FrbaHotel.ABM_de_Habitacion
             {
                 banderanro = true;
             }
-            if (textBoxper.Text == "")
-            {
-                banderaper = true;
-            }
+
             if (textBoxpis.Text == "")
             {
                 banderapiso = true;
             }
 
-            if (textBoxhot.Text == "" && textBoxnro.Text == "" && textBoxper.Text == ""
-    && textBoxpis.Text == "")
+            if (textBoxnro.Text == "" && textBoxper.Text == "" && textBoxpis.Text == "")
             {
                 MessageBox.Show("Debe ingresar algun campo", "ALERTA", MessageBoxButtons.OK);
                 seguir = false;
@@ -108,19 +126,38 @@ namespace FrbaHotel.ABM_de_Habitacion
                 else { seguir = true; }
             }
 
-            if (banderaper != true)
+            if (textBoxper.Text == "Simple")
             {
-                if (decimal.Parse(textBoxper.Text) < 1)
-                {
-                    MessageBox.Show("La cantidad de personas debe ser mayor a 0", "ALERTA", MessageBoxButtons.OK);
-                    seguir = false;
-                }
-                else { seguir = true; }
+                tipo = 1001;
+            }
+            else if (textBoxper.Text == "Doble")
+            {
+                tipo = 1002;
+            }
+            else if (textBoxper.Text == "Triple")
+            {
+                tipo = 1003;
+            }
+            else if (textBoxper.Text == "Cuadruple")
+            {
+                tipo = 1004;
+            }
+            else if (textBoxper.Text == "King")
+            {
+                tipo = 1005;
+            }
+            else if (textBoxper.Text == "")
+            {
+                seguir = true;
+            }else
+            {
+                MessageBox.Show("El tipo de habitacion no es correcto", "Alerta", MessageBoxButtons.OK);
+                seguir = false;
             }
 
             if (banderapiso != true)
             {
-                if (decimal.Parse(textBoxpis.Text) < 1)
+                if (Decimal.Parse(textBoxpis.Text) < 1)
                 {
                     MessageBox.Show("El piso debe ser mayor a 0", "ALERTA", MessageBoxButtons.OK);
                     seguir = false;
@@ -130,9 +167,26 @@ namespace FrbaHotel.ABM_de_Habitacion
 
             if (seguir == true)
             {
-                new BajaHab().ShowDialog(this);
+                List<Habitacion> habitacion_grilla = RepositorioHabitacion.Instance.BuscarHabitacion(textBoxnro.Text, textBoxpis.Text, tipo, hotel_seleccionado.identificador);
+
+                this.dataGridView1.DataSource = new List<Habitacion>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = habitacion_grilla;
+                this.dataGridView1.Refresh();
+                
+                           this.dataGridView1.Columns["identificador"].Visible = false;
+                           this.dataGridView1.Columns["codigo_hotel"].Visible = false;
+                           this.dataGridView1.Columns["codigo_tipo"].Visible = false;
+                           this.dataGridView1.Columns["habilitada"].Visible = false;
+
+                           this.dataGridView1.Columns["numero"].ReadOnly = true;
+                           this.dataGridView1.Columns["piso"].ReadOnly = true;
+                           this.dataGridView1.Columns["ubicacion"].ReadOnly = true;
+                           this.dataGridView1.Columns["descripcion"].ReadOnly = true;
+                        
             }
         }
     }
-}
+    }
+
 

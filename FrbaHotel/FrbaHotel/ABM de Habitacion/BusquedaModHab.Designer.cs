@@ -31,17 +31,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Hotel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Piso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Personas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buscar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxper = new System.Windows.Forms.TextBox();
-            this.textBoxhot = new System.Windows.Forms.TextBox();
             this.textBoxpis = new System.Windows.Forms.TextBox();
             this.textBoxnro = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,35 +64,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Hotel,
-            this.Piso,
-            this.Numero,
-            this.Personas});
             this.dataGridView1.Location = new System.Drawing.Point(25, 127);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(338, 150);
             this.dataGridView1.TabIndex = 33;
-            // 
-            // Hotel
-            // 
-            this.Hotel.HeaderText = "Hotel";
-            this.Hotel.Name = "Hotel";
-            // 
-            // Piso
-            // 
-            this.Piso.HeaderText = "Piso";
-            this.Piso.Name = "Piso";
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            // 
-            // Personas
-            // 
-            this.Personas.HeaderText = "Personas";
-            this.Personas.Name = "Personas";
             // 
             // buscar
             // 
@@ -108,24 +77,16 @@
             this.buscar.TabIndex = 32;
             this.buscar.Text = "Buscar";
             this.buscar.UseVisualStyleBackColor = true;
+            this.buscar.Click += new System.EventHandler(this.buscar_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(196, 41);
+            this.label4.Location = new System.Drawing.Point(205, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 31;
-            this.label4.Text = "Personas";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Hotel";
+            this.label4.Text = "Tipo";
             // 
             // label2
             // 
@@ -147,18 +108,11 @@
             // 
             // textBoxper
             // 
-            this.textBoxper.Location = new System.Drawing.Point(263, 38);
+            this.textBoxper.Location = new System.Drawing.Point(263, 29);
             this.textBoxper.Name = "textBoxper";
             this.textBoxper.Size = new System.Drawing.Size(100, 20);
             this.textBoxper.TabIndex = 27;
             this.textBoxper.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxper_KeyPress);
-            // 
-            // textBoxhot
-            // 
-            this.textBoxhot.Location = new System.Drawing.Point(263, 12);
-            this.textBoxhot.Name = "textBoxhot";
-            this.textBoxhot.Size = new System.Drawing.Size(100, 20);
-            this.textBoxhot.TabIndex = 26;
             // 
             // textBoxpis
             // 
@@ -187,11 +141,9 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buscar);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxper);
-            this.Controls.Add(this.textBoxhot);
             this.Controls.Add(this.textBoxpis);
             this.Controls.Add(this.textBoxnro);
             this.Name = "BusquedaModHab";
@@ -207,17 +159,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hotel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Piso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Personas;
         private System.Windows.Forms.Button buscar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxper;
-        private System.Windows.Forms.TextBox textBoxhot;
         private System.Windows.Forms.TextBox textBoxpis;
         private System.Windows.Forms.TextBox textBoxnro;
     }

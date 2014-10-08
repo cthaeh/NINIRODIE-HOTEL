@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_de_Habitacion
 {
@@ -13,9 +14,11 @@ namespace FrbaHotel.ABM_de_Habitacion
     {
         bool interna = false;
         bool externa = false;
+        Habitacion habitacion_seleccionada;
 
-        public ModificarHab()
+        public ModificarHab(Habitacion hab)
         {
+            habitacion_seleccionada = hab;
             InitializeComponent();
         }
 

@@ -24,6 +24,48 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void BajarHab(Decimal codigo, int habilitado)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.HABITACION SET HAB_HABILITADA = '{0}' WHERE HAB_CODIGO = '{1}'", habilitado, codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public Habitacion BuscarHab(Decimal codigo)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HABITACION WHERE HAB_CODIGO = '{0}'", codigo);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HABITACION");
+
+            var habitacion = dataRow.ToList<Habitacion>(this.DataRowToHab);
+            return habitacion.First();
+        }
+
+        public List<Habitacion> BuscarHabitacion(String numero, String piso, Decimal tipo, Decimal hot)
+        {
+            var query = String.Format(@"Select * FROM LA_REVANCHA.HABITACION WHERE 1 = 1 ");
+
+            if (numero != "")
+            {
+                query = query + "AND HAB_NUMERO = " + Decimal.Parse(numero) ;
+            }
+            if (piso != "")
+            {
+                query = query + "AND HAB_PISO = " + Decimal.Parse(piso);
+            }
+            if (tipo != 0)
+            {
+                query = query + "AND HAB_COD_TIPOHABITACION = " + tipo;
+            }
+            query = query + "AND HAB_COD_HOTEL = " + hot;
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HABITACION");
+
+            var habitacion = dataRow.ToList<Habitacion>(this.DataRowToHab);
+            return habitacion;
+
+        }
+
         public void InsertarHabitacion(Decimal cod_hot, Decimal nro, Decimal piso,
             String desc, String ubi, Decimal tipo)
         {
@@ -35,7 +77,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
-        public Habitacion DataRowToHotemp(DataRow row)
+        public Habitacion DataRowToHab(DataRow row)
         {
             var codigo = Decimal.Parse(row["HAB_CODIGO"].ToString());
             var numero = Decimal.Parse(row["HAB_NUMERO"].ToString());
