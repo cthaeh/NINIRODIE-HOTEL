@@ -79,23 +79,31 @@ namespace FrbaHotel.ABM_de_Empleado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String tipo;
-            if (comboBox1.Text == "Admin")
+            if (textBoxtel.Text == "" || textBoxnomb.Text == "" || textBoxmail.Text == ""
+    || textBoxdni.Text == "" || textBoxdir.Text == "" || comboBox1.Text == ""
+    || textBoxap.Text == "")
             {
-                tipo = "ADMIN";
+                MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
             }
             else
             {
-                tipo = "RECEP";
+                Decimal bandera = RepositorioEmpleado.Instance.ExisteEmp(Decimal.Parse(textBoxdni.Text));
+                if (bandera == 2)
+                {
+                    RepositorioUsuario.Instance.ModificarEmp(empleado_seleccionado.codigo_usuario, comboBox1.Text);
+
+                    RepositorioEmpleado.Instance.Modificar(textBoxap.Text, textBoxdir.Text,
+                        Decimal.Parse(textBoxdni.Text), textBoxmail.Text, textBoxnomb.Text, Decimal.Parse(textBoxtel.Text), empleado_seleccionado.codigo_usuario);
+
+                    MessageBox.Show("Modificacion Exitosa", "Alerta", MessageBoxButtons.OK);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("El documento ya existe", "Alerta", MessageBoxButtons.OK);
+                }
             }
-            RepositorioUsuario.Instance.ModificarEmp(empleado_seleccionado.codigo_usuario, tipo);
-
-            RepositorioEmpleado.Instance.Modificar(textBoxap.Text, textBoxdir.Text,
-                Decimal.Parse(textBoxdni.Text), textBoxmail.Text, textBoxnomb.Text, Decimal.Parse(textBoxtel.Text), empleado_seleccionado.codigo_usuario);
-
-            MessageBox.Show("Modificacion Exitosa", "Alerta", MessageBoxButtons.OK);
-
-            this.Close();
         }
 
         private void ModificarEmp_Load(object sender, EventArgs e)
