@@ -454,7 +454,8 @@ AS
 	SELECT @NUMERO_IDENTIFICACION = CLI_NUMERO_IDENTIFICACION
 									FROM inserted	
 									WHERE CLI_NUMERO_IDENTIFICACION IS NOT NULL
-									
+						
+																
 	SET @NUMERO_IDENTIFICACION_VARCHAR = CONVERT(NVARCHAR,@NUMERO_IDENTIFICACION)
 	
 	SELECT @APELLIDO = INSERTED.CLI_APELLIDO
@@ -498,8 +499,36 @@ AS
 
 					
 
+/*Cuando se hace un instert en la tabla ROL, 
+que se haga un insert en la tabla FUNCION_ROL
+que para ese rol nuevo le asigne todas las funcionalidades 
+(las 10 existentes) pero que las ponga todas como des-activadas */
 
-
-
-			
-			
+GO
+CREATE TRIGGER LA_REVANCHA.TR_ASIGNACION_DE_FUNCIONALIDADES
+ON LA_REVANCHA.ROL
+FOR INSERT
+AS
+	DECLARE @ROL_CODIGO INT
+	DECLARE @FUN_CODIGO INT
+	
+	SET @ROL_CODIGO = (SELECT ROL_CODIGO	
+					  FROM inserted)
+					  
+					   
+	INSERT INTO LA_REVANCHA.FUNCION_ROL(FUNROL_ROL,FUNROL_FUNCION)
+	VALUES(@ROL_CODIGO,101),
+		  (@ROL_CODIGO,102),
+		  (@ROL_CODIGO,103),
+		  (@ROL_CODIGO,104),
+		  (@ROL_CODIGO,105),
+		  (@ROL_CODIGO,106),
+		  (@ROL_CODIGO,107),
+		  (@ROL_CODIGO,108),
+		  (@ROL_CODIGO,109),
+		  (@ROL_CODIGO,110)
+		  
+	UPDATE LA_REVANCHA.ROL SET ROL_HABILITADO = 0
+												FROM inserted
+												WHERE LA_REVANCHA.ROL.ROL_DESCRIPCION = inserted.ROL_DESCRIPCION
+	
