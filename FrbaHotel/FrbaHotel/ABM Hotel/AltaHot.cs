@@ -6,12 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_Hotel
 {
     public partial class AltaHot : Form
     {
         bool cerrar = false;
+        int all = 0;
+        int pen = 0;
+        int solo = 0;
 
         public AltaHot()
         {
@@ -87,12 +92,33 @@ namespace FrbaHotel.ABM_Hotel
                 || textBoxtel.Text == "" || textBoxnrocal.Text == "")
             {
                 MessageBox.Show("No deje campos vacios", "ALERTA", MessageBoxButtons.OK);
-            }else if (decimal.Parse(textBoxcat.Text) < 1 || decimal.Parse(textBoxcat.Text) > 5)
+            }
+            else if (decimal.Parse(textBoxcat.Text) < 1 || decimal.Parse(textBoxcat.Text) > 5)
             {
                 MessageBox.Show("La categoria debe ser entre 1 y 5", "ALERTA", MessageBoxButtons.OK);
             }
+            else
+            {
 
-            
+                RepositorioHotel.Instance.InsertarHotel(Decimal.Parse(textBoxcat.Text), textBoxciud.Text,
+                    textBoxdir.Text, textBoxnomb.Text, textBoxmail.Text, textBoxnrocal.Text,
+                    textBoxpa.Text, Decimal.Parse(textBoxtel.Text), Decimal.Parse(textBoxnrocal.Text), dateTimePicker1.Value);
+
+                Hotel hotel = RepositorioHotel.Instance.BuscarHotel(textBoxnomb.Text);
+
+                if (checkBoxall.Checked == true)
+                {
+                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 100);
+                }
+                if (checkBoxdes.Checked == true)
+                {
+                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 101);
+                }
+                if (checkBoxpc.Checked == true)
+                {
+                    RepositorioHotel.Instance.InsertarHotelxRegimen(hotel.identificador, 102);
+                }
+            }
         }
 
         private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)

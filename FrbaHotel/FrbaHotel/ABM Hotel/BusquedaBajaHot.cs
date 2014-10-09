@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.ABM_Hotel
 {
@@ -13,6 +15,7 @@ namespace FrbaHotel.ABM_Hotel
     {
         decimal banderacat = 0;
         bool seguir = false;
+        List<Hotel> hoteles_buscados;
 
         public BusquedaBajaHot()
         {
@@ -58,6 +61,33 @@ namespace FrbaHotel.ABM_Hotel
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+           new BajaHot().ShowDialog(this);
+            
+        }
+
+        private void textBoxnomb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void textBoxcat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeNumeros(e);
+        }
+
+        private void textBoxciu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
+        private void buscar_Click(object sender, EventArgs e)
+        {
             banderacat = 0;
             seguir = true;
 
@@ -80,32 +110,33 @@ namespace FrbaHotel.ABM_Hotel
                 {
                     MessageBox.Show("La categoria debe ser entre 1 y 5", "ALERTA", MessageBoxButtons.OK);
                     seguir = false;
+                }else
+                {
+                    banderacat = Decimal.Parse(textBoxcat.Text);
                 }
             }
-            if (seguir == true)
-            {
-                new BajaHot().ShowDialog(this);
-            }
-        }
 
-        private void textBoxnomb_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            soloEscribeLetras(e);
-        }
+            hoteles_buscados = RepositorioHotel.Instance.BuscarHotelD(banderacat, textBoxciu.Text,
+                textBoxnomb.Text, textBoxpa.Text);
 
-        private void textBoxcat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            soloEscribeNumeros(e);
-        }
+            this.dataGridView1.DataSource = new List<Hotel>();
+            this.dataGridView1.Refresh();
+            this.dataGridView1.DataSource = hoteles_buscados;
+            this.dataGridView1.Refresh();
 
-        private void textBoxciu_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            soloEscribeLetras(e);
-        }
+            this.dataGridView1.Columns["identificador"].Visible = false;
+            this.dataGridView1.Columns["habilitado"].Visible = false;
+            this.dataGridView1.Columns["telefono"].Visible = false;
+            this.dataGridView1.Columns["calle"].Visible = false;
+            this.dataGridView1.Columns["creacion"].Visible = false;
+            this.dataGridView1.Columns["nro_calle"].Visible = false;
+            this.dataGridView1.Columns["recarga"].Visible = false;
+            this.dataGridView1.Columns["mail"].Visible = false;
 
-        private void textBoxpa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            soloEscribeLetras(e);
+            this.dataGridView1.Columns["nombre"].ReadOnly = true;
+            this.dataGridView1.Columns["categoria"].ReadOnly = true;
+            this.dataGridView1.Columns["pais"].ReadOnly = true;
+            this.dataGridView1.Columns["ciudad"].ReadOnly = true;
         }
     }
 }

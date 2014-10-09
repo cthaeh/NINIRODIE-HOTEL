@@ -13,7 +13,7 @@ namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class MenuCli : Form
     {
-        Usuario usuario;
+        Cliente cliente_seleccionado;
         public MenuCli()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new CambiarClave(usuario).ShowDialog(this);
+            new CambiarClave(cliente_seleccionado.codigo_usuario).ShowDialog(this);
             this.Close();
         }
 

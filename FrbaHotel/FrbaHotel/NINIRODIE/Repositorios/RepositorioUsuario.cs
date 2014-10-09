@@ -32,6 +32,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public void BloquearUsuario(Decimal bloquear, Decimal codigo_usuario)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_BLOQUEADO = " +
+    "'{0}' WHERE USU_CODIGO = '{1}'", bloquear, codigo_usuario);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public void BajarUsuario(Decimal habilitar, Decimal codigo_usuario)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.USUARIO SET USU_HABILITADO = " +

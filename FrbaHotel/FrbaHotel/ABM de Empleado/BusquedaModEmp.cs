@@ -82,7 +82,7 @@ namespace FrbaHotel.ABM_de_Empleado
                 if (this.dataGridView1.SelectedRows.Count > 0)
                 {
                     empleado_seleccionado = (Personal)this.dataGridView1.SelectedRows[0].DataBoundItem;
-                    new ModificarEmp(empleado_seleccionado).ShowDialog(this);
+                    new MenuEmp(empleado_seleccionado).ShowDialog(this);
 
                     this.Close();
                 }
@@ -126,6 +126,11 @@ namespace FrbaHotel.ABM_de_Empleado
                 this.dataGridView1.Columns["telefono"].Visible = false;
                 this.dataGridView1.Columns["direccion"].Visible = false;
                 this.dataGridView1.Columns["nacimiento"].Visible = false;
+
+                this.dataGridView1.Columns["nombre"].ReadOnly = true;
+                this.dataGridView1.Columns["apellido"].ReadOnly = true;
+                this.dataGridView1.Columns["numero_documento"].ReadOnly = true;
+                this.dataGridView1.Columns["mail"].ReadOnly = true;
             }
 
             se_busco = true;

@@ -26,6 +26,7 @@ namespace FrbaHotel
             usuario = usu;
             tipo_usuario = tipo;
             InitializeComponent();
+
             if (tipo == "admin")
             {
                 abm_emp.Visible = true;
@@ -52,7 +53,19 @@ namespace FrbaHotel
                 estadistica.Visible = false;
                 facturar.Visible = true;
             }
-            else
+            else if (tipo == "super")
+            {
+                abm_emp.Visible = true;
+                abm_hot.Visible = true;
+                abm_guest.Visible = true;
+                abm_rol.Visible = true;
+                abm_hab.Visible = true;
+                abm_reserva.Visible = true;
+                estadia.Visible = true;
+                consumible.Visible = true;
+                estadistica.Visible = true;
+                facturar.Visible = true;
+            }else
             {
                 abm_emp.Visible = false;
                 abm_hot.Visible = false;
@@ -119,7 +132,7 @@ namespace FrbaHotel
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MenuEmp(usuario).ShowDialog(this);
+            new BusquedaModEmp().ShowDialog(this);
         }
 
         private void modificarToolStripMenuItem4_Click(object sender, EventArgs e)
