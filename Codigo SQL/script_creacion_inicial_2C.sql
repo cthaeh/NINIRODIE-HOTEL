@@ -84,6 +84,7 @@ GO
 CREATE TABLE [LA_REVANCHA].[FUNCION_ROL](
 	         [FUNROL_ROL][INT],
     	     [FUNROL_FUNCION][INT],
+    	     [FUNROL_HABILITADO][BIT] DEFAULT 1,-- ES PARA LA BAJA LOGICA  - HABILITADO POR DEFECTO
 FOREIGN KEY (FUNROL_ROL) REFERENCES LA_REVANCHA.ROL(ROL_CODIGO),
 FOREIGN KEY (FUNROL_FUNCION) REFERENCES LA_REVANCHA.FUNCION(FUN_CODIGO)	
 )
@@ -504,13 +505,17 @@ que se haga un insert en la tabla FUNCION_ROL
 que para ese rol nuevo le asigne todas las funcionalidades 
 (las 10 existentes) pero que las ponga todas como des-activadas */
 
+
+/*Cuando se hace un update en la tabla Rol, 
+que se haga un update en la tabla RolxFuncionalidad que para ese rol modificado se le modifiquen 
+todas sus funcionalidades poniéndose estas des-activadas.*/
+
 GO
 CREATE TRIGGER LA_REVANCHA.TR_ASIGNACION_DE_FUNCIONALIDADES
 ON LA_REVANCHA.ROL
-FOR INSERT
+FOR INSERT, UPDATE 
 AS
 	DECLARE @ROL_CODIGO INT
-	DECLARE @FUN_CODIGO INT
 	
 	SET @ROL_CODIGO = (SELECT ROL_CODIGO	
 					  FROM inserted)
@@ -528,7 +533,6 @@ AS
 		  (@ROL_CODIGO,109),
 		  (@ROL_CODIGO,110)
 		  
-	UPDATE LA_REVANCHA.ROL SET ROL_HABILITADO = 0
+	UPDATE LA_REVANCHA.FUNCION_ROL SET FUNROL_HABILITADO = 0
 												FROM inserted
-												WHERE LA_REVANCHA.ROL.ROL_DESCRIPCION = inserted.ROL_DESCRIPCION
-	
+												WHERE LA_REVANCHA.FUNCION_ROL.FUNROL_ROL = @ROL_CODIGO
