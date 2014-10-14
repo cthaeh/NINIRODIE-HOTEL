@@ -71,7 +71,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
         public List<Rol> BuscarRoles()
         {
-            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ROL");
+            String filtro = "GOD";
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ROL WHERE ROL_DESCRIPCION != '{0}'", filtro);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.ROL");
 
