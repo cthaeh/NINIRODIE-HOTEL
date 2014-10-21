@@ -24,6 +24,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public List<Hotel> Estadistica1()
+        {
+            var query = String.Format(@"SELECT TOP 5 HOTEL.*
+FROM LA_REVANCHA.HOTEL AS HOTEL JOIN LA_REVANCHA.HABITACION ON HOTEL.HOT_CODIGO = HABITACION.HAB_COD_HOTEL JOIN LA_REVANCHA.HABITACION_RESERVA ON HABITACION.HAB_CODIGO = HABITACION_RESERVA.HABRES_COD_HABITACION JOIN LA_REVANCHA.RESERVA ON HABITACION_RESERVA.HABRES_COD_RESERVA = RESERVA.RES_CODIGO JOIN LA_REVANCHA.CANCELACION ON RESERVA.RES_CODIGO = CANCELACION.CANC_COD_RESERVA");
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+            return hoteles;
+        }
+
         public void QuitarHotel(Decimal cod_usu, Decimal cod_hot)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HOTEL_USUARIO SET HOTCERR_HABILITADO = '{0}' " +
