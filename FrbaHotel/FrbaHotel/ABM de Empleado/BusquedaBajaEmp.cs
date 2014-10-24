@@ -138,6 +138,11 @@ namespace FrbaHotel.ABM_de_Empleado
             se_busco = true;
         }
 
+        private void textBoxmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
 
     }
 }

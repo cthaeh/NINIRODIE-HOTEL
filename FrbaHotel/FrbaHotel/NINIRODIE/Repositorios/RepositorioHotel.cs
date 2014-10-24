@@ -42,6 +42,7 @@ WHERE CANC_FECHA >= '{0}' AND CANC_FECHA <= '{1}'", inicio, fin);
             return hoteles;
         }
 
+
         public List<Hotel> Estadistica4(String inicio, String fin)
         {
 
@@ -284,6 +285,17 @@ ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
      categoria, recargo, ciudad, pais,DBTypeConverter.ToSQLDateTime(fecha),1);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+
+        public Hotel BuscarHotelxId(Decimal id)
+        {
+            var query = String.Format(@"Select * FROM LA_REVANCHA.HOTEL WHERE HOT_CODIGO = '{0}'", id);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.HOTEL");
+
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+            return hoteles.First();
         }
 
         public Hotel BuscarHotel(String nombre)

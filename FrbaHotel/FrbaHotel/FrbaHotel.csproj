@@ -341,9 +341,11 @@
     <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
+    <Compile Include="NINIRODIE\Clases\HabRes.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
+    <Compile Include="NINIRODIE\Clases\Regimen.cs" />
     <Compile Include="NINIRODIE\Clases\Reserva.cs" />
     <Compile Include="NINIRODIE\Clases\Resusu.cs" />
     <Compile Include="NINIRODIE\Clases\Rol.cs" />
@@ -356,6 +358,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioRegimen.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioUsuario.cs" />
@@ -507,6 +510,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Consumible\CargarConsumibles.resx">
+      <DependentUpon>CargarConsumibles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Consumible\IngresarReserva.resx">
+      <DependentUpon>IngresarReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -521,11 +530,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Registrar Consumible\Form1.cs">
+    <Compile Include="Registrar Consumible\CargarConsumibles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Consumible\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registrar Consumible\CargarConsumibles.Designer.cs">
+      <DependentUpon>CargarConsumibles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Consumible\IngresarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Consumible\IngresarReserva.Designer.cs">
+      <DependentUpon>IngresarReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Estadia\Form1.cs">
       <SubType>Form</SubType>

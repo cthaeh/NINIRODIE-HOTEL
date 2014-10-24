@@ -44,6 +44,36 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return reservas;
         }
 
+        public Decimal BuscarHabitacion(Decimal cod_reserva)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.HABITACION_RESERVA WHERE HABRES_COD_RESERVA ='{0}'", cod_reserva);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+
+            var reservas = dataRow.ToList<HabRes>(this.DataRowToHabRes);
+            return reservas.First().identificador_habitacion;
+        }
+
+        public Reserva BuscarReserva(Decimal cod)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.RESERVA WHERE RES_CODIGO ='{0}'",cod);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+
+            var reservas = dataRow.ToList<Reserva>(this.DataRowToRese);
+            return reservas.First();
+        }
+
+        public HabRes DataRowToHabRes(DataRow row)
+        {
+            var cod_res = Decimal.Parse(row["HABRES_COD_RESERVA"].ToString());
+            var cod_hab = Decimal.Parse(row["HABRES_COD_HABITACION"].ToString());
+
+            var habr = new HabRes(cod_res, cod_hab);
+
+            return habr;
+        }
+
         public Resusu DataRowToResu(DataRow row)
         {
             var codigo_res = Decimal.Parse(row["RESUSU_COD_RESERVA"].ToString());
@@ -63,10 +93,10 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var codigo_est = Decimal.Parse(row["RES_ESTRES_CODIGO"].ToString());
             var codigo_reg = Decimal.Parse(row["RES_HOTREG_REGIMEN"].ToString());
             var codigo = Decimal.Parse(row["RES_CODIGO"].ToString());
-        //    var f_carga = DateTime.Parse("07/10/2014 09:56:50 p.m.");
+            var f_carga = DateTime.Parse("07/10/2014 09:56:50 p.m.");
         //    var f_desde = DateTime.Parse("07/10/2014 09:56:50 p.m.");
         //    var f_inici = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-            var f_carga = DateTime.Parse(row["RES_FECHA_CARGA"].ToString());
+        //    var f_carga = DateTime.Parse(row["RES_FECHA_CARGA"].ToString());
             var f_desde = DateTime.Parse(row["RES_FECHA_DESDE"].ToString());
             var f_inici = DateTime.Parse(row["RES_FECHA_HASTA"].ToString());
 
