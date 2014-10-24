@@ -82,36 +82,39 @@ namespace FrbaHotel.ABM_de_Usuario
             {
                 MessageBox.Show("Claves Diferentes", "Alerta", MessageBoxButtons.OK);
             }
-            if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
-                || textBoxnomb.Text == "" || textBoxmail.Text == ""
-                || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == "" || comboBox1.Text == ""
-                || textBoxap.Text == "")
-            {
-                MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
-                salir = false;
-            }
             else
             {
-                Decimal bandera = RepositorioEmpleado.Instance.ExisteEmp(Decimal.Parse(textBoxdni.Text));
-                if (bandera == 2)
+                if (textBoxrepcla.Text == "" || textBoxtel.Text == "" || textBoxnombusu.Text == ""
+                    || textBoxnomb.Text == "" || textBoxmail.Text == ""
+                    || textBoxdni.Text == "" || textBoxdir.Text == "" || textBoxcla.Text == "" || comboBox1.Text == ""
+                    || textBoxap.Text == "")
                 {
-                    Personal persona = new Personal(textBoxnomb.Text, textBoxap.Text,
-                 "dni", Decimal.Parse(textBoxdni.Text), textBoxmail.Text, Decimal.Parse(textBoxtel.Text),
-                 textBoxdir.Text, (dateTimePicker1.Value));
-
-                    RepositorioUsuario.Instance.GenerarUsuario(textBoxcla.Text, textBoxnombusu.Text, comboBox1.Text);
-
-                    Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(textBoxnombusu.Text);
-
-                    RepositorioEmpleado.Instance.GenerarEmpleado(persona, usu.codigo);
-
-                    MessageBox.Show("Se ha dado de alta correctamente", "ALERTA", MessageBoxButtons.OK);
-
-                    this.Close();
+                    MessageBox.Show("No dejes campos vacios", "Alerta", MessageBoxButtons.OK);
+                    salir = false;
                 }
                 else
                 {
-                    MessageBox.Show("Ya existe un empleado con ese documento", "Alerta", MessageBoxButtons.OK);
+                    Decimal bandera = RepositorioEmpleado.Instance.ExisteEmp(Decimal.Parse(textBoxdni.Text));
+                    if (bandera == 2)
+                    {
+                        Personal persona = new Personal(textBoxnomb.Text, textBoxap.Text,
+                     "dni", Decimal.Parse(textBoxdni.Text), textBoxmail.Text, Decimal.Parse(textBoxtel.Text),
+                     textBoxdir.Text, (dateTimePicker1.Value));
+
+                        RepositorioUsuario.Instance.GenerarUsuario(textBoxcla.Text, textBoxnombusu.Text, comboBox1.Text);
+
+                        Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(textBoxnombusu.Text);
+
+                        RepositorioEmpleado.Instance.GenerarEmpleado(persona, usu.codigo);
+
+                        MessageBox.Show("Se ha dado de alta correctamente", "ALERTA", MessageBoxButtons.OK);
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un empleado con ese documento", "Alerta", MessageBoxButtons.OK);
+                    }
                 }
             }
         }
