@@ -338,7 +338,7 @@
       <DependentUpon>SeleccionHot.cs</DependentUpon>
     </Compile>
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
-    <Compile Include="NINIRODIE\Clases\Estadistica2.cs" />
+    <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
@@ -353,7 +353,7 @@
     <Compile Include="NINIRODIE\DBUtils\SQLUtils.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
-    <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica2.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />

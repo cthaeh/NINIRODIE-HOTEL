@@ -8,46 +8,42 @@ using FrbaHotel.NINIRODIE.DBUtils;
 
 namespace FrbaHotel.NINIRODIE.Repositorios
 {
-    class RepositorioEstadistica2
+    class RepositorioEstadistica3
     {
-        private static RepositorioEstadistica2 _instance;
+        private static RepositorioEstadistica3 _instance;
 
-        public static RepositorioEstadistica2 Instance
+        public static RepositorioEstadistica3 Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new RepositorioEstadistica2();
+                    _instance = new RepositorioEstadistica3();
                 }
                 return _instance;
             }
         }
 
-        public List<Hotel> Estadistica2(String inicio, String fin)
+        public List<Hotel> Estadistica3(String inicio, String fin)
         {
 
-            var query2 = String.Format(@"SELECT TOP 5 SUM(FACITEM_CANTIDAD) AS CANTIDAD_CONSUMIBLES_POR_FACTURA,HOTEL.*
-FROM LA_REVANCHA.HOTEL
-JOIN LA_REVANCHA.HABITACION ON HOTEL.HOT_CODIGO = HABITACION.HAB_COD_HOTEL
-JOIN LA_REVANCHA.HABITACION_RESERVA ON HABITACION.HAB_CODIGO = HABITACION_RESERVA.HABRES_COD_HABITACION
-JOIN LA_REVANCHA.RESERVA ON HABITACION_RESERVA.HABRES_COD_RESERVA = RESERVA.RES_CODIGO
-JOIN LA_REVANCHA.FACTURA ON RESERVA.RES_CODIGO = FACTURA.FAC_COD_RESERVA
-JOIN LA_REVANCHA.FACTURA_ITEM ON FACTURA.FAC_CODIGO = FACTURA_ITEM.FACITEM_COD_FACTURA
-WHERE FAC_FECHA >= '{0}' AND FAC_FECHA	<= '{1}'
-GROUP BY FACITEM_COD_FACTURA, FACITEM_CANTIDAD,HOT_CODIGO,HOT_NOMBRE,HOT_MAIL,HOT_TELEFONO,HOT_CALLE,HOT_NRO_CALLE,
-		 HOT_ESTRELLAS,HOT_RECARGA_ESTRELLAS,HOT_CIUDAD,HOT_PAIS,HOT_FECHA_CREACION,HOT_HABILITADO
-ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
+            var query2 = String.Format(@"SELECT TOP 5 SUM(HOTEL_CERRADO.HOTCERR_CANT_DIAS_CERRADO) AS CANTIDAD_DE_DIAS_CERRADO, HOTEL_CERRADO.HOTCERR_COD_HOTEL,HOT_NOMBRE,HOT_MAIL,HOT_TELEFONO,HOT_CALLE,HOT_NRO_CALLE,
+	             HOT_ESTRELLAS,HOT_RECARGA_ESTRELLAS,HOT_CIUDAD,HOT_PAIS,HOT_FECHA_CREACION,HOT_HABILITADO
+	FROM LA_REVANCHA.HOTEL_CERRADO, LA_REVANCHA.HOTEL
+	WHERE HOTCERR_COD_HOTEL = HOTEL.HOT_CODIGO AND LA_REVANCHA.HOTEL_CERRADO.HOTCERR_FECHA_DESDE >= '{0}'  AND LA_REVANCHA.HOTEL_CERRADO.HOTCERR_FECHA_HASTA <= '{1}'
+	GROUP BY HOTEL_CERRADO.HOTCERR_COD_HOTEL, HOTEL_CERRADO.HOTCERR_COD_HOTEL, HOT_NOMBRE,HOT_MAIL,HOT_TELEFONO,HOT_CALLE,HOT_NRO_CALLE,
+		     HOT_ESTRELLAS,HOT_RECARGA_ESTRELLAS,HOT_CIUDAD,HOT_PAIS,HOT_FECHA_CREACION,HOT_HABILITADO
+	ORDER BY CANTIDAD_DE_DIAS_CERRADO DESC", inicio, fin);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query2, "LA_REVANCHA.HOTEL");
 
-            var hoteles = dataRow.ToList<Hotel>(this.DataRowToEst2);
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToEst3);
             return hoteles;
         }
 
-        public Hotel DataRowToEst2(DataRow row)
+        public Hotel DataRowToEst3(DataRow row)
         {
-            var codigo = Decimal.Parse(row["HOT_CODIGO"].ToString());
+            var codigo = Decimal.Parse(row["HOTCERR_COD_HOTEL"].ToString());
             var nombre = row["HOT_NOMBRE"].ToString();
             var categoria = Decimal.Parse(row["HOT_ESTRELLAS"].ToString());
             var recarga = Decimal.Parse(row["HOT_RECARGA_ESTRELLAS"].ToString());

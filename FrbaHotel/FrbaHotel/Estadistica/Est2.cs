@@ -51,7 +51,7 @@ namespace FrbaHotel.Estadistica
             {
                 f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
             }
-            hoteles_grilla = RepositorioHotel.Instance.Estadistica1(f_ini, f_fin);
+            hoteles_grilla = RepositorioHotel.Instance.Estadistica2(f_ini, f_fin);
 
             this.dataGridView1.DataSource = new List<Hotel>();
             this.dataGridView1.Refresh();
