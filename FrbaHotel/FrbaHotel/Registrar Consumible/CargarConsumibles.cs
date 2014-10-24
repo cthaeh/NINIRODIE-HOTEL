@@ -16,6 +16,7 @@ namespace FrbaHotel.Registrar_Consumible
         Decimal reserva, personas, categoria, precio_base;
         DataRow renglon;
         DataTable tabla = new DataTable();
+        List<Consumibles> consu_grilla;
 
         public CargarConsumibles(Decimal res, Decimal per, Decimal cat, Decimal pr)
         {
@@ -33,7 +34,7 @@ namespace FrbaHotel.Registrar_Consumible
 
         private void CargarConsumibles_Load(object sender, EventArgs e)
         {
-            List<Consumibles> consu_grilla = RepositorioConsumibles.Instance.BuscarConsu();
+            consu_grilla = RepositorioConsumibles.Instance.BuscarConsu();
 
             this.dataGridView1.DataSource = new List<Consumibles>();
             this.dataGridView1.Refresh();
@@ -52,16 +53,66 @@ namespace FrbaHotel.Registrar_Consumible
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Consumibles consumible_seleccionado = (Consumibles)this.dataGridView1.SelectedRows[0].DataBoundItem;
+            if (this.dataGridView1.SelectedRows.Count > 0)
+            {
+                Consumibles consumible_seleccionado = (Consumibles)this.dataGridView1.SelectedRows[0].DataBoundItem;
 
-            renglon = tabla.NewRow();
-            renglon[0] = consumible_seleccionado.precio.ToString();
-            renglon[1] = consumible_seleccionado.descripcion.ToString();;
-            renglon[2] = "0";
+                renglon = tabla.NewRow();
+                renglon[0] = consumible_seleccionado.precio.ToString();
+                renglon[1] = consumible_seleccionado.descripcion.ToString(); ;
+                renglon[2] = "0";
 
-            tabla.Rows.Add(renglon);
+                tabla.Rows.Add(renglon);
+                dataGridView2.DataSource = tabla;
+
+                this.dataGridView2.Columns["precio"].ReadOnly = true;
+                this.dataGridView2.Columns["descripcion"].ReadOnly = true;
+
+                int n = 0, m = 0;
+                while (n < consu_grilla.Count)
+                {
+
+                    if (consu_grilla.ElementAt(n).descripcion == consumible_seleccionado.descripcion)
+                    {
+                        m = n;
+                    }
+                    n = n + 1;
+                }
+
+                consu_grilla.RemoveAt(m);
+
+                this.dataGridView1.DataSource = new List<Consumibles>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = consu_grilla;
+                this.dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un consumible", "Alerta", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            consu_grilla = RepositorioConsumibles.Instance.BuscarConsu();
+
+            this.dataGridView1.DataSource = new List<Consumibles>();
+            this.dataGridView1.Refresh();
+            this.dataGridView1.DataSource = consu_grilla;
+            this.dataGridView1.Refresh();
+
+            tabla = new DataTable();
+
+            tabla.Columns.Add(new DataColumn("precio"));
+            tabla.Columns.Add(new DataColumn("descripcion"));
+            tabla.Columns.Add(new DataColumn("cantidad"));
+
             dataGridView2.DataSource = tabla;
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
 
         }
     }
