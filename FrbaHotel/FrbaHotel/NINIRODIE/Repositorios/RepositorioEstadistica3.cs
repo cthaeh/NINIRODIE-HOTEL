@@ -67,7 +67,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
 
             var hotel = new Hotel(codigo, nombre, meil, telef, call, altu, categoria,
-                ciudad, pais, f_nac, hab, recarga);
+                ciudad, pais, hab, recarga);
 
             return hotel;
         }

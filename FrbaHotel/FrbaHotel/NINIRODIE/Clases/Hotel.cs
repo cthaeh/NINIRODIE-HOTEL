@@ -26,15 +26,15 @@ namespace FrbaHotel.NINIRODIE.Clases
         }
 
         public Hotel(Decimal id, String nom, String email, Decimal tel,
-            String calle,Decimal nro_calle, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab, Decimal rec)
-        : this(nom, email, tel,calle,nro_calle, cat, ciu, paiz, nacimiento, hab, rec)
+            String calle,Decimal nro_calle, Decimal cat, String ciu, String paiz, bool hab, Decimal rec)
+        : this(nom, email, tel,calle,nro_calle, cat, ciu, paiz, hab, rec)
         {
             identificador = id;
 
         }
 
         public Hotel(String nom, String email, Decimal tel,
-            String dir, Decimal nro, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab, Decimal rec)
+            String dir, Decimal nro, Decimal cat, String ciu, String paiz, bool hab, Decimal rec)
         {
             habilitado = hab;
             Calle = dir;
@@ -44,7 +44,6 @@ namespace FrbaHotel.NINIRODIE.Clases
             telefono = tel;
             ciudad = ciu;
             pais = paiz;
-            creacion = nacimiento;
             categoria = cat;
             recarga = rec;
         }

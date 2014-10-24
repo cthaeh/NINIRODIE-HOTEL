@@ -317,8 +317,8 @@ ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
                 telef = Decimal.Parse(row["HOT_TELEFONO"].ToString());
 
             var meil = row["HOT_MAIL"].ToString();
-            var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-
+           // var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
+           
             String ciudad = "";
             if (!row["HOT_CIUDAD"].Equals(DBNull.Value))
                 ciudad = row["HOT_CIUDAD"].ToString();
@@ -331,7 +331,7 @@ ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
 
 
             var hotel = new Hotel(codigo,nombre, meil, telef,call,altu,categoria,
-                ciudad, pais, f_nac, hab,recarga);
+                ciudad, pais, hab,recarga);
 
             return hotel;
         }
