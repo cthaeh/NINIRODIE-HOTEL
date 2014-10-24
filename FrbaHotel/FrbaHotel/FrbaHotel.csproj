@@ -345,6 +345,7 @@
     <Compile Include="NINIRODIE\Clases\HabRes.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
+    <Compile Include="NINIRODIE\Clases\Item.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Regimen.cs" />
     <Compile Include="NINIRODIE\Clases\Reserva.cs" />
@@ -358,6 +359,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioConsumibles.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioFactura.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRegimen.cs" />

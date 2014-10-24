@@ -53,44 +53,52 @@ namespace FrbaHotel.Registrar_Consumible
             }
             else
             {
-                Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
-                Decimal cod_hab = RepositorioReserva.Instance.BuscarHabitacion(Decimal.Parse(textBoxcod.Text));
-
-                Habitacion habitacion = RepositorioHabitacion.Instance.BuscarHab(cod_hab);
-                Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
-                Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(res.identificador_hotel);
-
-                if (res.identificador_estado != 4005)
+                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
+                if (bandera != 1)
                 {
-                    MessageBox.Show("La Reserva Indicada No Esta Finalizada", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("La reserva ingresada ya ha sigo cargada", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    if (habitacion.codigo_tipo == 1001)
+                    Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
+                    Decimal cod_hab = RepositorioReserva.Instance.BuscarHabitacion(Decimal.Parse(textBoxcod.Text));
+
+                    Habitacion habitacion = RepositorioHabitacion.Instance.BuscarHab(cod_hab);
+                    Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
+                    Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(res.identificador_hotel);
+
+                    if (res.identificador_estado != 4005)
                     {
-                        cant_personas = 1;
-                    }
-                    else if (habitacion.codigo_tipo == 1002)
-                    {
-                        cant_personas = 2;
-                    }
-                    else if (habitacion.codigo_tipo == 1003)
-                    {
-                        cant_personas = 3;
-                    }
-                    else if (habitacion.codigo_tipo == 1004)
-                    {
-                        cant_personas = 4;
+                        MessageBox.Show("La Reserva Indicada No Esta Finalizada", "Alerta", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        cant_personas = 5;
+                        if (habitacion.codigo_tipo == 1001)
+                        {
+                            cant_personas = 1;
+                        }
+                        else if (habitacion.codigo_tipo == 1002)
+                        {
+                            cant_personas = 2;
+                        }
+                        else if (habitacion.codigo_tipo == 1003)
+                        {
+                            cant_personas = 3;
+                        }
+                        else if (habitacion.codigo_tipo == 1004)
+                        {
+                            cant_personas = 4;
+                        }
+                        else
+                        {
+                            cant_personas = 5;
+                        }
+
+                        new CargarConsumibles(Decimal.Parse(textBoxcod.Text), cant_personas, hotel.categoria,
+                            regimen.precio).ShowDialog(this);
+
+                        this.Close();
                     }
-
-                    new CargarConsumibles(res.identificador, cant_personas, hotel.categoria,
-                        regimen.precio).ShowDialog(this);
-
-                    this.Close();
                 }
             }
         }

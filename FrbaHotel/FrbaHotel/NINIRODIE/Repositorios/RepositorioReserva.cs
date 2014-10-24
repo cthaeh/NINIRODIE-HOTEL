@@ -93,14 +93,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var codigo_est = Decimal.Parse(row["RES_ESTRES_CODIGO"].ToString());
             var codigo_reg = Decimal.Parse(row["RES_HOTREG_REGIMEN"].ToString());
             var codigo = Decimal.Parse(row["RES_CODIGO"].ToString());
-            var f_carga = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-        //    var f_desde = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-        //    var f_inici = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-        //    var f_carga = DateTime.Parse(row["RES_FECHA_CARGA"].ToString());
-            var f_desde = DateTime.Parse(row["RES_FECHA_DESDE"].ToString());
-            var f_inici = DateTime.Parse(row["RES_FECHA_HASTA"].ToString());
 
-            var reserv = new Reserva(codigo,f_inici,f_desde,f_carga, codigo_hot,codigo_reg,codigo_est );
+            var reserv = new Reserva(codigo,codigo_hot,codigo_reg,codigo_est );
             return reserv;
         }
         
