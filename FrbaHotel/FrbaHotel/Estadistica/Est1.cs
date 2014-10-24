@@ -33,10 +33,25 @@ namespace FrbaHotel.Estadistica
 
         private void Est1_Load(object sender, EventArgs e)
         {
+            String f_fin, f_ini;
             List<Hotel> hoteles_grilla = new List<Hotel>();
-            String f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
-            String f_fin = año + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
-            hoteles_grilla = RepositorioHotel.Instance.Estadistica1(f_ini,f_fin);
+            if (mes_fin < 10)
+            {
+                f_fin = año + "0" + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
+            }
+            else
+            {
+                f_fin = año + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
+            }
+            if (mes_inicio < 10)
+            {
+                f_ini = año + "0" + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
+            }
+            else
+            {
+                f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
+            }
+            hoteles_grilla = RepositorioHotel.Instance.Estadistica1(f_ini, f_fin);
 
             this.dataGridView1.DataSource = new List<Hotel>();
             this.dataGridView1.Refresh();

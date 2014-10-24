@@ -36,13 +36,13 @@ namespace FrbaHotel.Estadistica
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Est2(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est2(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new Est3(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est3(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 

@@ -24,6 +24,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        //---------------------------------------------------------------------
+
         public List<Hotel> Estadistica1(String inicio, String fin)
         {
          var query2 = String.Format(@"SELECT TOP 5 HOTEL.*
@@ -39,6 +41,29 @@ WHERE CANC_FECHA >= '{0}' AND CANC_FECHA <= '{1}'", inicio, fin);
             var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
             return hoteles;
         }
+
+        public List<Hotel> Estadistica2(String inicio, String fin)
+        {
+
+            var query2 = String.Format(@"SELECT TOP 5 SUM(FACITEM_CANTIDAD) AS CANTIDAD_CONSUMIBLES_POR_FACTURA,HOTEL.*
+FROM LA_REVANCHA.HOTEL
+JOIN LA_REVANCHA.HABITACION ON HOTEL.HOT_CODIGO = HABITACION.HAB_COD_HOTEL
+JOIN LA_REVANCHA.HABITACION_RESERVA ON HABITACION.HAB_CODIGO = HABITACION_RESERVA.HABRES_COD_HABITACION
+JOIN LA_REVANCHA.RESERVA ON HABITACION_RESERVA.HABRES_COD_RESERVA = RESERVA.RES_CODIGO
+JOIN LA_REVANCHA.FACTURA ON RESERVA.RES_CODIGO = FACTURA.FAC_COD_RESERVA
+JOIN LA_REVANCHA.FACTURA_ITEM ON FACTURA.FAC_CODIGO = FACTURA_ITEM.FACITEM_COD_FACTURA
+WHERE FAC_FECHA >= '{0}' AND FAC_FECHA	<= '{1}'
+GROUP BY FACITEM_COD_FACTURA, FACITEM_CANTIDAD,HOT_CODIGO,HOT_NOMBRE,HOT_MAIL,HOT_TELEFONO,HOT_CALLE,HOT_NRO_CALLE,
+		 HOT_ESTRELLAS,HOT_RECARGA_ESTRELLAS,HOT_CIUDAD,HOT_PAIS,HOT_FECHA_CREACION,HOT_HABILITADO
+ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query2, "LA_REVANCHA.HOTEL");
+
+            var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
+            return hoteles;
+        }
+
+        // ---------------------------------------------------------------------
 
         public void QuitarHotel(Decimal cod_usu, Decimal cod_hot)
         {
