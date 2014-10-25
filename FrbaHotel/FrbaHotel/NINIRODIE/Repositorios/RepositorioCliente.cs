@@ -135,7 +135,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 telef = Decimal.Parse(row["CLI_TELEFONO"].ToString());
 
             var meil = row["CLI_MAIL"].ToString();
-            var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
+           // var f_nac = DateTime.Parse("07/10/2014 09:56:50 p.m.");
+            var f_nac = DateTime.Parse(row["CLI_FECHA_NACIMIENTO"].ToString());
 
             String loc = "";
             if (!row["CLI_LOCALIDAD"].Equals(DBNull.Value))

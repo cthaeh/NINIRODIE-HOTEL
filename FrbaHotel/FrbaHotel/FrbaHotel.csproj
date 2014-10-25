@@ -235,6 +235,18 @@
     <Compile Include="ABM Hotel\BusquedaModHot.Designer.cs">
       <DependentUpon>BusquedaModHot.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM Hotel\CerrarHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Hotel\CerrarHot.Designer.cs">
+      <DependentUpon>CerrarHot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM Hotel\MenuHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Hotel\MenuHot.Designer.cs">
+      <DependentUpon>MenuHot.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM Hotel\ModificarHot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +338,7 @@
       <DependentUpon>SeleccionHot.cs</DependentUpon>
     </Compile>
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
+    <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
@@ -340,6 +353,7 @@
     <Compile Include="NINIRODIE\DBUtils\SQLUtils.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />
@@ -442,6 +456,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Hotel\BusquedaModHot.resx">
       <DependentUpon>BusquedaModHot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Hotel\CerrarHot.resx">
+      <DependentUpon>CerrarHot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM Hotel\MenuHot.resx">
+      <DependentUpon>MenuHot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Hotel\ModificarHot.resx">
       <DependentUpon>ModificarHot.cs</DependentUpon>

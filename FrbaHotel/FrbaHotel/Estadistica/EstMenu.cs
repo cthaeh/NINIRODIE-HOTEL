@@ -12,9 +12,10 @@ namespace FrbaHotel.Estadistica
     public partial class EstMenu : Form
     {
         int dia_inicio, dia_fin, mes_inicio, mes_fin;
-
-        public EstMenu(int d_i, int d_f, int m_i, int m_f)
+        String año;
+        public EstMenu(int d_i, int d_f, int m_i, int m_f, String ño)
         {
+            año = ño;
             dia_inicio = d_i;
             dia_fin = d_f;
             mes_fin = m_f;
@@ -29,31 +30,31 @@ namespace FrbaHotel.Estadistica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Est1(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est1(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Est2(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est2(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            new Est3(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est3(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            new Est4(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est4(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            new Est5(dia_inicio, dia_fin, mes_inicio, mes_fin).ShowDialog(this);
+            new Est5(dia_inicio, dia_fin, mes_inicio, mes_fin, año).ShowDialog(this);
             this.Close();
         }
     }

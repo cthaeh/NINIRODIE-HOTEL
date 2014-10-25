@@ -118,7 +118,7 @@ namespace FrbaHotel.ABM_Hotel
                 if (this.dataGridView1.SelectedRows.Count > 0)
                 {
                     hotel_seleccionado = (Hotel)this.dataGridView1.SelectedRows[0].DataBoundItem;
-                    new ModificarHot(hotel_seleccionado).ShowDialog(this);
+                    new MenuHot(hotel_seleccionado).ShowDialog(this);
 
                     this.Close();
                 }
@@ -155,29 +155,30 @@ namespace FrbaHotel.ABM_Hotel
                     banderacat = Decimal.Parse(textBoxcat.Text);
                 }
             }
+            if (seguir == true)
+            {
+                hoteles_buscados = RepositorioHotel.Instance.BuscarHotelD(banderacat, textBoxciu.Text,
+                    textBoxnomb.Text, textBoxpa.Text);
 
-            hoteles_buscados = RepositorioHotel.Instance.BuscarHotelD(banderacat, textBoxciu.Text,
-                textBoxnomb.Text, textBoxpa.Text);
+                this.dataGridView1.DataSource = new List<Hotel>();
+                this.dataGridView1.Refresh();
+                this.dataGridView1.DataSource = hoteles_buscados;
+                this.dataGridView1.Refresh();
 
-            this.dataGridView1.DataSource = new List<Hotel>();
-            this.dataGridView1.Refresh();
-            this.dataGridView1.DataSource = hoteles_buscados;
-            this.dataGridView1.Refresh();
+                this.dataGridView1.Columns["identificador"].Visible = false;
+                this.dataGridView1.Columns["habilitado"].Visible = false;
+                this.dataGridView1.Columns["telefono"].Visible = false;
+                this.dataGridView1.Columns["calle"].Visible = false;
+                this.dataGridView1.Columns["creacion"].Visible = false;
+                this.dataGridView1.Columns["nro_calle"].Visible = false;
+                this.dataGridView1.Columns["recarga"].Visible = false;
+                this.dataGridView1.Columns["mail"].Visible = false;
 
-            this.dataGridView1.Columns["identificador"].Visible = false;
-            this.dataGridView1.Columns["habilitado"].Visible = false;
-            this.dataGridView1.Columns["telefono"].Visible = false;
-            this.dataGridView1.Columns["calle"].Visible = false;
-            this.dataGridView1.Columns["creacion"].Visible = false;
-            this.dataGridView1.Columns["nro_calle"].Visible = false;
-            this.dataGridView1.Columns["recarga"].Visible = false;
-            this.dataGridView1.Columns["mail"].Visible = false;
-
-            this.dataGridView1.Columns["nombre"].ReadOnly = true;
-            this.dataGridView1.Columns["categoria"].ReadOnly = true;
-            this.dataGridView1.Columns["pais"].ReadOnly = true;
-            this.dataGridView1.Columns["ciudad"].ReadOnly = true;
-        
+                this.dataGridView1.Columns["nombre"].ReadOnly = true;
+                this.dataGridView1.Columns["categoria"].ReadOnly = true;
+                this.dataGridView1.Columns["pais"].ReadOnly = true;
+                this.dataGridView1.Columns["ciudad"].ReadOnly = true;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    public class Hotel
+    public class Estadistica3
     {
         public Decimal identificador { get; set; }
         public String nombre { get; set; }
@@ -19,23 +19,25 @@ namespace FrbaHotel.NINIRODIE.Clases
         public String pais { get; set; }
         public DateTime creacion { get; set; }
 		public bool habilitado { get; set; }
+        public Decimal cant_dias { get; set; }
 
-        public Hotel()
+        public Estadistica3()
         {
             identificador = -1;
         }
 
-        public Hotel(Decimal id, String nom, String email, Decimal tel,
-            String calle,Decimal nro_calle, Decimal cat, String ciu, String paiz, bool hab, Decimal rec)
-        : this(nom, email, tel,calle,nro_calle, cat, ciu, paiz, hab, rec)
+        public Estadistica3(Decimal id, String nom, String email, Decimal tel,
+            String calle,Decimal nro_calle, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab, Decimal rec, Decimal cant)
+        : this(nom, email, tel,calle,nro_calle, cat, ciu, paiz, nacimiento, hab, rec, cant)
         {
             identificador = id;
 
         }
 
-        public Hotel(String nom, String email, Decimal tel,
-            String dir, Decimal nro, Decimal cat, String ciu, String paiz, bool hab, Decimal rec)
+        public Estadistica3(String nom, String email, Decimal tel,
+            String dir, Decimal nro, Decimal cat, String ciu, String paiz, DateTime nacimiento, bool hab, Decimal rec, Decimal cant)
         {
+            cant_dias = cant;
             habilitado = hab;
             Calle = dir;
             nombre = nom;
@@ -44,6 +46,7 @@ namespace FrbaHotel.NINIRODIE.Clases
             telefono = tel;
             ciudad = ciu;
             pais = paiz;
+            creacion = nacimiento;
             categoria = cat;
             recarga = rec;
         }
