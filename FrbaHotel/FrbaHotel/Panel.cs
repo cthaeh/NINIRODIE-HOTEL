@@ -16,6 +16,7 @@ using FrbaHotel.ABM_de_Rol;
 using FrbaHotel.NINIRODIE.Clases;
 using FrbaHotel.NINIRODIE.Repositorios;
 using FrbaHotel.Estadistica;
+using FrbaHotel.Registrar_Consumible;
 
 namespace FrbaHotel
 {
@@ -204,6 +205,11 @@ namespace FrbaHotel
         private void estadistica_Click(object sender, EventArgs e)
         {
             new EstFecha().ShowDialog(this);
+        }
+
+        private void consumible_Click(object sender, EventArgs e)
+        {
+            new IngresarReserva().ShowDialog(this);
         }
     }
 }

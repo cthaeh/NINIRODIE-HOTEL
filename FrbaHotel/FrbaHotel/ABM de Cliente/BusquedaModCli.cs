@@ -145,5 +145,10 @@ namespace FrbaHotel.ABM_de_Cliente
                 this.dataGridView1.Columns["mail"].ReadOnly = true;
             }
         }
+
+        private void textBoxmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
     }
 }
