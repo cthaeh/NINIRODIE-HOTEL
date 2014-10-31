@@ -141,6 +141,7 @@ namespace FrbaHotel.Registrar_Consumible
                 String descripcion = dataGridView2.Rows[n].Cells[2].Value.ToString();
                 Decimal cant; 
                 convirtio = Decimal.TryParse(dataGridView2.Rows[n].Cells[3].Value.ToString(),out cant);
+                
                 if (convirtio == false)
                 {
                     MessageBox.Show("Las cantidades deben ser un número positivo", "Alerta", MessageBoxButtons.OK);
