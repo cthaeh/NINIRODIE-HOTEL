@@ -144,5 +144,10 @@ namespace FrbaHotel.ABM_de_Empleado
         {
             soloEscribeNumeros(e);
         }
+
+        private void textBoxmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
     }
 }

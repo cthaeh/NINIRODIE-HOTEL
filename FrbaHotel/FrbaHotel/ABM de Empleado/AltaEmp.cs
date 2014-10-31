@@ -147,5 +147,10 @@ namespace FrbaHotel.ABM_de_Usuario
             }
         }
 
+        private void textBoxmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
+
     }
 }
