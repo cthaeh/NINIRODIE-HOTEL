@@ -97,19 +97,27 @@ namespace FrbaHotel.ABM_de_Usuario
                     Decimal bandera = RepositorioEmpleado.Instance.ExisteEmp(Decimal.Parse(textBoxdni.Text));
                     if (bandera == 2)
                     {
-                        Personal persona = new Personal(textBoxnomb.Text, textBoxap.Text,
-                     "dni", Decimal.Parse(textBoxdni.Text), textBoxmail.Text, Decimal.Parse(textBoxtel.Text),
-                     textBoxdir.Text, (dateTimePicker1.Value));
+                        Decimal bandera2 = RepositorioEmpleado.Instance.ExisteEmpUI(textBoxnombusu.Text);
+                        if (bandera2 == 2)
+                        {
+                            Personal persona = new Personal(textBoxnomb.Text, textBoxap.Text,
+                         "dni", Decimal.Parse(textBoxdni.Text), textBoxmail.Text, Decimal.Parse(textBoxtel.Text),
+                         textBoxdir.Text, (dateTimePicker1.Value));
 
-                        RepositorioUsuario.Instance.GenerarUsuario(textBoxcla.Text, textBoxnombusu.Text, comboBox1.Text);
+                            RepositorioUsuario.Instance.GenerarUsuario(textBoxcla.Text, textBoxnombusu.Text, comboBox1.Text);
 
-                        Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(textBoxnombusu.Text);
+                            Usuario usu = RepositorioUsuario.Instance.BuscarUsuario(textBoxnombusu.Text);
 
-                        RepositorioEmpleado.Instance.GenerarEmpleado(persona, usu.codigo);
+                            RepositorioEmpleado.Instance.GenerarEmpleado(persona, usu.codigo);
 
-                        MessageBox.Show("Se ha dado de alta correctamente", "ALERTA", MessageBoxButtons.OK);
+                            MessageBox.Show("Se ha dado de alta correctamente", "ALERTA", MessageBoxButtons.OK);
 
-                        this.Close();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe un usuario con ese username", "Alerta", MessageBoxButtons.OK);
+                        }
                     }
                     else
                     {

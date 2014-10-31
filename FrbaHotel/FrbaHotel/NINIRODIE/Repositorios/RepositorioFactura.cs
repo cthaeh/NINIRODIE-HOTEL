@@ -23,6 +23,22 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public Decimal BuscarMontoFacxRes(Decimal reserva)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+
+            if (dataRow.Count == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return Decimal.Parse(dataRow[0]["FAC_TOTAL"].ToString());
+            }
+        }
+
         public Decimal BuscarFacturaXRes(Decimal reserva)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);

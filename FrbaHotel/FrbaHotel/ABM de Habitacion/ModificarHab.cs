@@ -149,7 +149,7 @@ namespace FrbaHotel.ABM_de_Habitacion
                 }
 
                 Habitacion bandera = RepositorioHabitacion.Instance.ExisteHabMod(hotel_seleccionado.identificador, Decimal.Parse(textBoxnro.Text));
-                if (bandera.identificador == habitacion_seleccionada.identificador)
+                if (bandera.identificador != habitacion_seleccionada.identificador)
                 {
                     RepositorioHabitacion.Instance.ModificarHabitacion(textBoxpis.Text, textBoxnro.Text, textBoxdesc.Text, ubi, habitacion_seleccionada.identificador);
 
