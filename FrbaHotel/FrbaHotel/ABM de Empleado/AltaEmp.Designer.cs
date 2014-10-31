@@ -226,6 +226,7 @@
             this.textBoxmail.Name = "textBoxmail";
             this.textBoxmail.Size = new System.Drawing.Size(200, 20);
             this.textBoxmail.TabIndex = 21;
+            this.textBoxmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxmail_KeyPress);
             // 
             // textBoxdir
             // 

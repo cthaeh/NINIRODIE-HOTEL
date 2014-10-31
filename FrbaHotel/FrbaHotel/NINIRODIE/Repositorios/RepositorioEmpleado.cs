@@ -43,6 +43,22 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
         }
 
+        public Decimal ExisteEmpUI(String nombre_usuario)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO WHERE USU_USERNAME = '{0}'", nombre_usuario);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.USUARIO");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
         public Decimal ExisteEmp(Decimal dni)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.PERSONAL WHERE PER_NUMERO_IDENTIFICACION = '{0}'", dni);
@@ -93,6 +109,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
+
 
         public List<Personal> BuscarEmpleadoD(String apellido, String mail, String nombre, Decimal documento)
         {

@@ -156,5 +156,10 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             soloEscribeNumeros(e);
         }
+
+        private void textBoxmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            soloEscribeLetras(e);
+        }
     }
 }

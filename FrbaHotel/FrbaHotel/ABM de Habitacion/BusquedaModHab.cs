@@ -128,51 +128,49 @@ namespace FrbaHotel.ABM_de_Habitacion
                         MessageBox.Show("El numero debe ser mayor a 0", "ALERTA", MessageBoxButtons.OK);
                         seguir = false;
                     }
-                    else
+                }
+
+                if (textBoxper.Text == "Simple")
+                {
+                    tipo = 1001;
+                }
+                else if (textBoxper.Text == "Doble")
+                {
+                    tipo = 1002;
+                }
+                else if (textBoxper.Text == "Triple")
+                {
+                    tipo = 1003;
+                }
+                else if (textBoxper.Text == "Cuadruple")
+                {
+                    tipo = 1004;
+                }
+                else if (textBoxper.Text == "King")
+                {
+                    tipo = 1005;
+                }
+                else if (textBoxper.Text == "")
+                {
+                    seguir = true;
+                }
+                else
+                {
+                    MessageBox.Show("El tipo de habitacion no es correcto", "Alerta", MessageBoxButtons.OK);
+                    seguir = false;
+                }
+
+                if (banderapiso != true)
+                {
+                    if (Decimal.Parse(textBoxpis.Text) < 1)
                     {
-
-                        if (textBoxper.Text == "Simple")
-                        {
-                            tipo = 1001;
-                        }
-                        else if (textBoxper.Text == "Doble")
-                        {
-                            tipo = 1002;
-                        }
-                        else if (textBoxper.Text == "Triple")
-                        {
-                            tipo = 1003;
-                        }
-                        else if (textBoxper.Text == "Cuadruple")
-                        {
-                            tipo = 1004;
-                        }
-                        else if (textBoxper.Text == "King")
-                        {
-                            tipo = 1005;
-                        }
-                        else if (textBoxper.Text == "")
-                        {
-                            seguir = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("El tipo de habitacion no es correcto", "Alerta", MessageBoxButtons.OK);
-                            seguir = false;
-                        }
-
-                        if (banderapiso != true)
-                        {
-                            if (Decimal.Parse(textBoxpis.Text) < 1)
-                            {
-                                MessageBox.Show("El piso debe ser mayor a 0", "ALERTA", MessageBoxButtons.OK);
-                                seguir = false;
-                            }
-                            else { seguir = true; }
-                        }
+                        MessageBox.Show("El piso debe ser mayor a 0", "ALERTA", MessageBoxButtons.OK);
+                        seguir = false;
                     }
+                    else { seguir = true; }
                 }
             }
+                    
 
             if (seguir == true)
             {

@@ -241,7 +241,7 @@ ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
             }
             if (ciudad != "")
             {
-                query = query + "AND HOT_CIUDAD = ' " + ciudad + "' ";
+                query = query + "AND HOT_CIUDAD = '" + ciudad + "' ";
             }
             if (pais != "")
             {

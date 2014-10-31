@@ -301,6 +301,12 @@
     <Compile Include="Estadistica\EstMenu.Designer.cs">
       <DependentUpon>EstMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Facturar\IngresarReserv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturar\IngresarReserv.Designer.cs">
+      <DependentUpon>IngresarReserv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,7 @@
     <Compile Include="NINIRODIE\Clases\HabRes.cs" />
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
+    <Compile Include="NINIRODIE\Clases\Item.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Regimen.cs" />
     <Compile Include="NINIRODIE\Clases\Reserva.cs" />
@@ -358,6 +365,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioConsumibles.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioFactura.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHotel.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRegimen.cs" />
@@ -491,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estadistica\EstMenu.resx">
       <DependentUpon>EstMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar\IngresarReserv.resx">
+      <DependentUpon>IngresarReserv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
