@@ -112,7 +112,7 @@ namespace FrbaHotel.ABM_Hotel
             else
             {
                 Hotel bandera = RepositorioHotel.Instance.ExisteHotelMod(textBoxnomb.Text);
-                if (bandera.identificador == hotel_seleccionado.identificador)
+                if (bandera.identificador != hotel_seleccionado.identificador)
                 {
                     Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
                     RepositorioHotel.Instance.LimpiarHotelRegimen(hotel_seleccionado.identificador);
