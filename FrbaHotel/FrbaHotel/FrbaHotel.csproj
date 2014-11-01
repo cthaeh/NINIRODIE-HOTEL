@@ -580,6 +580,9 @@
     <EmbeddedResource Include="Registrar Consumible\CargarConsumibles.resx">
       <DependentUpon>CargarConsumibles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Consumible\ElegirHabitacion.resx">
+      <DependentUpon>ElegirHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrar Consumible\IngresarReserva.resx">
       <DependentUpon>IngresarReserva.cs</DependentUpon>
     </EmbeddedResource>
@@ -602,6 +605,12 @@
     </Compile>
     <Compile Include="Registrar Consumible\CargarConsumibles.Designer.cs">
       <DependentUpon>CargarConsumibles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Consumible\ElegirHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Consumible\ElegirHabitacion.Designer.cs">
+      <DependentUpon>ElegirHabitacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Consumible\IngresarReserva.cs">
       <SubType>Form</SubType>

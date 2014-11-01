@@ -13,17 +13,16 @@ namespace FrbaHotel.Registrar_Consumible
 {
     public partial class CargarConsumibles : Form
     {
-        Decimal reserva, personas, categoria, precio_base;
+        Decimal reserva, categoria, precio_base;
         DataRow renglon;
         DataTable tabla = new DataTable();
         List<Consumibles> consu_grilla;
         List<Item> items;
         int cantidad = 0;
 
-        public CargarConsumibles(Decimal res, Decimal per, Decimal cat, Decimal pr)
+        public CargarConsumibles(Decimal res, Decimal cat, Decimal pr)
         {
             reserva = res;
-            personas = per;
             categoria = cat;
             precio_base = pr;
             InitializeComponent();

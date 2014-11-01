@@ -64,9 +64,7 @@ namespace FrbaHotel.Registrar_Consumible
 					
 					if(res.identificador != 0)
 					{
-						Decimal cod_hab = RepositorioReserva.Instance.BuscarHabitacion(Decimal.Parse(textBoxcod.Text));
-
-						Habitacion habitacion = RepositorioHabitacion.Instance.BuscarHab(cod_hab);
+					
 						Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
 						Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(res.identificador_hotel);
 
@@ -76,28 +74,8 @@ namespace FrbaHotel.Registrar_Consumible
 						}
 						else
 						{
-							if (habitacion.codigo_tipo == 1001)
-							{
-								cant_personas = 1;
-							}
-							else if (habitacion.codigo_tipo == 1002)
-							{
-								cant_personas = 2;
-							}
-							else if (habitacion.codigo_tipo == 1003)
-							{
-								cant_personas = 3;
-							}
-							else if (habitacion.codigo_tipo == 1004)
-							{
-								cant_personas = 4;
-							}
-							else
-							{
-								cant_personas = 5;
-							}
 
-							new CargarConsumibles(Decimal.Parse(textBoxcod.Text), cant_personas, hotel.categoria,
+							new ElegirHabitacion(Decimal.Parse(textBoxcod.Text), hotel.categoria,
 								regimen.precio).ShowDialog(this);
 
 							this.Close();
