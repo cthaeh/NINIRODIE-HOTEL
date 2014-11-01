@@ -24,6 +24,34 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public void InsertarFormaPago(String nombre, String apellido, Decimal nro_tarjeta, String forma)
+        {
+            var query = String.Format(@"INSERT INTO LA_REVANCHA.FORMA_PAGO " +
+"(PAGO_DESCRIPCION, PAGO_NOMBRE, PAGO_APELLIDO, PAGO_NRO_TARJETA)" +
+"VALUES ('{0}', '{1}', '{2}', '{3}')", forma, nombre, apellido, nro_tarjeta);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public void CompletarFactura(Decimal codigo, Decimal cod_pago, Decimal monto)
+        {
+            var query = String.Format(@"UPDATE LA_REVANCHA.FACTURA SET FAC_COD_FORMA_PAGO = '{0}', FAC_TOTAL = '{1}', FAC_FECHA = '{2}' WHERE FAC_CODIGO = '{3}'",
+                cod_pago, Math.Truncate(monto), DBTypeConverter.ToSQLDateTime(DateTime.Now), codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public Decimal BuscarPago(String nombre, String apellido, Decimal nro_tarjeta, String forma)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FORMA_PAGO " +
+                "WHERE PAGO_DESCRIPCION = '{0}' AND PAGO_NOMBRE = '{1}' AND PAGO_APELLIDO = '{2}' AND PAGO_NRO_TARJETA = '{3}'",
+                forma, nombre, apellido, nro_tarjeta);
+
+           DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FORMA_PAGO");
+
+           return Decimal.Parse(dataRow[0]["PAGO_CODIGO"].ToString());
+        }
+
         public Decimal BuscarMontoFacxRes(Decimal reserva)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);

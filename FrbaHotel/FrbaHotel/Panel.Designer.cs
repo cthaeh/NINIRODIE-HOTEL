@@ -287,6 +287,7 @@
             this.facturar.Name = "facturar";
             this.facturar.Size = new System.Drawing.Size(54, 22);
             this.facturar.Text = "Facturar";
+            this.facturar.Click += new System.EventHandler(this.facturar_Click);
             // 
             // estadistica
             // 

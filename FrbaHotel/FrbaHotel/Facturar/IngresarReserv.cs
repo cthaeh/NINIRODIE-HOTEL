@@ -91,7 +91,7 @@ namespace FrbaHotel.Facturar
                             recarga = costo_factura;
                         }
 
-                        new Facturar(costo_factura, recarga, monto_estadia);
+                        new Facturar(costo_factura, recarga, monto_estadia,bandera).ShowDialog(this); ;
                         this.Close();
                     }
                 }
