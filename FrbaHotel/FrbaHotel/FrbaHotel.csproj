@@ -376,6 +376,7 @@
     <Compile Include="NINIRODIE\Clases\Cancelacion.cs" />
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
     <Compile Include="NINIRODIE\Clases\Consumibles.cs" />
+    <Compile Include="NINIRODIE\Clases\Estadia.cs" />
     <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FechaSistema.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
@@ -405,6 +406,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioUsuario.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEstadia.cs" />
     <Compile Include="Panel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -586,6 +588,12 @@
     <EmbeddedResource Include="Registrar Consumible\IngresarReserva.resx">
       <DependentUpon>IngresarReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\IngresoOEgreso.resx">
+      <DependentUpon>IngresoOEgreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\RegistrarIngresoEgreso.resx">
+      <DependentUpon>RegistrarIngresoEgreso.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -618,11 +626,17 @@
     <Compile Include="Registrar Consumible\IngresarReserva.Designer.cs">
       <DependentUpon>IngresarReserva.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrar Estadia\Form1.cs">
+    <Compile Include="Registrar Estadia\IngresoOEgreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Estadia\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registrar Estadia\IngresoOEgreso.Designer.cs">
+      <DependentUpon>IngresoOEgreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Estadia\RegistrarIngresoEgreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Estadia\RegistrarIngresoEgreso.Designer.cs">
+      <DependentUpon>RegistrarIngresoEgreso.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

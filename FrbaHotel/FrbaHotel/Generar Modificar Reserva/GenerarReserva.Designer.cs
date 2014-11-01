@@ -193,7 +193,7 @@
             this.Controls.Add(this.FechaDesdeLabel);
             this.Controls.Add(this.HotelLabel);
             this.Name = "GenerarReserva";
-            this.Text = "GenerarReserva";
+            this.Text = "Generar Reserva";
             ((System.ComponentModel.ISupportInitialize)(this.HabitacionesDisponiblesDataGrid)).EndInit();
             this.HabitacionesDisponiblesGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RegimenDataGrid)).EndInit();

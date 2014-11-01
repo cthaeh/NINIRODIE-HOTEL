@@ -164,7 +164,7 @@
             this.Controls.Add(this.BuscarBoton);
             this.Controls.Add(this.filtroDeBusquedaGroupBox);
             this.Name = "BuscarCliente";
-            this.Text = "BuscarCliente";
+            this.Text = "Buscar Cliente";
             this.filtroDeBusquedaGroupBox.ResumeLayout(false);
             this.filtroDeBusquedaGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteDataGridView)).EndInit();

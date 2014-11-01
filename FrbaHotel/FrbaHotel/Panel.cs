@@ -20,6 +20,7 @@ using FrbaHotel.Registrar_Consumible;
 using FrbaHotel.Facturar;
 using FrbaHotel.Cancelar_Reserva;
 using FrbaHotel.Generar_Modificar_Reserva;
+using FrbaHotel.Registrar_Estadia;
 
 namespace FrbaHotel
 {
@@ -233,6 +234,11 @@ namespace FrbaHotel
         private void modificarToolStripMenuItem5_Click(object sender, EventArgs e)
         {
             new BuscarReserva(usuario, ModoApertura.MODIFICACION).ShowDialog(this);
+        }
+
+        private void estadia_Click(object sender, EventArgs e)
+        {
+            new IngresoOEgreso(usuario, hotel_seleccionado).ShowDialog(this);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Regimen
+    public class Regimen
     {
         public Decimal identificador { get; set; }
         public String descripcion { get; set; }
@@ -18,6 +18,11 @@ namespace FrbaHotel.NINIRODIE.Clases
             descripcion = des;
             precio = p;
             habilitado = hab;
+        }
+
+        public Regimen() 
+        {
+            identificador = 0;
         }
     }
 }

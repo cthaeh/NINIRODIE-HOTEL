@@ -9,16 +9,17 @@ using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Repositorios;
 using FrbaHotel.NINIRODIE.Clases;
 using FrbaHotel.Generar_Modificar_Reserva;
+using FrbaHotel.Registrar_Estadia;
 
 namespace FrbaHotel.Cancelar_Reserva
 {
     public partial class BuscarReserva : Form
     {
 
-        public Reserva reservaAModificar { get; set; }
-        public Boolean puedeModificarse { get; set; }
+        public Reserva ReservaBuscada { get; set; }
         public Usuario usuario { get; set; }
         public ModoApertura modoApertura { get; set; }
+        public Hotel hotelSeleccionado { get; set; }
 
         public BuscarReserva(Usuario user, ModoApertura modoApert)
         {
@@ -28,6 +29,11 @@ namespace FrbaHotel.Cancelar_Reserva
 
             MessageBox.Show("El código de reserva solo debe contener Números", "Atención", MessageBoxButtons.OK);
 
+        }
+
+        public BuscarReserva(Usuario user, ModoApertura modoApert, Hotel hotelSelec) : this(user, modoApert)
+        {
+            hotelSeleccionado = hotelSelec;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -41,34 +47,24 @@ namespace FrbaHotel.Cancelar_Reserva
             {
                 Decimal codigoReserva = Decimal.Parse(this.codigoReservaTextBox.Text);
                 if (usuario.tipo != "CLIENTE")
-                    reservaAModificar = RepositorioReserva.Instance.BuscarReserva(codigoReserva);
+                    ReservaBuscada = RepositorioReserva.Instance.BuscarReserva(codigoReserva);
                 else
-                    reservaAModificar = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
+                    ReservaBuscada = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
 
 
-                if (reservaAModificar.identificador != -1)
+                if (ReservaBuscada.identificador != -1)
                 {
                     this.compararFechaReservaConActual();
 
-                    if (puedeModificarse)
+                    if (this.compararFechaReservaConActual())
                     {
-                        if (modoApertura == ModoApertura.CANCELACION)
-                            new CancelarReserva(usuario, reservaAModificar).ShowDialog(this);
-                        else
-                            new ModificarReserva(usuario, reservaAModificar).ShowDialog(this);
+                        ModificacionSegunModoApertura();
+                        this.Close();
                     }
                     else
                     {
-                        if (modoApertura == ModoApertura.CANCELACION)
-                            MessageBox.Show("No puede realizarse la cancelación.\n" +
-                                        "Las cancelaciones pueden realizarse hasta\n" +
-                                        "el día anterior al comienzo de la reserva.",
-                                        "Atención", MessageBoxButtons.OK);
-                        else
-                            MessageBox.Show("No puede realizarse una modificación sobre la reserva indicada.\n" +
-                                            "Las modificaciones pueden realizarse hasta\n" +
-                                            "el día anterior al comienzo de la reserva.",
-                                             "Atención", MessageBoxButtons.OK);
+                        InformarMotivoFallaModificacionCheckInOut();
+                            
                         this.Close();
                     }
                 }
@@ -83,6 +79,49 @@ namespace FrbaHotel.Cancelar_Reserva
                 MessageBox.Show("Debe ingresar un Código de Reserva.", "Atención", MessageBoxButtons.OK);
             }
            
+        }
+
+        private void ModificacionSegunModoApertura()
+        {
+            if (modoApertura == ModoApertura.CANCELACION)
+                new CancelarReserva(usuario, ReservaBuscada).ShowDialog(this);
+            else
+                if (modoApertura == ModoApertura.MODIFICACION)
+                {
+                    Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(ReservaBuscada.identificador_hotel);
+                    new ModificarReserva(usuario, ReservaBuscada, hotel).ShowDialog(this);
+                }
+                else
+                    RegistrarCheckInOutSiEsHotelCorrespondiente();
+        }
+
+        private void RegistrarCheckInOutSiEsHotelCorrespondiente()
+        {
+            if (hotelSeleccionado.identificador == ReservaBuscada.identificador_hotel)
+                new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
+            else
+                MessageBox.Show("La reserva no corresponde a este hotel.", "Atención", MessageBoxButtons.OK);
+        }
+
+        private void InformarMotivoFallaModificacionCheckInOut()
+        {
+            if (modoApertura == ModoApertura.CANCELACION)
+                MessageBox.Show("No puede realizarse la cancelación.\n" +
+                            "Las cancelaciones pueden realizarse hasta\n" +
+                            "el día anterior al comienzo de la reserva.",
+                            "Atención", MessageBoxButtons.OK);
+            else
+            {
+                if (modoApertura == ModoApertura.MODIFICACION)
+                    MessageBox.Show("No puede realizarse una modificación sobre la reserva indicada.\n" +
+                                    "Las modificaciones pueden realizarse hasta\n" +
+                                    "el día anterior al comienzo de la reserva.",
+                                     "Atención", MessageBoxButtons.OK);
+                else
+                    if (modoApertura == ModoApertura.CHECKIN)
+                        MessageBox.Show("No puede realizarse el ingreso.\n" +
+                                        "La reserva ya ha caducado.", "Atención", MessageBoxButtons.OK);
+            }
         }
 
         private void VerificarQueNoEsteCancelada()
@@ -100,12 +139,18 @@ namespace FrbaHotel.Cancelar_Reserva
                 this.Close();
             }
         }
-
+        //Verificar horario
         private bool compararFechaReservaConActual()
         {
-            puedeModificarse = FechaSistema.Instance.fecha.CompareTo(reservaAModificar.fechaDesde) < 0;
+            int resultadoComparacion = FechaSistema.Instance.fecha.Date.CompareTo(ReservaBuscada.fechaDesde.Date);
 
-            return puedeModificarse;
+            if (modoApertura == ModoApertura.MODIFICACION | modoApertura == ModoApertura.CANCELACION)
+                return resultadoComparacion < 0;
+            else
+                if(modoApertura == ModoApertura.CHECKIN)
+                    return resultadoComparacion == 0;
+                else
+                    return true;
         }
 
         private void CancelarBoton_Click(object sender, EventArgs e)
