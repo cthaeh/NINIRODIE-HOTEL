@@ -92,7 +92,7 @@ namespace FrbaHotel.ABM_de_Cliente
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione un empleado", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("Seleccione un cliente", "Alerta", MessageBoxButtons.OK);
                 }
             }
             

@@ -100,8 +100,8 @@ namespace FrbaHotel.ABM_Hotel
             else
             {
                 Decimal bandera = RepositorioHotel.Instance.ExisteHotel(textBoxnomb.Text);
-                if (bandera == 2)
-                {
+            //    if (bandera == 2)
+            //    {
                     Decimal recargo = Decimal.Parse(textBoxcat.Text) * 100;
                     RepositorioHotel.Instance.InsertarHotel(Decimal.Parse(textBoxcat.Text), textBoxciud.Text,
                         textBoxdir.Text, textBoxnomb.Text, textBoxmail.Text, textBoxnrocal.Text,
@@ -145,11 +145,11 @@ namespace FrbaHotel.ABM_Hotel
                     MessageBox.Show("Se ha dado de alta correctamente", "Alerta", MessageBoxButtons.OK);
 
                     this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("El nombre ya existe", "Alerta", MessageBoxButtons.OK);
-                }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("El nombre ya existe", "Alerta", MessageBoxButtons.OK);
+            //    }
             }
         }
 

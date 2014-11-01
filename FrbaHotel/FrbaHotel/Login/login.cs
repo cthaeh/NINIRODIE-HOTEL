@@ -18,6 +18,7 @@ namespace FrbaHotel.Login
         public int intentos_fallidos = 0;
         public string tipo;
         public decimal intentos = 0;
+        public decimal error_admin = 0;
 
         public login()
         {
@@ -42,6 +43,7 @@ namespace FrbaHotel.Login
         private void aceptar_Click(object sender, EventArgs e)
         {
             Usuario usu_aux = new Usuario();
+            
             if (ID_Usuario.Text == "admin")
             {
                 if (Pass_usuario.Text == "w23e")
@@ -50,6 +52,15 @@ namespace FrbaHotel.Login
                     MessageBox.Show("Ud. se esta logueando con un usuario de altos privilegios, por favor sea cuidadoso con su uso", "Alerta", MessageBoxButtons.OK);
                     cerrar = true;
                     new SeleccionHot("pulenta", usu_aux).ShowDialog(this); ;
+                }
+                else
+                {
+                    error_admin = error_admin + 1;
+                    if (error_admin == 3)
+                    {
+                        MessageBox.Show("Esta bien que el admin no se bloque, pero intenta no equivocarte tanto", "Alerta", MessageBoxButtons.OK);
+                    }
+                    cerrar = true;
                 }
             }
             if (cerrar == false)
