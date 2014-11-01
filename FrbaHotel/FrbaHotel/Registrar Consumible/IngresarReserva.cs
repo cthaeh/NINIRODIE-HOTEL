@@ -78,10 +78,17 @@ namespace FrbaHotel.Registrar_Consumible
                         {
                             if (res.identificador_hotel == codigo_hotel_seleccionado)
                             {
-                                new ElegirHabitacion(Decimal.Parse(textBoxcod.Text), hotel.categoria,
-                                    regimen.precio).ShowDialog(this);
+                                if ((res.fechaDesde - DateTime.Now).Days > 0)
+                                {
+                                    MessageBox.Show("La reserva ingresada es futura", "Alerta", MessageBoxButtons.OK);
+                                }
+                                else
+                                {
+                                    new ElegirHabitacion(Decimal.Parse(textBoxcod.Text), hotel.categoria,
+                                        regimen.precio).ShowDialog(this);
 
-                                this.Close();
+                                    this.Close();
+                                }
                             }
                             else
                             {
