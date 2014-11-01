@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FrbaHotel.NINIRODIE.DBUtils;
 using System.Data;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.NINIRODIE.Repositorios
 {
@@ -39,6 +40,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public List<Item> BuscarItemsXFac(Decimal factura)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA_ITEM WHERE FACITEM_COD_FACTURA = '{0}'", factura);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FACTURA_ITEM");
+
+            var items = dataRow.ToList<Item>(this.DataRowToItem);
+
+            return items;
+        }
+
         public Decimal BuscarFacturaXRes(Decimal reserva)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);
@@ -72,6 +84,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
     reserva, 0, 0, "2013-01-09 00:00:00.000", 0, 2000, reserva);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        public Item DataRowToItem(DataRow row)
+        {
+            var codigo = Decimal.Parse(row["FACITEM_COD_CONSUMIBLE"].ToString());
+            var precio = Decimal.Parse(row["FACITEM_MONTO"].ToString());
+            var cant = Decimal.Parse(row["FACITEM_CANTIDAD"].ToString());
+            var desc = "harcodeo";
+
+            var item = new Item(codigo, precio, desc, cant);
+            return item;
         }
     }
 }

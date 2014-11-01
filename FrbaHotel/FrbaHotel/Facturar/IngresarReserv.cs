@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.Facturar
 {
@@ -54,17 +55,46 @@ namespace FrbaHotel.Facturar
             {
                 MessageBox.Show("Ingrese un codigo de reserva", "Alerta", MessageBoxButtons.OK);
             }
-
-            Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
-            if (bandera == 1)
+            else
             {
-                MessageBox.Show("La reserva ingresada no existe o no se le han cargado los consumibles", "Alerta", MessageBoxButtons.OK);
-            }
 
-            Decimal bandera2 = RepositorioFactura.Instance.BuscarMontoFacxRes(Decimal.Parse(textBoxcod.Text));
-            if (bandera2 == 0)
-            {
-                MessageBox.Show("La reserva ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
+                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
+                if (bandera == 1)
+                {
+                    MessageBox.Show("La reserva ingresada no existe o no se le han cargado los consumibles", "Alerta", MessageBoxButtons.OK);
+                }
+                else
+                {
+
+                    Decimal bandera2 = RepositorioFactura.Instance.BuscarMontoFacxRes(Decimal.Parse(textBoxcod.Text));
+                    if (bandera2 == 0)
+                    {
+                        MessageBox.Show("La reserva ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
+                        Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
+                        Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
+                        List<Item> items = RepositorioFactura.Instance.BuscarItemsXFac(bandera);
+                        Decimal recarga = 0;
+                        Decimal costo_factura = 0;
+                        int n = 0;
+                        while (n < items.Count)
+                        {
+                            Decimal monto = items.ElementAt(n).cantidad * items.ElementAt(n).precio;
+                            costo_factura = costo_factura + monto;
+                            n++;
+                        }
+                        if (regimen.identificador == 120)
+                        {
+                            recarga = costo_factura;
+                        }
+
+                        new Facturar(costo_factura, recarga, monto_estadia);
+                        this.Close();
+                    }
+                }
             }
         }
     }

@@ -23,6 +23,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 return _instance;
             }
         }
+        public Decimal BuscarMontoEstadia(Decimal cod_res)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ESTADIA WHERE EST_COD_RESERVA = '{0}'", cod_res);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.ESTADIA");
+
+            return Decimal.Parse(dataRow[0]["EST_PRECIO"].ToString());
+        }
 
         public List<Resusu> BuscarReservasDeUsu(Decimal cod_usu)
         {
@@ -79,10 +87,8 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var codigo_res = Decimal.Parse(row["RESUSU_COD_RESERVA"].ToString());
             var codigo_usu = Decimal.Parse(row["RESUSU_CODUSU_HUESPED"].ToString());
             var codigo_op = Decimal.Parse(row["RESUSU_CODUSU_OPERADOR"].ToString());
-            var f_ent = DateTime.Parse("07/10/2014 09:56:50 p.m.");
-            var f_sal = DateTime.Parse("07/10/2014 09:56:50 p.m.");
 
-            var resusu = new Resusu(codigo_res, f_ent, f_sal, codigo_usu, codigo_op);
+            var resusu = new Resusu(codigo_res, codigo_usu, codigo_op);
 
             return resusu;
         }
