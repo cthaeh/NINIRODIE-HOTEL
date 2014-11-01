@@ -34,7 +34,7 @@ namespace FrbaHotel.Estadistica
         private void Est4_Load(object sender, EventArgs e)
         {
             String f_fin, f_ini;
-            List<Hotel> hoteles_grilla = new List<Hotel>();
+            List<Habitacion> habitaciones_grilla = new List<Habitacion>();
             if (mes_fin < 10)
             {
                 f_fin = año + "0" + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
@@ -51,27 +51,22 @@ namespace FrbaHotel.Estadistica
             {
                 f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
             }
-            hoteles_grilla = RepositorioHotel.Instance.Estadistica4(f_ini, f_fin);
-            List<Decimal> habitaciones = new List<Decimal>();
+            habitaciones_grilla = RepositorioHabitacion.Instance.Estadistica4(f_ini, f_fin);
 
-            this.dataGridView1.DataSource = new List<Hotel>();
+            this.dataGridView1.DataSource = new List<Habitacion>();
             this.dataGridView1.Refresh();
-            this.dataGridView1.DataSource = hoteles_grilla;
+            this.dataGridView1.DataSource = habitaciones_grilla;
             this.dataGridView1.Refresh();
 
             this.dataGridView1.Columns["identificador"].Visible = false;
-            this.dataGridView1.Columns["habilitado"].Visible = false;
-            this.dataGridView1.Columns["telefono"].Visible = false;
-            this.dataGridView1.Columns["calle"].Visible = false;
-            this.dataGridView1.Columns["creacion"].Visible = false;
-            this.dataGridView1.Columns["nro_calle"].Visible = false;
-            this.dataGridView1.Columns["recarga"].Visible = false;
-            this.dataGridView1.Columns["mail"].Visible = false;
+            this.dataGridView1.Columns["codigo_tipo"].Visible = false;
+            this.dataGridView1.Columns["descripcion"].Visible = false;
+            this.dataGridView1.Columns["habilitada"].Visible = false;
 
-            this.dataGridView1.Columns["nombre"].ReadOnly = true;
-            this.dataGridView1.Columns["categoria"].ReadOnly = true;
-            this.dataGridView1.Columns["pais"].ReadOnly = true;
-            this.dataGridView1.Columns["ciudad"].ReadOnly = true;
+            this.dataGridView1.Columns["numero"].ReadOnly = true;
+            this.dataGridView1.Columns["codigo_hotel"].ReadOnly = true;
+            this.dataGridView1.Columns["piso"].ReadOnly = true;
+            this.dataGridView1.Columns["ubicacion"].ReadOnly = true;
         }
 
 
