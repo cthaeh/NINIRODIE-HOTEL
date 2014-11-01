@@ -41,8 +41,7 @@ WHERE CANC_FECHA >= '{0}' AND CANC_FECHA <= '{1}'", inicio, fin);
             var hoteles = dataRow.ToList<Hotel>(this.DataRowToHotel);
             return hoteles;
         }
-
-
+        
         public List<Hotel> Estadistica4(String inicio, String fin)
         {
 
