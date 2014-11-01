@@ -19,9 +19,11 @@ namespace FrbaHotel.Registrar_Consumible
         List<Consumibles> consu_grilla;
         List<Item> items;
         int cantidad = 0;
+        Decimal cod_hab;
 
-        public CargarConsumibles(Decimal res, Decimal cat, Decimal pr)
+        public CargarConsumibles(Decimal res, Decimal cat, Decimal pr, Decimal hab)
         {
+            cod_hab = hab;
             reserva = res;
             categoria = cat;
             precio_base = pr;
@@ -156,25 +158,30 @@ namespace FrbaHotel.Registrar_Consumible
             if (salir == false)
             {
                 int j = 0;
+                Reserva rese = RepositorioReserva.Instance.BuscarReserva(reserva);
+                Estadia estad = RepositorioEstadia.Instance.BuscarEstadia(rese);
 
-                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                Decimal usuario = RepositorioReserva.Instance.BuscarUsuario(reserva);
+
+                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
                 if (bandera != 1)
                 {
-                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
+
                     while (j < items.Count)
                     {
-                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio);
+                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
                         j++;
                     }
                 }
                 else
                 {
 
-                    RepositorioFactura.Instance.IniciarFactura(reserva);
-                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                    RepositorioFactura.Instance.IniciarFactura(estad.codigo, usuario);
+                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
                     while (j < items.Count)
                     {
-                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio);
+                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
                         j++;
                     }
                 }

@@ -33,6 +33,21 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public Decimal ExisteHab(Decimal factura, Decimal hab)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA_ITEM WHERE FACITEM_COD_FACTURA = '{0}' AND FACITEM_HABITACION = '{1}'", factura, hab);
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FACTURA_ITEM");
+
+            if (dataRow.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
         public void CompletarFactura(Decimal codigo, Decimal cod_pago, Decimal monto)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.FACTURA SET FAC_COD_FORMA_PAGO = '{0}', FAC_TOTAL = '{1}', FAC_FECHA = '{2}' WHERE FAC_CODIGO = '{3}'",
@@ -54,9 +69,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
         public Decimal BuscarMontoFacxRes(Decimal reserva)
         {
-            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_ESTADIA = '{0}'", reserva);
 
-            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FACTURA");
 
             if (dataRow.Count == 0)
             {
@@ -79,9 +94,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return items;
         }
 
-        public Decimal BuscarFacturaXRes(Decimal reserva)
+        public Decimal BuscarFacturaXRes(Decimal est)
         {
-            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_ESTADIA = '{0}'", est);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FACTURA");
 
@@ -95,21 +110,21 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
-        public void InsertarItemAFactura(Decimal factura, Decimal consumible, Decimal cantidad, Decimal precio)
+        public void InsertarItemAFactura(Decimal factura, Decimal consumible, Decimal cantidad, Decimal precio, Decimal hab)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA_ITEM " +
-"(FACITEM_COD_FACTURA, FACITEM_COD_CONSUMIBLE, FACITEM_CANTIDAD, FACITEM_MONTO)" +
-"VALUES ({0}, {1}, {2}, {3})", factura, consumible, cantidad, Math.Truncate(precio));
+"(FACITEM_COD_FACTURA, FACITEM_COD_CONSUMIBLE, FACITEM_CANTIDAD, FACITEM_MONTO, FACITEM_HABITACION)" +
+"VALUES ({0}, {1}, {2}, {3}, '{4}')", factura, consumible, cantidad, Math.Truncate(precio),hab);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
         
-        public void IniciarFactura(Decimal reserva)
+        public void IniciarFactura(Decimal est, Decimal consu)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA " +
     "(FAC_CODIGO, FAC_FECHA, FAC_TOTAL, FAC_COD_FORMA_PAGO, " +
-    "FAC_COD_RESERVA) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}')",
-    reserva, "2013-01-09 00:00:00.000", 0, 2000, reserva);
+    "FAC_COD_ESTADIA, FAC_CONSUMIDOR) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+    est, "2013-01-09 00:00:00.000", 0, 2000, est, consu);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }

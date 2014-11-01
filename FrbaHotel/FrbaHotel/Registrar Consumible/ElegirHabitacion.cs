@@ -33,12 +33,20 @@ namespace FrbaHotel.Registrar_Consumible
             List<Decimal> codigohab = new List<decimal>();
             codigohab = RepositorioReserva.Instance.BuscarHabitaciones(reserva);
             List<Habitacion> hab_grilla = new List<Habitacion>();
-
+            
+            Reserva res = RepositorioReserva.Instance.BuscarReserva(reserva);
+            Estadia est = RepositorioEstadia.Instance.BuscarEstadia(res);
+            
             int n = 0;
             while (n < codigohab.Count)
             {
                 Habitacion habi = RepositorioHabitacion.Instance.BuscarHab(codigohab.ElementAt(n));
-                hab_grilla.Add(habi);
+                Decimal fac = RepositorioFactura.Instance.BuscarFacturaXRes(est.codigo);
+                Decimal existe = RepositorioFactura.Instance.ExisteHab(fac, habi.identificador);
+                if (existe == 0)
+                {
+                    hab_grilla.Add(habi);
+                }
                 n = n + 1;
             }
 
@@ -62,8 +70,9 @@ namespace FrbaHotel.Registrar_Consumible
         {
             if (this.dataGridView1.SelectedRows.Count == 1)
             {
-
-                new CargarConsumibles(reserva, categoria, precio_base).ShowDialog(this);
+                Habitacion habitacion_seleccionada = (Habitacion)this.dataGridView1.SelectedRows[0].DataBoundItem;
+                    
+                new CargarConsumibles(reserva, categoria, precio_base, habitacion_seleccionada.identificador).ShowDialog(this);
                 this.Close();
             }
             else

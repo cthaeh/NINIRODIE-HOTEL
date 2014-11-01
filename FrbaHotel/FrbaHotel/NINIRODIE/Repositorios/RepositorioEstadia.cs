@@ -46,6 +46,15 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 return new Estadia();
         }
 
+        public Estadia BuscarEstadiaxCod(Decimal cod)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ESTADIA WHERE EST_COD_ESTADIA = '{0}'", cod);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.ESTADIA");
+
+            return (dataRow.ToList<Estadia>(this.ObtenerEstadiaParaCheckOut)).First();
+        }
+
         public Estadia ObtenerEstadiaParaCheckOut(DataRow row)
         {
             var codigo = Decimal.Parse(row["EST_COD_ESTADIA"].ToString());

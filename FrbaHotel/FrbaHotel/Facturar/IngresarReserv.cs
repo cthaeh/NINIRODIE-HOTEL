@@ -53,7 +53,7 @@ namespace FrbaHotel.Facturar
         {
             if (textBoxcod.Text == "")
             {
-                MessageBox.Show("Ingrese un codigo de reserva", "Alerta", MessageBoxButtons.OK);
+                MessageBox.Show("Ingrese un codigo de estadia", "Alerta", MessageBoxButtons.OK);
             }
             else
             {
@@ -61,19 +61,20 @@ namespace FrbaHotel.Facturar
                 Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
                 if (bandera == 1)
                 {
-                    MessageBox.Show("La reserva ingresada no existe o no se le han cargado los consumibles", "Alerta", MessageBoxButtons.OK);
+                    MessageBox.Show("La estadia ingresada no existe o no se le han cargado los consumibles", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
 
                     Decimal bandera2 = RepositorioFactura.Instance.BuscarMontoFacxRes(Decimal.Parse(textBoxcod.Text));
-                    if (bandera2 == 0)
+                    if (bandera2 != 0)
                     {
-                        MessageBox.Show("La reserva ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
+                        MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
+                        Estadia est = RepositorioEstadia.Instance.BuscarEstadiaxCod(Decimal.Parse(textBoxcod.Text));
+                        Reserva res = RepositorioReserva.Instance.BuscarReserva(est.codigoReserva);
 						
 						if(res.identificador != 0)
 						{

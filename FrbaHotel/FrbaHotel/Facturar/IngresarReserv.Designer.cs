@@ -65,9 +65,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(44, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 13);
+            this.label1.Size = new System.Drawing.Size(156, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Ingrese el Codigo de la Reserva ";
+            this.label1.Text = "Ingrese el Codigo de la Estadia ";
             // 
             // IngresarReserv
             // 
@@ -80,7 +80,7 @@
             this.Controls.Add(this.textBoxcod);
             this.Controls.Add(this.label1);
             this.Name = "IngresarReserv";
-            this.Text = "Ingresar Reserva";
+            this.Text = "Ingresar Estadia";
             this.Load += new System.EventHandler(this.IngresarReserv_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

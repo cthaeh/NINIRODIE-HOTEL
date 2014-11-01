@@ -67,9 +67,9 @@ namespace FrbaHotel.Registrar_Consumible
 						Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
 						Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(res.identificador_hotel);
 
-						if (res.identificador_estado != 4005)
+                        if (res.identificador_estado == 4000 && res.identificador_estado == 4001)
 						{
-							MessageBox.Show("La Reserva Indicada No Esta Finalizada", "Alerta", MessageBoxButtons.OK);
+							MessageBox.Show("La Reserva Indicada Esta Cancelada", "Alerta", MessageBoxButtons.OK);
 						}
 						else
 						{
