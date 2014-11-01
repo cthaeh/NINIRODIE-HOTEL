@@ -233,7 +233,10 @@ namespace FrbaHotel
 
         private void modificarToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            new BuscarReserva(usuario, ModoApertura.MODIFICACION).ShowDialog(this);
+            if (usuario.tipo == "CLIENTE")
+                new BuscarReserva(usuario, ModoApertura.MODIFICACION).ShowDialog(this);
+            else
+                new BuscarReserva(usuario, ModoApertura.MODIFICACION, hotel_seleccionado).ShowDialog(this);
         }
 
         private void estadia_Click(object sender, EventArgs e)

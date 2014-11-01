@@ -42,6 +42,9 @@ namespace FrbaHotel.Cancelar_Reserva
                 RepositorioReserva.Instance.ActualizarEstadoReservaACancelada(usuario, cancelacion);
                 MessageBox.Show("Su código de cancelación es: " + cancelacion.codigo.ToString(),
                                 "Informe", MessageBoxButtons.OK);
+
+                RepositorioHabitacion.Instance.CancelarReserva(reserva);
+
                 this.Close();
             }
             else

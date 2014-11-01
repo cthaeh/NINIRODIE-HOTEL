@@ -22,6 +22,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         public GenerarReserva()
         {
             InitializeComponent();
+            DesdeDateTimePicker.Value = FechaSistema.Instance.fecha;
+            HastaDateTimePicker.Value = FechaSistema.Instance.fecha.AddDays(1);
         }
 
         public GenerarReserva(Usuario user, Hotel hotelSeleccionado) : this()
@@ -102,19 +104,26 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             if (DesdeDateTimePicker.Value < HastaDateTimePicker.Value)
             {
-                List<Habitacion> habitacionesLibres =
-                    RepositorioHabitacion.Instance.HabitacionesLibresEnFecha((Hotel)hotelComboBox.SelectedItem,
-                        DesdeDateTimePicker.Value, HastaDateTimePicker.Value);
+                if (FechaSistema.Instance.fecha.Date.CompareTo(this.DesdeDateTimePicker.Value.Date) < 0)
+                {
+                    List<Habitacion> habitacionesLibres =
+                        RepositorioHabitacion.Instance.HabitacionesLibresEnFecha((Hotel)hotelComboBox.SelectedItem,
+                            DesdeDateTimePicker.Value, HastaDateTimePicker.Value);
 
-                this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesLibres;
-                this.HabitacionesDisponiblesDataGrid.Refresh();
-                this.CalcularPrecioHabitaciones();
+                    this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesLibres;
+                    this.HabitacionesDisponiblesDataGrid.Refresh();
+                    this.CalcularPrecioHabitaciones();
+                }
+                else
+                    MessageBox.Show("Nos encontramos en la fecha: " +
+                                    FechaSistema.Instance.fecha.Date.ToShortDateString() + ".\n" +
+                                    "No puede realizar una reserva con fecha anterior a esta.", "Atención",
+                                    MessageBoxButtons.OK);
             }
             else
-            {
-                MessageBox.Show("La fecha de egreso no puede \n" +
-                                "ser anterior a la de ingreso.", "Atención", MessageBoxButtons.OK);
-            }
+                    MessageBox.Show("La fecha de egreso no puede " +
+                                    "ser anterior a la de ingreso.", "Atención", MessageBoxButtons.OK);
+                
         }
 
         private void CalcularPrecioHabitaciones()

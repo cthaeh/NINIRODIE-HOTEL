@@ -23,6 +23,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         public List<Habitacion> habitacionesRemovidas { get; set; }
         public List<Habitacion> habitacionesAgregadas { get; set; }
         public Regimen regimenActual { get; set; }
+        public Regimen regimenCambiado { get; set; }
         public int contador { get; set; }
 
         public ModificarReserva(Usuario user, Reserva reserve, Hotel hotelSelec)
@@ -40,13 +41,30 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             this.hotelComboBox.Enabled = false;
             this.PopularRegimen();
 
+            CalcularPrecioHabitaciones(this.HabitacionesReservadasDataGrid);
+            CalcularPrecioHabitaciones(this.HabitacionesDisponiblesDataGrid);
+
             if (habitacionesDisponibles.Count == 0)
                 MessageBox.Show("No hay habitaciones disponibles para la fecha de la reserva.",
                                 "Atención", MessageBoxButtons.OK);
         }
 
-        private void SeleccionarRegimenDeReserva()
+        private void CalcularPrecioHabitaciones(DataGridView dataGridView)
         {
+            foreach (Habitacion habitacion in (List<Habitacion>)dataGridView.DataSource)
+            {
+                habitacion.cantidadPersonas = RepositorioHabitacion.Instance.CantidadPersonasParaHabitacion(habitacion);
+
+                habitacion.precio = (/*((Regimen)this.RegimenDataGrid.CurrentRow.DataBoundItem).precio*/ 
+                    (this.RegimenParaCalculo()).precio * 
+                                    habitacion.cantidadPersonas) + ((Hotel)hotelComboBox.SelectedItem).recarga;
+            }
+            dataGridView.Refresh();
+        }
+
+        private Regimen RegimenParaCalculo()
+        {
+            return regimenCambiado == null ? regimenActual : regimenCambiado;
         }
 
         private Hotel BuscarHotelReserva()
@@ -166,6 +184,9 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             {
                 Habitacion habitacionRemovida = (Habitacion)this.HabitacionesReservadasDataGrid.CurrentRow.DataBoundItem;
                 QuitarHabitacionReservadaYHabilitarla(habitacionRemovida);
+
+                CalcularPrecioHabitaciones(this.HabitacionesReservadasDataGrid);
+                CalcularPrecioHabitaciones(this.HabitacionesDisponiblesDataGrid);
             }
             else
                 MessageBox.Show("Debe seleccionar una fila.", "Atención", MessageBoxButtons.OK);
@@ -205,6 +226,9 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             {
                 Habitacion habitacionAgregada = (Habitacion)this.HabitacionesDisponiblesDataGrid.CurrentRow.DataBoundItem;
                 AgregarHabitacionDisponibleYSacarlaDeLibres(habitacionAgregada);
+
+                CalcularPrecioHabitaciones(this.HabitacionesReservadasDataGrid);
+                CalcularPrecioHabitaciones(this.HabitacionesDisponiblesDataGrid);
             }
             else
                 MessageBox.Show("Debe seleccionar una fila.", "Atención", MessageBoxButtons.OK);
@@ -245,10 +269,16 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
             this.regimenesPosibles.Remove(RegimenNuevo);
             this.regimenesPosibles.Add(RegimenViejo);
+
             this.RegimenDataGrid.DataSource = this.regimenesPosibles;
             this.regimenActualDataGrid.DataSource = new List<Regimen>() { RegimenNuevo };
+
             this.regimenActualDataGrid.Refresh();
             this.RegimenDataGrid.Refresh();
+
+            regimenCambiado = RegimenNuevo;
+            CalcularPrecioHabitaciones(this.HabitacionesReservadasDataGrid);
+            CalcularPrecioHabitaciones(this.HabitacionesDisponiblesDataGrid);
         }
 
         private void DesdeDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -262,8 +292,17 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 if (resultado == DialogResult.No)
                     DesdeDateTimePicker.Value = reserva.fechaDesde;
                 else
-                    BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+                    ValidarFechaDesdeMenorAFechaHasta();
             }
+        }
+
+        private void ValidarFechaDesdeMenorAFechaHasta()
+        {
+            if (DesdeDateTimePicker.Value < HastaDateTimePicker.Value)
+                BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+            else
+                MessageBox.Show("La fecha de egreso no puede \n" +
+                        "ser anterior a la de ingreso.", "Atención", MessageBoxButtons.OK);
         }
 
         private void HastaDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -277,7 +316,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 if (resultado == DialogResult.No)
                     DesdeDateTimePicker.Value = reserva.fechaDesde;
                 else
-                    BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+                    ValidarFechaDesdeMenorAFechaHasta();
             }
         }
 
@@ -348,23 +387,35 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void modificarBoton_Click(object sender, EventArgs e)
         {
-            if (this.habitacionesRemovidas.Count > 0)
-                foreach (Habitacion habitacionARemover in this.habitacionesRemovidas)
-                    RepositorioHabitacion.Instance.QuitarReservaDeHabitacion(reserva, habitacionARemover);
-            
-            if (this.habitacionesAgregadas.Count > 0)
-                foreach (Habitacion habitacionAAGregar in this.habitacionesAgregadas)
-                    RepositorioHabitacion.Instance.ReservarHabitacion(reserva, habitacionAAGregar);
-
             if (SeModificoLaReserva())
             {
-                RepositorioReserva.Instance.ModificarReserva(reserva, this.DesdeDateTimePicker.Value,
-                    this.HastaDateTimePicker.Value, (Regimen)this.regimenActualDataGrid.CurrentRow.DataBoundItem,
-                    4001);
+                Decimal precio = PrecioTotalPorModificacionReserva();
+                DialogResult resultado = MessageBox.Show("El precio tras los cambios es de: $" +
+                    precio.ToString() + ".", "Atención", MessageBoxButtons.YesNo);
 
-                MessageBox.Show("Se ha modificado su reserva correctamente.", "Reporte", MessageBoxButtons.OK);
+                if (resultado == DialogResult.Yes)
+                {
+                    if (this.habitacionesRemovidas.Count > 0)
+                        foreach (Habitacion habitacionARemover in this.habitacionesRemovidas)
+                            RepositorioHabitacion.Instance.QuitarReservaDeHabitacion(reserva, habitacionARemover);
 
-                this.Close();
+                    if (this.habitacionesAgregadas.Count > 0)
+                        foreach (Habitacion habitacionAAGregar in this.habitacionesAgregadas)
+                            RepositorioHabitacion.Instance.ReservarHabitacion(reserva, habitacionAAGregar);
+
+
+                    RepositorioReserva.Instance.ModificarReserva(reserva, this.DesdeDateTimePicker.Value,
+                        this.HastaDateTimePicker.Value, (Regimen)this.regimenActualDataGrid.CurrentRow.DataBoundItem,
+                        4001);
+
+                    MessageBox.Show("Se ha modificado su reserva correctamente.", "Reporte", MessageBoxButtons.OK);
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Si no desea realizar cambios, presione Salir.", "Atención", MessageBoxButtons.OK);
+                }
             }
             else
             {
@@ -375,6 +426,16 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                     this.Close();
             }
 
+        }
+
+        private Decimal PrecioTotalPorModificacionReserva()
+        {
+            Decimal precio = 0;
+            foreach(Habitacion habitacion in ((List<Habitacion>)this.HabitacionesReservadasDataGrid.DataSource))
+            {
+                precio += habitacion.precio;
+            }
+            return precio;
         }
 
         private bool SeModificoLaReserva()
