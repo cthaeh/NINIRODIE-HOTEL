@@ -73,20 +73,28 @@ namespace FrbaHotel.Login
                 }
                 if (pasar == false)
                 {
-                    if (usu.pass == this.Pass_usuario.Text)
+                    if (EstaTipoBloqueado(usu.tipo) == false)
                     {
                         if (usu.habilitado == true)
                         {
                             if (usu.bloque == false)
                             {
-                                if (EstaTipoBloqueado(usu.tipo) == false)
+                                if (usu.pass == this.Pass_usuario.Text)
                                 {
                                     new SeleccionHot(usu.tipo, usu).ShowDialog(this);
                                     this.Close();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Tipo de usuario des-habilitado", "Alerta", MessageBoxButtons.OK);
+                                    MessageBox.Show("Usuario o Contraseña incorrectos", "Alerta", MessageBoxButtons.OK);
+                               
+                                    intentos = intentos + 1;
+                                    if (intentos == 3)
+                                    {
+                                        RepositorioUsuario.Instance.BloquearUsuario(usu.codigo);
+                                        MessageBox.Show("El usuario ha sido bloqueado", "Alerta", MessageBoxButtons.OK);
+                                        this.Close();
+                                    }
                                 }
                             }
                             else
@@ -101,15 +109,7 @@ namespace FrbaHotel.Login
                     }
                     else
                     {
-                        intentos = intentos + 1;
-                        if (intentos == 3)
-                        {
-                            RepositorioUsuario.Instance.BloquearUsuario(usu.codigo);
-                            MessageBox.Show("El usuario ha sido bloqueado", "Alerta", MessageBoxButtons.OK);
-                            this.Close();
-                        }
-                        MessageBox.Show("Usuario o Contraseña incorrectos", "Alerta", MessageBoxButtons.OK);
-
+                        MessageBox.Show("Tipo de usuario des-habilitado", "Alerta", MessageBoxButtons.OK);
                     }
                 }
             }
