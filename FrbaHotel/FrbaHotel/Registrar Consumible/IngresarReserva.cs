@@ -46,20 +46,19 @@ namespace FrbaHotel.Registrar_Consumible
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Decimal cant_personas = 0;
             if (textBoxcod.Text == "")
             {
                 MessageBox.Show("Ingrese un codigo de reserva", "Alerta", MessageBoxButtons.OK);
             }
             else
             {
-                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
-                if (bandera != 1)
-                {
-                    MessageBox.Show("La reserva ingresada ya ha sigo cargada", "Alerta", MessageBoxButtons.OK);
-                }
-                else
-                {			
+             //   Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
+            //    if (bandera != 1)
+            //    {
+            //        MessageBox.Show("La reserva ingresada ya ha sigo cargada", "Alerta", MessageBoxButtons.OK);
+            //    }
+            //    else
+            //    {			
                     Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
 					
 					if(res.identificador != 0)
@@ -85,7 +84,7 @@ namespace FrbaHotel.Registrar_Consumible
 						MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
 						this.Close();
 					}	
-				}
+				//}
             }
         }
     }

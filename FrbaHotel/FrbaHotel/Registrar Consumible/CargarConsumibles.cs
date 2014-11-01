@@ -156,12 +156,27 @@ namespace FrbaHotel.Registrar_Consumible
             if (salir == false)
             {
                 int j = 0;
-                RepositorioFactura.Instance.IniciarFactura(reserva);
-                Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
-                while (j < items.Count)
+
+                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                if (bandera != 1)
                 {
-                    RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio);
-                    j++;
+                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                    while (j < items.Count)
+                    {
+                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio);
+                        j++;
+                    }
+                }
+                else
+                {
+
+                    RepositorioFactura.Instance.IniciarFactura(reserva);
+                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(reserva);
+                    while (j < items.Count)
+                    {
+                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio);
+                        j++;
+                    }
                 }
                 MessageBox.Show("Los consumibles se cargaron exitosamente", "Alerta", MessageBoxButtons.OK);
                 this.Close();
