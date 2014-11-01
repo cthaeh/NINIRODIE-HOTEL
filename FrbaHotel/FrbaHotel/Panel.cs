@@ -213,7 +213,7 @@ namespace FrbaHotel
 
         private void consumible_Click(object sender, EventArgs e)
         {
-            new IngresarReserva().ShowDialog(this);
+            new IngresarReserva(hotel_seleccionado.identificador).ShowDialog(this);
         }
 
         private void facturar_Click(object sender, EventArgs e)

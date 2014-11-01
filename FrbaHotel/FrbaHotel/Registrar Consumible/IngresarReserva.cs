@@ -13,8 +13,11 @@ namespace FrbaHotel.Registrar_Consumible
 {
     public partial class IngresarReserva : Form
     {
-        public IngresarReserva()
+        Decimal codigo_hotel_seleccionado;
+
+        public IngresarReserva(Decimal cod_hot)
         {
+            codigo_hotel_seleccionado = cod_hot;
             InitializeComponent();
         }
 
@@ -68,17 +71,23 @@ namespace FrbaHotel.Registrar_Consumible
 						Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(res.identificador_hotel);
 
                         if (res.identificador_estado == 4000 && res.identificador_estado == 4001)
-						{
-							MessageBox.Show("La Reserva Indicada Esta Cancelada", "Alerta", MessageBoxButtons.OK);
-						}
-						else
-						{
+                        {
+                            MessageBox.Show("La Reserva Indicada Esta Cancelada", "Alerta", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            if (res.identificador_hotel == codigo_hotel_seleccionado)
+                            {
+                                new ElegirHabitacion(Decimal.Parse(textBoxcod.Text), hotel.categoria,
+                                    regimen.precio).ShowDialog(this);
 
-							new ElegirHabitacion(Decimal.Parse(textBoxcod.Text), hotel.categoria,
-								regimen.precio).ShowDialog(this);
-
-							this.Close();
-						}
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("La estadia no pertenece al Hotel al cual ha ingresado", "Alerta", MessageBoxButtons.OK);
+                            }
+                        }
 					}else
 					{
 						MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
