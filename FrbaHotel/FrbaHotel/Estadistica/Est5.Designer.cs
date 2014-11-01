@@ -61,6 +61,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Est5";
             this.Text = "Estadistica";
+            this.Load += new System.EventHandler(this.Est5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

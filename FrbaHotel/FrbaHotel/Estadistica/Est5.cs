@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.Estadistica
 {
@@ -27,6 +29,53 @@ namespace FrbaHotel.Estadistica
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Est5_Load(object sender, EventArgs e)
+        {
+            String f_fin, f_ini;
+            List<Cliente> clientes_grilla = new List<Cliente>();
+            if (mes_fin < 10)
+            {
+                f_fin = año + "0" + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
+            }
+            else
+            {
+                f_fin = año + mes_fin.ToString() + dia_fin.ToString() + " 08:00:00 AM";
+            }
+            if (mes_inicio < 10)
+            {
+                f_ini = año + "0" + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
+            }
+            else
+            {
+                f_ini = año + mes_inicio.ToString() + "0" + dia_inicio.ToString() + " 08:00:00 AM";
+            }
+
+            clientes_grilla = RepositorioCliente.Instance.Estadistica5(f_ini, f_fin);
+
+            this.dataGridView1.DataSource = new List<Cliente>();
+            this.dataGridView1.Refresh();
+            this.dataGridView1.DataSource = clientes_grilla;
+            this.dataGridView1.Refresh();
+
+            this.dataGridView1.Columns["identificador"].Visible = false;
+            this.dataGridView1.Columns["codigo_usuario"].Visible = false;
+            this.dataGridView1.Columns["tipo_documento"].Visible = false;
+            this.dataGridView1.Columns["mail"].Visible = false;
+            this.dataGridView1.Columns["telefono"].Visible = false;
+            this.dataGridView1.Columns["calle"].Visible = false;
+            this.dataGridView1.Columns["nro_calle"].Visible = false;
+            this.dataGridView1.Columns["piso"].Visible = false;
+            this.dataGridView1.Columns["departamento"].Visible = false;
+            this.dataGridView1.Columns["localidad"].Visible = false;
+            this.dataGridView1.Columns["nacimiento"].Visible = false;
+            this.dataGridView1.Columns["pais"].Visible = false;
+
+            this.dataGridView1.Columns["nombre"].ReadOnly = true;
+            this.dataGridView1.Columns["apellido"].ReadOnly = true;
+            this.dataGridView1.Columns["numero_documento"].ReadOnly = true;
+            this.dataGridView1.Columns["nacionalidad"].ReadOnly = true;
         }
 
     }

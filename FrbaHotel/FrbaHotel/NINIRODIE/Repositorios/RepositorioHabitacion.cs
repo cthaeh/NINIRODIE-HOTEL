@@ -23,7 +23,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                 return _instance;
             }
         }
-
+        //--------------------
         public List<Habitacion> Estadistica4(String inicio, String fin)
         {
             var query2 = String.Format(@"	SELECT TOP 5 HABITACION.*,SUM(FACTURA.FAC_DIAS_ALOJADOS) AS DIAS_HABITACION_ALOJADOS, COUNT(HABITACION_RESERVA.HABRES_COD_HABITACION) AS CANTIDAD_VECES_OCUPADA
@@ -41,7 +41,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var habitaciones = dataRow.ToList<Habitacion>(this.DataRowToHab);
             return habitaciones;
         }
-
+        //-----------------
         public void ModificarHabitacion(String piso, String nro, String desc, String ubi, Decimal cod_hab)
         {
             var query = String.Format(@"UPDATE LA_REVANCHA.HABITACION SET HAB_PISO = '{0}', " +
