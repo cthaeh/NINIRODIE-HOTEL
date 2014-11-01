@@ -107,9 +107,9 @@ namespace FrbaHotel.NINIRODIE.Repositorios
         public void IniciarFactura(Decimal reserva)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA " +
-    "(FAC_CODIGO, FAC_DIAS_ALOJADOS, FAC_DIAS_NO_ALOJADOS, FAC_FECHA, FAC_TOTAL, FAC_COD_FORMA_PAGO, " +
+    "(FAC_CODIGO, FAC_FECHA, FAC_TOTAL, FAC_COD_FORMA_PAGO, " +
     "FAC_COD_RESERVA) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','{6}')",
-    reserva, 0, 0, "2013-01-09 00:00:00.000", 0, 2000, reserva);
+    reserva, "2013-01-09 00:00:00.000", 0, 2000, reserva);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
