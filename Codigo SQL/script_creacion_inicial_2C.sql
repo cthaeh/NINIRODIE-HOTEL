@@ -726,7 +726,7 @@ PUNTO 3
 
 
 -----------------------------------------------------------------------------------------------------
-PUNTO 4
+PUNTO 4.
 
 	SELECT TOP 5 HABITACION.*,SUM(FACTURA.FAC_DIAS_ALOJADOS) AS DIAS_HABITACION_ALOJADOS, COUNT(HABITACION_RESERVA.HABRES_COD_HABITACION) AS CANTIDAD_VECES_OCUPADA
 	FROM LA_REVANCHA.HOTEL
@@ -738,7 +738,7 @@ PUNTO 4
 	GROUP BY HAB_CODIGO,HAB_NUMERO,HAB_COD_HOTEL,HAB_PISO,HAB_UBICACION,HAB_COD_TIPOHABITACION,HAB_HABILITADA,HAB_DESCRIPCION
 	ORDER BY DIAS_HABITACION_ALOJADOS DESC, CANTIDAD_VECES_OCUPADA DESC
 ----------------------------------------------------------------------------------------------------------------------
-PUNTO 5
+PUNTO 5.
 
 **********************************************************************************
 OBTENGO LA SUMATORIA DE LOS PUNTOS EN TOTAL (PUNTOS_ESTADIA + PUNTOS_CONSUMIBLES)
