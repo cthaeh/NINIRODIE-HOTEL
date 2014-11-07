@@ -110,7 +110,7 @@ namespace FrbaHotel.ABM_de_Cliente
             else
             {
                 Cliente bandera = RepositorioCliente.Instance.ExisteCliMod(Decimal.Parse(textBoxnro.Text));
-                if (bandera.identificador == cliente_seleccionado.identificador)
+                if (bandera.identificador != cliente_seleccionado.identificador)
                 {
                     Cliente cli = new Cliente(textBoxnomb.Text, textBoxap.Text, textBoxtipo.Text, Decimal.Parse(textBoxnro.Text),
                         textBoxmail.Text, Decimal.Parse(textBoxtel.Text), textBoxcalle.Text, Decimal.Parse(textBoxdir.Text),
