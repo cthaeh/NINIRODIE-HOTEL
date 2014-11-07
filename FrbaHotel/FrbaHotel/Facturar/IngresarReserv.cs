@@ -74,26 +74,34 @@ namespace FrbaHotel.Facturar
                     else
                     {
                         Reserva res = RepositorioReserva.Instance.BuscarReserva(Decimal.Parse(textBoxcod.Text));
-                        Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
-                        Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
-                        List<Item> items = RepositorioFactura.Instance.BuscarItemsXFac(bandera);
-                        Decimal recarga = 0;
-                        Decimal costo_factura = 0;
-                        int n = 0;
-                        while (n < items.Count)
-                        {
-                            Decimal monto = items.ElementAt(n).cantidad * items.ElementAt(n).precio;
-                            costo_factura = costo_factura + monto;
-                            n++;
-                        }
-                        if (regimen.identificador == 120)
-                        {
-                            recarga = costo_factura;
-                        }
+						
+						if(res.identificador != 0)
+						{
+							Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
+							Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
+							List<Item> items = RepositorioFactura.Instance.BuscarItemsXFac(bandera);
+							Decimal recarga = 0;
+							Decimal costo_factura = 0;
+							int n = 0;
+							while (n < items.Count)
+							{
+								Decimal monto = items.ElementAt(n).cantidad * items.ElementAt(n).precio;
+								costo_factura = costo_factura + monto;
+								n++;
+							}
+							if (regimen.identificador == 120)
+							{
+								recarga = costo_factura;
+							}
 
-                        new Facturar(costo_factura, recarga, monto_estadia,bandera).ShowDialog(this); ;
-                        this.Close();
-                    }
+							new Facturar(costo_factura, recarga, monto_estadia,bandera).ShowDialog(this); ;
+							this.Close();
+						}else
+						{
+							MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
+							this.Close();
+						}	
+					}
                 }
             }
         }
