@@ -68,8 +68,15 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
 
-            var reservas = dataRow.ToList<Reserva>(this.DataRowToRese);
-            return reservas.First();
+			if (dataRow.Count == 0)
+            {
+				return new Reserva();
+			}
+			else
+			{		
+				var reservas = dataRow.ToList<Reserva>(this.DataRowToRese);
+				return reservas.First();
+			}
         }
 
         public HabRes DataRowToHabRes(DataRow row)

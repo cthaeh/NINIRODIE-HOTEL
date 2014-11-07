@@ -20,5 +20,13 @@ namespace FrbaHotel.NINIRODIE.Clases
             identificador_hotel = id_hot;
             identificador_regimen = id_reg;
         }
+		
+		public Reserva()
+		{
+			identificador = 0;
+            identificador_estado = 0;
+            identificador_hotel = 0;
+            identificador_regimen = 0;
+		}
     }
 }

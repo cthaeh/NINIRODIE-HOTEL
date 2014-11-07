@@ -83,7 +83,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA WHERE FAC_COD_RESERVA = '{0}'", reserva);
 
-            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.FACTURA");
 
             if (dataRow.Count == 0)
             {
