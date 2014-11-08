@@ -14,6 +14,7 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class AltaCli : Form
     {
         bool salir = false;
+        public Cliente cliente { get; set; }
 
         public AltaCli()
         {
@@ -22,6 +23,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -49,6 +51,9 @@ namespace FrbaHotel.ABM_de_Cliente
                     char n = cli.nombre[0];
                     MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
 
+                    cliente = RepositorioCliente.Instance.UltimoIdConUsuarioYPasswordCreado();
+                    
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else

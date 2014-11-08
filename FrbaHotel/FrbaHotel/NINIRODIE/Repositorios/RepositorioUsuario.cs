@@ -139,5 +139,25 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return usuario;
 
         }
+
+        internal void GenerarReserva(Reserva reserva, Cliente cliente, Usuario usuario)
+        {
+            var query = String.Format(@"INSERT INTO GD2C2014.LA_REVANCHA.RESERVA_USUARIO " +
+                                       "(RESUSU_COD_RESERVA, RESUSU_CODUSU_HUESPED, RESUSU_CODUSU_OPERADOR) " +
+                                       "VALUES ('{0}', '{1}', '{2}')", reserva.identificador,
+                                       cliente.codigo_usuario, usuario.codigo);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
+        internal void GenerarReserva(Reserva reserva, Cliente cliente)
+        {
+            var query = String.Format(@"INSERT INTO GD2C2014.LA_REVANCHA.RESERVA_USUARIO " +
+                                       "(RESUSU_COD_RESERVA, RESUSU_CODUSU_HUESPED) " +
+                                       "VALUES ('{0}', '{1}')", reserva.identificador,
+                                       cliente.codigo_usuario);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
     }
 }

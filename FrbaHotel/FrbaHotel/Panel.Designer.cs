@@ -55,6 +55,9 @@
             this.consumible = new System.Windows.Forms.ToolStripButton();
             this.facturar = new System.Windows.Forms.ToolStripButton();
             this.estadistica = new System.Windows.Forms.ToolStripButton();
+            this.generarReservaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,27 +236,31 @@
             // altqToolStripMenuItem
             // 
             this.altqToolStripMenuItem.Name = "altqToolStripMenuItem";
-            this.altqToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.altqToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.altqToolStripMenuItem.Text = "Alta";
             this.altqToolStripMenuItem.Click += new System.EventHandler(this.altqToolStripMenuItem_Click);
             // 
             // bajToolStripMenuItem
             // 
             this.bajToolStripMenuItem.Name = "bajToolStripMenuItem";
-            this.bajToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.bajToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.bajToolStripMenuItem.Text = "Baja";
             this.bajToolStripMenuItem.Click += new System.EventHandler(this.bajToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem4
             // 
             this.modificarToolStripMenuItem4.Name = "modificarToolStripMenuItem4";
-            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.modificarToolStripMenuItem4.Text = "Modificar";
             this.modificarToolStripMenuItem4.Click += new System.EventHandler(this.modificarToolStripMenuItem4_Click);
             // 
             // abm_reserva
             // 
             this.abm_reserva.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.abm_reserva.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarReservaToolStripMenuItem,
+            this.modificarToolStripMenuItem5,
+            this.cancelarToolStripMenuItem});
             this.abm_reserva.Image = ((System.Drawing.Image)(resources.GetObject("abm_reserva.Image")));
             this.abm_reserva.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.abm_reserva.Name = "abm_reserva";
@@ -298,6 +305,26 @@
             this.estadistica.Size = new System.Drawing.Size(71, 22);
             this.estadistica.Text = "Estadisticas";
             this.estadistica.Click += new System.EventHandler(this.estadistica_Click);
+            // 
+            // generarReservaToolStripMenuItem
+            // 
+            this.generarReservaToolStripMenuItem.Name = "generarReservaToolStripMenuItem";
+            this.generarReservaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generarReservaToolStripMenuItem.Text = "Generar";
+            this.generarReservaToolStripMenuItem.Click += new System.EventHandler(this.generarReservaToolStripMenuItem_Click);
+            // 
+            // modificarToolStripMenuItem5
+            // 
+            this.modificarToolStripMenuItem5.Name = "modificarToolStripMenuItem5";
+            this.modificarToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem5.Text = "Modificar";
+            // 
+            // cancelarToolStripMenuItem
+            // 
+            this.cancelarToolStripMenuItem.Name = "cancelarToolStripMenuItem";
+            this.cancelarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cancelarToolStripMenuItem.Text = "Cancelar";
+            this.cancelarToolStripMenuItem.Click += new System.EventHandler(this.cancelarToolStripMenuItem_Click);
             // 
             // Panel
             // 
@@ -344,5 +371,8 @@
         private System.Windows.Forms.ToolStripButton consumible;
         private System.Windows.Forms.ToolStripButton facturar;
         private System.Windows.Forms.ToolStripButton estadistica;
+        private System.Windows.Forms.ToolStripMenuItem generarReservaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem cancelarToolStripMenuItem;
     }
 }

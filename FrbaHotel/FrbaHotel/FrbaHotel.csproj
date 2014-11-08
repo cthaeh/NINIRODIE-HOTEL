@@ -253,11 +253,17 @@
     <Compile Include="ABM Hotel\ModificarHot.Designer.cs">
       <DependentUpon>ModificarHot.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Reserva\Form1.cs">
+    <Compile Include="Cancelar Reserva\BuscarReserva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Reserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cancelar Reserva\BuscarReserva.Designer.cs">
+      <DependentUpon>BuscarReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Reserva\CancelarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Reserva\CancelarReserva.Designer.cs">
+      <DependentUpon>CancelarReserva.cs</DependentUpon>
     </Compile>
     <Compile Include="Estadistica\Est1.cs">
       <SubType>Form</SubType>
@@ -319,17 +325,23 @@
     <Compile Include="Facturar\Pagar.Designer.cs">
       <DependentUpon>Pagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Modificar Reserva\BuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\BuscarCliente.Designer.cs">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\GenerarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\GenerarReserva.Designer.cs">
+      <DependentUpon>GenerarReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Modificar Reserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Modificar Reserva\Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -355,9 +367,11 @@
     <Compile Include="Login\SeleccionHot.Designer.cs">
       <DependentUpon>SeleccionHot.cs</DependentUpon>
     </Compile>
+    <Compile Include="NINIRODIE\Clases\Cancelacion.cs" />
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
     <Compile Include="NINIRODIE\Clases\Consumibles.cs" />
     <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
+    <Compile Include="NINIRODIE\Clases\FechaSistema.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
     <Compile Include="NINIRODIE\Clases\Habitacion.cs" />
     <Compile Include="NINIRODIE\Clases\HabRes.cs" />
@@ -491,6 +505,12 @@
     <EmbeddedResource Include="ABM Hotel\ModificarHot.resx">
       <DependentUpon>ModificarHot.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Reserva\BuscarReserva.resx">
+      <DependentUpon>BuscarReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Reserva\CancelarReserva.resx">
+      <DependentUpon>CancelarReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Estadistica\Est1.resx">
       <DependentUpon>Est1.cs</DependentUpon>
     </EmbeddedResource>
@@ -520,6 +540,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Facturar\Pagar.resx">
       <DependentUpon>Pagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\BuscarCliente.resx">
+      <DependentUpon>BuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
+      <DependentUpon>GenerarReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

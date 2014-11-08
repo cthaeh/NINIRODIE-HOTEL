@@ -179,5 +179,46 @@ ORDER BY PUNTOS_TOTALES DESC", inicio, fin);
 
             return cliente;
         }
+
+        public List<Cliente> BuscarCliente(Decimal idNumero, String tipoId, String mail)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.CLIENTE " +
+                                      "WHERE " + this.busquedaConId(idNumero, tipoId) +
+                                      this.busquedaConMail(idNumero, tipoId, mail), idNumero, tipoId, mail);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.CLIENTE");
+
+            return dataRow.ToList<Cliente>(this.DataRowToCliente);
+        }
+
+        private string busquedaConMail(Decimal numero, String tipo, String mail)
+        {
+            if (mail != "" & (numero != 0 & tipo != ""))
+                return "AND CLI_MAIL LIKE '%{2}%'";
+            if (mail != "" & !(numero != 0 & tipo != ""))
+                return "CLI_MAIL LIKE '%{2}%'";
+            else
+                return "";
+        }
+
+        private string busquedaConId(Decimal numero, String tipo)
+        {
+            if (numero != 0 & tipo != "")
+                return "CLI_NUMERO_IDENTIFICACION = '{0}' AND CLI_TIPO_IDENTIFICACION = '{1}' ";
+            else
+                return "";
+        }
+
+
+
+        internal Cliente UltimoIdConUsuarioYPasswordCreado()
+        {
+            var query = String.Format(@"SELECT TOP 1 * FROM GD2C2014.LA_REVANCHA.CLIENTE " +
+                                        "ORDER BY CLI_CODIGO DESC");
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.CLIENTE");
+
+            return dataRow.ToList<Cliente>(this.DataRowToCliente).First();
+        }
     }
 }

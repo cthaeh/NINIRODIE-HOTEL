@@ -15,6 +15,8 @@ namespace FrbaHotel.NINIRODIE.Clases
         public Decimal codigo_tipo { get; set; }
         public String descripcion { get; set; }
         public bool habilitada { get; set; }
+        public Decimal cantidadPersonas { get; set; }
+        public Decimal precio { get; set; }
 
         public Habitacion()
         {

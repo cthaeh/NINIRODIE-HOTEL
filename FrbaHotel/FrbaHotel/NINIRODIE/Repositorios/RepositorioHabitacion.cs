@@ -152,5 +152,45 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var habitacion = new Habitacion(codigo, numero, cod_hotel, piso,tipo,ubi,desc,hab);
             return habitacion;
         }
+
+        internal List<Habitacion> HabitacionesLibresEnFecha(Hotel hotel, DateTime desde, DateTime hasta)
+        {
+            var query = String.Format(@"SELECT HABIT.* FROM GD2C2014.LA_REVANCHA.HABITACION HABIT " +
+                                       "WHERE HABIT.HAB_CODIGO NOT IN " +
+                                           "(SELECT HABRES_COD_HABITACION " +
+                                            "FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA WHERE " +
+                                            "HABRES_COD_RESERVA IN " +
+                                               "(SELECT RES_CODIGO FROM GD2C2014.LA_REVANCHA.RESERVA " +
+                                                "WHERE (CAST(RES_FECHA_DESDE AS DATE) BETWEEN CAST('{1}' AS DATE) AND " +
+                                                "CAST('{2}' AS DATE)) OR (CAST(RES_FECHA_HASTA AS DATE) BETWEEN " +
+                                                "CAST('{1}' AS DATE) AND CAST('{2}' AS DATE))) " +
+                                                "GROUP BY HABRES_COD_HABITACION) AND HABIT.HAB_COD_HOTEL = '{0}'",
+                                       hotel.identificador,
+                                       DBTypeConverter.ToSQLDateTime(desde), DBTypeConverter.ToSQLDateTime(hasta));
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HABITACION");
+
+            return dataRow.ToList<Habitacion>(this.DataRowToHab);
+
+        }
+
+        public Decimal CantidadPersonasParaHabitacion(Habitacion habitacion)
+        {
+            var query = String.Format(@"SELECT TIPHAB_CANT_PERSONAS FROM GD2C2014.LA_REVANCHA.TIPO_HABITACION " +
+                                       "WHERE TIPHAB_CODIGO = '{0}'", habitacion.codigo_tipo);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.TIPO_HABITACION");
+
+            return (dataRow.ToList<Decimal>(row => Decimal.Parse(row["TIPHAB_CANT_PERSONAS"].ToString()))).First();
+        }
+
+        internal void ReservarHabitacion(Reserva reserva, Habitacion habitacion)
+        {
+            var query = String.Format(@"INSERT INTO GD2C2014.LA_REVANCHA.HABITACION_RESERVA " +
+                                      "(HABRES_COD_RESERVA, HABRES_COD_HABITACION) " +
+                                      "VALUES ('{0}', '{1}')", reserva.identificador, habitacion.identificador);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
     }
 }

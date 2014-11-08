@@ -19,6 +19,11 @@ namespace FrbaHotel.NINIRODIE.Clases
             codigo = -1;
         }
 
+        public Usuario(String tipoUser)
+        {
+            tipo = tipoUser;
+        }
+
         public Usuario(Decimal cod, String iD, String password, bool habili,
             String type, bool bloqueado)
         {

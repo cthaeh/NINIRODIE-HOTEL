@@ -18,6 +18,8 @@ using FrbaHotel.NINIRODIE.Repositorios;
 using FrbaHotel.Estadistica;
 using FrbaHotel.Registrar_Consumible;
 using FrbaHotel.Facturar;
+using FrbaHotel.Cancelar_Reserva;
+using FrbaHotel.Generar_Modificar_Reserva;
 
 namespace FrbaHotel
 {
@@ -216,6 +218,16 @@ namespace FrbaHotel
         private void facturar_Click(object sender, EventArgs e)
         {
             new IngresarReserv().ShowDialog(this);
+        }
+
+        private void cancelarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new BuscarReserva(usuario).ShowDialog(this);
+        }
+
+        private void generarReservaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new GenerarReserva(usuario, hotel_seleccionado).ShowDialog(this);
         }
     }
 }
