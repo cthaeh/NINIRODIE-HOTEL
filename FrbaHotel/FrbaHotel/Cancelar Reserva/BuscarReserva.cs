@@ -8,20 +8,23 @@ using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Repositorios;
 using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.Generar_Modificar_Reserva;
 
 namespace FrbaHotel.Cancelar_Reserva
 {
     public partial class BuscarReserva : Form
     {
 
-        public Reserva reservaACancelar { get; set; }
-        public Boolean puedeCancelarse { get; set; }
+        public Reserva reservaAModificar { get; set; }
+        public Boolean puedeModificarse { get; set; }
         public Usuario usuario { get; set; }
+        public ModoApertura modoApertura { get; set; }
 
-        public BuscarReserva(Usuario user)
+        public BuscarReserva(Usuario user, ModoApertura modoApert)
         {
             InitializeComponent();
             usuario = user;
+            modoApertura = modoApert;
 
             MessageBox.Show("El código de reserva solo debe contener Números", "Atención", MessageBoxButtons.OK);
 
@@ -38,27 +41,41 @@ namespace FrbaHotel.Cancelar_Reserva
             {
                 Decimal codigoReserva = Decimal.Parse(this.codigoReservaTextBox.Text);
                 if (usuario.tipo != "CLIENTE")
-                    reservaACancelar = RepositorioReserva.Instance.BuscarReserva(codigoReserva);
+                    reservaAModificar = RepositorioReserva.Instance.BuscarReserva(codigoReserva);
                 else
-                    reservaACancelar = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
+                    reservaAModificar = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
 
 
-                if (reservaACancelar.identificador != -1)
+                if (reservaAModificar.identificador != -1)
                 {
                     this.compararFechaReservaConActual();
 
-                    if (puedeCancelarse)
-                        new CancelarReserva(usuario, reservaACancelar).ShowDialog(this);
+                    if (puedeModificarse)
+                    {
+                        if (modoApertura == ModoApertura.CANCELACION)
+                            new CancelarReserva(usuario, reservaAModificar).ShowDialog(this);
+                        else
+                            new ModificarReserva(usuario, reservaAModificar).ShowDialog(this);
+                    }
                     else
-                        MessageBox.Show("No puede realizarse la cancelación.\n" +
+                    {
+                        if (modoApertura == ModoApertura.CANCELACION)
+                            MessageBox.Show("No puede realizarse la cancelación.\n" +
                                         "Las cancelaciones pueden realizarse hasta\n" +
                                         "el día anterior al comienzo de la reserva.",
                                         "Atención", MessageBoxButtons.OK);
-                    this.Close();
+                        else
+                            MessageBox.Show("No puede realizarse una modificación sobre la reserva indicada.\n" +
+                                            "Las modificaciones pueden realizarse hasta\n" +
+                                            "el día anterior al comienzo de la reserva.",
+                                             "Atención", MessageBoxButtons.OK);
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    VerificarQueNoEsteCancelada();
+                  //  if(modoApertura == ModoApertura.CANCELACION)
+                        VerificarQueNoEsteCancelada();
                 }
             }
             else
@@ -86,9 +103,9 @@ namespace FrbaHotel.Cancelar_Reserva
 
         private bool compararFechaReservaConActual()
         {
-            puedeCancelarse = FechaSistema.Instance.fecha.CompareTo(reservaACancelar.fechaDesde) < 0;
+            puedeModificarse = FechaSistema.Instance.fecha.CompareTo(reservaAModificar.fechaDesde) < 0;
 
-            return puedeCancelarse;
+            return puedeModificarse;
         }
 
         private void CancelarBoton_Click(object sender, EventArgs e)

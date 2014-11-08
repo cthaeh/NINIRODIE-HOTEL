@@ -337,6 +337,12 @@
     <Compile Include="Generar Modificar Reserva\GenerarReserva.Designer.cs">
       <DependentUpon>GenerarReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Modificar Reserva\ModificarReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\ModificarReserva.Designer.cs">
+      <DependentUpon>ModificarReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -378,6 +384,7 @@
     <Compile Include="NINIRODIE\Clases\Hotel.cs" />
     <Compile Include="NINIRODIE\Clases\Hotemp.cs" />
     <Compile Include="NINIRODIE\Clases\Item.cs" />
+    <Compile Include="NINIRODIE\Clases\ModoApertura.cs" />
     <Compile Include="NINIRODIE\Clases\Personal.cs" />
     <Compile Include="NINIRODIE\Clases\Regimen.cs" />
     <Compile Include="NINIRODIE\Clases\Reserva.cs" />
@@ -546,6 +553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
       <DependentUpon>GenerarReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\ModificarReserva.resx">
+      <DependentUpon>ModificarReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

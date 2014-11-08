@@ -222,12 +222,17 @@ namespace FrbaHotel
 
         private void cancelarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new BuscarReserva(usuario).ShowDialog(this);
+            new BuscarReserva(usuario, ModoApertura.CANCELACION).ShowDialog(this);
         }
 
         private void generarReservaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new GenerarReserva(usuario, hotel_seleccionado).ShowDialog(this);
+        }
+
+        private void modificarToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            new BuscarReserva(usuario, ModoApertura.MODIFICACION).ShowDialog(this);
         }
     }
 }
