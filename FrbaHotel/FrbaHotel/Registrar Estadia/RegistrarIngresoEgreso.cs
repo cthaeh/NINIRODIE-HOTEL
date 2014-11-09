@@ -13,19 +13,54 @@ using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.Registrar_Estadia
 {
-    public partial class RegistrarIngreso : Form
+    public partial class RegistrarIngresoEgreso : Form
     {
         public Usuario usuario { get; set; }
         public Reserva reserva { get; set; }
         public Decimal cantHuespedes { get; set; }
+        public ModoApertura modoApertura { get; set; }
 
-        public RegistrarIngreso(Usuario user, Reserva reserv)
+        public RegistrarIngresoEgreso(Usuario user, Reserva reserv, ModoApertura modoApert)
         {
             InitializeComponent();
             usuario = user;
             reserva = reserv;
+            modoApertura = modoApert;
             PopularGrillas();
-            MessageBox.Show("Recuerde ingresar los datos de todos los huéspedes.", "Atención", MessageBoxButtons.OK);
+            
+            ModificarBotonesSegunTipoRegistro();
+            if (ModoApertura.CHECKIN == modoApertura)
+                MessageBox.Show("Recuerde ingresar los datos de todos los huéspedes.", "Atención", MessageBoxButtons.OK);
+            
+        }
+
+        private void ModificarBotonesSegunTipoRegistro()
+        {
+            if (modoApertura == ModoApertura.CHECKOUT)
+            {
+                this.Text = "Registrar Egreso";
+                this.BuscarClienteBoton.Dispose();
+                this.GenericoBoton.Text = "Salir";
+                this.RegistrarBoton.Text = "Registrar Egreso";
+
+                this.RegistrarBoton.Click += new EventHandler(RegistrarEgresoBoton_Click);
+                this.GenericoBoton.Click += new EventHandler(Salir_Click);
+            }
+            else
+            {
+                this.RegistrarBoton.Text = "Registrar Ingreso";
+                this.RegistrarBoton.Click += new EventHandler(RegistrarIngresoBoton_Click);
+                this.GenericoBoton.Text = "Nuevo Cliente";
+                this.GenericoBoton.Click += new EventHandler(NuevoClienteBoton_Click);
+            }
+        }
+
+        void RegistrarEgresoBoton_Click(object sender, EventArgs e)
+        {
+        }
+
+        void Salir_Click(object sender, EventArgs e)
+        {
         }
 
         private void PopularGrillas()

@@ -95,12 +95,7 @@ namespace FrbaHotel.Cancelar_Reserva
         private void RegistrarCheckInOutSiEsHotelCorrespondiente()
         {
             if (hotelSeleccionado.identificador == ReservaBuscada.identificador_hotel)
-            {
-                if (modoApertura == ModoApertura.CHECKIN)
-                    new RegistrarIngreso(usuario, ReservaBuscada).ShowDialog(this);
-                else
-                    new RegistrarEgreso(usuario, ReservaBuscada).ShowDialog(this);
-            }
+                new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura).ShowDialog(this);
             else
                 MessageBox.Show("La reserva no corresponde a este hotel.", "Atención", MessageBoxButtons.OK);
         }

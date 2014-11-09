@@ -587,11 +587,8 @@
     <EmbeddedResource Include="Registrar Estadia\IngresoOEgreso.resx">
       <DependentUpon>IngresoOEgreso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registrar Estadia\RegistrarEgreso.resx">
-      <DependentUpon>RegistrarEgreso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Registrar Estadia\RegistrarIngreso.resx">
-      <DependentUpon>RegistrarIngreso.cs</DependentUpon>
+    <EmbeddedResource Include="Registrar Estadia\RegistrarIngresoEgreso.resx">
+      <DependentUpon>RegistrarIngresoEgreso.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -625,17 +622,11 @@
     <Compile Include="Registrar Estadia\IngresoOEgreso.Designer.cs">
       <DependentUpon>IngresoOEgreso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrar Estadia\RegistrarEgreso.cs">
+    <Compile Include="Registrar Estadia\RegistrarIngresoEgreso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Estadia\RegistrarEgreso.Designer.cs">
-      <DependentUpon>RegistrarEgreso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Registrar Estadia\RegistrarIngreso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registrar Estadia\RegistrarIngreso.Designer.cs">
-      <DependentUpon>RegistrarIngreso.cs</DependentUpon>
+    <Compile Include="Registrar Estadia\RegistrarIngresoEgreso.Designer.cs">
+      <DependentUpon>RegistrarIngresoEgreso.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

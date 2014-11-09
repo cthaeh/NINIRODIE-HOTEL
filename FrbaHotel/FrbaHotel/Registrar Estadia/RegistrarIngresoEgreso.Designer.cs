@@ -1,6 +1,6 @@
 ﻿namespace FrbaHotel.Registrar_Estadia
 {
-    partial class RegistrarIngreso
+    partial class RegistrarIngresoEgreso
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.BuscarClienteBoton = new System.Windows.Forms.Button();
-            this.NuevoClienteBoton = new System.Windows.Forms.Button();
-            this.RegistrarIngresoBoton = new System.Windows.Forms.Button();
+            this.GenericoBoton = new System.Windows.Forms.Button();
+            this.RegistrarBoton = new System.Windows.Forms.Button();
             this.HabitacionesDataGrid = new System.Windows.Forms.DataGridView();
             this.ReservaDataGrid = new System.Windows.Forms.DataGridView();
             this.ReservaGroupBox = new System.Windows.Forms.GroupBox();
@@ -51,25 +51,23 @@
             this.BuscarClienteBoton.UseVisualStyleBackColor = true;
             this.BuscarClienteBoton.Click += new System.EventHandler(this.BuscarClienteBoton_Click);
             // 
-            // NuevoClienteBoton
+            // GenericoBoton
             // 
-            this.NuevoClienteBoton.Location = new System.Drawing.Point(336, 280);
-            this.NuevoClienteBoton.Name = "NuevoClienteBoton";
-            this.NuevoClienteBoton.Size = new System.Drawing.Size(101, 30);
-            this.NuevoClienteBoton.TabIndex = 33;
-            this.NuevoClienteBoton.Text = "Nuevo Cliente";
-            this.NuevoClienteBoton.UseVisualStyleBackColor = true;
-            this.NuevoClienteBoton.Click += new System.EventHandler(this.NuevoClienteBoton_Click);
+            this.GenericoBoton.Location = new System.Drawing.Point(336, 280);
+            this.GenericoBoton.Name = "GenericoBoton";
+            this.GenericoBoton.Size = new System.Drawing.Size(101, 30);
+            this.GenericoBoton.TabIndex = 33;
+            this.GenericoBoton.Text = "Generico";
+            this.GenericoBoton.UseVisualStyleBackColor = true;
             // 
-            // RegistrarIngresoBoton
+            // RegistrarBoton
             // 
-            this.RegistrarIngresoBoton.Location = new System.Drawing.Point(122, 280);
-            this.RegistrarIngresoBoton.Name = "RegistrarIngresoBoton";
-            this.RegistrarIngresoBoton.Size = new System.Drawing.Size(101, 30);
-            this.RegistrarIngresoBoton.TabIndex = 35;
-            this.RegistrarIngresoBoton.Text = "Registrar Ingreso";
-            this.RegistrarIngresoBoton.UseVisualStyleBackColor = true;
-            this.RegistrarIngresoBoton.Click += new System.EventHandler(this.RegistrarIngresoBoton_Click);
+            this.RegistrarBoton.Location = new System.Drawing.Point(122, 280);
+            this.RegistrarBoton.Name = "RegistrarBoton";
+            this.RegistrarBoton.Size = new System.Drawing.Size(101, 30);
+            this.RegistrarBoton.TabIndex = 35;
+            this.RegistrarBoton.Text = "Registrar";
+            this.RegistrarBoton.UseVisualStyleBackColor = true;
             // 
             // HabitacionesDataGrid
             // 
@@ -120,7 +118,7 @@
             this.HabitacionesGroupBox.TabStop = false;
             this.HabitacionesGroupBox.Text = "Habitaciones";
             // 
-            // RegistrarIngreso
+            // RegistrarIngresoEgreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,10 +126,10 @@
             this.ClientSize = new System.Drawing.Size(559, 322);
             this.Controls.Add(this.HabitacionesGroupBox);
             this.Controls.Add(this.ReservaGroupBox);
-            this.Controls.Add(this.RegistrarIngresoBoton);
+            this.Controls.Add(this.RegistrarBoton);
             this.Controls.Add(this.BuscarClienteBoton);
-            this.Controls.Add(this.NuevoClienteBoton);
-            this.Name = "RegistrarIngreso";
+            this.Controls.Add(this.GenericoBoton);
+            this.Name = "RegistrarIngresoEgreso";
             this.Text = "Registrar Ingreso";
             ((System.ComponentModel.ISupportInitialize)(this.HabitacionesDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReservaDataGrid)).EndInit();
@@ -144,8 +142,8 @@
         #endregion
 
         private System.Windows.Forms.Button BuscarClienteBoton;
-        private System.Windows.Forms.Button NuevoClienteBoton;
-        private System.Windows.Forms.Button RegistrarIngresoBoton;
+        private System.Windows.Forms.Button GenericoBoton;
+        private System.Windows.Forms.Button RegistrarBoton;
         private System.Windows.Forms.DataGridView HabitacionesDataGrid;
         private System.Windows.Forms.DataGridView ReservaDataGrid;
         private System.Windows.Forms.GroupBox ReservaGroupBox;
