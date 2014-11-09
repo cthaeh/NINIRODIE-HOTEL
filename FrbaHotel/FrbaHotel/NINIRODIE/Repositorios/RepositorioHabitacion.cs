@@ -192,5 +192,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
+
+        internal List<Habitacion> HabitacionesReserva(Reserva reserva)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.HABITACION " +
+                                        "WHERE HAB_CODIGO IN " +
+                                        "(SELECT HABRES_COD_HABITACION FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA " +
+                                        "WHERE HABRES_COD_RESERVA = '{0}')", reserva.identificador);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HABITACION");
+
+            return dataRow.ToList<Habitacion>(this.DataRowToHab);
+        }
     }
 }

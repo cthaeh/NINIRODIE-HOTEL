@@ -8,6 +8,8 @@ namespace FrbaHotel.NINIRODIE.Clases
     public enum ModoApertura
     {
         CANCELACION,
-        MODIFICACION
+        MODIFICACION,
+        CHECKIN,
+        CHECKOUT
     }
 }

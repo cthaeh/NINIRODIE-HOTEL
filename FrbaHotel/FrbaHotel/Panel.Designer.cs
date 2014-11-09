@@ -270,21 +270,21 @@
             // generarReservaToolStripMenuItem
             // 
             this.generarReservaToolStripMenuItem.Name = "generarReservaToolStripMenuItem";
-            this.generarReservaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generarReservaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.generarReservaToolStripMenuItem.Text = "Generar";
             this.generarReservaToolStripMenuItem.Click += new System.EventHandler(this.generarReservaToolStripMenuItem_Click);
             // 
             // modificarToolStripMenuItem5
             // 
             this.modificarToolStripMenuItem5.Name = "modificarToolStripMenuItem5";
-            this.modificarToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.modificarToolStripMenuItem5.Size = new System.Drawing.Size(125, 22);
             this.modificarToolStripMenuItem5.Text = "Modificar";
             this.modificarToolStripMenuItem5.Click += new System.EventHandler(this.modificarToolStripMenuItem5_Click);
             // 
             // cancelarToolStripMenuItem
             // 
             this.cancelarToolStripMenuItem.Name = "cancelarToolStripMenuItem";
-            this.cancelarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cancelarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.cancelarToolStripMenuItem.Text = "Cancelar";
             this.cancelarToolStripMenuItem.Click += new System.EventHandler(this.cancelarToolStripMenuItem_Click);
             // 
@@ -296,6 +296,7 @@
             this.estadia.Name = "estadia";
             this.estadia.Size = new System.Drawing.Size(97, 22);
             this.estadia.Text = "Registrar Estadia";
+            this.estadia.Click += new System.EventHandler(this.estadia_Click);
             // 
             // consumible
             // 

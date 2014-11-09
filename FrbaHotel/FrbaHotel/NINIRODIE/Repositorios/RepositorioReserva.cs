@@ -215,5 +215,14 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             else
                 return new Reserva(-1);
         }
+
+        internal void ActualizarEstadoReserva(Reserva reserva, Decimal codigoACambiar)
+        {
+            var query = String.Format(@"UPDATE GD2C2014.LA_REVANCHA.RESERVA " +
+                                    "SET RES_ESTRES_CODIGO = '{0}' " +
+                                    "WHERE RES_CODIGO = '{1}'", codigoACambiar, reserva.identificador);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
     }
 }

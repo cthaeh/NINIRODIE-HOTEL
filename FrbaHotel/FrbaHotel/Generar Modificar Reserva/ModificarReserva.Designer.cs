@@ -53,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(693, 318);
             this.Controls.Add(this.HabitacionesDisponiblesDataGrid);
             this.Name = "ModificarReserva";
-            this.Text = "ModificarReserva";
+            this.Text = "Modificar Reserva";
             ((System.ComponentModel.ISupportInitialize)(this.HabitacionesDisponiblesDataGrid)).EndInit();
             this.ResumeLayout(false);
 

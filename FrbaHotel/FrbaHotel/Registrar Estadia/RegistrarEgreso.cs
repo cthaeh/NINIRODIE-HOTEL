@@ -6,14 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrbaHotel.NINIRODIE.Clases;
 
 namespace FrbaHotel.Registrar_Estadia
 {
-    public partial class Form1 : Form
+    public partial class RegistrarEgreso : Form
     {
-        public Form1()
+        public Usuario usuario { get; set; }
+        public Reserva reserva { get; set; }
+
+        public RegistrarEgreso(Usuario user, Reserva reserv)
         {
             InitializeComponent();
+            usuario = user;
+            reserva = reserv;
         }
     }
 }

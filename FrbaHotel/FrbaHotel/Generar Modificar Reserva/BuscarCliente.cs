@@ -49,6 +49,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void AceptarBoton_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Recuerde seleccionar al cliente buscado en caso de encontrarlo.",
+                            "Atención", MessageBoxButtons.OK);
             this.DialogResult = DialogResult.OK;
             cliente = (Cliente)this.clienteDataGridView.CurrentRow.DataBoundItem;
             this.Close();
