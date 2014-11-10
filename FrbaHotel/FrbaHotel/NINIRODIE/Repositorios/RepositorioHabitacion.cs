@@ -204,5 +204,40 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             return dataRow.ToList<Habitacion>(this.DataRowToHab);
         }
+
+        internal List<Habitacion> HabitacionesReservadasDisponiblesPorCambioDeFecha(Hotel hotel, 
+            DateTime desdeFecha, DateTime hastaFecha, Reserva reserva)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.HABITACION " +
+                                      "WHERE HAB_CODIGO IN (SELECT HABRES_COD_HABITACION " +
+                                      "FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA WHERE " +
+                                      "HABRES_COD_RESERVA IN (SELECT RES_CODIGO FROM " +
+                                      "GD2C2014.LA_REVANCHA.RESERVA WHERE RES_CODIGO <> '{0}' " +
+                                      "AND RES_HOTREG_HOTEL = '{1}' AND " +
+                                      "(CAST(RES_FECHA_DESDE AS DATE) BETWEEN " +
+                                      "CAST('{2}' AS DATE) AND CAST('{3}' AS DATE) OR " +
+                                      "CAST(RES_FECHA_HASTA AS DATE) BETWEEN CAST('{2}' AS DATE) " +
+                                      "AND CAST('{3}' AS DATE)))) AND HAB_COD_HOTEL = '{1}'",
+                                      reserva.identificador, hotel.identificador,
+                                      DBTypeConverter.ToSQLDateTime(desdeFecha), DBTypeConverter.ToSQLDateTime(hastaFecha));
+
+            DataRowCollection dataRows = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HABITACION");
+
+            if (dataRows.Count > 0)
+                return dataRows.ToList<Habitacion>(this.DataRowToHab);
+            else
+                return new List<Habitacion>();
+                                      
+        }
+
+        internal void QuitarReservaDeHabitacion(Reserva reserva, Habitacion habitacionARemover)
+        {
+            var query = String.Format(@"DELETE FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA " +
+                                      "WHERE HABRES_COD_HABITACION = '{0}' AND " +
+                                      "HABRES_COD_RESERVA = '{1}'", habitacionARemover.identificador,
+                                      reserva.identificador);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
     }
 }

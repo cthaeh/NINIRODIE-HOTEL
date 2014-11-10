@@ -87,7 +87,10 @@ namespace FrbaHotel.Cancelar_Reserva
                 new CancelarReserva(usuario, ReservaBuscada).ShowDialog(this);
             else
                 if (modoApertura == ModoApertura.MODIFICACION)
-                    new ModificarReserva(usuario, ReservaBuscada).ShowDialog(this);
+                {
+                    Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(ReservaBuscada.identificador_hotel);
+                    new ModificarReserva(usuario, ReservaBuscada, hotel).ShowDialog(this);
+                }
                 else
                     RegistrarCheckInOutSiEsHotelCorrespondiente();
         }
