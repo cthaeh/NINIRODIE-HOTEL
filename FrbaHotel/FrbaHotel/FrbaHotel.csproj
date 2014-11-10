@@ -376,6 +376,7 @@
     <Compile Include="NINIRODIE\Clases\Cancelacion.cs" />
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
     <Compile Include="NINIRODIE\Clases\Consumibles.cs" />
+    <Compile Include="NINIRODIE\Clases\Estadia.cs" />
     <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FechaSistema.cs" />
     <Compile Include="NINIRODIE\Clases\FunRol.cs" />
@@ -405,7 +406,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioReserva.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioRol.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioUsuario.cs" />
-    <Compile Include="NINIRODIE\Repositorios\RespositorioEstadia.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEstadia.cs" />
     <Compile Include="Panel.cs">
       <SubType>Form</SubType>
     </Compile>
