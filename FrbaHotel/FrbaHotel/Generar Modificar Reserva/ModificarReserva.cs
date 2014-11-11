@@ -91,14 +91,15 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             this.hotelComboBox.DataSource = new List<Hotel>();
             this.hotelComboBox.Refresh();
+            this.hotelComboBox.DisplayMember = "Calle"; //Sería mejor poner el nombre pero hay varios que no tienen.
             this.hotelComboBox.DataSource = RepositorioHotel.Instance.BuscarHoteles();
             this.hotelComboBox.Refresh();
-            this.hotelComboBox.DisplayMember = "Calle"; //Sería mejor poner el nombre pero hay varios que no tienen.
         }
 
         private void PopularHabitacionesReservadas()
         {
             this.habitacionesReservadas = RepositorioHabitacion.Instance.HabitacionesReserva(reserva);
+         
             PoblarHabitacionesReservadas();
         }
 
@@ -106,13 +107,12 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             this.HabitacionesReservadasDataGrid.DataSource = new List<Habitacion>();
             this.HabitacionesReservadasDataGrid.Refresh();
-            this.HabitacionesReservadasDataGrid.DataSource = habitacionesReservadas;
-            this.HabitacionesReservadasDataGrid.Refresh();
             this.HabitacionesReservadasDataGrid.Columns["identificador"].Visible = false;
             this.HabitacionesReservadasDataGrid.Columns["codigo_tipo"].Visible = false;
             this.HabitacionesReservadasDataGrid.Columns["codigo_hotel"].Visible = false;
             this.HabitacionesReservadasDataGrid.Columns["habilitada"].Visible = false;
 
+            this.HabitacionesReservadasDataGrid.DataSource = RepositorioHabitacion.Instance.HabitacionesReserva(reserva);
             this.HabitacionesReservadasDataGrid.Refresh();
         }
 
@@ -127,20 +127,23 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             this.HabitacionesDisponiblesDataGrid.DataSource = new List<Habitacion>();
             this.HabitacionesDisponiblesDataGrid.Refresh();
-            this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesDisponibles;
-            this.HabitacionesDisponiblesDataGrid.Refresh();
             this.HabitacionesDisponiblesDataGrid.Columns["identificador"].Visible = false;
             this.HabitacionesDisponiblesDataGrid.Columns["codigo_tipo"].Visible = false;
             this.HabitacionesDisponiblesDataGrid.Columns["codigo_hotel"].Visible = false;
             this.HabitacionesDisponiblesDataGrid.Columns["habilitada"].Visible = false;
+
+            this.HabitacionesDisponiblesDataGrid.DataSource =
+                RepositorioHabitacion.Instance.HabitacionesLibresEnFecha(hotel, reserva.fechaDesde, reserva.fechaHasta);
             this.HabitacionesDisponiblesDataGrid.Refresh();
         }
 
         private void PopularRegimen()
         {
             this.regimenesPosibles = RepositorioRegimen.Instance.RegimenesPorHotel(hotel);
+
             regimenActual = this.regimenesPosibles.Find(regimen => regimen.identificador == reserva.identificador_regimen);
             this.regimenesPosibles.Remove(regimenActual);
+
             this.RegimenDataGrid.DataSource = regimenesPosibles;
             this.RegimenDataGrid.Columns["identificador"].Visible = false;
             this.RegimenDataGrid.Columns["habilitado"].Visible = false;
@@ -159,48 +162,79 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void quitarBoton_Click(object sender, EventArgs e)
         {
-            Habitacion habitacionRemovida = (Habitacion)this.HabitacionesReservadasDataGrid.CurrentRow.DataBoundItem;
-            QuitarHabitacionReservadaYHabilitarla(habitacionRemovida);
+            if (this.HabitacionesReservadasDataGrid.CurrentRow != null)
+            {
+                Habitacion habitacionRemovida = (Habitacion)this.HabitacionesReservadasDataGrid.CurrentRow.DataBoundItem;
+                QuitarHabitacionReservadaYHabilitarla(habitacionRemovida);
+            }
+            else
+                MessageBox.Show("Debe seleccionar una fila.", "Atención", MessageBoxButtons.OK);
         }
 
         private void QuitarHabitacionReservadaYHabilitarla(Habitacion habitacionRemovida)
         {
             var habitac = this.habitacionesReservadas.Find(habitacion => habitacion.identificador == habitacionRemovida.identificador);
-            this.habitacionesReservadas.Remove(habitac);
-            this.habitacionesDisponibles.Add(habitac);
-            this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesDisponibles;
-            this.HabitacionesDisponiblesDataGrid.Refresh();
-            if (habitacionesReservadas.Count == 0)
+            if (habitac != null)
+            {
+                this.HabitacionesDisponiblesDataGrid.DataSource = new List<Habitacion>();
+                this.HabitacionesDisponiblesDataGrid.Refresh();
                 this.HabitacionesReservadasDataGrid.DataSource = new List<Habitacion>();
-            else
-                this.HabitacionesReservadasDataGrid.DataSource = habitacionesReservadas;
+                this.HabitacionesReservadasDataGrid.Refresh();
 
-            this.HabitacionesReservadasDataGrid.Refresh();
+                var HabitacionesReservadaParaGrid = new List<Habitacion>();
+                var HabitacionesDisponiblesParaGrid = new List<Habitacion>();
+                this.habitacionesReservadas.Remove(habitac);
+                this.habitacionesDisponibles.Add(habitac);
+                HabitacionesReservadaParaGrid = this.habitacionesReservadas;
+                HabitacionesDisponiblesParaGrid = this.habitacionesDisponibles;
 
-            this.habitacionesRemovidas.Add(habitac);
+
+                this.HabitacionesDisponiblesDataGrid.DataSource = HabitacionesDisponiblesParaGrid;
+                this.HabitacionesDisponiblesDataGrid.Refresh();
+               
+                this.HabitacionesReservadasDataGrid.DataSource = HabitacionesReservadaParaGrid;
+                this.HabitacionesReservadasDataGrid.Refresh();
+
+                this.habitacionesRemovidas.Add(habitac);
+            }
         }
 
         private void agregarBoton_Click(object sender, EventArgs e)
         {
-            Habitacion habitacionAgregada = (Habitacion)this.HabitacionesDisponiblesDataGrid.CurrentRow.DataBoundItem;
-            AgregarHabitacionDisponibleYSacarlaDeLibres(habitacionAgregada);
+            if(this.HabitacionesDisponiblesDataGrid.CurrentRow != null)
+            {
+                Habitacion habitacionAgregada = (Habitacion)this.HabitacionesDisponiblesDataGrid.CurrentRow.DataBoundItem;
+                AgregarHabitacionDisponibleYSacarlaDeLibres(habitacionAgregada);
+            }
+            else
+                MessageBox.Show("Debe seleccionar una fila.", "Atención", MessageBoxButtons.OK);
         }
 
         private void AgregarHabitacionDisponibleYSacarlaDeLibres(Habitacion habitacionAgregada)
         {
             var habitac = this.habitacionesDisponibles.Find(habitacion => habitacion.identificador == habitacionAgregada.identificador);
-            this.habitacionesDisponibles.Remove(habitac);
-            this.habitacionesReservadas.Add(habitac);
-            this.HabitacionesReservadasDataGrid.DataSource = habitacionesReservadas;
-            this.HabitacionesReservadasDataGrid.Refresh();
-
-            if (habitacionesDisponibles.Count == 0)
+            if (habitac != null)
+            {
                 this.HabitacionesDisponiblesDataGrid.DataSource = new List<Habitacion>();
-            else
-                this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesDisponibles;
+                this.HabitacionesDisponiblesDataGrid.Refresh();
+                this.HabitacionesReservadasDataGrid.DataSource = new List<Habitacion>();
+                this.HabitacionesReservadasDataGrid.Refresh();
 
-            this.HabitacionesDisponiblesDataGrid.Refresh();
-            this.habitacionesAgregadas.Add(habitac);
+                var HabitacionesReservadaParaGrid = new List<Habitacion>();
+                var HabitacionesDisponiblesParaGrid = new List<Habitacion>();
+                this.habitacionesDisponibles.Remove(habitac);
+                this.habitacionesReservadas.Add(habitac);
+                HabitacionesReservadaParaGrid = this.habitacionesReservadas;
+                HabitacionesDisponiblesParaGrid = this.habitacionesDisponibles;
+
+                this.HabitacionesReservadasDataGrid.DataSource = HabitacionesReservadaParaGrid;
+                this.HabitacionesReservadasDataGrid.Refresh();
+
+                this.HabitacionesDisponiblesDataGrid.DataSource = HabitacionesDisponiblesParaGrid;
+                this.HabitacionesDisponiblesDataGrid.Refresh();
+
+                this.habitacionesAgregadas.Add(habitac);
+            }
         }
 
         private void cambiarBoton_Click(object sender, EventArgs e)
@@ -249,29 +283,47 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas()
         {
-            habitacionesDisponibles = RepositorioHabitacion.Instance.HabitacionesLibresEnFecha(hotel,
+            var habitacionesLibresDisponiblesSinRepetidos = RepositorioHabitacion.Instance.HabitacionesLibresEnFecha(hotel,
                 DesdeDateTimePicker.Value, HastaDateTimePicker.Value);
 
-            ValidarDisponibilidadHabitacionesReservadas();
+            ValidarDisponibilidadHabitacionesReservadas(habitacionesLibresDisponiblesSinRepetidos);
         }
 
-        private void ValidarDisponibilidadHabitacionesReservadas()
+        private void ValidarDisponibilidadHabitacionesReservadas(List<Habitacion> habitacionesLibresDisponiblesSinRepetidos)
         {
             List<Habitacion> habitacionesReservadasLibres = RepositorioHabitacion.Instance.
                 HabitacionesReservadasDisponiblesPorCambioDeFecha(hotel, DesdeDateTimePicker.Value,
                 HastaDateTimePicker.Value, reserva);
 
             if (habitacionesReservadasLibres.Count != this.habitacionesReservadas.Count)
-                HabitacionesQueFaltan(habitacionesReservadasLibres);
+                HabitacionesQueFaltan(habitacionesReservadasLibres, habitacionesLibresDisponiblesSinRepetidos);
+            else
+                RepopularGrillaHabitaciones(habitacionesLibresDisponiblesSinRepetidos);
         }
 
-        private void HabitacionesQueFaltan(List<Habitacion> habitacionesReservadasLibres)
+        private void RepopularGrillaHabitaciones(List<Habitacion> habitacionesLibresDisponiblesSinRepetidos)
+        {
+            this.HabitacionesDisponiblesDataGrid.DataSource = new List<Habitacion>();
+            this.HabitacionesDisponiblesDataGrid.Refresh();
+            this.HabitacionesReservadasDataGrid.DataSource = new List<Habitacion>();
+            this.HabitacionesReservadasDataGrid.Refresh();
+
+            this.HabitacionesReservadasDataGrid.DataSource = this.habitacionesReservadas;
+            this.HabitacionesReservadasDataGrid.Refresh();
+
+            this.habitacionesDisponibles = habitacionesLibresDisponiblesSinRepetidos;
+            this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesDisponibles;
+            this.HabitacionesDisponiblesDataGrid.Refresh();
+        }
+
+        private void HabitacionesQueFaltan(List<Habitacion> habitacionesReservadasLibres,
+            List<Habitacion> habitacionesLibresDisponiblesSinRepetidos)
         {
             List<Habitacion> habitaciones = new List<Habitacion>();
             foreach (Habitacion habit in habitacionesReservadas)
             {
                 Habitacion habitAux = habitacionesReservadasLibres.Find(habitac => habitac.identificador == habit.identificador);
-                if(habitAux == null)
+                if(habitAux != null)
                     habitaciones.Add(habit);
             }
 
@@ -290,6 +342,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 HastaDateTimePicker.Value = reserva.fechaHasta;
                 contador = 2;
             }
+            else
+                RepopularGrillaHabitaciones(habitacionesLibresDisponiblesSinRepetidos);
         }
 
         private void modificarBoton_Click(object sender, EventArgs e)
@@ -302,10 +356,25 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 foreach (Habitacion habitacionAAGregar in this.habitacionesAgregadas)
                     RepositorioHabitacion.Instance.ReservarHabitacion(reserva, habitacionAAGregar);
 
-            if(SeModificoLaReserva())
+            if (SeModificoLaReserva())
+            {
                 RepositorioReserva.Instance.ModificarReserva(reserva, this.DesdeDateTimePicker.Value,
                     this.HastaDateTimePicker.Value, (Regimen)this.regimenActualDataGrid.CurrentRow.DataBoundItem,
                     4001);
+
+                MessageBox.Show("Se ha modificado su reserva correctamente.", "Reporte", MessageBoxButtons.OK);
+
+                this.Close();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("No se han realizado cambios.\n" +
+                    "¿Desea salir?", "Atención", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                    this.Close();
+            }
+
         }
 
         private bool SeModificoLaReserva()
