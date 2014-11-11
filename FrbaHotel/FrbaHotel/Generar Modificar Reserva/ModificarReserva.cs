@@ -292,8 +292,17 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 if (resultado == DialogResult.No)
                     DesdeDateTimePicker.Value = reserva.fechaDesde;
                 else
-                    BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+                    ValidarFechaDesdeMenorAFechaHasta();
             }
+        }
+
+        private void ValidarFechaDesdeMenorAFechaHasta()
+        {
+            if (DesdeDateTimePicker.Value < HastaDateTimePicker.Value)
+                BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+            else
+                MessageBox.Show("La fecha de egreso no puede \n" +
+                        "ser anterior a la de ingreso.", "Atención", MessageBoxButtons.OK);
         }
 
         private void HastaDateTimePicker_ValueChanged(object sender, EventArgs e)
@@ -307,7 +316,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 if (resultado == DialogResult.No)
                     DesdeDateTimePicker.Value = reserva.fechaDesde;
                 else
-                    BuscarHabitacionesDisponiblesYValidarDisponibilidadReservadas();
+                    ValidarFechaDesdeMenorAFechaHasta();
             }
         }
 
@@ -405,7 +414,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 }
                 else
                 {
-                    MessageBox.Show("Si no desea realizar cambiaos, presione Salir.", "Atención", MessageBoxButtons.OK);
+                    MessageBox.Show("Si no desea realizar cambios, presione Salir.", "Atención", MessageBoxButtons.OK);
                 }
             }
             else

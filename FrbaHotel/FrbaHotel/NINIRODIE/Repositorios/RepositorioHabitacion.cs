@@ -239,5 +239,13 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
+
+        internal void CancelarReserva(Reserva reserva)
+        {
+            var query = String.Format(@"DELETE FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA " +
+                                       "WHERE HABRES_COD_RESERVA = '{0}'", reserva.identificador);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
     }
 }
