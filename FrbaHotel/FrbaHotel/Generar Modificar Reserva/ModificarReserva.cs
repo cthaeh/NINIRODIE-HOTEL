@@ -389,7 +389,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             if (SeModificoLaReserva())
             {
-                Decimal precio = PrecioTotalPormodificaciónReserva();
+                Decimal precio = PrecioTotalPorModificacionReserva();
                 DialogResult resultado = MessageBox.Show("El precio tras los cambios es de: $" +
                     precio.ToString() + ".", "Atención", MessageBoxButtons.YesNo);
 
@@ -428,12 +428,12 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         }
 
-        private Decimal PrecioTotalPormodificaciónReserva()
+        private Decimal PrecioTotalPorModificacionReserva()
         {
             Decimal precio = 0;
-            for (int i = 0; i < this.HabitacionesReservadasDataGrid.SelectedRows.Count; i++)
+            foreach(Habitacion habitacion in ((List<Habitacion>)this.HabitacionesReservadasDataGrid.DataSource))
             {
-                precio += ((Habitacion)this.HabitacionesReservadasDataGrid.SelectedRows[i].DataBoundItem).precio;
+                precio += habitacion.precio;
             }
             return precio;
         }
