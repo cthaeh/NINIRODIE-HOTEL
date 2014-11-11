@@ -54,8 +54,6 @@ namespace FrbaHotel.Cancelar_Reserva
 
                 if (ReservaBuscada.identificador != -1)
                 {
-                    this.compararFechaReservaConActual();
-
                     if (this.compararFechaReservaConActual())
                     {
                         ModificacionSegunModoApertura();
@@ -119,8 +117,13 @@ namespace FrbaHotel.Cancelar_Reserva
                                      "Atención", MessageBoxButtons.OK);
                 else
                     if (modoApertura == ModoApertura.CHECKIN)
-                        MessageBox.Show("No puede realizarse el ingreso.\n" +
-                                        "La reserva ya ha caducado.", "Atención", MessageBoxButtons.OK);
+                        if (FechaSistema.Instance.fecha.Date.CompareTo(ReservaBuscada.fechaDesde.Date) > 0)
+                            MessageBox.Show("No puede realizarse el ingreso.\n" +
+                                            "La reserva ya ha caducado.", "Atención", MessageBoxButtons.OK);
+                        else
+                            MessageBox.Show("No puede realizarse el ingreso.\n" +
+                                            "Su reserva comienza el día: " +
+                                            ReservaBuscada.fechaDesde.Date.ToString(), "Atención", MessageBoxButtons.OK);
             }
         }
 
