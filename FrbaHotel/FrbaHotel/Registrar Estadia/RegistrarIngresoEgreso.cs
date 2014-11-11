@@ -70,6 +70,7 @@ namespace FrbaHotel.Registrar_Estadia
             estadia.precio = precio * (estadia.diasAlojados + estadia.diasNoAlojados);
 
             RepositorioEstadia.Instance.RegistrarEgreso(estadia);
+            RepositorioReserva.Instance.ActualizarEstadoReserva(reserva, 4006);
 
             MessageBox.Show("El egreso se ha registrado.", "Informe", MessageBoxButtons.OK);
 
@@ -141,13 +142,18 @@ namespace FrbaHotel.Registrar_Estadia
             Estadia estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
 
             if (estadia.codigo == 0)
+            {
                 RepositorioEstadia.Instance.RegistrarEstadia(reserva);
+                estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
+            }
             else
                 RepositorioEstadia.Instance.ActualizarIngreso(reserva);
 
             RepositorioReserva.Instance.ActualizarEstadoReserva(reserva, 4005); //CodigoReservaEfectivizada
             
-            MessageBox.Show("El ingreso se ha registrado.", "Informe", MessageBoxButtons.OK);
+            MessageBox.Show("El ingreso se ha registrado.\n" +
+                            "Su número de estadia es: " +
+                            estadia.codigo.ToString(), "Informe", MessageBoxButtons.OK);
             this.Close();
         }
     }
