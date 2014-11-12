@@ -106,6 +106,9 @@ namespace FrbaHotel.Registrar_Estadia
             this.ReservaDataGrid.Refresh();
 
             List<Habitacion> habitaciones = RepositorioHabitacion.Instance.HabitacionesReserva(reserva);
+            foreach (Habitacion habit in habitaciones)
+                habit.cantidadPersonas = RepositorioHabitacion.Instance.CantidadPersonasParaHabitacion(habit);
+            
             cantHuespedes = habitaciones.Sum(habitacion => habitacion.cantidadPersonas);
 
             this.HabitacionesDataGrid.DataSource = habitaciones;
@@ -120,41 +123,83 @@ namespace FrbaHotel.Registrar_Estadia
 
         private void NuevoClienteBoton_Click(object sender, EventArgs e)
         {
-            new AltaCli().ShowDialog(this);
-            cantHuespedes--;
+            GenerarClienteNuevo();
+        }
+
+        private void GenerarClienteNuevo()
+        {
+            Cliente cliente;
+            using (var GenerarNuevoCliente = new AltaCli())
+            {
+                DialogResult resultado = GenerarNuevoCliente.ShowDialog(this);
+                if (resultado == DialogResult.OK)
+                {
+                    cliente = GenerarNuevoCliente.cliente;
+                }
+                else
+                    cliente = new Cliente();
+            }
+
+            AgregarCliente(cliente);
         }
 
         private void BuscarClienteBoton_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = new BuscarCliente().ShowDialog(this);
-            if (resultado == DialogResult.OK)
-                cantHuespedes--;
-            else
+            Cliente cliente = new Cliente();
+            using (var BusquedaCliente = new BuscarCliente())
             {
-                MessageBox.Show("No se ha encontrado al Cliente.\n" +
+                DialogResult resultado = BusquedaCliente.ShowDialog(this);
+                if (resultado == DialogResult.OK)
+                {
+                    cliente = BusquedaCliente.cliente;
+                }
+                else
+                {
+                    MessageBox.Show("No se ha encontrado al Cliente.\n" +
                                 "Debe generar un nuevo Cliente.", "Reporte", MessageBoxButtons.OK);
-                this.NuevoClienteBoton_Click(sender, e);
+                    this.NuevoClienteBoton_Click(sender, e);
+                }
+            }
+            if (cliente.identificador != -1)
+                AgregarCliente(cliente);
+
+        }
+
+        private void AgregarCliente(Cliente cliente)
+        {
+            if (cliente.identificador != -1)
+            {
+                RepositorioUsuario.Instance.GenerarReserva(reserva, cliente);
+                cantHuespedes--;
             }
         }
 
         private void RegistrarIngresoBoton_Click(object sender, EventArgs e)
         {
-            Estadia estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
-
-            if (estadia.codigo == 0)
+            if (cantHuespedes <= 0 )
             {
-                RepositorioEstadia.Instance.RegistrarEstadia(reserva);
-                estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
+                Estadia estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
+
+                if (estadia.codigo == 0)
+                {
+                    RepositorioEstadia.Instance.RegistrarEstadia(reserva);
+                    estadia = RepositorioEstadia.Instance.BuscarEstadia(reserva);
+                }
+                else
+                    RepositorioEstadia.Instance.ActualizarIngreso(reserva);
+
+                RepositorioReserva.Instance.ActualizarEstadoReserva(reserva, 4005); //CodigoReservaEfectivizada
+
+                MessageBox.Show("El ingreso se ha registrado.\n" +
+                                "Su número de estadia es: " +
+                                estadia.codigo.ToString(), "Informe", MessageBoxButtons.OK);
+                this.Close();
             }
             else
-                RepositorioEstadia.Instance.ActualizarIngreso(reserva);
-
-            RepositorioReserva.Instance.ActualizarEstadoReserva(reserva, 4005); //CodigoReservaEfectivizada
-            
-            MessageBox.Show("El ingreso se ha registrado.\n" +
-                            "Su número de estadia es: " +
-                            estadia.codigo.ToString(), "Informe", MessageBoxButtons.OK);
-            this.Close();
+            {
+                MessageBox.Show("Debe ingresar al menos " + cantHuespedes.ToString() + 
+                                "\nclientes para poder realizar el ingreso.", "Atención", MessageBoxButtons.OK);
+            }
         }
     }
 }

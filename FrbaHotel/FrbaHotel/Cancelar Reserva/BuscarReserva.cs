@@ -96,7 +96,21 @@ namespace FrbaHotel.Cancelar_Reserva
         private void RegistrarCheckInOutSiEsHotelCorrespondiente()
         {
             if (hotelSeleccionado.identificador == ReservaBuscada.identificador_hotel)
-                new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
+            {
+                if (!RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKIN
+                    | RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKOUT)
+                    new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
+                else
+                {
+                    if (modoApertura == ModoApertura.CHECKOUT)
+                        MessageBox.Show("No puede realizarse el egreso porque \n" +
+                                        "todavía no se ha realizado el ingreso.", "Atención", MessageBoxButtons.OK);
+                    else
+                        MessageBox.Show("El ingreso ya ha sido registrado.", "Atención", MessageBoxButtons.OK);
+                    
+                    this.Close();
+                }
+            }
             else
                 MessageBox.Show("La reserva no corresponde a este hotel.", "Atención", MessageBoxButtons.OK);
         }
@@ -137,12 +151,14 @@ namespace FrbaHotel.Cancelar_Reserva
             else
             {
                 MessageBox.Show("La reserva ya ha sido cancelada el día: " + cancel.fechaCancelacion.ToString() +
-                                "\nEl código de cancelación es: " + cancel.codigo.ToString() + "."
-                                , "Atención", MessageBoxButtons.OK);
+                               "\nEl código de cancelación es: " + cancel.codigo.ToString() + "."
+                               , "Atención", MessageBoxButtons.OK);
+                
                 this.Close();
             }
         }
-        //Verificar horario
+
+        
         private bool compararFechaReservaConActual()
         {
             int resultadoComparacion = FechaSistema.Instance.fecha.Date.CompareTo(ReservaBuscada.fechaDesde.Date);
