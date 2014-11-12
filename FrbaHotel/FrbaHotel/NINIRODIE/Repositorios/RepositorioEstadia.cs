@@ -96,7 +96,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
         internal bool SeRegistroIngreso(Reserva ReservaBuscada)
         {
             var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.ESTADIA " +
-                                    "WHERE EST_COD_RESERVA = '{0}' AND EST_FECHA_CHECK_IN <> NULL",
+                                    "WHERE EST_COD_RESERVA = '{0}' AND EST_FECHA_CHECK_IN IS NOT NULL",
                                     ReservaBuscada.identificador);
 
             DataRowCollection dataRows = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.ESTADIA");
