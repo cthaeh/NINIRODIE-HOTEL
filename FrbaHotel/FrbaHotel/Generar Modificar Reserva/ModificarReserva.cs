@@ -137,7 +137,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         private void PopularHabitacionesDisponibles()
         {
             this.habitacionesDisponibles =
-                RepositorioHabitacion.Instance.HabitacionesLibresEnFecha(hotel, reserva.fechaDesde, reserva.fechaHasta);
+                RepositorioHabitacion.Instance.HabitacionesLibresEnFechaParaReserva(hotel, reserva);
             PoblarHabitacionesDisponibles();
         }
 
