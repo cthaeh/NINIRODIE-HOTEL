@@ -97,7 +97,7 @@ namespace FrbaHotel.Cancelar_Reserva
         {
             if (hotelSeleccionado.identificador == ReservaBuscada.identificador_hotel)
             {
-                if (!RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKIN
+                if (RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKIN
                     | RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKOUT)
                     new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
                 else
