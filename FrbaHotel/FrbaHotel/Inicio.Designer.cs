@@ -59,7 +59,7 @@
             this.reserva.Name = "reserva";
             this.reserva.Size = new System.Drawing.Size(75, 45);
             this.reserva.TabIndex = 6;
-            this.reserva.Text = "Realizar Reserva";
+            this.reserva.Text = "Gestionar Reserva";
             this.reserva.UseVisualStyleBackColor = true;
             this.reserva.Click += new System.EventHandler(this.reserva_Click);
             // 

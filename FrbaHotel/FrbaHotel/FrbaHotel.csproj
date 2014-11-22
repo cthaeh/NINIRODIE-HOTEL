@@ -337,11 +337,29 @@
     <Compile Include="Generar Modificar Reserva\GenerarReserva.Designer.cs">
       <DependentUpon>GenerarReserva.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Modificar Reserva\IngresarDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\IngresarDatos.Designer.cs">
+      <DependentUpon>IngresarDatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\MenuInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\MenuInicio.Designer.cs">
+      <DependentUpon>MenuInicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Modificar Reserva\ModificarReserva.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Generar Modificar Reserva\ModificarReserva.Designer.cs">
       <DependentUpon>ModificarReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\SeleccionHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\SeleccionHotel.Designer.cs">
+      <DependentUpon>SeleccionHotel.cs</DependentUpon>
     </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
@@ -556,8 +574,17 @@
     <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
       <DependentUpon>GenerarReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\IngresarDatos.resx">
+      <DependentUpon>IngresarDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\MenuInicio.resx">
+      <DependentUpon>MenuInicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\ModificarReserva.resx">
       <DependentUpon>ModificarReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\SeleccionHotel.resx">
+      <DependentUpon>SeleccionHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

@@ -49,8 +49,7 @@ namespace FrbaHotel.ABM_de_Cliente
                     RepositorioCliente.Instance.InsertarCliente(cli);
                     char a = cli.apellido[0];
                     char n = cli.nombre[0];
-                    MessageBox.Show("Se ha creado correctamente", "Alerta", MessageBoxButtons.OK);
-//                    MessageBox.Show("Su usuario y clave son: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
+                    MessageBox.Show("Se ha creado correctante. Su usuario es: " + textBoxnro.Text + a.ToString() + n.ToString(), "Mensaje", MessageBoxButtons.OK);
 
                     cliente = RepositorioCliente.Instance.UltimoIdConUsuarioYPasswordCreado();
                     

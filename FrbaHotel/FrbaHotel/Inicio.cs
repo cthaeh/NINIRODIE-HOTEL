@@ -36,8 +36,9 @@ namespace FrbaHotel
 
         private void reserva_Click(object sender, EventArgs e)
         {
-            Usuario guest = new Usuario("GUEST");
-            new GenerarReserva(guest).ShowDialog(this);
+            new MenuInicio().ShowDialog(this);
+            MessageBox.Show("ADIOS!", "Alerta", MessageBoxButtons.OK);
+            this.Close();
         }
     }
 }
