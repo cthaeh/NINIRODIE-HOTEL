@@ -30,6 +30,8 @@ namespace FrbaHotel
         private void Login_Click(object sender, EventArgs e)
         {
             login.ShowDialog(this);
+            MessageBox.Show("ADIOS!", "Alerta", MessageBoxButtons.OK);
+            this.Close();
         }
 
         private void reserva_Click(object sender, EventArgs e)

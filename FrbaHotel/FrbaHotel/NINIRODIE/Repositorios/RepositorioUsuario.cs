@@ -69,7 +69,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
         public Usuario BuscarUsuario(String id)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO " +
-                "WHERE USU_USERNAME = '{0}'", id);
+                "WHERE USU_USERNAME = '{0}' AND USU_TIPO != 'CLIENTE'", id);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.USUARIO");
 

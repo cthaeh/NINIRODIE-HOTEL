@@ -43,7 +43,7 @@ namespace FrbaHotel.Login
         private void aceptar_Click(object sender, EventArgs e)
         {
             Usuario usu_aux = new Usuario();
-            
+            bool salio = false;
             if (ID_Usuario.Text == "admin")
             {
                 if (Pass_usuario.Text == "w23e")
@@ -51,7 +51,9 @@ namespace FrbaHotel.Login
                     usu_aux = RepositorioUsuario.Instance.BuscarUsuario(ID_Usuario.Text);
                     MessageBox.Show("Ud. se esta logueando con un usuario de altos privilegios, por favor sea cuidadoso con su uso", "Alerta", MessageBoxButtons.OK);
                     cerrar = true;
-                    new SeleccionHot("pulenta", usu_aux).ShowDialog(this); ;
+                    new SeleccionHot("pulenta", usu_aux).ShowDialog(this);
+                    salio = true;
+                    this.Close();
                 }
                 else
                 {
@@ -82,6 +84,7 @@ namespace FrbaHotel.Login
                                 if (usu.pass == this.Pass_usuario.Text)
                                 {
                                     new SeleccionHot(usu.tipo, usu).ShowDialog(this);
+                                    salio = true;
                                     this.Close();
                                 }
                                 else
@@ -114,6 +117,10 @@ namespace FrbaHotel.Login
                 }
             }
 
+            if (salio == true)
+            {
+                this.Close();
+            }
             
         }
 
