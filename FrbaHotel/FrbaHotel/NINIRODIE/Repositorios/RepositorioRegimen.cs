@@ -46,7 +46,18 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return reg;
         }
 
+        public List<Regimen> RegimenesXHotel(Hotel hotel)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.REGIMEN " +
+                                       "WHERE REG_HABILITADO = '1' AND " +
+                                       "REG_CODIGO IN (SELECT HOTREG_COD_REGIMEN " +
+                                       "FROM GD2C2014.LA_REVANCHA.HOTEL_REGIMEN " +
+                                       "WHERE HOTREG_COD_HOTEL = '{0}' AND HOTREG_HABILITADO = '1')", hotel.identificador);
 
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.REGIMEN");
+
+            return dataRow.ToList<Regimen>(this.DataRowToRegimen);
+        }
 
         public List<Regimen> RegimenesPorHotel(Hotel hotel)
         {

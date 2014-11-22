@@ -86,6 +86,30 @@ namespace FrbaHotel.ABM_Hotel
 
         private void ModificarHot_Load(object sender, EventArgs e)
         {
+            List<Regimen> regimenes = RepositorioRegimen.Instance.RegimenesXHotel(hotel_seleccionado);
+            int n = 0;
+
+            while (n < regimenes.Count)
+            {
+                    if (regimenes.ElementAt(n).identificador == 120)
+                    {
+                        checkBoxall.Checked = true;
+                    }
+                    if (regimenes.ElementAt(n).identificador == 110)
+                    {
+                        checkBoxdes.Checked = true;
+                    }
+                    if (regimenes.ElementAt(n).identificador == 100)
+                    {
+                        checkBoxpc.Checked = true;
+                    }
+                    if (regimenes.ElementAt(n).identificador == 130)
+                    {
+                        checkBoxallmod.Checked = true;
+                    }
+                n = n + 1;
+            }
+
             textBoxcat.Text = hotel_seleccionado.categoria.ToString();
             textBoxciud.Text = hotel_seleccionado.ciudad;
             textBoxdir.Text = hotel_seleccionado.Calle;
