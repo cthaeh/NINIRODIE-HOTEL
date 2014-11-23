@@ -13,7 +13,9 @@ namespace FrbaHotel.Generar_Modificar_Reserva
     public partial class IngresarDatos : Form
     {
         public Hotel hotel_Seleccionado;
-
+        Decimal codigo_reserva;
+        String nombre_usuario;
+ 
         public IngresarDatos(Hotel hotel_sel)
         {
             hotel_Seleccionado = hotel_sel;
