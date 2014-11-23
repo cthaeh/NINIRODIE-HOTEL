@@ -44,8 +44,12 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
-        public void ActualizarEscoit()
+        public void ActualizarEscoit(Decimal cod_estadia, Decimal cod_consumible, Decimal cod_item)
         {
+            var query = String.Format(@"UPDATE LA_REVANCHA.ESTADIA_CONSUMIBLE_ITEM SET ESCOIT_COD_ITEM = '{0}' WHERE ESCOIT_COD_ESTADIA = '{1}' AND ESCOIT_COD_CONSUMIBLE = '{2}'",
+                cod_item, cod_estadia, cod_consumible);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
         public Decimal BuscarEscoit(Decimal estadia)

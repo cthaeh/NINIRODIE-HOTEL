@@ -126,7 +126,24 @@ namespace FrbaHotel.Facturar
                 n = n + 1;
             }
 
-            
+            List<Item> items_factura = new List<Item>();
+            items_factura = RepositorioFactura.Instance.BuscarItemsXFac(items.ElementAt(1).cod_estadia);
+            n = 0;
+            int j = 0;
+            while (n < items.Count)
+            {
+                Decimal precio = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
+                j = 0;
+                while (j < items_factura.Count)
+                {
+                    if (items_factura.ElementAt(j).codigo_consumible == items.ElementAt(n).cod_consumible)
+                    {
+                        RepositorioEscoit.Instance.ActualizarEscoit(items.ElementAt(n).cod_estadia, items.ElementAt(n).cod_consumible, items_factura.ElementAt(j).identificador);
+                    }
+                    j = j + 1;
+                }
+                n = n + 1;
+            }
             new Pagar(items.ElementAt(1).cod_estadia, monto_a_pagar).ShowDialog(this);
             this.Close();
         }
