@@ -17,7 +17,7 @@ namespace FrbaHotel.Registrar_Consumible
         DataRow renglon;
         DataTable tabla = new DataTable();
         List<Consumibles> consu_grilla;
-        List<Item> items;
+        List<Escoit> escoits;
         int cantidad = 0;
         Decimal cod_hab;
 
@@ -130,17 +130,20 @@ namespace FrbaHotel.Registrar_Consumible
 
         private void button3_Click(object sender, EventArgs e)
         {
-            items = new List<Item>();
+            escoits = new List<Escoit>();
+
+            Reserva rese = RepositorioReserva.Instance.BuscarReserva(reserva);
+            Estadia estad = RepositorioEstadia.Instance.BuscarEstadia(rese);
 
             int n = 0;
             bool salir = false;
             bool convirtio;
             while (n < cantidad && salir == false)
             {
-                Decimal codigo = Decimal.Parse(dataGridView2.Rows[n].Cells[0].Value.ToString());
+                Decimal codigo_consu = Decimal.Parse(dataGridView2.Rows[n].Cells[0].Value.ToString());
                 Decimal precio = Decimal.Parse(dataGridView2.Rows[n].Cells[1].Value.ToString());
-                String descripcion = dataGridView2.Rows[n].Cells[2].Value.ToString();
-                Decimal cant; 
+                Decimal cant;
+                    
                 convirtio = Decimal.TryParse(dataGridView2.Rows[n].Cells[3].Value.ToString(),out cant);
                 
                 if (convirtio == false)
@@ -150,52 +153,37 @@ namespace FrbaHotel.Registrar_Consumible
                 }
                 else
                 {
-                    Item item = new Item(codigo, precio, descripcion, cant);
-                    items.Add(item);
+                    Escoit escoi = new Escoit(0,codigo_consu,estad.codigo,cod_hab,0,cant);
+                    escoits.Add(escoi);
                     n = n + 1;
                 }
             }
             if (salir == false)
             {
                 int j = 0;
-                Reserva rese = RepositorioReserva.Instance.BuscarReserva(reserva);
                 if (rese.identificador == 0)
                 {
                     MessageBox.Show("No se encuentra una reserva con ese codigo", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    Estadia estad = RepositorioEstadia.Instance.BuscarEstadia(rese);
                     if (estad.codigo == 0)
                     {
                         MessageBox.Show("No se encuentra estadia para la reserva ingresada", "Alerta", MessageBoxButtons.OK);
                     }
                     else
                     {
+
                         Decimal usuario = RepositorioReserva.Instance.BuscarUsuario(reserva);
 
-                        Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
-                        if (bandera != 1)
-                        {
-                            Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
+                        Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
 
-                            while (j < items.Count)
-                            {
-                                RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
-                                j++;
-                            }
-                        }
-                        else
+                        while (j < escoits.Count)
                         {
-
-                            RepositorioFactura.Instance.IniciarFactura(estad.codigo, usuario);
-                            Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
-                            while (j < items.Count)
-                            {
-                                RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
-                                j++;
-                            }
+                            RepositorioEscoit.Instance.InsertarEscoit(escoits.ElementAt(j).cod_consumible, escoits.ElementAt(j).cod_estadia, escoits.ElementAt(j).cantidad, escoits.ElementAt(j).cod_habitacion);
+                            j++;
                         }
+
                         MessageBox.Show("Los consumibles se cargaron exitosamente", "Alerta", MessageBoxButtons.OK);
                         this.Close();
                     }

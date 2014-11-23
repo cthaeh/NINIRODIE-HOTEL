@@ -134,9 +134,10 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var codigo = Decimal.Parse(row["FACITEM_COD_CONSUMIBLE"].ToString());
             var precio = Decimal.Parse(row["FACITEM_MONTO"].ToString());
             var cant = Decimal.Parse(row["FACITEM_CANTIDAD"].ToString());
+            var indent = Decimal.Parse(row["FACITEM_CODIGO"].ToString());
             var desc = "harcodeo";
 
-            var item = new Item(codigo, precio, desc, cant);
+            var item = new Item(codigo, precio, desc, cant, indent);
             return item;
         }
     }

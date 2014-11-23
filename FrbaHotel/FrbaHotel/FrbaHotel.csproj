@@ -394,6 +394,7 @@
     <Compile Include="NINIRODIE\Clases\Cancelacion.cs" />
     <Compile Include="NINIRODIE\Clases\Cliente.cs" />
     <Compile Include="NINIRODIE\Clases\Consumibles.cs" />
+    <Compile Include="NINIRODIE\Clases\Escoit.cs" />
     <Compile Include="NINIRODIE\Clases\Estadia.cs" />
     <Compile Include="NINIRODIE\Clases\Estadistica3.cs" />
     <Compile Include="NINIRODIE\Clases\FechaSistema.cs" />
@@ -416,6 +417,7 @@
     <Compile Include="NINIRODIE\Repositorios\RepositorioCliente.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioConsumibles.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEmpleado.cs" />
+    <Compile Include="NINIRODIE\Repositorios\RepositorioEscoit.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioEstadistica3.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioFactura.cs" />
     <Compile Include="NINIRODIE\Repositorios\RepositorioHabitacion.cs" />
