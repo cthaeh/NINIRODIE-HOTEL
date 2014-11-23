@@ -26,7 +26,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new SeleccionHotel().ShowDialog(this);
+            new IngresarDatos().ShowDialog(this);
             this.Close();
         }
     }

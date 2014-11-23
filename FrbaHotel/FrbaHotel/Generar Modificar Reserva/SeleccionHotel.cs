@@ -55,7 +55,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             if (this.dataGridView1.SelectedRows.Count > 0)
             {
                 hotel_seleccionado = (Hotel)this.dataGridView1.SelectedRows[0].DataBoundItem;
-                new IngresarDatos(hotel_seleccionado).ShowDialog(this);
+                new IngresarDatos().ShowDialog(this);
                 this.Close();
             }
             else
