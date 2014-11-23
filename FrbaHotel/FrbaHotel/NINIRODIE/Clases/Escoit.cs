@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Escoit
+    public class Escoit
     {
         public Decimal identificador { get; set; }
         public Decimal cod_consumible { get; set; }
@@ -22,6 +22,11 @@ namespace FrbaHotel.NINIRODIE.Clases
             cod_habitacion = hab;
             cod_item = it;
             cantidad = cant;
+        }
+
+        public Escoit()
+        {
+            identificador = 0;
         }
     }
 }

@@ -58,16 +58,16 @@ namespace FrbaHotel.Facturar
             else
             {
 
-                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
-                if (bandera == 1)
+                Decimal bandera = RepositorioEscoit.Instance.BuscarEscoit(Decimal.Parse(textBoxcod.Text));
+                if (bandera == 0)
                 {
                     MessageBox.Show("La estadia ingresada no existe o no se le han cargado los consumibles", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
 
-                    Decimal bandera2 = RepositorioFactura.Instance.BuscarMontoFacxRes(Decimal.Parse(textBoxcod.Text));
-                    if (bandera2 != 0)
+                    Decimal bandera2 = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
+                    if (bandera2 == 0)
                     {
                        MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
                     }
@@ -80,13 +80,17 @@ namespace FrbaHotel.Facturar
 						{
 							Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
 							Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
-							List<Item> items = RepositorioFactura.Instance.BuscarItemsXFac(bandera);
-							Decimal recarga = 0;
+                            
+                            List<Escoit> items = RepositorioEscoit.Instance.BuscarEscoits(est.codigo);
+						    
+                            
+                            Decimal recarga = 0;
 							Decimal costo_factura = 0;
 							int n = 0;
 							while (n < items.Count)
 							{
-								Decimal monto = items.ElementAt(n).cantidad * items.ElementAt(n).precio;
+                                Decimal monto_consu = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
+								Decimal monto = items.ElementAt(n).cantidad * monto_consu;
 								costo_factura = costo_factura + monto;
 								n++;
 							}
@@ -95,7 +99,7 @@ namespace FrbaHotel.Facturar
 								recarga = costo_factura;
 							}
 
-							new Facturar(costo_factura, recarga, monto_estadia,bandera,items).ShowDialog(this); ;
+							new Facturar(costo_factura, recarga, monto_estadia,items).ShowDialog(this); ;
 							this.Close();
 						}else
 						{

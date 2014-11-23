@@ -33,6 +33,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
 
+        public void GenerarFactura(Decimal monto, Decimal est, Decimal comprador)
+        {
+            var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA " +
+"(FAC_CODIGO, FAC_FECHA, FAC_TOTAL, FAC_COD_FORMA_PAGO, " +
+"FAC_COD_ESTADIA, FAC_CONSUMIDOR) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
+est, "2013-01-09 00:00:00.000", monto, 2000, est, comprador);
+
+            SQLUtils.EjecutarConsultaConEfectoDeLado(query);
+        }
+
         public Decimal ExisteHab(Decimal factura, Decimal hab)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.FACTURA_ITEM WHERE FACITEM_COD_FACTURA = '{0}' AND FACITEM_HABITACION = '{1}'", factura, hab);

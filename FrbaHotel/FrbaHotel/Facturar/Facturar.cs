@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.NINIRODIE.Repositorios;
 
 namespace FrbaHotel.Facturar
 {
@@ -14,14 +15,13 @@ namespace FrbaHotel.Facturar
     {
         DataRow renglon;
         DataTable tabla = new DataTable();
-        List<Item> items;
+        List<Escoit> items;
 
-        Decimal costo_factura, recargo, costo_regimen, bandera;
+        Decimal costo_factura, recargo, costo_regimen;
         Decimal monto_a_pagar;
-        public Facturar(Decimal costo_fac, Decimal rec, Decimal costo_reg, Decimal band, List<Item> it)
+        public Facturar(Decimal costo_fac, Decimal rec, Decimal costo_reg, List<Escoit> it)
         {
             items = it;
-            bandera = band;
             costo_factura = costo_fac;
             recargo = rec;
             costo_regimen = costo_reg;
@@ -37,42 +37,43 @@ namespace FrbaHotel.Facturar
             int n = 0;
             while (n < items.Count)
             {
-                if (items.ElementAt(n).codigo_consumible == 2324)
+                Decimal monto = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
+                if (items.ElementAt(n).cod_consumible == 2324)
                 {
                     renglon = tabla.NewRow();
                     renglon[0] = "Coca cola";
                     renglon[1] = items.ElementAt(n).cantidad.ToString();
-                    renglon[2] = items.ElementAt(n).precio.ToString();
+                    renglon[2] = monto.ToString();
 
                     tabla.Rows.Add(renglon);
                     dataGridView1.DataSource = tabla;
                 }
-                if (items.ElementAt(n).codigo_consumible == 2325)
+                if (items.ElementAt(n).cod_consumible == 2325)
                 {
                     renglon = tabla.NewRow();
                     renglon[0] = "Whisky";
                     renglon[1] = items.ElementAt(n).cantidad.ToString();
-                    renglon[2] = items.ElementAt(n).precio.ToString();
+                    renglon[2] = monto.ToString();
 
                     tabla.Rows.Add(renglon);
                     dataGridView1.DataSource = tabla;
                 }
-                if (items.ElementAt(n).codigo_consumible == 2326)
+                if (items.ElementAt(n).cod_consumible == 2326)
                 {
                     renglon = tabla.NewRow();
                     renglon[0] = "Bombones";
                     renglon[1] = items.ElementAt(n).cantidad.ToString();
-                    renglon[2] = items.ElementAt(n).precio.ToString();
+                    renglon[2] = monto.ToString();
 
                     tabla.Rows.Add(renglon);
                     dataGridView1.DataSource = tabla;
                 }
-                if (items.ElementAt(n).codigo_consumible == 2327)
+                if (items.ElementAt(n).cod_consumible == 2327)
                 {
                     renglon = tabla.NewRow();
                     renglon[0] = "Agua mineral";
                     renglon[1] = items.ElementAt(n).cantidad.ToString();
-                    renglon[2] = items.ElementAt(n).precio.ToString();
+                    renglon[2] = monto.ToString();
 
                     tabla.Rows.Add(renglon);
                     dataGridView1.DataSource = tabla;
@@ -112,7 +113,21 @@ namespace FrbaHotel.Facturar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new Pagar(bandera, monto_a_pagar).ShowDialog(this);
+            Reserva res = RepositorioReserva.Instance.BuscarReserva(items.ElementAt(1).cod_estadia);
+            Decimal comprador = RepositorioReserva.Instance.BuscarUsuario(res.identificador);
+
+            RepositorioFactura.Instance.GenerarFactura(monto_a_pagar, items.ElementAt(1).cod_estadia, comprador);
+            
+            int n = 0;
+            while (n < items.Count)
+            {
+                Decimal precio = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
+                RepositorioFactura.Instance.InsertarItemAFactura(items.ElementAt(n).cod_estadia, items.ElementAt(n).cod_consumible, items.ElementAt(n).cantidad, precio, items.ElementAt(n).cod_habitacion);
+                n = n + 1;
+            }
+
+            
+            new Pagar(items.ElementAt(1).cod_estadia, monto_a_pagar).ShowDialog(this);
             this.Close();
         }
     }
