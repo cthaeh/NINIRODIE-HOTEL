@@ -69,7 +69,7 @@ namespace FrbaHotel.Facturar
                     Decimal bandera2 = RepositorioFactura.Instance.BuscarMontoFacxRes(Decimal.Parse(textBoxcod.Text));
                     if (bandera2 != 0)
                     {
-                        MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
+                       MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
                     }
                     else
                     {
@@ -95,13 +95,13 @@ namespace FrbaHotel.Facturar
 								recarga = costo_factura;
 							}
 
-							new Facturar(costo_factura, recarga, monto_estadia,bandera).ShowDialog(this); ;
+							new Facturar(costo_factura, recarga, monto_estadia,bandera,items).ShowDialog(this); ;
 							this.Close();
 						}else
 						{
 							MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
 							this.Close();
-						}	
+			    		}	
 					}
                 }
             }

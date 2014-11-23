@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaHotel.NINIRODIE.Clases
 {
-    class Item
+    public class Item
     {
         public Decimal codigo_consumible { get; set; }
         public Decimal precio { get; set; }

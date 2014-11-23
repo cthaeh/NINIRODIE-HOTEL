@@ -159,36 +159,48 @@ namespace FrbaHotel.Registrar_Consumible
             {
                 int j = 0;
                 Reserva rese = RepositorioReserva.Instance.BuscarReserva(reserva);
-                Estadia estad = RepositorioEstadia.Instance.BuscarEstadia(rese);
-
-                Decimal usuario = RepositorioReserva.Instance.BuscarUsuario(reserva);
-
-                Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
-                if (bandera != 1)
+                if (rese.identificador == 0)
                 {
-                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
-
-                    while (j < items.Count)
-                    {
-                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
-                        j++;
-                    }
+                    MessageBox.Show("No se encuentra una reserva con ese codigo", "Alerta", MessageBoxButtons.OK);
                 }
                 else
                 {
-
-                    RepositorioFactura.Instance.IniciarFactura(estad.codigo, usuario);
-                    Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
-                    while (j < items.Count)
+                    Estadia estad = RepositorioEstadia.Instance.BuscarEstadia(rese);
+                    if (estad.codigo == 0)
                     {
-                        RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
-                        j++;
+                        MessageBox.Show("No se encuentra estadia para la reserva ingresada", "Alerta", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        Decimal usuario = RepositorioReserva.Instance.BuscarUsuario(reserva);
+
+                        Decimal bandera = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
+                        if (bandera != 1)
+                        {
+                            Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
+
+                            while (j < items.Count)
+                            {
+                                RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
+                                j++;
+                            }
+                        }
+                        else
+                        {
+
+                            RepositorioFactura.Instance.IniciarFactura(estad.codigo, usuario);
+                            Decimal cod_facutra = RepositorioFactura.Instance.BuscarFacturaXRes(estad.codigo);
+                            while (j < items.Count)
+                            {
+                                RepositorioFactura.Instance.InsertarItemAFactura(cod_facutra, items.ElementAt(j).codigo_consumible, items.ElementAt(j).cantidad, items.ElementAt(j).precio, cod_hab);
+                                j++;
+                            }
+                        }
+                        MessageBox.Show("Los consumibles se cargaron exitosamente", "Alerta", MessageBoxButtons.OK);
+                        this.Close();
                     }
                 }
-                MessageBox.Show("Los consumibles se cargaron exitosamente", "Alerta", MessageBoxButtons.OK);
-                this.Close();
-            }
-            
+            }   
         }
 
         private void dataGridView2_KeyPress(object sender, KeyPressEventArgs e)
