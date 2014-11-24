@@ -108,6 +108,7 @@ namespace FrbaHotel.Facturar
                             else
                             {
                                 MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
+                                
                                 this.Close();
                             }
                         }
