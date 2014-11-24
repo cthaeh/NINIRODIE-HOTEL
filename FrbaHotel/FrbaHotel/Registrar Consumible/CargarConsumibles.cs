@@ -161,7 +161,8 @@ namespace FrbaHotel.Registrar_Consumible
                     }
                     else
                     {
-                        MessageBox.Show("Las cantidades deben ser positivas", "Alerta", MessageBoxButtons.OK);
+                        MessageBox.Show("Las cantidades deben ser un número positivo", "Alerta", MessageBoxButtons.OK);
+                        salir = true;
                     }
                 }
             }
