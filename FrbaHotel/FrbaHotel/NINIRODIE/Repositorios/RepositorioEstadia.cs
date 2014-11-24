@@ -24,6 +24,19 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             }
         }
 
+        public Decimal tieneOut(Decimal estadia)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.ESTADIA WHERE EST_COD_ESTADIA = '{0}' AND EST_FECHA_CHECK_OUT IS NOT NULL", estadia);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.ESTADIA");
+
+            if (dataRow.Count > 0)
+            {
+                return 1;
+            }
+            else { return 2; }
+        }
+
         internal void RegistrarEstadia(Reserva reserva)
         {
             var query = String.Format(@"INSERT INTO GD2C2014.LA_REVANCHA.ESTADIA " +

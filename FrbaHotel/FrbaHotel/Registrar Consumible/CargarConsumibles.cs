@@ -153,9 +153,16 @@ namespace FrbaHotel.Registrar_Consumible
                 }
                 else
                 {
-                    Escoit escoi = new Escoit(0,codigo_consu,estad.codigo,cod_hab,0,cant);
-                    escoits.Add(escoi);
-                    n = n + 1;
+                    if (cant > 0)
+                    {
+                        Escoit escoi = new Escoit(0, codigo_consu, estad.codigo, cod_hab, 0, cant);
+                        escoits.Add(escoi);
+                        n = n + 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Las cantidades deben ser positivas", "Alerta", MessageBoxButtons.OK);
+                    }
                 }
             }
             if (salir == false)

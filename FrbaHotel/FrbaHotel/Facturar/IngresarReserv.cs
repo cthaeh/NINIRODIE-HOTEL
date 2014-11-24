@@ -69,44 +69,54 @@ namespace FrbaHotel.Facturar
                     Decimal bandera2 = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
                     if (bandera2 != 1)
                     {
-                       MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
+                        MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        Estadia est = RepositorioEstadia.Instance.BuscarEstadiaxCod(Decimal.Parse(textBoxcod.Text));
-                        Reserva res = RepositorioReserva.Instance.BuscarReserva(est.codigoReserva);
-						
-						if(res.identificador != 0)
-						{
-							Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
-							Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
-                            
-                            List<Escoit> items = RepositorioEscoit.Instance.BuscarEscoits(est.codigo);
-						    
-                            
-                            Decimal recarga = 0;
-							Decimal costo_factura = 0;
-							int n = 0;
-							while (n < items.Count)
-							{
-                                Decimal monto_consu = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
-								Decimal monto = items.ElementAt(n).cantidad * monto_consu;
-								costo_factura = costo_factura + monto;
-								n++;
-							}
-							if (regimen.identificador == 120)
-							{
-								recarga = costo_factura;
-							}
+                        Decimal tiene_checkout = RepositorioEstadia.Instance.tieneOut(Decimal.Parse(textBoxcod.Text));
+                        if (tiene_checkout == 1)
+                        {
+                            Estadia est = RepositorioEstadia.Instance.BuscarEstadiaxCod(Decimal.Parse(textBoxcod.Text));
+                            Reserva res = RepositorioReserva.Instance.BuscarReserva(est.codigoReserva);
 
-							new Facturar(costo_factura, recarga, monto_estadia,items).ShowDialog(this); ;
-							this.Close();
-						}else
-						{
-							MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
-							this.Close();
-			    		}	
-					}
+                            if (res.identificador != 0)
+                            {
+                                Regimen regimen = RepositorioRegimen.Instance.BuscarRegimen(res.identificador_regimen);
+                                Decimal monto_estadia = RepositorioReserva.Instance.BuscarMontoEstadia(res.identificador);
+
+                                List<Escoit> items = RepositorioEscoit.Instance.BuscarEscoits(est.codigo);
+
+
+                                Decimal recarga = 0;
+                                Decimal costo_factura = 0;
+                                int n = 0;
+                                while (n < items.Count)
+                                {
+                                    Decimal monto_consu = RepositorioConsumibles.Instance.BuscarMonto(items.ElementAt(n).cod_consumible);
+                                    Decimal monto = items.ElementAt(n).cantidad * monto_consu;
+                                    costo_factura = costo_factura + monto;
+                                    n++;
+                                }
+                                if (regimen.identificador == 120)
+                                {
+                                    recarga = costo_factura;
+                                }
+
+                                new Facturar(costo_factura, recarga, monto_estadia, items).ShowDialog(this); ;
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("La Reserva Ingresada No Existe", "Alerta", MessageBoxButtons.OK);
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("La estadia no fue checkouteada", "Alerta", MessageBoxButtons.OK);
+                            this.Close();
+                        }
+                    }
                 }
             }
         }
