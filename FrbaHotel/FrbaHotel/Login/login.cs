@@ -57,6 +57,8 @@ namespace FrbaHotel.Login
                 }
                 else
                 {
+                    MessageBox.Show("Usuario o Contraseña incorrectos", "Alerta", MessageBoxButtons.OK);
+
                     error_admin = error_admin + 1;
                     if (error_admin == 3)
                     {
