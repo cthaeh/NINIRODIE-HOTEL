@@ -82,12 +82,14 @@ namespace FrbaHotel.ABM_de_Habitacion
             if (externa == false)
             {
                 externa = true;
+                checkBoxint.Checked = false;
                 checkBoxint.Enabled = false;
                 checkBoxext.Enabled = true;
             }
             else
             {
                 externa = false;
+                checkBoxint.Checked = true;
                 checkBoxint.Enabled = true;
             }
         }
@@ -97,12 +99,14 @@ namespace FrbaHotel.ABM_de_Habitacion
             if (interna == false)
             {
                 interna = true;
+                checkBoxext.Checked = false;
                 checkBoxext.Enabled = false;
                 checkBoxint.Enabled = true;
             }
             else
             {
                 interna = false;
+                checkBoxext.Checked = true;
                 checkBoxext.Enabled = true;
             }
         }
@@ -115,11 +119,13 @@ namespace FrbaHotel.ABM_de_Habitacion
 
             if (habitacion_seleccionada.ubicacion == "externa")
             {
+                checkBoxext.Checked = true;
                 checkBoxext.Enabled = false;
                 checkBoxint.Enabled = true;
             }
             else
             {
+                checkBoxint.Checked = true;
                 checkBoxint.Enabled = false;
                 checkBoxext.Enabled = true;
             }
@@ -149,7 +155,7 @@ namespace FrbaHotel.ABM_de_Habitacion
                 }
 
                 Habitacion bandera = RepositorioHabitacion.Instance.ExisteHabMod(hotel_seleccionado.identificador, Decimal.Parse(textBoxnro.Text));
-                if (bandera.identificador != habitacion_seleccionada.identificador)
+                if (bandera.identificador == habitacion_seleccionada.identificador || bandera.identificador == -1)
                 {
                     RepositorioHabitacion.Instance.ModificarHabitacion(textBoxpis.Text, textBoxnro.Text, textBoxdesc.Text, ubi, habitacion_seleccionada.identificador);
 

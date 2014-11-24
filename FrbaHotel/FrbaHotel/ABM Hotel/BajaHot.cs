@@ -91,7 +91,7 @@ namespace FrbaHotel.ABM_Hotel
             RepositorioHotel.Instance.BajarHotel(hotel_seleccionado.identificador, habilitar);
 
             
-            MessageBox.Show("Se ha dado de baja exitosamente", "Alerta", MessageBoxButtons.OK);
+            MessageBox.Show("Se ha dado modificado exitosamente", "Alerta", MessageBoxButtons.OK);
 
             this.Close();
         }

@@ -190,7 +190,7 @@ namespace FrbaHotel.ABM_Hotel
 
         private void textBoxnrocal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            soloEscribeLetras(e);
+            soloEscribeNumeros(e);
         }
     }
 }

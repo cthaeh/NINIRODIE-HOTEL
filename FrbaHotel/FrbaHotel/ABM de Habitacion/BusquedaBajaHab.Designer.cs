@@ -38,6 +38,12 @@
             this.textBoxpis = new System.Windows.Forms.TextBox();
             this.textBoxnro = new System.Windows.Forms.TextBox();
             this.textBoxper = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Simple = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +77,7 @@
             // 
             // buscar
             // 
-            this.buscar.Location = new System.Drawing.Point(138, 83);
+            this.buscar.Location = new System.Drawing.Point(157, 79);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(75, 23);
             this.buscar.TabIndex = 20;
@@ -82,7 +88,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(206, 28);
+            this.label4.Location = new System.Drawing.Point(204, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 19;
@@ -124,11 +130,65 @@
             // 
             // textBoxper
             // 
-            this.textBoxper.Location = new System.Drawing.Point(263, 28);
+            this.textBoxper.Location = new System.Drawing.Point(252, 12);
             this.textBoxper.Name = "textBoxper";
             this.textBoxper.Size = new System.Drawing.Size(100, 20);
             this.textBoxper.TabIndex = 15;
             this.textBoxper.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxper_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(204, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "El tipo puede ser:";
+            // 
+            // Simple
+            // 
+            this.Simple.AutoSize = true;
+            this.Simple.Location = new System.Drawing.Point(299, 38);
+            this.Simple.Name = "Simple";
+            this.Simple.Size = new System.Drawing.Size(38, 13);
+            this.Simple.TabIndex = 25;
+            this.Simple.Text = "Simple";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(299, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Doble";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(299, 64);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Triple";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(299, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Cuadruple";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(299, 89);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "King";
             // 
             // BusquedaBajaHab
             // 
@@ -136,6 +196,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(397, 335);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Simple);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -148,6 +214,7 @@
             this.Controls.Add(this.textBoxnro);
             this.Name = "BusquedaBajaHab";
             this.Text = "Busqueda Habitacion";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,5 +232,11 @@
         private System.Windows.Forms.TextBox textBoxpis;
         private System.Windows.Forms.TextBox textBoxnro;
         private System.Windows.Forms.TextBox textBoxper;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Simple;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

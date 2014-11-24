@@ -38,6 +38,12 @@
             this.textBoxper = new System.Windows.Forms.TextBox();
             this.textBoxpis = new System.Windows.Forms.TextBox();
             this.textBoxnro = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Simple = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +88,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(205, 32);
+            this.label4.Location = new System.Drawing.Point(204, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 31;
@@ -108,7 +114,7 @@
             // 
             // textBoxper
             // 
-            this.textBoxper.Location = new System.Drawing.Point(263, 29);
+            this.textBoxper.Location = new System.Drawing.Point(254, 12);
             this.textBoxper.Name = "textBoxper";
             this.textBoxper.Size = new System.Drawing.Size(100, 20);
             this.textBoxper.TabIndex = 27;
@@ -130,12 +136,72 @@
             this.textBoxnro.TabIndex = 24;
             this.textBoxnro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnro_KeyPress);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(301, 96);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "King";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(301, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 13);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "Cuadruple";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(301, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Triple";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(301, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "Doble";
+            // 
+            // Simple
+            // 
+            this.Simple.AutoSize = true;
+            this.Simple.Location = new System.Drawing.Point(301, 45);
+            this.Simple.Name = "Simple";
+            this.Simple.Size = new System.Drawing.Size(38, 13);
+            this.Simple.TabIndex = 37;
+            this.Simple.Text = "Simple";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(206, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "El tipo puede ser:";
+            // 
             // BusquedaModHab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(398, 324);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Simple);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
@@ -166,5 +232,11 @@
         private System.Windows.Forms.TextBox textBoxper;
         private System.Windows.Forms.TextBox textBoxpis;
         private System.Windows.Forms.TextBox textBoxnro;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label Simple;
+        private System.Windows.Forms.Label label3;
     }
 }
