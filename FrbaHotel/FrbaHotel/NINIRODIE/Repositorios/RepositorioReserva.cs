@@ -88,6 +88,23 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return reservas.First().identificador_habitacion;
         }
 
+        public Reserva BuscarReserva2(Decimal cod)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.RESERVA WHERE RES_CODIGO = '{0}'", cod);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.RESERVA");
+
+            if (dataRow.Count == 0)
+            {
+                return new Reserva();
+            }
+            else
+            {
+                var reservas = dataRow.ToList<Reserva>(this.DataRowToRese);
+                return reservas.First();
+            }
+        }
+
         public Reserva BuscarReserva(Decimal cod)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.RESERVA WHERE RES_CODIGO = '{0}' " +

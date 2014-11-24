@@ -67,7 +67,7 @@ namespace FrbaHotel.Facturar
                 {
 
                     Decimal bandera2 = RepositorioFactura.Instance.BuscarFacturaXRes(Decimal.Parse(textBoxcod.Text));
-                    if (bandera2 == 0)
+                    if (bandera2 != 1)
                     {
                        MessageBox.Show("La estadia ingresada ya se ha facturado", "Alerta", MessageBoxButtons.OK);
                     }
@@ -109,6 +109,11 @@ namespace FrbaHotel.Facturar
 					}
                 }
             }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

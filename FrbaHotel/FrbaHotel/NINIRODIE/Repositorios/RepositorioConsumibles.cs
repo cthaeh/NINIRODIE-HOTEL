@@ -35,6 +35,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return consu;
         }
 
+        public Consumibles BuscarConsuUnico(Decimal codigo)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.CONSUMBILES WHERE CONS_CODIGO = '{0}'", codigo);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.CONSUMBILES");
+
+            var consu = dataRow.ToList<Consumibles>(this.DataRowToConsu);
+
+            return consu.First();
+        }
+
         public Decimal BuscarMonto(Decimal cod_consu)
         {
             var query = String.Format(@"SELECT * FROM LA_REVANCHA.CONSUMBILES WHERE CONS_CODIGO = '{0}'", cod_consu);

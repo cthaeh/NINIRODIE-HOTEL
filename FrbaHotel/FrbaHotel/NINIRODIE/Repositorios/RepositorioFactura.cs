@@ -38,7 +38,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA " +
 "(FAC_CODIGO, FAC_FECHA, FAC_TOTAL, FAC_COD_FORMA_PAGO, " +
 "FAC_COD_ESTADIA, FAC_CONSUMIDOR) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')",
-est, "2013-01-09 00:00:00.000", monto, 2000, est, comprador);
+est, "2013-01-09 00:00:00.000", Math.Truncate(monto), 2000, est, comprador);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
@@ -123,8 +123,8 @@ est, "2013-01-09 00:00:00.000", monto, 2000, est, comprador);
         public void InsertarItemAFactura(Decimal factura, Decimal consumible, Decimal cantidad, Decimal precio, Decimal hab)
         {
             var query = String.Format(@"INSERT INTO LA_REVANCHA.FACTURA_ITEM " +
-"(FACITEM_COD_FACTURA, FACITEM_COD_CONSUMIBLE, FACITEM_CANTIDAD, FACITEM_MONTO, FACITEM_HABITACION)" +
-"VALUES ({0}, {1}, {2}, {3}, '{4}')", factura, consumible, cantidad, Math.Truncate(precio),hab);
+"(FACITEM_COD_FACTURA, FACITEM_CANTIDAD, FACITEM_MONTO, FACITEM_HABITACION)" +
+"VALUES ({0}, {1}, {2}, {3})", factura, cantidad, Math.Truncate(precio),hab);
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
@@ -141,13 +141,12 @@ est, "2013-01-09 00:00:00.000", monto, 2000, est, comprador);
 
         public Item DataRowToItem(DataRow row)
         {
-            var codigo = Decimal.Parse(row["FACITEM_COD_CONSUMIBLE"].ToString());
             var precio = Decimal.Parse(row["FACITEM_MONTO"].ToString());
             var cant = Decimal.Parse(row["FACITEM_CANTIDAD"].ToString());
             var indent = Decimal.Parse(row["FACITEM_CODIGO"].ToString());
             var desc = "harcodeo";
 
-            var item = new Item(codigo, precio, desc, cant, indent);
+            var item = new Item(0, precio, desc, cant, indent);
             return item;
         }
     }

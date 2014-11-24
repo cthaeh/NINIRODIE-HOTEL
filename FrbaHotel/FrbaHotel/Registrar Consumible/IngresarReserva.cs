@@ -78,7 +78,7 @@ namespace FrbaHotel.Registrar_Consumible
                         {
                             if (res.identificador_hotel == codigo_hotel_seleccionado)
                             {
-                                if ((res.fechaDesde - DateTime.Now).Days > 0)
+                                if ((res.fechaDesde - FechaSistema.Instance.fecha).Days > 0)
                                 {
                                     MessageBox.Show("La reserva ingresada es futura", "Alerta", MessageBoxButtons.OK);
                                 }

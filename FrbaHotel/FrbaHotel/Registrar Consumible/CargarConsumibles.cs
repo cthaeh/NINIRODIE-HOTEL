@@ -183,7 +183,7 @@ namespace FrbaHotel.Registrar_Consumible
                             RepositorioEscoit.Instance.InsertarEscoit(escoits.ElementAt(j).cod_consumible, escoits.ElementAt(j).cod_estadia, escoits.ElementAt(j).cantidad, escoits.ElementAt(j).cod_habitacion);
                             j++;
                         }
-                        RepositorioEscoit.Instance.InsertarEstadia(escoits.ElementAt(j).cod_estadia);
+                        RepositorioEscoit.Instance.InsertarEstadia(escoits.ElementAt(j-1).cod_estadia);
 
                         MessageBox.Show("Los consumibles se cargaron exitosamente", "Alerta", MessageBoxButtons.OK);
                         this.Close();

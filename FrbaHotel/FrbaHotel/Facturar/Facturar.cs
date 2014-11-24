@@ -113,10 +113,11 @@ namespace FrbaHotel.Facturar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Reserva res = RepositorioReserva.Instance.BuscarReserva(items.ElementAt(1).cod_estadia);
+            Estadia est = RepositorioEstadia.Instance.BuscarEstadiaxCod(items.ElementAt(0).cod_estadia);
+            Reserva res = RepositorioReserva.Instance.BuscarReserva2(est.codigoReserva);
             Decimal comprador = RepositorioReserva.Instance.BuscarUsuario(res.identificador);
 
-            RepositorioFactura.Instance.GenerarFactura(monto_a_pagar, items.ElementAt(1).cod_estadia, comprador);
+            RepositorioFactura.Instance.GenerarFactura(monto_a_pagar, items.ElementAt(0).cod_estadia, comprador);
             
             int n = 0;
             while (n < items.Count)
@@ -127,7 +128,7 @@ namespace FrbaHotel.Facturar
             }
 
             List<Item> items_factura = new List<Item>();
-            items_factura = RepositorioFactura.Instance.BuscarItemsXFac(items.ElementAt(1).cod_estadia);
+            items_factura = RepositorioFactura.Instance.BuscarItemsXFac(items.ElementAt(0).cod_estadia);
             n = 0;
             int j = 0;
             while (n < items.Count)
@@ -136,7 +137,8 @@ namespace FrbaHotel.Facturar
                 j = 0;
                 while (j < items_factura.Count)
                 {
-                    if (items_factura.ElementAt(j).codigo_consumible == items.ElementAt(n).cod_consumible)
+                    Consumibles consumibl = RepositorioConsumibles.Instance.BuscarConsuUnico(items.ElementAt(n).cod_consumible);
+                    if (items_factura.ElementAt(j).precio == consumibl.precio)
                     {
                         RepositorioEscoit.Instance.ActualizarEscoit(items.ElementAt(n).cod_estadia, items.ElementAt(n).cod_consumible, items_factura.ElementAt(j).identificador);
                     }
@@ -144,7 +146,7 @@ namespace FrbaHotel.Facturar
                 }
                 n = n + 1;
             }
-            new Pagar(items.ElementAt(1).cod_estadia, monto_a_pagar).ShowDialog(this);
+            new Pagar(items.ElementAt(0).cod_estadia, monto_a_pagar).ShowDialog(this);
             this.Close();
         }
     }
