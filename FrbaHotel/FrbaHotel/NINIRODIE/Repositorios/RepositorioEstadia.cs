@@ -103,5 +103,16 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             return dataRows.Count > 0;
         }
+
+        internal bool SeRegistroEgreso(Reserva ReservaBuscada)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.ESTADIA " +
+                                    "WHERE EST_COD_RESERVA = '{0}' AND EST_FECHA_CHECK_OUT IS NOT NULL",
+                                    ReservaBuscada.identificador);
+
+            DataRowCollection dataRows = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.ESTADIA");
+
+            return dataRows.Count > 0;
+        }
     }
 }

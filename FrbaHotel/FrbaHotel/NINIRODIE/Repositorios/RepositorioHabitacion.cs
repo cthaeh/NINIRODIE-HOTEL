@@ -161,12 +161,12 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                                             "FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA WHERE " +
                                             "HABRES_COD_RESERVA IN " +
                                                "(SELECT RES_CODIGO FROM GD2C2014.LA_REVANCHA.RESERVA " +
-                                                "WHERE (CAST(RES_FECHA_DESDE AS DATE) BETWEEN CAST('{1}' AS DATE) AND " +
-                                                "CAST('{2}' AS DATE)) OR (CAST(RES_FECHA_HASTA AS DATE) BETWEEN " +
+                                                "WHERE (CAST('{1}' AS DATE) BETWEEN CAST(RES_FECHA_DESDE AS DATE) AND " +
+                                                "CAST(RES_FECHA_HASTA AS DATE)) OR (CAST(RES_FECHA_DESDE AS DATE) BETWEEN " +
                                                 "CAST('{1}' AS DATE) AND CAST('{2}' AS DATE))) " +
                                                 "GROUP BY HABRES_COD_HABITACION) AND HABIT.HAB_COD_HOTEL = '{0}'",
                                        hotel.identificador,
-                                       DBTypeConverter.ToSQLDateTime(desde), DBTypeConverter.ToSQLDateTime(hasta));
+                                       DBTypeConverter.ToSQLDateTime(desde), DBTypeConverter.ToSQLDateTime(hasta.AddDays(-1)));
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HABITACION");
 
@@ -256,13 +256,18 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                                             "FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA WHERE " +
                                             "HABRES_COD_RESERVA IN " +
                                                "(SELECT RES_CODIGO FROM GD2C2014.LA_REVANCHA.RESERVA " +
-                                                "WHERE RES_CODIGO <> '{3}' AND (CAST(RES_FECHA_DESDE AS DATE) BETWEEN CAST('{1}' AS DATE) AND " +
-                                                "CAST('{2}' AS DATE)) OR (CAST(RES_FECHA_HASTA AS DATE) BETWEEN " +
-                                                "CAST('{1}' AS DATE) AND CAST('{2}' AS DATE))) " +
+                                                "WHERE RES_CODIGO <> '{3}' AND " +
+										        "(CAST('{1}' AS DATE) " + 
+												"BETWEEN CAST(RES_FECHA_DESDE AS DATE) " +
+												"AND CAST(RES_FECHA_HASTA AS DATE) " +
+										        "OR (CAST(RES_FECHA_DESDE AS DATE) " +
+												"BETWEEN CAST('{1}' AS DATE) " + 
+												"AND CAST('{2}' AS DATE))) " +
+										        "AND RES_HOTREG_HOTEL = '{0}') " +
                                                 "GROUP BY HABRES_COD_HABITACION) AND HABIT.HAB_COD_HOTEL = '{0}'",
                                        hotel.identificador,
                                        DBTypeConverter.ToSQLDateTime(reserva.fechaDesde), 
-                                       DBTypeConverter.ToSQLDateTime(reserva.fechaHasta), reserva.identificador);
+                                       DBTypeConverter.ToSQLDateTime(reserva.fechaHasta.AddDays(-1)), reserva.identificador);
 
             DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HABITACION");
 

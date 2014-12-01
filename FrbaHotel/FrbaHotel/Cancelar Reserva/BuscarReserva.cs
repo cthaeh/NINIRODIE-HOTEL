@@ -97,19 +97,20 @@ namespace FrbaHotel.Cancelar_Reserva
         {
             if (hotelSeleccionado.identificador == ReservaBuscada.identificador_hotel)
             {
-                if (!RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKIN
-                    | RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada) & modoApertura == ModoApertura.CHECKOUT)
-                    new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
-                else
-                {
-                    if (modoApertura == ModoApertura.CHECKOUT)
-                        MessageBox.Show("No puede realizarse el egreso porque \n" +
-                                        "todavía no se ha realizado el ingreso.", "Atención", MessageBoxButtons.OK);
+                if (modoApertura == ModoApertura.CHECKIN)
+                    if (!RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada))
+                        new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
                     else
                         MessageBox.Show("El ingreso ya ha sido registrado.", "Atención", MessageBoxButtons.OK);
-                    
-                    this.Close();
-                }
+                else
+                    if (RepositorioEstadia.Instance.SeRegistroIngreso(ReservaBuscada))
+                        if (!RepositorioEstadia.Instance.SeRegistroEgreso(ReservaBuscada))
+                            new RegistrarIngresoEgreso(usuario, ReservaBuscada, modoApertura, hotelSeleccionado).ShowDialog(this);
+                        else
+                            MessageBox.Show("El egreso ya ha sido registrado.", "Atención", MessageBoxButtons.OK);
+                    else
+                        MessageBox.Show("No puede realizarse el egreso porque \n" +
+                                        "todavía no se ha realizado el ingreso.", "Atención", MessageBoxButtons.OK);
             }
             else
                 MessageBox.Show("La reserva no corresponde a este hotel.", "Atención", MessageBoxButtons.OK);
