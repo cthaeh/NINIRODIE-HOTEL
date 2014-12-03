@@ -26,5 +26,12 @@ namespace FrbaHotel.NINIRODIE.Clases
         public FechaSistema()
         {
             fecha = DateTime.Parse(ConfigurationManager.ConnectionStrings["FECHA"].ConnectionString);
-        }}
+        }
+
+        public int CompararConFechaDelSistema(DateTime fechaAComparar)
+        {
+            int resultadoComparacion = this.fecha.Date.CompareTo(fechaAComparar.Date);
+            return resultadoComparacion;
+        }
     }
+}

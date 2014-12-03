@@ -147,7 +147,7 @@ namespace FrbaHotel.Cancelar_Reserva
             Decimal codigoReserva = Decimal.Parse(this.codigoReservaTextBox.Text);
             Cancelacion cancel = RepositorioReserva.Instance.VerificarCancelacion(codigoReserva, usuario);
             if (cancel.codigo < 0)
-                MessageBox.Show("La reserva no ha sido encontrada o usted no es el resposable de la misma.\n" +
+                MessageBox.Show("La reserva no ha sido encontrada o usted no es el responsable de la misma.\n" +
                             "Asegurese de ingresar el código correctamente.\n", "Atención", MessageBoxButtons.OK);
             else
             {
@@ -162,7 +162,7 @@ namespace FrbaHotel.Cancelar_Reserva
         
         private bool compararFechaReservaConActual()
         {
-            int resultadoComparacion = FechaSistema.Instance.fecha.Date.CompareTo(ReservaBuscada.fechaDesde.Date);
+            int resultadoComparacion = FechaSistema.Instance.CompararConFechaDelSistema(ReservaBuscada.fechaDesde);
 
             if (modoApertura == ModoApertura.MODIFICACION | modoApertura == ModoApertura.CANCELACION)
                 return resultadoComparacion < 0;

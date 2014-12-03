@@ -102,28 +102,43 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void BuscarBoton_Click(object sender, EventArgs e)
         {
-            if (DesdeDateTimePicker.Value < HastaDateTimePicker.Value)
+            if (HotelAbierto())
             {
-                if (FechaSistema.Instance.fecha.Date.CompareTo(this.DesdeDateTimePicker.Value.Date) < 0)
+                if (DesdeDateTimePicker.Value < HastaDateTimePicker.Value)
                 {
-                    List<Habitacion> habitacionesLibres =
-                        RepositorioHabitacion.Instance.HabitacionesLibresEnFecha((Hotel)hotelComboBox.SelectedItem,
-                            DesdeDateTimePicker.Value, HastaDateTimePicker.Value);
+                    if (FechaSistema.Instance.CompararConFechaDelSistema(this.DesdeDateTimePicker.Value.Date) < 0)
+                    {
+                        List<Habitacion> habitacionesLibres =
+                            RepositorioHabitacion.Instance.HabitacionesLibresEnFecha((Hotel)hotelComboBox.SelectedItem,
+                                DesdeDateTimePicker.Value, HastaDateTimePicker.Value);
 
-                    this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesLibres;
-                    this.HabitacionesDisponiblesDataGrid.Refresh();
-                    this.CalcularPrecioHabitaciones();
+                        this.HabitacionesDisponiblesDataGrid.DataSource = habitacionesLibres;
+                        this.HabitacionesDisponiblesDataGrid.Refresh();
+                        this.CalcularPrecioHabitaciones();
+                    }
+                    else
+                        MessageBox.Show("Nos encontramos en la fecha: " +
+                                        FechaSistema.Instance.fecha.Date.ToShortDateString() + ".\n" +
+                                        "No puede realizar una reserva con fecha anterior a esta.", "Atención",
+                                        MessageBoxButtons.OK);
                 }
                 else
-                    MessageBox.Show("Nos encontramos en la fecha: " +
-                                    FechaSistema.Instance.fecha.Date.ToShortDateString() + ".\n" +
-                                    "No puede realizar una reserva con fecha anterior a esta.", "Atención",
-                                    MessageBoxButtons.OK);
-            }
-            else
                     MessageBox.Show("La fecha de egreso no puede " +
                                     "ser anterior a la de ingreso.", "Atención", MessageBoxButtons.OK);
+            }
+            else
+                MessageBox.Show("El hotel se encontrará cerrado en la fecha seleccionada.\n" +
+                                "Por favor, seleccione otra fecha u otro hotel.\n" +
+                                "Disculpe las molestias.", "Atención", MessageBoxButtons.OK);
                 
+        }
+
+        private bool HotelAbierto()
+        {
+            bool abierto = RepositorioHotel.Instance.VerificarQueElHotelEsteAbiertoEnLasFechas((Hotel)this.hotelComboBox.SelectedItem,
+                this.DesdeDateTimePicker.Value.Date, this.HastaDateTimePicker.Value.Date);
+
+            return abierto;
         }
 
         private void CalcularPrecioHabitaciones()
@@ -213,6 +228,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 RepositorioUsuario.Instance.GenerarReserva(reserva, cliente);
             else
                 RepositorioUsuario.Instance.GenerarReserva(reserva, cliente, usuario);
+
             for( int i = 0 ; i < this.HabitacionesDisponiblesDataGrid.SelectedRows.Count; i++ )
             {
                 Habitacion habitacion = (Habitacion)this.HabitacionesDisponiblesDataGrid.SelectedRows[i].DataBoundItem;

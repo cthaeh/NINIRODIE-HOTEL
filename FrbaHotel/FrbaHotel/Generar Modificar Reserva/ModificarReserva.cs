@@ -292,7 +292,22 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 if (resultado == DialogResult.No)
                     DesdeDateTimePicker.Value = reserva.fechaDesde;
                 else
+                {
                     ValidarFechaDesdeMenorAFechaHasta();
+                    ValidarHotelAbierto();
+                }
+            }
+        }
+
+        private void ValidarHotelAbierto()
+        {
+            if (!RepositorioHotel.Instance.VerificarQueElHotelEsteAbiertoEnLasFechas(hotel,
+                this.DesdeDateTimePicker.Value.Date, this.HastaDateTimePicker.Value.Date))
+            {
+                MessageBox.Show("El hotel se encontrará cerrado en las fechas seleccionadas."
+                    , "Atención", MessageBoxButtons.OK);
+                this.DesdeDateTimePicker.Value = reserva.fechaDesde;
+                this.HastaDateTimePicker.Value = reserva.fechaHasta;
             }
         }
 

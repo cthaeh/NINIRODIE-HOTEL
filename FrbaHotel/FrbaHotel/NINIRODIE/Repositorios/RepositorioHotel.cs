@@ -347,5 +347,20 @@ ORDER BY CANTIDAD_CONSUMIBLES_POR_FACTURA DESC", inicio, fin);
 
             return hotel;
         }
+
+        internal bool VerificarQueElHotelEsteAbiertoEnLasFechas(Hotel hotel, DateTime desdeFecha, DateTime hastaFecha)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.HOTEL_CERRADO " +
+                                       "WHERE HOTCERR_COD_HOTEL = '{0}' AND (CAST('{1}' AS DATE) " +
+			                           "BETWEEN CAST(HOTCERR_FECHA_DESDE AS DATE) AND CAST(HOTCERR_FECHA_HASTA AS DATE) " +
+	                                   "OR CAST('{2}' AS DATE) BETWEEN CAST(HOTCERR_FECHA_DESDE AS DATE) AND " +
+                                       "CAST(HOTCERR_FECHA_HASTA AS DATE))", hotel.identificador, 
+                                       DBTypeConverter.ToSQLDateTime(desdeFecha),
+                                       DBTypeConverter.ToSQLDateTime(hastaFecha));
+
+            DataRowCollection dataRows = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.HOTEL_CERRADO");
+
+            return dataRows.Count == 0;
+        }
     }
 }
