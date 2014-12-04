@@ -159,5 +159,24 @@ namespace FrbaHotel.NINIRODIE.Repositorios
 
             SQLUtils.EjecutarConsultaConEfectoDeLado(query);
         }
+
+        internal Usuario BuscarCliente(String nombreUsuario)
+        {
+            var query = String.Format(@"SELECT * FROM LA_REVANCHA.USUARIO " +
+                                       "WHERE USU_USERNAME = '{0}'", nombreUsuario);
+
+            DataRowCollection dataRow = SQLUtils.EjecutarConsultaSimple(query, "LA_REVANCHA.USUARIO");
+
+            var usuarios = dataRow.ToList<Usuario>(this.DataRowToUsuario);
+
+
+            if (usuarios.Count == 0)
+            {
+                return new Usuario();
+            }
+
+            return usuarios.First();
+
+        }
     }
 }
