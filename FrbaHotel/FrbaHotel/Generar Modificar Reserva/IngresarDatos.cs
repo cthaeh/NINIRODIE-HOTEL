@@ -52,7 +52,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             if (this.textBox1.Text != "" & this.textBox2.Text != "")
             {
                 Decimal codigoReserva = Decimal.Parse(this.textBox2.Text);
-                Usuario usuario = RepositorioUsuario.Instance.BuscarUsuario(this.textBox1.Text);
+                Usuario usuario = RepositorioUsuario.Instance.BuscarCliente(this.textBox1.Text);
                 Reserva ReservaBuscada = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
 
                 if (ReservaBuscada.identificador != -1)
@@ -70,13 +70,25 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                      "Atención", MessageBoxButtons.OK);
                 }
                 else
-                    MessageBox.Show("No se ha encontrado la Reserva correspondiente\n" +
-                                    "al Código de Usuario ingresado.\n" +
-                                    "Por favor, verifique los datos ingresados.", "Atención", MessageBoxButtons.OK);
+                    VerificarReservaCancelada(codigoReserva, usuario);
             }
             else
                 MessageBox.Show("Debe ingresar todos los datos.", "Atención", MessageBoxButtons.OK);
             }
+
+        private static void VerificarReservaCancelada(Decimal codReserva, Usuario user)
+        {
+            Cancelacion cancel = RepositorioReserva.Instance.VerificarCancelacion(codReserva, user);
+
+            if(cancel.codigo != -1)
+                MessageBox.Show("No se ha encontrado la Reserva correspondiente\n" +
+                                "al Código de Usuario ingresado.\n" +
+                                "Por favor, verifique los datos ingresados.", "Atención", MessageBoxButtons.OK);
+            else
+                MessageBox.Show("La reserva ya ha sido cancelada el día: " + cancel.fechaCancelacion.ToString() +
+                               "\nEl código de cancelación es: " + cancel.codigo.ToString() + "."
+                               , "Atención", MessageBoxButtons.OK);
+        }
     
     }
 }
