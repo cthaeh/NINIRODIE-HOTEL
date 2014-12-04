@@ -52,7 +52,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             if (this.textBox1.Text != "" & this.textBox2.Text != "")
             {
                 Decimal codigoReserva = Decimal.Parse(this.textBox2.Text);
-                Usuario usuario = RepositorioUsuario.Instance.BuscarUsuarioXCod(Decimal.Parse(this.textBox1.Text));
+                Usuario usuario = RepositorioUsuario.Instance.BuscarUsuario(this.textBox1.Text);
                 Reserva ReservaBuscada = RepositorioReserva.Instance.BuscarReservaDeUsuario(codigoReserva, usuario);
 
                 if (ReservaBuscada.identificador != -1)
