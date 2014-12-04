@@ -74,6 +74,9 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                     "al Código de Usuario ingresado.\n" +
                                     "Por favor, verifique los datos ingresados.", "Atención", MessageBoxButtons.OK);
             }
-        }
+            else
+                MessageBox.Show("Debe ingresar todos los datos.", "Atención", MessageBoxButtons.OK);
+            }
+    
     }
 }
