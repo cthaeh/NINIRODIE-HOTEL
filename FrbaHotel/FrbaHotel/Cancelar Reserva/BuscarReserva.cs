@@ -87,10 +87,27 @@ namespace FrbaHotel.Cancelar_Reserva
                 if (modoApertura == ModoApertura.MODIFICACION)
                 {
                     Hotel hotel = RepositorioHotel.Instance.BuscarHotelxId(ReservaBuscada.identificador_hotel);
-                    new ModificarReserva(usuario, ReservaBuscada, hotel).ShowDialog(this);
+                    ModificarReservaSiElRecepcionistaEsDelHotel(hotel);
                 }
                 else
                     RegistrarCheckInOutSiEsHotelCorrespondiente();
+        }
+
+        private void ModificarReservaSiElRecepcionistaEsDelHotel(Hotel hotel)
+        {
+            if (usuario.tipo == "RECEP")
+            {
+                var hoteles = RepositorioHotel.Instance.BuscarHotelesEmp(this.usuario.codigo);
+                if (hoteles.Any(hot => hot.identificador_hotel == hotel.identificador))
+                    new ModificarReserva(usuario, ReservaBuscada, hotel).ShowDialog(this);
+                else
+                    MessageBox.Show("La reserva se ha realizado para un hotel\n" +
+                                    "en el cual usted no trabaja, por lo que\n" +
+                                    "no puede modificar la reserva.",
+                                    "Atención", MessageBoxButtons.OK);
+            }
+            else
+                new ModificarReserva(usuario, ReservaBuscada, hotel).ShowDialog(this);
         }
 
         private void RegistrarCheckInOutSiEsHotelCorrespondiente()
