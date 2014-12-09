@@ -10,6 +10,7 @@ using FrbaHotel.NINIRODIE.Clases;
 using FrbaHotel.ABM_de_Cliente;
 using FrbaHotel.Generar_Modificar_Reserva;
 using FrbaHotel.NINIRODIE.Repositorios;
+using System.Data.SqlClient;
 
 namespace FrbaHotel.Registrar_Estadia
 {
@@ -169,8 +170,18 @@ namespace FrbaHotel.Registrar_Estadia
         {
             if (cliente.identificador != -1)
             {
-                RepositorioUsuario.Instance.GenerarReserva(reserva, cliente);
-                cantHuespedes--;
+                if (!RepositorioUsuario.Instance.UsuarioRegistrado(reserva, cliente))
+                {
+                    RepositorioUsuario.Instance.GenerarReserva(reserva, cliente);
+                    cantHuespedes--;
+                }
+                else
+                    MessageBox.Show("El cliente ya ha sido registrado para esta reserva.",
+                        "Atención", MessageBoxButtons.OK);
+                /*catch (SqlException MismoCliente)
+                {
+                    MessageBox.Show(MismoCliente.Message, "Atención", MessageBoxButtons.OK);
+                }*/
             }
         }
 
@@ -197,8 +208,18 @@ namespace FrbaHotel.Registrar_Estadia
             }
             else
             {
-                MessageBox.Show("Debe ingresar al menos " + cantHuespedes.ToString() + 
-                                "\nclientes para poder realizar el ingreso.", "Atención", MessageBoxButtons.OK);
+                DialogResult resultado =
+                    MessageBox.Show("De acuerdo al tamaño de las habitaciones,\n" +
+                                "se deben ingresar al menos " + cantHuespedes.ToString() + "\n" +
+                                "clientes para poder realizar el ingreso.\n" +
+                                "¿Hay mas huespedes para hospedar?", "Atención", MessageBoxButtons.YesNo);
+
+                if (resultado == DialogResult.No)
+                {
+                    MessageBox.Show("Se procederá con el Check In.", "Atención", MessageBoxButtons.OK);
+                    cantHuespedes = 0;
+                    this.RegistrarIngresoBoton_Click(sender, e);
+                }
             }
         }
     }

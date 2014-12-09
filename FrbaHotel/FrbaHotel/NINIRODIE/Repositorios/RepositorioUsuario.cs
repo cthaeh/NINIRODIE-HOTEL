@@ -178,5 +178,17 @@ namespace FrbaHotel.NINIRODIE.Repositorios
             return usuarios.First();
 
         }
+
+        internal bool UsuarioRegistrado(Reserva reserva, Cliente cliente)
+        {
+            var query = String.Format(@"SELECT * FROM GD2C2014.LA_REVANCHA.RESERVA_USUARIO " +
+                                       "WHERE RESUSU_COD_RESERVA = '{0}' AND " +
+                                       "RESUSU_CODUSU_HUESPED = '{1}'",
+                                       reserva.identificador, cliente.codigo_usuario);
+
+            DataRowCollection dataRows = SQLUtils.EjecutarConsultaSimple(query, "GD2C2014.LA_REVANCHA.RESERVA_USUARIO");
+
+            return dataRows.Count > 0;
+        }
     }
 }
