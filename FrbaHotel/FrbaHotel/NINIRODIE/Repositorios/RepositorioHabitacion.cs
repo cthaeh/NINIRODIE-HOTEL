@@ -256,8 +256,7 @@ namespace FrbaHotel.NINIRODIE.Repositorios
                                             "FROM GD2C2014.LA_REVANCHA.HABITACION_RESERVA WHERE " +
                                             "HABRES_COD_RESERVA IN " +
                                                "(SELECT RES_CODIGO FROM GD2C2014.LA_REVANCHA.RESERVA " +
-                                                "WHERE RES_CODIGO <> '{3}' AND " +
-										        "(CAST('{1}' AS DATE) " + 
+                                                "WHERE (CAST('{1}' AS DATE) " + 
 												"BETWEEN CAST(RES_FECHA_DESDE AS DATE) " +
 												"AND CAST(RES_FECHA_HASTA AS DATE) " +
 										        "OR (CAST(RES_FECHA_DESDE AS DATE) " +

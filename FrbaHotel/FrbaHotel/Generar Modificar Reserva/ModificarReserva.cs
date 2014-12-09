@@ -130,7 +130,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             this.HabitacionesReservadasDataGrid.Columns["codigo_hotel"].Visible = false;
             this.HabitacionesReservadasDataGrid.Columns["habilitada"].Visible = false;
 
-            this.HabitacionesReservadasDataGrid.DataSource = RepositorioHabitacion.Instance.HabitacionesReserva(reserva);
+            this.HabitacionesReservadasDataGrid.DataSource = this.habitacionesReservadas;
             this.HabitacionesReservadasDataGrid.Refresh();
         }
 
@@ -150,8 +150,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             this.HabitacionesDisponiblesDataGrid.Columns["codigo_hotel"].Visible = false;
             this.HabitacionesDisponiblesDataGrid.Columns["habilitada"].Visible = false;
 
-            this.HabitacionesDisponiblesDataGrid.DataSource =
-                RepositorioHabitacion.Instance.HabitacionesLibresEnFecha(hotel, reserva.fechaDesde, reserva.fechaHasta);
+            this.HabitacionesDisponiblesDataGrid.DataSource = this.habitacionesDisponibles;
             this.HabitacionesDisponiblesDataGrid.Refresh();
         }
 
@@ -208,12 +207,14 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 this.habitacionesDisponibles.Add(habitac);
                 HabitacionesReservadaParaGrid = this.habitacionesReservadas;
                 HabitacionesDisponiblesParaGrid = this.habitacionesDisponibles;
-
+                
 
                 this.HabitacionesDisponiblesDataGrid.DataSource = HabitacionesDisponiblesParaGrid;
+                //this.HabitacionesDisponiblesDataGrid.DataSource = this.habitacionesDisponibles;
                 this.HabitacionesDisponiblesDataGrid.Refresh();
                
                 this.HabitacionesReservadasDataGrid.DataSource = HabitacionesReservadaParaGrid;
+                //this.HabitacionesReservadasDataGrid.DataSource = this.habitacionesReservadas;
                 this.HabitacionesReservadasDataGrid.Refresh();
 
                 this.habitacionesRemovidas.Add(habitac);
@@ -250,11 +251,13 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 this.habitacionesReservadas.Add(habitac);
                 HabitacionesReservadaParaGrid = this.habitacionesReservadas;
                 HabitacionesDisponiblesParaGrid = this.habitacionesDisponibles;
-
+                
                 this.HabitacionesReservadasDataGrid.DataSource = HabitacionesReservadaParaGrid;
+                //this.HabitacionesReservadasDataGrid.DataSource = this.habitacionesReservadas;
                 this.HabitacionesReservadasDataGrid.Refresh();
 
                 this.HabitacionesDisponiblesDataGrid.DataSource = HabitacionesDisponiblesParaGrid;
+                //this.HabitacionesDisponiblesDataGrid.DataSource = this.habitacionesDisponibles;
                 this.HabitacionesDisponiblesDataGrid.Refresh();
 
                 this.habitacionesAgregadas.Add(habitac);
