@@ -6,10 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.LA_REVANCHA.Clases;
 using FrbaHotel.ABM_de_Cliente;
 using FrbaHotel.Generar_Modificar_Reserva;
-using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.LA_REVANCHA.Repositorios;
 using System.Data.SqlClient;
 
 namespace FrbaHotel.Registrar_Estadia

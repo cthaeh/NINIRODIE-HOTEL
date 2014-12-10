@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.Login;
-using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.LA_REVANCHA.Clases;
 
 namespace FrbaHotel.ABM_de_Empleado
 {

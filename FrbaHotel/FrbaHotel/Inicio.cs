@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FrbaHotel.Login;
 using FrbaHotel.Generar_Modificar_Reserva;
-using FrbaHotel.NINIRODIE.Clases;
+using FrbaHotel.LA_REVANCHA.Clases;
 
 namespace FrbaHotel
 {

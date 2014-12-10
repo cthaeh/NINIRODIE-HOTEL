@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FrbaHotel.NINIRODIE.Repositorios;
+using FrbaHotel.LA_REVANCHA.Repositorios;
 
 namespace FrbaHotel.Facturar
 {
